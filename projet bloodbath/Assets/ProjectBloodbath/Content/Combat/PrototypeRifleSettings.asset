@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1b647476dca09047badeac62df23553, type: 3}
+  m_Name: PrototypeRifleSettings
+  m_EditorClassIdentifier: ProjectBloodbath.Runtime::ProjectBloodbath.Combat.HitscanWeaponSettings
+  damage: 34
+  range: 80
+  roundsPerMinute: 480
+  spreadDegrees: 0.25
+  automatic: 1
+  impactForce: 18
+  damageType: 0
+  pitchRecoil: 0.85
+  yawRecoil: 0.3
+  visualKick: 0.08
+  visualRecovery: 14
