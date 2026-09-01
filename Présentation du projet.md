@@ -438,6 +438,43 @@ Un personnage pourra donc utiliser un équipement inhabituel pour sa classe init
 
 ---
 
+# Mains, armes et boucliers
+
+Le personnage devra disposer de **deux mains réellement utilisables** : une main principale et une main secondaire.
+
+Les objets équipables dans les mains devront indiquer clairement s’ils sont :
+
+- utilisables à une main ;
+- utilisables à deux mains ;
+- réservés à la main secondaire, comme certains boucliers.
+
+Une arme à deux mains occupera les deux emplacements. Une arme à une main pourra, selon les compatibilités définies par ses données, être associée à une seconde arme à une main ou à un bouclier.
+
+Chaque arme devra normalement posséder :
+
+- une attaque ou action de base ;
+- une capacité secondaire propre.
+
+Si un bouclier est équipé, il remplace l’accès à la capacité secondaire de l’arme par une véritable action défensive. Le bouclier devra protéger concrètement le personnage, avec des règles de blocage, d’angle de protection, de réduction des dégâts et éventuellement de garde ou de parade qui seront équilibrées par les tests.
+
+Le combat avec deux armes à une main sera autorisé. Pour deux armes à distance compatibles, la règle de contrôle provisoire à tester sera la suivante :
+
+- le clic gauche déclenche l’attaque de base de l’arme principale ;
+- le clic droit déclenche simultanément les attaques de base des deux armes ;
+- les capacités secondaires propres aux armes ne sont pas accessibles tant que les deux armes sont équipées ensemble.
+
+Le clic droit désigne ici la commande par défaut à la souris : cette action devra rester entièrement reconfigurable au clavier, à la souris et à la manette.
+
+Chaque arme devra conserver ses propres munitions, cadence, précision, recul et conditions d’utilisation. Le comportement exact lorsque les deux armes n’ont pas la même cadence, lorsque l’une recharge ou lorsqu’elle ne peut pas tirer devra être décidé après des essais en combat réel.
+
+Le combat de mêlée à deux armes sera également possible, mais son rythme précis, ses alternances et ses éventuelles attaques combinées restent volontairement à concevoir et à tester.
+
+Le système devra être data-driven afin de définir les compatibilités entre équipements, l’occupation des mains et les actions disponibles sans multiplier les règles écrites en dur.
+
+Les deux mains et leur équipement devront être représentés correctement sur le corps visible à la première personne ainsi que pour les autres joueurs en multijoueur.
+
+---
+
 # Apparence et équipement
 
 L’équipement porté devra modifier visuellement le personnage.
@@ -1003,6 +1040,23 @@ Les compétences actives devront rester rapides, réactives et compatibles avec 
 
 Elles ne devront pas imposer régulièrement de longues animations retirant inutilement le contrôle au joueur.
 
+### Barre de compétences
+
+Le joueur disposera d’une **barre de compétences actives** lui permettant d’équiper et d’utiliser rapidement ses capacités pendant le combat.
+
+Cette barre devra notamment pouvoir afficher :
+
+- l’icône de la compétence ;
+- sa commande actuelle ;
+- son temps de recharge ;
+- ses charges éventuelles ;
+- sa ressource disponible ;
+- une indication claire lorsqu’elle ne peut pas être utilisée.
+
+Ses emplacements devront être utilisables avec des commandes reconfigurables et rester confortables au clavier, à la souris et à la manette.
+
+Le nombre exact d’emplacements, leur disposition et le style final de la barre seront définis plus tard pendant le travail d’interface et les tests UX. Sa présentation devra toutefois respecter la direction graphique sombre, rétro-futuriste et grimdark du jeu.
+
 ## Compétences passives
 
 Les compétences passives devront modifier durablement ou conditionnellement le fonctionnement du personnage et de son build sans nécessiter une activation directe.
@@ -1114,6 +1168,57 @@ doit nécessiter aussi peu que possible de modifications du code central.
 
 ---
 
+# Difficultés successives et rejouabilité
+
+La campagne devra proposer trois niveaux de difficulté successifs :
+
+1. **Incursion** ;
+2. **Extermination** ;
+3. **Bloodbath**.
+
+Un nouveau personnage commence en **Incursion**. Terminer la campagne dans cette difficulté débloque **Extermination pour ce personnage**. Terminer ensuite Extermination débloque **Bloodbath pour ce même personnage**.
+
+Lorsqu’il passe à la difficulté suivante, le personnage conserve notamment :
+
+- son niveau et son expérience ;
+- ses statistiques ;
+- ses compétences actives et passives ;
+- son équipement ;
+- son inventaire ;
+- son loot et ses autres éléments de build.
+
+La campagne et la progression du monde recommencent dans la nouvelle difficulté, tandis que la puissance, le niveau et les variantes des ennemis augmentent. Les récompenses et le loot devront également évoluer afin que chaque difficulté apporte un nouvel intérêt à la progression.
+
+Cette montée en puissance devra être pilotée par des données et ne pas se limiter à un multiplicateur global appliqué sans discernement. Elle pourra agir sur le niveau des zones, les statistiques, les résistances, les comportements, les compositions de groupes, les variantes d’ennemis et les récompenses.
+
+Après avoir terminé **Bloodbath**, le personnage pourra continuer à jouer aussi longtemps que souhaité dans cette difficulté.
+
+Ce fonctionnement devra être disponible en solo comme en multijoueur. Les déblocages de difficulté seront liés au personnage et suivront les règles de persistance propres à son environnement de jeu.
+
+---
+
+# Exploration et revisite des zones
+
+Le monde ne devra pas enfermer constamment le joueur dans un parcours strictement linéaire.
+
+Toute zone déjà débloquée dans la difficulté actuelle devra normalement rester accessible afin que le joueur puisse notamment :
+
+- explorer librement ;
+- accomplir des quêtes secondaires ;
+- rechercher du loot ou des secrets ;
+- affronter de nouveau certains ennemis ou événements ;
+- revenir auprès de PNJ, terminaux ou lieux importants.
+
+Cette liberté pourra s’appuyer sur des hubs, des transitions entre zones, une carte et éventuellement des points de déplacement rapide. Elle n’impose pas la création d’un monde ouvert entièrement continu.
+
+Les barrières narratives restent possibles tant qu’une zone n’a pas été débloquée. Une fois l’accès obtenu, elles ne devront pas empêcher arbitrairement sa revisite sans raison de gameplay ou de scénario clairement assumée.
+
+Les zones accessibles seront enregistrées par personnage et par difficulté. Le passage à une nouvelle difficulté recommencera donc la progression de campagne et le déblocage de ses zones, tandis que les zones déjà ouvertes dans cette difficulté resteront librement revisitables.
+
+En coopération, les règles déterminant l’accès d’un groupe à une zone, la progression de l’hôte et l’éligibilité des autres joueurs devront être définies avant l’implémentation multijoueur complète.
+
+---
+
 # Modes de jeu et séparation des personnages
 
 Le jeu proposera deux environnements de progression distincts :
@@ -1141,6 +1246,22 @@ Il ne devra donc pas exister de système permettant :
 - de transférer toute autre progression entre les deux environnements.
 
 Cette séparation est volontaire et constitue un principe fondamental du projet.
+
+---
+
+# Personnages Hardcore
+
+Le mode **Hardcore** sera un choix disponible immédiatement lors de la création d’un personnage, aussi bien en solo qu’en multijoueur.
+
+Ce choix sera permanent et devra être confirmé par un avertissement explicite : si le personnage meurt, il est définitivement supprimé et ne peut plus être joué. Son niveau, son équipement, son inventaire et sa progression sont alors perdus avec lui.
+
+Le Hardcore constitue une règle de personnage indépendante des trois difficultés. Un personnage Hardcore commence donc en Incursion et pourra débloquer Extermination puis Bloodbath selon les mêmes conditions qu’un personnage normal, tant qu’il survit.
+
+Les personnages Hardcore et non-Hardcore ne devront jamais partager une même session, des objets, des échanges ou une progression commune.
+
+En multijoueur, la mort permanente devra être validée par l’autorité serveur. Les cas sensibles tels que la déconnexion pendant un combat, la perte de connexion, la latence ou une panne de service devront recevoir des règles précises avant l’ouverture du mode au public.
+
+En solo, une sauvegarde locale ne peut pas offrir la même garantie anti-manipulation qu’une sauvegarde serveur, mais l’expérience prévue par le jeu restera bien celle d’une mort définitive.
 
 ---
 
@@ -1322,6 +1443,25 @@ Il faudra éviter de faire confiance aveuglément à des informations telles que
 
 Les décisions de sécurité devront cependant rester proportionnées au projet afin de ne pas transformer le développement en création d’une infrastructure MMO disproportionnée.
 
+## Protection du client et du code
+
+Il n’est pas techniquement possible de chiffrer un jeu installé de manière à garantir que son code ne pourra jamais être inspecté ou analysé. L’objectif réaliste sera donc d’empêcher la lecture triviale du code et d’augmenter raisonnablement le coût de la rétro-ingénierie.
+
+Les versions publiques devront notamment prévoir :
+
+- une compilation de production avec le backend IL2CPP lorsque la plateforme cible le permet ;
+- un niveau de suppression du code inutilisé compatible avec le fonctionnement du jeu ;
+- l’absence de code de développement, de consoles de triche et d’informations de débogage inutiles dans la distribution publique ;
+- une obfuscation ou des contrôles d’intégrité supplémentaires uniquement s’ils sont fiables, maintenables et compatibles avec Unity, les plateformes visées et les performances attendues ;
+- l’absence totale de secrets serveur, de clés privées ou d’identifiants privilégiés dans le client ;
+- une validation côté serveur de toute donnée multijoueur persistante importante.
+
+IL2CPP convertit le code intermédiaire C# en C++ puis en code natif lors de la compilation. Cela rend la lecture directe moins simple qu’avec des assemblages managés ordinaires, mais ne constitue pas une protection inviolable.
+
+Les sauvegardes locales sensibles pourront être signées, vérifiées ou chiffrées afin de décourager les modifications triviales, sans prétendre rendre la triche solo impossible.
+
+Ces protections devront être testées avec les systèmes utilisant la réflexion, la sérialisation ou le chargement dynamique afin que la suppression de code inutilisé ne retire pas par erreur des éléments nécessaires au jeu.
+
 ---
 
 # Principe architectural Solo / Multijoueur
@@ -1469,6 +1609,130 @@ Une résolution interne différente de la résolution réelle de l’écran pour
 - l’interface reste nette ;
 - le texte reste lisible ;
 - le jeu reste utilisable correctement jusqu’en 4K.
+
+---
+
+# Interface utilisateur et direction graphique
+
+L’interface utilisateur devra constituer une **composante artistique majeure du jeu**.
+
+Elle ne devra pas ressembler à une interface générique ajoutée au-dessus du gameplay. Elle devra être particulièrement soignée, belle, immédiatement reconnaissable et visuellement cohérente avec l’univers de **Project Bloodbath**.
+
+Sa direction graphique devra traduire les éléments fondamentaux du jeu :
+
+- science-fiction rétro-futuriste ;
+- technologie industrielle lourde ;
+- atmosphère sombre et grimdark ;
+- violence et danger ;
+- influences biologiques, démoniaques et extradimensionnelles ;
+- rendu rétro maîtrisé sans sacrifier la lisibilité moderne.
+
+L’interface devra adopter une approche **hybride entre FPS et ARPG** :
+
+- suffisamment discrète pour préserver l’immersion et la visibilité pendant les combats ;
+- suffisamment riche pour présenter clairement les statistiques, compétences, effets de statut, objets, quêtes et informations nécessaires à la création des builds.
+
+Le HUD de combat devra pouvoir communiquer notamment :
+
+- santé et autres ressources défensives éventuelles ;
+- munitions et état de l’arme ;
+- compétences actives, charges et temps de recharge ;
+- effets de statut importants ;
+- interactions disponibles ;
+- objectifs de quête suivis ;
+- réticule et confirmations de touche ;
+- alertes critiques sans masquer inutilement l’action.
+
+L’information devra être hiérarchisée. Les éléments secondaires ne devront apparaître que lorsqu’ils sont utiles afin d’éviter de surcharger constamment l’écran.
+
+Une bible d’interface devra progressivement définir :
+
+- palette et niveaux de contraste ;
+- typographies ;
+- formes, cadres et séparateurs ;
+- iconographie ;
+- textures et matériaux simulés ;
+- animations, transitions et micro-interactions ;
+- règles de lisibilité ;
+- variations humaines, industrielles, biologiques et extradimensionnelles.
+
+Certaines zones, factions ou influences surnaturelles pourront modifier l’habillage visuel ou les réactions de l’interface sans compromettre la compréhension des informations.
+
+L’interface devra être utilisable à la souris, au clavier et à la manette. La navigation, le focus, les indications de boutons et les changements de périphérique devront rester cohérents dans tous les menus.
+
+Le joueur devra progressivement pouvoir configurer :
+
+- l’échelle générale de l’interface ;
+- le réticule ;
+- certains éléments du HUD ;
+- la taille des sous-titres et des textes importants ;
+- les contrastes et couleurs nécessaires à l’accessibilité ;
+- l’intensité de certains effets visuels susceptibles de gêner la lecture.
+
+Les premières interfaces du prototype pourront rester fonctionnelles et utiliser des éléments temporaires. Elles devront néanmoins respecter très tôt une première grammaire visuelle commune afin que la version finale ne soit pas construite sur une accumulation d’écrans incohérents.
+
+La réalisation de l’interface définitive devra passer par des maquettes, des tests en situation réelle et plusieurs itérations visuelles. Sa beauté ne devra jamais se faire au détriment de sa rapidité, de sa lisibilité ou de son confort d’utilisation.
+
+---
+
+# Son et conception sonore
+
+La conception sonore devra jouer un rôle essentiel dans les sensations de combat, l’immersion, la narration et la compréhension du danger.
+
+Chaque famille d’armes devra posséder une identité sonore forte. Les tirs, attaques de mêlée, rechargements, impacts, projections, blessures et morts devront produire un retour sonore précis, puissant et cohérent avec les matériaux et les créatures concernés.
+
+Le paysage sonore devra notamment prendre en compte :
+
+- armes à feu et armes de mêlée ;
+- impacts sur la chair, les armures, les machines et les décors ;
+- mouvements du joueur et des ennemis ;
+- capacités actives et effets de statut ;
+- machines, alarmes et installations industrielles ;
+- environnements biologiques, démoniaques ou extradimensionnels ;
+- ambiance des zones et narration environnementale ;
+- dialogues, terminaux et journaux audio.
+
+Le son devra fournir des informations spatiales utiles sans rendre les combats illisibles. Les ennemis dangereux, attaques imminentes et événements importants devront pouvoir être identifiés par leur signature sonore.
+
+Le mixage devra conserver une hiérarchie claire entre les armes, les ennemis, les dialogues, l’ambiance et la musique, y compris lorsque de nombreux événements se produisent simultanément.
+
+Le menu audio devra au minimum proposer des volumes séparés pour :
+
+- volume général ;
+- musique ;
+- effets sonores ;
+- dialogues ;
+- ambiance.
+
+Les sons provisoires devront être intégrés assez tôt pour tester correctement les sensations des armes, des impacts et des ennemis. La production et le mixage définitifs interviendront plus tard, lorsque les principales boucles de gameplay seront stabilisées.
+
+Les informations sonores indispensables devront autant que possible disposer d’un équivalent visuel ou d’options adaptées aux joueurs malentendants.
+
+L’étendue exacte du doublage reste à déterminer. Le système devra permettre de combiner dialogues doublés, textes, sous-titres, communications radio et journaux audio sans imposer immédiatement un doublage intégral.
+
+---
+
+# Musique
+
+La musique devra renforcer l’identité sombre, rétro-futuriste, industrielle et horrifique du jeu sans couvrir les informations sonores importantes.
+
+Elle devra idéalement être **dynamique et adaptative**, avec des transitions cohérentes entre différents états :
+
+- exploration ;
+- tension croissante ;
+- combat ;
+- affrontement majeur ou boss ;
+- événement narratif ;
+- influence démoniaque ou extradimensionnelle ;
+- retour temporaire au calme.
+
+Le silence et les ambiances seules devront également pouvoir être utilisés pour créer de l’attente, de l’oppression ou mettre en valeur un événement particulier.
+
+Une composition en couches ou segments réutilisables pourra permettre d’intensifier progressivement la musique sans interrompre brutalement les morceaux.
+
+Les lieux, factions, boss et grandes forces narratives pourront posséder des thèmes ou signatures musicales identifiables.
+
+La direction musicale précise et ses références devront être fixées avant la production définitive. Les premières musiques du prototype pourront être temporaires, mais devront déjà permettre de tester les transitions entre exploration, tension et combat.
 
 ---
 
@@ -1693,34 +1957,38 @@ La priorité est de construire progressivement un **vertical slice jouable** per
 7. dégâts et mort ;
 8. réactions aux impacts ;
 9. sang et gore ;
-10. statistiques du personnage ;
-11. première classe ;
-12. première compétence active ;
-13. première compétence passive ;
-14. loot ;
-15. inventaire ;
-16. équipement ;
-17. modification visuelle du personnage par l’équipement ;
-18. prérequis d’équipement basés sur les statistiques ;
-19. premiers effets spéciaux d’armes ;
-20. premières synergies de build ;
-21. un premier PNJ ou système narratif ;
-22. une petite quête principale ;
-23. une petite quête secondaire ;
-24. suivi des objectifs ;
-25. validation des objectifs ;
-26. récompenses de quête ;
-27. narration environnementale simple ;
-28. localisation français / anglais ;
-29. options vidéo et résolutions ;
-30. petit niveau rétro-futuriste sombre complet ;
-31. première créature démoniaque ou extradimensionnelle ;
-32. premier boss ;
-33. première expérimentation multijoueur ;
-34. création d’un personnage multijoueur séparé du solo ;
-35. sauvegarde serveur du personnage multijoueur ;
-36. sauvegarde serveur de sa progression de quêtes ;
-37. validation de la séparation complète entre progression solo et multijoueur.
+10. premier HUD de combat fonctionnel ;
+11. premiers retours sonores pour les armes, impacts et ennemis ;
+12. statistiques du personnage ;
+13. première classe ;
+14. première compétence active ;
+15. première compétence passive ;
+16. loot ;
+17. inventaire ;
+18. équipement ;
+19. modification visuelle du personnage par l’équipement ;
+20. prérequis d’équipement basés sur les statistiques ;
+21. premiers effets spéciaux d’armes ;
+22. premières synergies de build ;
+23. un premier PNJ ou système narratif ;
+24. une petite quête principale ;
+25. une petite quête secondaire ;
+26. suivi des objectifs ;
+27. validation des objectifs ;
+28. récompenses de quête ;
+29. narration environnementale simple ;
+30. localisation français / anglais ;
+31. options vidéo et résolutions ;
+32. première passe visuelle thématique et cohérente du HUD et des menus ;
+33. première ambiance sonore complète et musique dynamique ;
+34. petit niveau rétro-futuriste sombre complet ;
+35. première créature démoniaque ou extradimensionnelle ;
+36. premier boss ;
+37. première expérimentation multijoueur ;
+38. création d’un personnage multijoueur séparé du solo ;
+39. sauvegarde serveur du personnage multijoueur ;
+40. sauvegarde serveur de sa progression de quêtes ;
+41. validation de la séparation complète entre progression solo et multijoueur.
 
 Il n’est pas nécessaire de créer immédiatement l’intégralité de l’histoire.
 
@@ -1744,12 +2012,21 @@ Le projet devra respecter les principes suivants :
 
 - gameplay FPS rapide ;
 - armes à distance et armes de corps à corps dédiées ;
+- deux mains fonctionnelles avec armes à une main, armes à deux mains, combat à deux armes et boucliers protecteurs ;
 - builds de mêlée complets compatibles avec le loot, les statistiques et les affixes ;
 - progression ARPG profonde ;
 - compétences actives utilisables directement pendant les combats ;
 - compétences passives capables de transformer les builds ;
 - interactions entre compétences, armes, équipement, affixes et effets de statut ;
+- interface hybride FPS / ARPG, particulièrement soignée et cohérente avec la direction artistique ;
+- HUD lisible, configurable et adapté au clavier, à la souris et à la manette ;
+- conception sonore réactive au service du combat, de l’immersion et de la lisibilité ;
+- musique dynamique accompagnant l’exploration, la tension, les combats et les boss ;
 - loot important ;
+- trois difficultés successives — Incursion, Extermination et Bloodbath — débloquées par personnage ;
+- conservation du personnage et de son build lors du passage à une difficulté supérieure ;
+- personnages Hardcore disponibles dès leur création avec mort définitive en solo comme en multijoueur ;
+- zones déjà débloquées librement revisitables dans la difficulté actuelle ;
 - présence d’une histoire principale simple ;
 - structure narrative potentiellement organisée en actes ;
 - petites quêtes principales et secondaires ;
@@ -1771,6 +2048,7 @@ Le projet devra respecter les principes suivants :
 - progression des quêtes multijoueur sauvegardée côté serveur ;
 - aucun transfert de personnage, loot, quête ou progression entre solo et multijoueur ;
 - client non considéré comme fiable pour les données persistantes multijoueur importantes ;
+- durcissement des versions publiques du client sans promesse irréaliste de rendre le code impossible à analyser ;
 - coopération jusqu’à environ 5 joueurs ;
 - Steam pour la distribution et les fonctions sociales/multijoueur pertinentes ;
 - détection de la disposition de clavier du joueur, notamment AZERTY et QWERTY ;

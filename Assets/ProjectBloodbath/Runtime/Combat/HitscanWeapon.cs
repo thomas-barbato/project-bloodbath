@@ -48,6 +48,16 @@ namespace ProjectBloodbath.Combat
             SetFeedbackVisible(false);
         }
 
+        private void OnDisable()
+        {
+            feedbackUntil = 0f;
+            SetFeedbackVisible(false);
+            if (weaponVisual != null)
+            {
+                weaponVisual.localPosition = visualRestPosition;
+            }
+        }
+
         private void Update()
         {
             RecoverWeaponVisual();

@@ -15,6 +15,8 @@ namespace ProjectBloodbath.Input
         private InputAction attackAction;
         private InputAction jumpAction;
         private InputAction sprintAction;
+        private InputAction selectRangedAction;
+        private InputAction selectMeleeAction;
         private bool jumpPressed;
 
         public Vector2 Move => moveAction?.ReadValue<Vector2>() ?? Vector2.zero;
@@ -22,6 +24,10 @@ namespace ProjectBloodbath.Input
         public bool AttackHeld => attackAction?.IsPressed() ?? false;
         public bool AttackPressedThisFrame => attackAction?.WasPressedThisFrame() ?? false;
         public bool SprintHeld => sprintAction?.IsPressed() ?? false;
+        public bool SelectRangedPressedThisFrame =>
+            selectRangedAction?.WasPressedThisFrame() ?? false;
+        public bool SelectMeleePressedThisFrame =>
+            selectMeleeAction?.WasPressedThisFrame() ?? false;
         public bool LookUsesPointerDelta => lookAction?.activeControl?.device is Pointer;
 
         public void Configure(InputActionAsset actions)
@@ -76,6 +82,8 @@ namespace ProjectBloodbath.Input
             attackAction = playerMap.FindAction("Attack", true);
             jumpAction = playerMap.FindAction("Jump", true);
             sprintAction = playerMap.FindAction("Sprint", true);
+            selectRangedAction = playerMap.FindAction("SelectRanged", true);
+            selectMeleeAction = playerMap.FindAction("SelectMelee", true);
         }
 
         private void OnJumpPerformed(InputAction.CallbackContext context)
