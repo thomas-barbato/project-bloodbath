@@ -1,0 +1,38 @@
+# Unity generated folders
+projet bloodbath/[Ll]ibrary/
+projet bloodbath/[Tt]emp/
+projet bloodbath/[Oo]bj/
+projet bloodbath/[Bb]uild/
+projet bloodbath/[Bb]uilds/
+projet bloodbath/[Ll]ogs/
+projet bloodbath/[Uu]ser[Ss]ettings/
+projet bloodbath/[Mm]emoryCaptures/
+projet bloodbath/[Rr]ecordings/
+
+# Generated IDE files
+projet bloodbath/.vs/
+projet bloodbath/.idea/
+projet bloodbath/*.csproj
+projet bloodbath/*.sln
+projet bloodbath/*.suo
+projet bloodbath/*.user
+projet bloodbath/*.userprefs
+projet bloodbath/*.pidb
+projet bloodbath/*.booproj
+projet bloodbath/*.svd
+projet bloodbath/*.pdb
+projet bloodbath/*.mdb
+projet bloodbath/*.opendb
+projet bloodbath/*.VC.db
+
+# Unity crash and temporary files
+projet bloodbath/sysinfo.txt
+projet bloodbath/crashlytics-build.properties
+projet bloodbath/[Aa]ssets/AssetStoreTools*
+projet bloodbath/[Aa]ssets/StreamingAssets/aa.meta
+projet bloodbath/[Aa]ssets/StreamingAssets/aa/*
+
+# Operating system files
+.DS_Store
+Thumbs.db
+Desktop.ini
