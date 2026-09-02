@@ -265,6 +265,34 @@ Exemples :
 - démons intégrés dans des exosquelettes ;
 - créatures extraterrestres cybernétiques.
 
+## Comportements, armes et patterns
+
+Les données permanentes décrivant un type d’ennemi seront configurées dans des assets Unity versionnés avec le projet, plutôt que dans une base de données web. Un profil de comportement pourra notamment définir sa portée de détection, son champ de vision, sa capacité à voir au-delà des obstacles, son territoire, sa vitesse, son accélération, sa distance d’arrêt et sa manière générale de poursuivre ou d’éviter le joueur.
+
+Ces données de conception resteront séparées de l’état momentané de chaque créature. Le fait qu’un ennemi soit actuellement en attente, en poursuite, au combat, blessé ou en train de retourner à son point d’origine appartiendra à l’instance présente dans la partie. Les données devant survivre à une sauvegarde seront enregistrées ultérieurement par le système de sauvegarde approprié.
+
+Les profils pourront également définir un style général de déplacement. Certains ennemis poursuivront directement le joueur, tandis que d’autres chercheront à conserver une distance favorable, se repositionneront lorsqu’ils sont approchés ou resteront ancrés à une position. Le mode d’application d’une attaque restera indépendant : contact direct, projectile esquivable ou autres formes qui seront ajoutées selon les besoins.
+
+Le rythme de combat d’un ennemi ne devra pas être déterminé uniquement par sa catégorie ou son niveau. Ses attaques dépendront également de ce qu’il porte, de ses capacités naturelles et de son rôle tactique.
+
+Chaque arme ou capacité ennemie pourra notamment définir :
+
+- dégâts et type de dégâts ;
+- portée et angle d’attaque ;
+- durée de préparation ;
+- instant d’impact ;
+- durée de récupération ;
+- cadence ou temps de recharge ;
+- déplacement éventuel pendant l’attaque ;
+- possibilité d’être interrompue ;
+- réactions et effets visuels ou sonores appropriés.
+
+Deux ennemis utilisant des armes différentes ne devront donc pas attaquer automatiquement à la même vitesse, même s’ils appartiennent à une famille similaire.
+
+Les boss et certains ennemis importants pourront disposer de plusieurs attaques organisées en **patterns**. Ces patterns pourront dépendre de leur phase, de leur santé, de la distance, de la position des joueurs, du nombre de participants ou d’événements spécifiques du combat.
+
+Les patterns devront rester lisibles et permettre l’apprentissage. Leur difficulté viendra de leur combinaison et de leur évolution, pas d’attaques arbitraires impossibles à anticiper.
+
 ---
 
 # Direction artistique
@@ -274,6 +302,27 @@ Le jeu utilisera une esthétique volontairement inspirée des FPS des années 19
 L’objectif est de créer quelque chose pouvant être décrit comme :
 
 **« Un FPS futuriste grimdark tel qu’on aurait pu l’imaginer à la fin des années 1990, réalisé avec un moteur moderne. »**
+
+## Références visuelles et d’animation
+
+Les principales références comprennent notamment :
+
+- **Blood (1997)** pour son atmosphère horrifique, sale et macabre, ses armes immédiatement lisibles à la première personne, son gore et la brutalité directe de ses combats ;
+- **Warhammer 40,000: Boltgun** pour sa combinaison entre esthétique de FPS rétro, rythme moderne, forte mobilité, armes massives, sprites, pixels et impacts généreux ;
+- **Warhammer 40,000: Boltgun 2** pour la qualité, la fluidité et le caractère des animations présentées, en particulier la manipulation des armes, les attaques, les transitions et les réactions des ennemis.
+
+Ces références doivent servir à identifier des qualités précises, et non à reproduire leurs univers, personnages, armes ou interfaces. **Project Bloodbath devra conserver sa propre identité de science-fiction industrielle, biologique, démoniaque et extradimensionnelle.**
+
+Les animations finales devront rechercher :
+
+- des poses fortes et immédiatement compréhensibles ;
+- des mouvements rapides mais suffisamment lisibles ;
+- une sensation de poids adaptée à chaque arme ;
+- des transitions propres sans perdre le caractère rétro ;
+- des temps d’anticipation, d’impact et de récupération cohérents avec le gameplay ;
+- des animations différentes selon l’arme, la créature, la capacité et le contexte ;
+- des réactions ennemies physiques, sanglantes et expressives ;
+- un niveau de finition moderne sans rendre le résultat trop lisse ou aseptisé.
 
 Le rendu pourra utiliser :
 
@@ -311,7 +360,12 @@ Les technologies humaines devront avoir une apparence :
 - design futuriste minimaliste ;
 - architectures trop luxueuses ;
 - interfaces trop lisses ;
-- esthétique futuriste moderne trop propre.
+- esthétique futuriste moderne trop propre ;
+- traînées lumineuses génériques ou effets de mouvement trop propres appliqués à des armes physiques.
+
+Pour les armes et les combats, **Blood (1997)** constitue notamment une référence pour le caractère direct, sale, brutal et lisible des animations à la première personne. La force d’une frappe physique devra venir en priorité du mouvement de l’arme, de l’impact sur la cible, du sang, des projections, de la réaction ennemie et du son.
+
+Les effets lumineux ou énergétiques resteront possibles lorsqu’ils correspondent réellement à la nature d’une arme, d’une technologie ou d’un phénomène surnaturel. Ils ne devront pas devenir un habillage automatique de chaque attaque.
 
 Les technologies extraterrestres pourront être :
 
@@ -329,6 +383,24 @@ Les éléments démoniaques pourront être :
 
 ---
 
+# Mobilité et glissade
+
+Le déplacement devra inclure une **glissade volontaire, rapide et lisible**, utilisable lorsque le personnage possède suffisamment d'élan.
+
+La glissade ne devra pas donner l'impression d'une simple augmentation temporaire de vitesse. Elle devra notamment :
+
+- abaisser réellement la posture et la caméra du personnage ;
+- conserver une partie de l'élan initial tout en limitant la direction disponible pendant le mouvement ;
+- adapter temporairement le volume physique du personnage afin de pouvoir passer sous certains obstacles lorsque le niveau le permet ;
+- montrer les jambes et la posture du personnage à l'écran, sans traversée visible de la caméra ou de l'environnement ;
+- disposer d'une animation cohérente visible également par les autres joueurs ;
+- conserver un déclenchement entièrement reconfigurable au clavier, à la souris et à la manette ;
+- éviter une répétition permanente sans coût, délai ou condition de vitesse appropriée.
+
+Le contrôle exact reste à tester. `Shift` sert provisoirement au sprint dans le prototype actuel, tandis que la glissade possède sa propre action reconfigurable. Le prototype ne prévoit pas d’accroupissement permanent tant que le level design, la furtivité ou d’autres mécaniques n’en démontrent pas l’utilité. Le comportement des armes, du saut et des compétences pendant une glissade sera décidé à partir d'essais en combat réel.
+
+---
+
 # Personnage visible à la première personne
 
 Le joueur ne devra pas être uniquement représenté par une caméra flottante et une arme.
@@ -341,6 +413,8 @@ En regardant vers le bas, le joueur doit notamment pouvoir voir :
 - ses jambes ;
 - ses pieds ;
 - potentiellement certaines parties de ses bras selon les animations.
+
+En posture normale, ce corps ne devra pas envahir la vue lorsque la caméra regarde droit devant elle ou n’est que légèrement inclinée. Les jambes et les pieds devront entrer naturellement dans le champ uniquement lorsque le joueur regarde franchement vers le sol. La glissade constitue une exception volontaire : sa posture et ses jambes doivent rester suffisamment visibles pour que le mouvement soit immédiatement ressenti.
 
 Le personnage devra donc posséder une représentation physique cohérente à la première personne.
 
@@ -379,19 +453,27 @@ Deux personnages de la même classe pourront donc évoluer de manière très dif
 
 ---
 
+# Niveau et expérience
+
+Le personnage gagnera de l’expérience grâce aux combats, aux quêtes et à d’autres activités pertinentes. Chaque type ou variante d’ennemi pourra définir sa propre récompense d’expérience indépendamment de son intelligence artificielle et de sa table de butin. Seule une élimination attribuée au personnage concerné devra lui accorder cette récompense.
+
+La courbe d’expérience, le niveau maximal et les récompenses resteront configurables par données. Un gain suffisamment important pourra faire franchir plusieurs niveaux sans perdre l’excédent d’expérience. Les valeurs employées dans le laboratoire de combat sont provisoires et servent uniquement à rendre cette progression rapidement testable.
+
+Une montée de niveau devra ultérieurement déclencher une animation spectaculaire englobant le personnage ainsi qu’un message annonçant clairement le nouveau niveau. Cette présentation restera séparée du calcul de progression : elle réagira à l’événement de montée de niveau et pourra être remplacée ou enrichie sans modifier l’expérience acquise.
+
+---
+
 # Statistiques du personnage
 
 Les personnages disposeront de **statistiques propres**.
 
-Le système précis reste à définir, mais pourra comporter des caractéristiques telles que :
+Les cinq statistiques principales retenues sont :
 
 - Force ;
-- Constitution ;
-- Dextérité ;
+- Agilité ;
 - Intelligence ;
-- Technologie ;
-- Volonté ;
-- ou d’autres statistiques adaptées à l’univers.
+- Esprit ;
+- Constitution ;
 
 Ces statistiques pourront influencer :
 
@@ -406,6 +488,10 @@ Ces statistiques pourront influencer :
 - équipement utilisable.
 
 Le système devra permettre plusieurs types de builds et des spécialisations hybrides.
+
+Des statistiques secondaires seront calculées et modifiées à partir de plusieurs sources clairement identifiables : statistiques principales, compétences passives, objets équipés, sorts ou autres buffs temporaires, potions, effets de statut et éventuels effets de zone. Elles pourront notamment représenter les dégâts, la vie, l’énergie, l’armure, les résistances, les vitesses, les chances de coup critique ou toute autre valeur dérivée utile.
+
+Chaque modificateur devra conserver l’identité de sa source. Déséquiper un objet, perdre un buff ou laisser expirer l’effet d’une potion retirera donc uniquement les valeurs accordées par cette source, sans modifier les autres bonus actifs. Les formules, limites, cumuls et rendements décroissants seront définis pendant l’équilibrage plutôt que figés dès le prototype.
 
 ---
 
@@ -426,11 +512,11 @@ Exemple :
 - Constitution : 25
 
 **Fusil expérimental**
-- Dextérité : 30
-- Technologie : 45
+- Agilité : 30
+- Intelligence : 45
 
 **Artefact extradimensionnel**
-- Volonté : 50
+- Esprit : 50
 
 Cela doit permettre des builds hybrides et laisser davantage de liberté au joueur.
 
@@ -1031,7 +1117,7 @@ Selon la compétence, son utilisation pourra être limitée par :
 
 - un temps de recharge ;
 - une ou plusieurs charges ;
-- une ressource ;
+- une ressource consacrée à la magie et aux compétences spéciales ;
 - une condition de déclenchement ;
 - une durée d’activation ;
 - ou une combinaison de ces éléments.
@@ -1060,6 +1146,8 @@ Le nombre exact d’emplacements, leur disposition et le style final de la barre
 ## Compétences passives
 
 Les compétences passives devront modifier durablement ou conditionnellement le fonctionnement du personnage et de son build sans nécessiter une activation directe.
+
+Le premier prototype de cette logique, provisoirement nommé **Moisson sanglante**, restaure une quantité configurable de ressource de compétence lorsqu’une élimination est effectivement attribuée au joueur. Il sert à valider une interaction simple entre une passive, les éliminations et les compétences actives sans imposer ce passif à toutes les classes ou à tous les builds du jeu final.
 
 Elles pourront notamment :
 
@@ -1156,6 +1244,23 @@ Certains objets pourront provenir :
 
 Le système doit être **data-driven et modulaire**.
 
+Un objet équipable conservera une définition distincte de sa représentation au sol. Cette définition précisera notamment son emplacement, ses modificateurs et, plus tard, ses prérequis et effets spéciaux. Équiper un objet le retirera de l’inventaire ; le remplacer ou le retirer rendra l’ancien objet à l’inventaire, sous réserve des futures règles de capacité. Le premier prototype utilise un emplacement d’implant et un bonus simple de dégâts uniquement afin de valider cette circulation et l’application réelle d’une statistique, sans figer l’équilibrage final.
+
+Chaque famille ou variante d’ennemi pourra référencer un profil de butin définissant les objets susceptibles d’être générés, leur probabilité et leur quantité minimale et maximale. La mort de l’ennemi devra lire ces données sans contenir directement la liste de ses récompenses dans son code de comportement. Ces profils pourront ensuite varier selon la zone, le niveau, la difficulté, les affixes de rencontre ou les règles d’un boss.
+
+Le ramassage suivra une approche hybride adaptée au rythme FPS / ARPG :
+
+- les équipements et objets importants seront ramassés manuellement avec une action reconfigurable ;
+- les munitions, monnaies et petites ressources seront ramassées automatiquement au contact ;
+- les munitions feront partie de l’inventaire du personnage et non de l’arme elle-même ;
+- chaque type de munition ou ressource pourra posséder une capacité maximale transportable, modifiable plus tard par les statistiques, compétences ou équipements ;
+- un ramassage ne prélèvera que la quantité que le personnage peut encore porter et laissera tout surplus au sol ;
+- si la capacité correspondante est déjà atteinte, la totalité du ramassage restera au sol.
+
+Les munitions ne devront pas devenir une ressource artificiellement rare qui interrompt régulièrement le rythme du FPS. Elles devront pouvoir être trouvées fréquemment dans les zones et parmi le butin approprié des ennemis. Elles pourront également être achetées dans certains magasins ou auprès de vendeurs, avec des prix et quantités adaptés à la progression. Les capacités de transport conserveront néanmoins un intérêt tactique et économique sans transformer les munitions ordinaires en récompenses exceptionnelles.
+
+Lorsqu’un objet ou une ressource est effectivement ramassé, son nom apparaîtra temporairement en haut de l’écran. Lorsqu’un objet au sol est visé avec la souris — donc avec le réticule lorsque celui-ci est capturé en vue FPS — son nom apparaîtra près du pointeur. Cette identification utilisera une zone d’assistance tolérante autour du réticule plutôt qu’un ciblage au pixel près, choisira l’objet visible le plus pertinent et pourra fonctionner à une distance supérieure à celle du ramassage. Le corps et les colliders du joueur local ne devront jamais masquer un objet à ses propres interactions ; une aide supplémentaire facilitera la sélection d’un objet proche de ses pieds lorsqu’il regarde vers le sol. Les objets à ramassage manuel indiqueront l’action d’interaction disponible ou demanderont au joueur de s’approcher s’ils sont encore hors de portée.
+
 Ajouter :
 
 - un objet ;
@@ -1216,6 +1321,42 @@ Les barrières narratives restent possibles tant qu’une zone n’a pas été d
 Les zones accessibles seront enregistrées par personnage et par difficulté. Le passage à une nouvelle difficulté recommencera donc la progression de campagne et le déblocage de ses zones, tandis que les zones déjà ouvertes dans cette difficulté resteront librement revisitables.
 
 En coopération, les règles déterminant l’accès d’un groupe à une zone, la progression de l’hôte et l’éligibilité des autres joueurs devront être définies avant l’implémentation multijoueur complète.
+
+---
+
+# Mort normale, récupération du corps et renouvellement des sessions
+
+Pour un personnage non-Hardcore, la mort ne met pas fin à la partie. Le personnage réapparaît sous forme d’âme dans le dernier hub qu’il a atteint, tandis que son corps reste à l’endroit exact de sa mort avec **la totalité de ses possessions** : équipement porté, inventaire, monnaie et toute autre donnée transportée qui sera ultérieurement concernée par ce système.
+
+Sous forme d’âme, le personnage est invulnérable et ignoré par les ennemis. Il reste néanmoins visible des autres joueurs afin que sa présence et ses déplacements demeurent compréhensibles en coopération. Son apparence devra permettre de distinguer clairement cet état de celle d’un personnage vivant.
+
+Le joueur doit retourner jusqu’à son corps et marcher dessus afin de récupérer tout ce qui y est conservé et de se réincarner. L’état d’âme, la présence du corps et son contenu doivent être représentés par un état de gameplay explicite et sauvegardable : quitter la partie ne devra ni détruire les possessions abandonnées, ni permettre de les dupliquer.
+
+La réincarnation restaure entièrement la vie ainsi que la ressource utilisée par les compétences, provisoirement appelée **mana** jusqu’au choix de son nom définitif. Elle applique ensuite pendant quelques secondes un malus temporaire de **50 % aux dégâts infligés**, représentant le temps nécessaire à l’âme pour se réapproprier son corps. Ce malus pourra être équilibré plus tard et ne sera jamais cumulable : une nouvelle application renouvelle au maximum l’effet prévu sans transformer deux pénalités de 50 % en une réduction supérieure.
+
+La mort du joueur ne réinitialise pas la zone. Les monstres déjà vaincus restent morts et les rencontres déjà résolues ne recommencent pas automatiquement au moment de la réapparition du joueur.
+
+En revanche, commencer une **nouvelle session de jeu** repeuple normalement les zones en monstres ordinaires. Cette remise en place de la population du monde reste distincte de la progression permanente du personnage : son niveau, son build, ses quêtes, ses difficultés et ses zones ou hubs débloqués restent sauvegardés.
+
+Certaines rencontres pourront déroger explicitement à cette règle. Des points d’apparition, événements, boss ou autres ennemis particuliers pourront autoriser une réapparition contrôlée selon des conditions configurées par les données du contenu, par exemple après un délai, la réactivation d’un événement ou une autre règle scénarisée. Une telle réapparition devra être volontairement définie ; elle ne sera jamais une conséquence automatique de la mort du joueur.
+
+Le mode Hardcore remplace entièrement cette boucle : la mort y reste définitive et ne crée pas de trajet de récupération permettant de reprendre le personnage.
+
+---
+
+# Philosophie de sauvegarde
+
+La sauvegarde suivra une philosophie proche de celle de *Diablo II*. La progression importante du personnage sera enregistrée automatiquement et régulièrement, sans système de sauvegarde manuelle permettant de revenir à un état antérieur pour annuler une mort, une dépense ou la perte temporaire de possessions.
+
+La persistance devra notamment distinguer :
+
+- l’état durable du personnage : niveau, expérience, statistiques, compétences, équipement, inventaire, monnaie et difficultés débloquées ;
+- la progression durable du monde : quêtes, progression narrative, zones, hubs et points de déplacement débloqués ;
+- la récupération en cours après une mort : état d’âme invulnérable et non ciblable, corps non récupéré et totalité de son contenu associé ;
+- l’état temporaire de la session : monstres ordinaires présents ou vaincus, rencontres momentanées et autres états destinés à être renouvelés lors d’une nouvelle session ;
+- les exceptions persistantes ou scénarisées explicitement définies pour certaines rencontres.
+
+Les mêmes règles de gameplay devront exister en solo et en multijoueur, avec une sauvegarde locale pour le solo et une autorité serveur pour les données permanentes du multijoueur.
 
 ---
 
@@ -1635,6 +1776,7 @@ L’interface devra adopter une approche **hybride entre FPS et ARPG** :
 Le HUD de combat devra pouvoir communiquer notamment :
 
 - santé et autres ressources défensives éventuelles ;
+- ressource consacrée à la magie et aux compétences spéciales, provisoirement appelée mana ou énergie ;
 - munitions et état de l’arme ;
 - compétences actives, charges et temps de recharge ;
 - effets de statut importants ;
@@ -1948,9 +2090,9 @@ Le multijoueur complexe, le crafting avancé, de nombreuses classes, des centain
 
 La priorité est de construire progressivement un **vertical slice jouable** permettant de tester :
 
-1. déplacement FPS ;
+1. déplacement FPS, sprint et glissade ;
 2. caméra ;
-3. corps du personnage visible en première personne ;
+3. corps du personnage visible en première personne, notamment les jambes et leur posture pendant la glissade ;
 4. sensations de tir ;
 5. première arme de corps à corps ;
 6. premier ennemi ;
@@ -2010,7 +2152,7 @@ La direction artistique est :
 
 Le projet devra respecter les principes suivants :
 
-- gameplay FPS rapide ;
+- gameplay FPS rapide avec sprint et glissade animée ;
 - armes à distance et armes de corps à corps dédiées ;
 - deux mains fonctionnelles avec armes à une main, armes à deux mains, combat à deux armes et boucliers protecteurs ;
 - builds de mêlée complets compatibles avec le loot, les statistiques et les affixes ;
@@ -2026,6 +2168,12 @@ Le projet devra respecter les principes suivants :
 - trois difficultés successives — Incursion, Extermination et Bloodbath — débloquées par personnage ;
 - conservation du personnage et de son build lors du passage à une difficulté supérieure ;
 - personnages Hardcore disponibles dès leur création avec mort définitive en solo comme en multijoueur ;
+- réapparition des personnages non-Hardcore sous forme d’âme dans leur dernier hub et récupération de leurs possessions sur leur corps ;
+- âme invulnérable, ignorée par les ennemis mais visible des autres joueurs ;
+- restauration complète de la vie et de la ressource de compétence lors de la réincarnation, suivie d’un malus de dégâts temporaire de 50 % non cumulable ;
+- aucune réapparition automatique des monstres causée par la mort du joueur ;
+- repeuplement normal des zones lors d’une nouvelle session, avec exceptions de réapparition configurables pour certaines rencontres ;
+- sauvegarde automatique de type ARPG sans retour manuel à un état antérieur ;
 - zones déjà débloquées librement revisitables dans la difficulté actuelle ;
 - présence d’une histoire principale simple ;
 - structure narrative potentiellement organisée en actes ;

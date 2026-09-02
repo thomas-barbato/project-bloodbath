@@ -1,4 +1,5 @@
 using UnityEngine;
+using ProjectBloodbath.Progression;
 
 namespace ProjectBloodbath.Combat
 {
@@ -13,6 +14,12 @@ namespace ProjectBloodbath.Combat
         [SerializeField, Min(1f)] private float roundsPerMinute = 480f;
         [SerializeField, Min(0f)] private float spreadDegrees = 0.25f;
         [SerializeField] private bool automatic = true;
+
+        [Header("Munitions")]
+        [SerializeField, Min(1)] private int magazineSize = 12;
+        [SerializeField, Min(0)] private int initialReserveAmmo = 48;
+        [SerializeField] private InventoryResourceDefinition ammunitionType;
+        [SerializeField, Min(0.05f)] private float reloadDuration = 1.45f;
 
         [Header("Impact")]
         [SerializeField, Min(0f)] private float impactForce = 18f;
@@ -29,6 +36,10 @@ namespace ProjectBloodbath.Combat
         public float SecondsPerShot => 60f / roundsPerMinute;
         public float SpreadDegrees => spreadDegrees;
         public bool Automatic => automatic;
+        public int MagazineSize => magazineSize;
+        public int InitialReserveAmmo => initialReserveAmmo;
+        public InventoryResourceDefinition AmmunitionType => ammunitionType;
+        public float ReloadDuration => reloadDuration;
         public float ImpactForce => impactForce;
         public DamageType DamageType => damageType;
         public float PitchRecoil => pitchRecoil;
@@ -36,11 +47,20 @@ namespace ProjectBloodbath.Combat
         public float VisualKick => visualKick;
         public float VisualRecovery => visualRecovery;
 
+        public void SetAmmunitionType(
+            InventoryResourceDefinition resourceDefinition)
+        {
+            ammunitionType = resourceDefinition;
+        }
+
         private void OnValidate()
         {
             damage = Mathf.Max(1f, damage);
             range = Mathf.Max(1f, range);
             roundsPerMinute = Mathf.Max(1f, roundsPerMinute);
+            magazineSize = Mathf.Max(1, magazineSize);
+            initialReserveAmmo = Mathf.Max(0, initialReserveAmmo);
+            reloadDuration = Mathf.Max(0.05f, reloadDuration);
         }
     }
 }

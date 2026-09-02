@@ -22,6 +22,7 @@ namespace ProjectBloodbath.Combat
         public event Action<PrototypeWeaponSlot> WeaponChanged;
 
         public PrototypeWeaponSlot CurrentSlot { get; private set; }
+        public bool CombatEnabled { get; private set; } = true;
 
         public void Configure(
             PlayerInputReader reader,
@@ -39,6 +40,12 @@ namespace ProjectBloodbath.Combat
         public void Select(PrototypeWeaponSlot slot)
         {
             Select(slot, true);
+        }
+
+        public void SetCombatEnabled(bool enabled)
+        {
+            CombatEnabled = enabled;
+            ApplyWeaponVisibility();
         }
 
         private void Awake()
@@ -66,19 +73,28 @@ namespace ProjectBloodbath.Combat
         private void Select(PrototypeWeaponSlot slot, bool notify)
         {
             CurrentSlot = slot;
-            if (rangedWeapon != null)
-            {
-                rangedWeapon.SetActive(slot == PrototypeWeaponSlot.Ranged);
-            }
-
-            if (meleeWeapon != null)
-            {
-                meleeWeapon.SetActive(slot == PrototypeWeaponSlot.Melee);
-            }
+            ApplyWeaponVisibility();
 
             if (notify)
             {
                 WeaponChanged?.Invoke(slot);
+            }
+        }
+
+        private void ApplyWeaponVisibility()
+        {
+            if (rangedWeapon != null)
+            {
+                rangedWeapon.SetActive(
+                    CombatEnabled &&
+                    CurrentSlot == PrototypeWeaponSlot.Ranged);
+            }
+
+            if (meleeWeapon != null)
+            {
+                meleeWeapon.SetActive(
+                    CombatEnabled &&
+                    CurrentSlot == PrototypeWeaponSlot.Melee);
             }
         }
     }

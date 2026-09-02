@@ -19,6 +19,16 @@ MonoBehaviour:
   jumpHeight: 1.35
   gravity: -30
   groundedVerticalSpeed: -3
+  slideMinimumSpeed: 6.8
+  slideInitialSpeed: 12.5
+  slideDuration: 0.75
+  slideDeceleration: 7.5
+  slideSteeringSpeed: 105
+  slideCooldown: 0.35
+  slideInputBufferTime: 0.2
+  slideHeight: 0.95
+  slideCameraDrop: 0.72
+  slideTransitionSpeed: 12
   mouseSensitivity: 0.1
   gamepadLookSpeed: 180
   minimumPitch: -85

@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2476cb3478fd21b4f97c655dc73811a9, type: 3}
+  m_Name: BallisticAmmunitionPickup
+  m_EditorClassIdentifier: ProjectBloodbath.Runtime::ProjectBloodbath.Progression.WorldPickupDefinition
+  identifier: ballistic_ammunition_pickup
+  displayName: Munitions balistiques
+  kind: 0
+  pickupMode: 0
+  resource: {fileID: 11400000, guid: cb11312e0a735fe48b18985c28015c4e, type: 2}
+  prototypeColor: {r: 0.92, g: 0.38, b: 0.08, a: 1}

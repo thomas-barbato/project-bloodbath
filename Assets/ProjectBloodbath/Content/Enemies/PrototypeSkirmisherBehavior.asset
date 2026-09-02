@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bfd1053486d1b44aa226905b6b7b77b, type: 3}
+  m_Name: PrototypeSkirmisherBehavior
+  m_EditorClassIdentifier: ProjectBloodbath.Runtime::ProjectBloodbath.Enemies.EnemyBehaviorProfile
+  detectionRange: 18
+  leashRange: 30
+  viewAngle: 160
+  eyeHeight: 1.25
+  targetHeight: 0.9
+  requiresLineOfSight: 1
+  lineOfSightMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  movementStyle: 1
+  movementSpeed: 3.8
+  acceleration: 22
+  angularSpeed: 600
+  stoppingDistance: 0.2
+  returnTolerance: 0.15
+  preferredMinimumDistance: 4.5
+  preferredMaximumDistance: 8
+  retreatStepDistance: 3

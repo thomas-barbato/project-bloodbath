@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using ProjectBloodbath.Input;
+using ProjectBloodbath.Player;
 using UnityEngine;
 
 namespace ProjectBloodbath.Combat
@@ -11,6 +12,7 @@ namespace ProjectBloodbath.Combat
         private const int HitBufferSize = 32;
 
         [SerializeField] private PlayerInputReader inputReader;
+        [SerializeField] private FpsPlayerController playerController;
         [SerializeField] private Camera aimCamera;
         [SerializeField] private MeleeWeaponSettings settings;
         [SerializeField] private Transform weaponVisual;
@@ -18,9 +20,11 @@ namespace ProjectBloodbath.Combat
         private readonly Collider[] hitBuffer = new Collider[HitBufferSize];
         private readonly HashSet<IDamageable> hitTargets = new();
         private Quaternion visualRestRotation;
+        private IDamageOutputProvider damageOutputProvider;
         private float attackStartedAt;
         private float nextAttackTime;
         private bool hitResolved;
+        private int attackDirection = 1;
 
         public event Action<int> AttackResolved;
 
@@ -29,14 +33,17 @@ namespace ProjectBloodbath.Combat
 
         public void Configure(
             PlayerInputReader reader,
+            FpsPlayerController controller,
             Camera cameraComponent,
             MeleeWeaponSettings weaponSettings,
             Transform visual)
         {
             inputReader = reader;
+            playerController = controller;
             aimCamera = cameraComponent;
             settings = weaponSettings;
             weaponVisual = visual;
+            CacheDamageOutputProvider();
             CacheVisualState();
         }
 
@@ -56,11 +63,16 @@ namespace ProjectBloodbath.Combat
             hitResolved = false;
             IsAttacking = true;
             LastAttackHitCount = 0;
+            attackDirection *= -1;
+            playerController?.AddLookImpulse(
+                settings.CameraPitchKick,
+                settings.CameraYawKick * attackDirection);
             return true;
         }
 
         private void Awake()
         {
+            CacheDamageOutputProvider();
             CacheVisualState();
         }
 
@@ -157,7 +169,7 @@ namespace ProjectBloodbath.Combat
 
                 Vector3 direction = toTarget / distance;
                 DamageInfo damage = new(
-                    settings.Damage,
+                    settings.Damage * GetDamageMultiplier(),
                     settings.DamageType,
                     hitPoint,
                     -direction,
@@ -183,6 +195,13 @@ namespace ProjectBloodbath.Combat
             }
 
             LastAttackHitCount = hitCount;
+            if (hitCount > 0)
+            {
+                playerController?.AddLookImpulse(
+                    settings.HitCameraKick,
+                    -settings.CameraYawKick * attackDirection * 0.2f);
+            }
+
             AttackResolved?.Invoke(hitCount);
         }
 
@@ -244,6 +263,7 @@ namespace ProjectBloodbath.Combat
                 angle = Mathf.Lerp(settings.FollowThroughAngle, 0f, phase);
             }
 
+            angle *= attackDirection;
             weaponVisual.localRotation = visualRestRotation *
                 Quaternion.Euler(angle * 0.12f, angle, -angle * 0.32f);
         }
@@ -256,6 +276,17 @@ namespace ProjectBloodbath.Combat
             }
         }
 
+        private void CacheDamageOutputProvider()
+        {
+            damageOutputProvider =
+                GetComponentInParent<IDamageOutputProvider>();
+        }
+
+        private float GetDamageMultiplier()
+        {
+            return damageOutputProvider?.OutgoingDamageMultiplier ?? 1f;
+        }
+
         private void RestoreVisual()
         {
             if (weaponVisual != null)
@@ -263,5 +294,6 @@ namespace ProjectBloodbath.Combat
                 weaponVisual.localRotation = visualRestRotation;
             }
         }
+
     }
 }

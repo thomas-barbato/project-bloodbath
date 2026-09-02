@@ -24,6 +24,11 @@ namespace ProjectBloodbath.Combat
         [SerializeField] private float windupAngle = -28f;
         [SerializeField] private float followThroughAngle = 105f;
 
+        [Header("Retour de frappe")]
+        [SerializeField, Min(0f)] private float cameraPitchKick = 0.3f;
+        [SerializeField, Min(0f)] private float cameraYawKick = 0.65f;
+        [SerializeField, Min(0f)] private float hitCameraKick = 0.35f;
+
         public float Damage => damage;
         public float Range => range;
         public float ArcDegrees => arcDegrees;
@@ -35,6 +40,9 @@ namespace ProjectBloodbath.Combat
         public float HitNormalizedTime => hitNormalizedTime;
         public float WindupAngle => windupAngle;
         public float FollowThroughAngle => followThroughAngle;
+        public float CameraPitchKick => cameraPitchKick;
+        public float CameraYawKick => cameraYawKick;
+        public float HitCameraKick => hitCameraKick;
 
         private void OnValidate()
         {
@@ -45,6 +53,9 @@ namespace ProjectBloodbath.Combat
             maximumTargets = Mathf.Max(1, maximumTargets);
             animationDuration = Mathf.Max(0.05f, animationDuration);
             hitNormalizedTime = Mathf.Clamp(hitNormalizedTime, 0.1f, 0.8f);
+            cameraPitchKick = Mathf.Max(0f, cameraPitchKick);
+            cameraYawKick = Mathf.Max(0f, cameraYawKick);
+            hitCameraKick = Mathf.Max(0f, hitCameraKick);
         }
     }
 }

@@ -16,6 +16,18 @@ namespace ProjectBloodbath.Player
         [SerializeField] private float gravity = -30f;
         [SerializeField] private float groundedVerticalSpeed = -3f;
 
+        [Header("Glissade")]
+        [SerializeField, Min(0f)] private float slideMinimumSpeed = 6.8f;
+        [SerializeField, Min(0f)] private float slideInitialSpeed = 12.5f;
+        [SerializeField, Min(0.05f)] private float slideDuration = 0.75f;
+        [SerializeField, Min(0f)] private float slideDeceleration = 7.5f;
+        [SerializeField, Min(0f)] private float slideSteeringSpeed = 105f;
+        [SerializeField, Min(0f)] private float slideCooldown = 0.35f;
+        [SerializeField, Min(0f)] private float slideInputBufferTime = 0.2f;
+        [SerializeField, Min(0.5f)] private float slideHeight = 0.95f;
+        [SerializeField, Min(0f)] private float slideCameraDrop = 0.72f;
+        [SerializeField, Min(0.1f)] private float slideTransitionSpeed = 12f;
+
         [Header("Caméra")]
         [SerializeField, Min(0f)] private float mouseSensitivity = 0.1f;
         [SerializeField, Min(0f)] private float gamepadLookSpeed = 180f;
@@ -30,6 +42,16 @@ namespace ProjectBloodbath.Player
         public float JumpHeight => jumpHeight;
         public float Gravity => gravity;
         public float GroundedVerticalSpeed => groundedVerticalSpeed;
+        public float SlideMinimumSpeed => slideMinimumSpeed;
+        public float SlideInitialSpeed => slideInitialSpeed;
+        public float SlideDuration => slideDuration;
+        public float SlideDeceleration => slideDeceleration;
+        public float SlideSteeringSpeed => slideSteeringSpeed;
+        public float SlideCooldown => slideCooldown;
+        public float SlideInputBufferTime => slideInputBufferTime;
+        public float SlideHeight => slideHeight;
+        public float SlideCameraDrop => slideCameraDrop;
+        public float SlideTransitionSpeed => slideTransitionSpeed;
         public float MouseSensitivity => mouseSensitivity;
         public float GamepadLookSpeed => gamepadLookSpeed;
         public float MinimumPitch => minimumPitch;
@@ -41,6 +63,16 @@ namespace ProjectBloodbath.Player
             sprintSpeed = Mathf.Max(sprintSpeed, walkSpeed);
             gravity = Mathf.Min(gravity, -0.01f);
             groundedVerticalSpeed = Mathf.Min(groundedVerticalSpeed, -0.01f);
+            slideMinimumSpeed = Mathf.Max(0f, slideMinimumSpeed);
+            slideInitialSpeed = Mathf.Max(slideMinimumSpeed, slideInitialSpeed);
+            slideDuration = Mathf.Max(0.05f, slideDuration);
+            slideDeceleration = Mathf.Max(0f, slideDeceleration);
+            slideSteeringSpeed = Mathf.Max(0f, slideSteeringSpeed);
+            slideCooldown = Mathf.Max(0f, slideCooldown);
+            slideInputBufferTime = Mathf.Max(0f, slideInputBufferTime);
+            slideHeight = Mathf.Max(0.5f, slideHeight);
+            slideCameraDrop = Mathf.Max(0f, slideCameraDrop);
+            slideTransitionSpeed = Mathf.Max(0.1f, slideTransitionSpeed);
             maximumPitch = Mathf.Max(maximumPitch, minimumPitch);
         }
     }

@@ -17,6 +17,10 @@ MonoBehaviour:
   roundsPerMinute: 480
   spreadDegrees: 0.25
   automatic: 1
+  magazineSize: 12
+  initialReserveAmmo: 48
+  ammunitionType: {fileID: 11400000, guid: cb11312e0a735fe48b18985c28015c4e, type: 2}
+  reloadDuration: 1.45
   impactForce: 18
   damageType: 0
   pitchRecoil: 0.85
