@@ -13,6 +13,8 @@ namespace ProjectBloodbath.Player
         [SerializeField, Min(0f)] private float groundAcceleration = 65f;
         [SerializeField, Min(0f)] private float airAcceleration = 20f;
         [SerializeField, Min(0f)] private float jumpHeight = 1.35f;
+        [SerializeField, Min(1)] private int maximumJumpCount = 2;
+        [SerializeField, Min(0f)] private float airJumpHeightMultiplier = 1f;
         [SerializeField] private float gravity = -30f;
         [SerializeField] private float groundedVerticalSpeed = -3f;
 
@@ -40,6 +42,8 @@ namespace ProjectBloodbath.Player
         public float GroundAcceleration => groundAcceleration;
         public float AirAcceleration => airAcceleration;
         public float JumpHeight => jumpHeight;
+        public int MaximumJumpCount => maximumJumpCount;
+        public float AirJumpHeightMultiplier => airJumpHeightMultiplier;
         public float Gravity => gravity;
         public float GroundedVerticalSpeed => groundedVerticalSpeed;
         public float SlideMinimumSpeed => slideMinimumSpeed;
@@ -61,6 +65,8 @@ namespace ProjectBloodbath.Player
         private void OnValidate()
         {
             sprintSpeed = Mathf.Max(sprintSpeed, walkSpeed);
+            maximumJumpCount = Mathf.Max(1, maximumJumpCount);
+            airJumpHeightMultiplier = Mathf.Max(0f, airJumpHeightMultiplier);
             gravity = Mathf.Min(gravity, -0.01f);
             groundedVerticalSpeed = Mathf.Min(groundedVerticalSpeed, -0.01f);
             slideMinimumSpeed = Mathf.Max(0f, slideMinimumSpeed);

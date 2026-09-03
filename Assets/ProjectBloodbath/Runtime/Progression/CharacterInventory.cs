@@ -13,6 +13,8 @@ namespace ProjectBloodbath.Progression
 
         public event Action<InventoryResourceDefinition, int> ResourceChanged;
         public event Action<string, int> PickupCollected;
+        public event Action<WorldPickupDefinition, int>
+            PickupDefinitionCollected;
 
         public IReadOnlyList<WorldPickupDefinition> Items => items;
 
@@ -114,14 +116,17 @@ namespace ProjectBloodbath.Progression
             return item != null && items.Contains(item);
         }
 
-        public void NotifyPickupCollected(string displayName, int quantity)
+        public void NotifyPickupCollected(
+            WorldPickupDefinition definition,
+            int quantity)
         {
-            if (string.IsNullOrWhiteSpace(displayName) || quantity <= 0)
+            if (definition == null || quantity <= 0)
             {
                 return;
             }
 
-            PickupCollected?.Invoke(displayName, quantity);
+            PickupCollected?.Invoke(definition.DisplayName, quantity);
+            PickupDefinitionCollected?.Invoke(definition, quantity);
         }
     }
 }

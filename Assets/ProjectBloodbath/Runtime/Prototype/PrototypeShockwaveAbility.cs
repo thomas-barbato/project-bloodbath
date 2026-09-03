@@ -23,11 +23,13 @@ namespace ProjectBloodbath.Prototype
         private readonly HashSet<IDamageable> hitTargets = new();
         private float readyAt;
         private float feedbackUntil;
+        private float synergyFeedbackUntil;
 
         public event Action<int> Activated;
 
         public ActiveAbilitySettings Settings => settings;
         public int LastHitCount { get; private set; }
+        public int LastDetonatedMarkCount { get; private set; }
         public float CooldownRemaining => Mathf.Max(0f, readyAt - Time.time);
         public float CooldownProgress => settings == null ||
             settings.CooldownDuration <= 0f
@@ -40,6 +42,13 @@ namespace ProjectBloodbath.Prototype
         public float ActivationFeedbackRemaining => Mathf.Max(
             0f,
             feedbackUntil - Time.time);
+        public bool ShowsSynergyFeedback =>
+            LastDetonatedMarkCount > 0 && Time.time < synergyFeedbackUntil;
+        public string SynergyFeedbackLabel =>
+            settings?.ConsumedMarkEffect == null
+                ? string.Empty
+                : $"{settings.ConsumedMarkEffect.DisplayName.ToUpperInvariant()} " +
+                  $"×{LastDetonatedMarkCount} — DÉTONATION";
 
         public void Configure(
             PlayerInputReader reader,
@@ -73,6 +82,9 @@ namespace ProjectBloodbath.Prototype
             readyAt = Time.time + settings.CooldownDuration;
             feedbackUntil = Time.time + 0.16f;
             LastHitCount = ResolveHits();
+            synergyFeedbackUntil = LastDetonatedMarkCount > 0
+                ? Time.time + 0.9f
+                : 0f;
             Activated?.Invoke(LastHitCount);
             return true;
         }
@@ -134,6 +146,7 @@ namespace ProjectBloodbath.Prototype
 
             hitTargets.Clear();
             int hitCount = 0;
+            LastDetonatedMarkCount = 0;
             for (int index = 0; index < colliderCount; index++)
             {
                 Collider candidate = hitBuffer[index];
@@ -179,9 +192,24 @@ namespace ProjectBloodbath.Prototype
                 hitTargets.Add(damageable);
 
                 Vector3 direction = toTarget / distance;
+                Health targetHealth = candidate.GetComponentInParent<Health>();
+                WeaponMarkEffectSettings markEffect =
+                    settings.ConsumedMarkEffect;
+                int detonatedStacks =
+                    targetHealth != null &&
+                    targetHealth.IsAlive &&
+                    !targetHealth.IsInvulnerable &&
+                    markEffect != null
+                        ? targetHealth.GetComponent<WeaponMarkState>()?
+                            .ConsumeMark(markEffect) ?? 0
+                        : 0;
+                float damageMultiplier =
+                    playerLife?.OutgoingDamageMultiplier ?? 1f;
+                float detonationDamage = markEffect == null
+                    ? 0f
+                    : detonatedStacks * markEffect.DetonationDamagePerStack;
                 DamageInfo damage = new(
-                    settings.Damage *
-                        (playerLife?.OutgoingDamageMultiplier ?? 1f),
+                    (settings.Damage + detonationDamage) * damageMultiplier,
                     settings.DamageType,
                     hitPoint,
                     -direction,
@@ -189,6 +217,7 @@ namespace ProjectBloodbath.Prototype
                     settings.ImpactForce,
                     gameObject);
                 damageable.ApplyDamage(damage);
+                LastDetonatedMarkCount += detonatedStacks;
 
                 Rigidbody body = candidate.attachedRigidbody;
                 if (body != null && !body.isKinematic)

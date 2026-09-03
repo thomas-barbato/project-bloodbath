@@ -23,6 +23,7 @@ MonoBehaviour:
   reloadDuration: 1.45
   impactForce: 18
   damageType: 0
+  appliedMarkEffect: {fileID: 11400000, guid: 4ac12db763a347158cfd2af722dd735e, type: 2}
   pitchRecoil: 0.85
   yawRecoil: 0.3
   visualKick: 0.08

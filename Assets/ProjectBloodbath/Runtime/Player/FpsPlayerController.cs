@@ -1,4 +1,5 @@
 using ProjectBloodbath.Input;
+using ProjectBloodbath.Settings;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -15,6 +16,7 @@ namespace ProjectBloodbath.Player
 
         private CharacterController characterController;
         private PlayerInputReader inputReader;
+        private ControlSettingsManager controlSettings;
         private Vector3 horizontalVelocity;
         private float verticalVelocity;
         private float pitch;
@@ -26,10 +28,21 @@ namespace ProjectBloodbath.Player
         private float nextSlideTime;
         private float slideRequestedUntil;
         private float slidePresentationAmount;
+        private int jumpsPerformed;
+        private bool wasGrounded;
 
         public Vector3 Velocity => horizontalVelocity + Vector3.up * verticalVelocity;
         public bool IsSliding { get; private set; }
         public float SlidePresentationAmount => slidePresentationAmount;
+        public int JumpsPerformed => jumpsPerformed;
+        public int RemainingJumps => settings == null
+            ? 0
+            : Mathf.Max(0, settings.MaximumJumpCount - jumpsPerformed);
+        public float CurrentFieldOfView => playerCamera != null
+            ? playerCamera.fieldOfView
+            : settings != null
+                ? settings.FieldOfView
+                : 95f;
 
         public void Configure(
             Transform pivot,
@@ -59,10 +72,22 @@ namespace ProjectBloodbath.Player
             cameraPivot.localRotation = Quaternion.Euler(pitch, 0f, 0f);
         }
 
+        public void SetFieldOfView(float fieldOfView)
+        {
+            if (playerCamera == null)
+            {
+                return;
+            }
+
+            playerCamera.fieldOfView = Mathf.Clamp(fieldOfView, 1f, 179f);
+        }
+
         public void ResetForRespawn()
         {
             horizontalVelocity = Vector3.zero;
             verticalVelocity = 0f;
+            jumpsPerformed = 0;
+            wasGrounded = false;
             pitch = 0f;
             inputReader?.ConsumeJumpPressed();
             inputReader?.ConsumeSlidePressed();
@@ -81,6 +106,7 @@ namespace ProjectBloodbath.Player
         {
             characterController = GetComponent<CharacterController>();
             inputReader = GetComponent<PlayerInputReader>();
+            controlSettings = GetComponent<ControlSettingsManager>();
             bodyPresentation ??=
                 GetComponentInChildren<FirstPersonBodyPresentation>(true);
             standingHeight = characterController.height;
@@ -118,6 +144,12 @@ namespace ProjectBloodbath.Player
 
         private void UpdateCursorCapture()
         {
+            if (inputReader.GameplaySuppressed)
+            {
+                SetCursorCaptured(false);
+                return;
+            }
+
             if (Keyboard.current?.escapeKey.wasPressedThisFrame == true)
             {
                 SetCursorCaptured(false);
@@ -138,13 +170,22 @@ namespace ProjectBloodbath.Player
             }
 
             Vector2 look = inputReader.Look;
-            float scale = inputReader.LookUsesPointerDelta
-                ? settings.MouseSensitivity
-                : settings.GamepadLookSpeed * Time.deltaTime;
+            bool pointerInput = inputReader.LookUsesPointerDelta;
+            float sensitivity = controlSettings != null
+                ? controlSettings.GetLookSensitivity(pointerInput)
+                : pointerInput
+                    ? settings.MouseSensitivity
+                    : settings.GamepadLookSpeed;
+            float scale = pointerInput
+                ? sensitivity
+                : sensitivity * Time.deltaTime;
+            float verticalMultiplier = controlSettings != null
+                ? controlSettings.GetVerticalLookMultiplier(pointerInput)
+                : 1f;
 
             transform.Rotate(Vector3.up, look.x * scale, Space.Self);
             pitch = Mathf.Clamp(
-                pitch - look.y * scale,
+                pitch - look.y * scale * verticalMultiplier,
                 settings.MinimumPitch,
                 settings.MaximumPitch);
             cameraPivot.localRotation = Quaternion.Euler(pitch, 0f, 0f);
@@ -153,10 +194,17 @@ namespace ProjectBloodbath.Player
         private void UpdateMovement()
         {
             bool grounded = characterController.isGrounded;
-            if (grounded && verticalVelocity < 0f)
+            bool hasStableGroundContact = grounded && verticalVelocity <= 0f;
+            if (hasStableGroundContact)
             {
+                jumpsPerformed = 0;
                 verticalVelocity = settings.GroundedVerticalSpeed;
             }
+            else if (!grounded && wasGrounded && jumpsPerformed == 0)
+            {
+                jumpsPerformed = 1;
+            }
+            wasGrounded = grounded;
 
             Vector2 moveInput = Vector2.ClampMagnitude(inputReader.Move, 1f);
             Vector3 desiredDirection =
@@ -203,10 +251,9 @@ namespace ProjectBloodbath.Player
                 desiredVelocity,
                 acceleration * Time.deltaTime);
 
-            if (grounded && inputReader.ConsumeJumpPressed())
+            if (inputReader.ConsumeJumpPressed())
             {
-                verticalVelocity = Mathf.Sqrt(
-                    settings.JumpHeight * -2f * settings.Gravity);
+                TryJump(hasStableGroundContact);
             }
 
             verticalVelocity += settings.Gravity * Time.deltaTime;
@@ -246,12 +293,11 @@ namespace ProjectBloodbath.Player
                 settings.SlideDeceleration * Time.deltaTime);
             horizontalVelocity = slideDirection * slideSpeed;
 
-            bool jumpRequested = grounded && inputReader.ConsumeJumpPressed();
-            if (jumpRequested)
+            bool jumpRequested = inputReader.ConsumeJumpPressed();
+            bool hasStableGroundContact = grounded && verticalVelocity <= 0f;
+            if (jumpRequested && TryJump(hasStableGroundContact))
             {
                 StopSlide(false);
-                verticalVelocity = Mathf.Sqrt(
-                    settings.JumpHeight * -2f * settings.Gravity);
             }
             else if (
                 !grounded ||
@@ -263,6 +309,29 @@ namespace ProjectBloodbath.Player
 
             verticalVelocity += settings.Gravity * Time.deltaTime;
             characterController.Move(Velocity * Time.deltaTime);
+        }
+
+        private bool TryJump(bool hasStableGroundContact)
+        {
+            if (
+                !hasStableGroundContact &&
+                jumpsPerformed >= settings.MaximumJumpCount)
+            {
+                return false;
+            }
+
+            float jumpHeight = hasStableGroundContact
+                ? settings.JumpHeight
+                : settings.JumpHeight * settings.AirJumpHeightMultiplier;
+            if (jumpHeight <= 0f)
+            {
+                return false;
+            }
+
+            verticalVelocity = Mathf.Sqrt(
+                jumpHeight * -2f * settings.Gravity);
+            jumpsPerformed++;
+            return true;
         }
 
         private void StopSlide(bool immediate)
@@ -330,7 +399,7 @@ namespace ProjectBloodbath.Player
         {
             if (playerCamera != null && settings != null)
             {
-                playerCamera.fieldOfView = settings.FieldOfView;
+                SetFieldOfView(settings.FieldOfView);
             }
         }
 

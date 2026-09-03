@@ -21,3 +21,4 @@ MonoBehaviour:
   impactForce: 16
   maximumTargets: 8
   damageType: 5
+  consumedMarkEffect: {fileID: 11400000, guid: 4ac12db763a347158cfd2af722dd735e, type: 2}

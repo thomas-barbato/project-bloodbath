@@ -1,8 +1,11 @@
 using System.Collections;
 using NUnit.Framework;
+using ProjectBloodbath.Input;
 using ProjectBloodbath.Progression;
 using ProjectBloodbath.Prototype;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.LowLevel;
 using UnityEngine.SceneManagement;
 using UnityEngine.TestTools;
 
@@ -14,8 +17,12 @@ namespace ProjectBloodbath.Tests.PlayMode
             "Assets/Scenes/Prototype/MovementLab.unity";
 
         private CharacterInventory inventory;
+        private PlayerInputReader inputReader;
         private PrototypeLootInteraction interaction;
+        private PrototypeCharacterPanel characterPanel;
         private GameObject temporaryBlocker;
+        private Keyboard keyboard;
+        private bool ownsKeyboard;
 
         [UnitySetUp]
         public IEnumerator SetUp()
@@ -32,18 +39,37 @@ namespace ProjectBloodbath.Tests.PlayMode
             GameObject player = GameObject.Find("Player");
             Assert.That(player, Is.Not.Null);
             inventory = player.GetComponent<CharacterInventory>();
+            inputReader = player.GetComponent<PlayerInputReader>();
             interaction = player.GetComponent<PrototypeLootInteraction>();
+            characterPanel = player.GetComponent<PrototypeCharacterPanel>();
             Assert.That(inventory, Is.Not.Null);
+            Assert.That(inputReader, Is.Not.Null);
             Assert.That(interaction, Is.Not.Null);
+            Assert.That(characterPanel, Is.Not.Null);
+
+            keyboard = InputSystem.AddDevice<Keyboard>();
+            ownsKeyboard = true;
+
             yield return null;
         }
 
         [UnityTearDown]
         public IEnumerator TearDown()
         {
+            characterPanel?.SetOpen(false);
             if (temporaryBlocker != null)
             {
                 Object.Destroy(temporaryBlocker);
+            }
+
+            if (keyboard != null && keyboard.added)
+            {
+                SetKeys();
+            }
+
+            if (ownsKeyboard && keyboard != null && keyboard.added)
+            {
+                InputSystem.RemoveDevice(keyboard);
             }
 
             yield return null;
@@ -101,6 +127,85 @@ namespace ProjectBloodbath.Tests.PlayMode
         }
 
         [UnityTest]
+        public IEnumerator DistantManualItemShowsOnlyItsName()
+        {
+            WorldPickup pickup = GameObject.Find("ManualItemPickup_Test")
+                .GetComponent<WorldPickup>();
+            GameObject narrativeTerminal =
+                GameObject.Find("QuarantineLoreTerminal");
+            Assert.That(narrativeTerminal, Is.Not.Null);
+            narrativeTerminal.SetActive(false);
+            Camera cameraComponent = Camera.main;
+            pickup.transform.position =
+                cameraComponent.transform.position +
+                cameraComponent.transform.forward * 5f;
+            Physics.SyncTransforms();
+
+            interaction.RefreshHoveredPickup();
+
+            Assert.That(interaction.HoveredPickup, Is.SameAs(pickup));
+            Assert.That(interaction.CanCollectHoveredPickup, Is.False);
+            Assert.That(interaction.HoverLabel, Is.EqualTo(pickup.DisplayName));
+            Assert.That(interaction.HoverLabel, Does.Not.Contain("APPROCHEZ"));
+            Assert.That(interaction.HoverLabel, Does.Not.Contain("INTERAGIR"));
+            yield break;
+        }
+
+        [UnityTest]
+        public IEnumerator BriefInteractPressCollectsAimedManualItem()
+        {
+            WorldPickup pickup = GameObject.Find("ManualItemPickup_Test")
+                .GetComponent<WorldPickup>();
+            Camera cameraComponent = Camera.main;
+            pickup.transform.position =
+                cameraComponent.transform.position +
+                cameraComponent.transform.forward * 2f;
+            Physics.SyncTransforms();
+
+            interaction.RefreshHoveredPickup();
+            Assert.That(interaction.HoveredPickup, Is.SameAs(pickup));
+
+            SetKeys(Key.E);
+            yield return null;
+            SetKeys();
+            yield return null;
+
+            Assert.That(
+                inventory.Items,
+                Does.Contain(pickup.Definition),
+                "Une simple pression sur E doit ramasser l'objet sans maintien.");
+        }
+
+        [UnityTest]
+        public IEnumerator OpenMenuHidesTargetedLootWithoutPausingWorld()
+        {
+            WorldPickup pickup = GameObject.Find("ManualItemPickup_Test")
+                .GetComponent<WorldPickup>();
+            Camera cameraComponent = Camera.main;
+            pickup.transform.position =
+                cameraComponent.transform.position +
+                cameraComponent.transform.forward * 2f;
+            Physics.SyncTransforms();
+
+            interaction.RefreshHoveredPickup();
+            Assert.That(interaction.HoveredPickup, Is.SameAs(pickup));
+            Assert.That(interaction.HoverPromptVisible, Is.True);
+            float timeScaleBeforeOpening = Time.timeScale;
+
+            characterPanel.SetOpen(true);
+            interaction.RefreshHoveredPickup();
+
+            Assert.That(inputReader.GameplaySuppressed, Is.True);
+            Assert.That(interaction.HoveredPickup, Is.Null);
+            Assert.That(interaction.HoverPromptVisible, Is.False);
+            Assert.That(
+                Time.timeScale,
+                Is.EqualTo(timeScaleBeforeOpening),
+                "Un menu local ne doit jamais mettre le monde en pause.");
+            yield return null;
+        }
+
+        [UnityTest]
         public IEnumerator NearbyOffCenterItemStillReceivesAimAssistance()
         {
             WorldPickup pickup = GameObject.Find("ManualItemPickup_Test")
@@ -151,6 +256,11 @@ namespace ProjectBloodbath.Tests.PlayMode
                 Is.SameAs(pickup),
                 "Le corps physique du joueur local ne doit jamais masquer son propre loot.");
             yield break;
+        }
+
+        private void SetKeys(params Key[] keys)
+        {
+            InputSystem.QueueStateEvent(keyboard, new KeyboardState(keys));
         }
     }
 }

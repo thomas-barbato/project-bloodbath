@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0a92f6d06e71f749942ac275f939ffd, type: 3}
+  m_Name: MovementLabQuarantineReport
+  m_EditorClassIdentifier: ProjectBloodbath.Runtime::ProjectBloodbath.Narrative.NarrativeEntryDefinition
+  identifier: movement_lab_quarantine_report
+  displayName: "Journal d'incident \u2014 Unit\xE9 03"
+  kind: 0
+  sourceDisplayName: Service de quarantaine
+  body: "02:17 \u2014 Les alarmes de confinement se sont d\xE9clench\xE9es avant
+    la coupure du r\xE9seau.\n\n02:21 \u2014 Deux signatures biologiques se d\xE9placent
+    encore dans l'aile d'essai. Aucun membre de l'\xE9quipe ne r\xE9pond.\n\n02:24
+    \u2014 Ordre re\xE7u : verrouiller les sas et abandonner le mat\xE9riel non essentiel.\n\nDerni\xE8re
+    note : l'\xE9chantillon du secteur d'analyse ne doit pas quitter l'aile."

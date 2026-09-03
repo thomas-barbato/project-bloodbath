@@ -21,6 +21,8 @@ namespace ProjectBloodbath.Prototype
         [SerializeField] private PrototypeBloodHarvestPassive passiveAbility;
         [SerializeField] private CharacterProgression characterProgression;
         [SerializeField] private CharacterStatistics characterStatistics;
+        [SerializeField] private PrototypeInterfaceCoordinator
+            interfaceCoordinator;
         [SerializeField] private Color panelColor =
             new(0.025f, 0.018f, 0.015f, 0.88f);
         [SerializeField] private Color borderColor =
@@ -180,11 +182,21 @@ namespace ProjectBloodbath.Prototype
             {
                 rangedWeapon = GetComponentInChildren<HitscanWeapon>(true);
             }
+
+            if (interfaceCoordinator == null)
+            {
+                interfaceCoordinator =
+                    GetComponent<PrototypeInterfaceCoordinator>();
+            }
         }
 
         private void OnGUI()
         {
-            if (health == null || weaponLoadout == null)
+            if (
+                health == null ||
+                weaponLoadout == null ||
+                (interfaceCoordinator != null &&
+                 interfaceCoordinator.HasOpenView))
             {
                 return;
             }
@@ -309,6 +321,16 @@ namespace ProjectBloodbath.Prototype
                     $"RÉINCARNATION — DÉGÂTS RÉDUITS  " +
                     $"{playerLife.ResurrectionPenaltyRemaining:0.0}s",
                     textColor);
+                return;
+            }
+
+            if (activeAbility != null && activeAbility.ShowsSynergyFeedback)
+            {
+                DrawStatus(
+                    width,
+                    height,
+                    activeAbility.SynergyFeedbackLabel,
+                    new Color(0.72f, 0.38f, 0.9f));
                 return;
             }
 

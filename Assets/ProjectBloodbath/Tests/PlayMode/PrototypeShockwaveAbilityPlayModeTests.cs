@@ -138,6 +138,30 @@ namespace ProjectBloodbath.Tests.PlayMode
             Assert.That(ability.LastHitCount, Is.EqualTo(3));
         }
 
+        [UnityTest]
+        public IEnumerator MarkedTargetDetonatesForBonusDamage()
+        {
+            WeaponMarkEffectSettings markEffect =
+                ability.Settings.ConsumedMarkEffect;
+            Assert.That(markEffect, Is.Not.Null);
+            WeaponMarkState markState = target.AddComponent<WeaponMarkState>();
+            Assert.That(markState.ApplyMark(markEffect, 2), Is.EqualTo(2));
+            float startingHealth = targetHealth.Current;
+            float expectedDamage =
+                ability.Settings.Damage +
+                markEffect.DetonationDamagePerStack * 2f;
+
+            Assert.That(ability.TryActivate(), Is.True);
+
+            Assert.That(
+                targetHealth.Current,
+                Is.EqualTo(startingHealth - expectedDamage).Within(0.001f));
+            Assert.That(markState.GetStacks(markEffect), Is.Zero);
+            Assert.That(ability.LastDetonatedMarkCount, Is.EqualTo(2));
+            Assert.That(ability.ShowsSynergyFeedback, Is.True);
+            yield break;
+        }
+
         private Health CreateSmallTarget(
             Camera cameraComponent,
             string targetName,

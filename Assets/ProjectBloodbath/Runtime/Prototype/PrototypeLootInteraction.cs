@@ -33,12 +33,15 @@ namespace ProjectBloodbath.Prototype
         private float notificationUntil;
 
         public WorldPickup HoveredPickup { get; private set; }
+        public bool HoverPromptVisible =>
+            HoveredPickup != null &&
+            (inputReader == null || !inputReader.GameplaySuppressed);
         public string HoverLabel => HoveredPickup == null
             ? string.Empty
             : HoveredPickup.PickupMode == WorldPickupMode.Manual
                 ? CanCollectHoveredPickup
                     ? $"{HoveredPickup.DisplayName}  •  [INTERAGIR]"
-                    : $"{HoveredPickup.DisplayName}  •  APPROCHEZ-VOUS"
+                    : HoveredPickup.DisplayName
                 : HoveredPickup.DisplayName;
         public float HoveredPickupDistance { get; private set; }
         public bool CanCollectHoveredPickup =>
@@ -63,7 +66,9 @@ namespace ProjectBloodbath.Prototype
         {
             HoveredPickup = null;
             HoveredPickupDistance = 0f;
-            if (aimCamera == null)
+            if (
+                aimCamera == null ||
+                (inputReader != null && inputReader.GameplaySuppressed))
             {
                 return;
             }
@@ -179,14 +184,13 @@ namespace ProjectBloodbath.Prototype
 
         private void Update()
         {
-            bool interactPressed = inputReader != null &&
-                inputReader.ConsumeInteractPressed();
             RefreshHoveredPickup();
             if (
                 HoveredPickup != null &&
                 HoveredPickup.PickupMode == WorldPickupMode.Manual &&
                 CanCollectHoveredPickup &&
-                interactPressed)
+                inputReader != null &&
+                inputReader.ConsumeInteractPressed())
             {
                 HoveredPickup.TryCollect(inventory);
             }
@@ -195,7 +199,7 @@ namespace ProjectBloodbath.Prototype
         private void OnGUI()
         {
             EnsureStyles();
-            if (HoveredPickup != null)
+            if (HoverPromptVisible)
             {
                 Rect hoverRect = new(
                     Screen.width * 0.5f - 170f,

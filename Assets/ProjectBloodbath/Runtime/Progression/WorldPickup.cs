@@ -57,7 +57,7 @@ namespace ProjectBloodbath.Progression
             }
 
             remainingQuantity -= accepted;
-            inventory.NotifyPickupCollected(definition.DisplayName, accepted);
+            inventory.NotifyPickupCollected(definition, accepted);
             if (remainingQuantity <= 0)
             {
                 gameObject.SetActive(false);

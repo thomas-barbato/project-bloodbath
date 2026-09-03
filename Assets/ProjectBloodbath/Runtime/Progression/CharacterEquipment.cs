@@ -17,6 +17,8 @@ namespace ProjectBloodbath.Progression
 
         public event Action<EquipmentSlot, WorldPickupDefinition>
             EquipmentChanged;
+        public IReadOnlyDictionary<EquipmentSlot, WorldPickupDefinition>
+            EquippedItems => equippedItems;
         public EquipmentStatRequirement LastFailedRequirement { get; private set; }
 
         public float OutgoingDamageMultiplier

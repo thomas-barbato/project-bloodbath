@@ -118,6 +118,14 @@ namespace ProjectBloodbath.Tests.PlayMode
 
             Assert.That(playerHealth.Current, Is.EqualTo(initialPlayerHealth));
             Assert.That(targetHealth.Current, Is.LessThan(initialTargetHealth));
+            Assert.That(weapon.Settings.AppliedMarkEffect, Is.Not.Null);
+            WeaponMarkState markState =
+                externalTarget.GetComponent<WeaponMarkState>();
+            Assert.That(markState, Is.Not.Null);
+            Assert.That(
+                markState.GetStacks(weapon.Settings.AppliedMarkEffect),
+                Is.EqualTo(1),
+                "Un tir infligeant des dégâts doit appliquer une charge de rupture.");
         }
 
         private static void SetEnemyActive(string enemyName, bool active)

@@ -383,7 +383,9 @@ Les éléments démoniaques pourront être :
 
 ---
 
-# Mobilité et glissade
+# Mobilité, double saut et glissade
+
+Le personnage disposera d’un **double saut** afin de soutenir un level design plus vertical et une mobilité rapide. Le premier saut part du sol et une seconde impulsion peut être déclenchée en l’air ; toute tentative supplémentaire devra attendre le prochain atterrissage. Le nombre total d’impulsions et la puissance du saut aérien resteront configurables pour permettre leur équilibrage après les essais de terrain.
 
 Le déplacement devra inclure une **glissade volontaire, rapide et lisible**, utilisable lorsque le personnage possède suffisamment d'élan.
 
@@ -489,9 +491,13 @@ Ces statistiques pourront influencer :
 
 Le système devra permettre plusieurs types de builds et des spécialisations hybrides.
 
+Les classes, leurs rôles de gameplay et leurs arbres respectifs de compétences actives et passives seront définis ultérieurement, après validation des fondations communes du combat, de la progression et des synergies. Les prototypes actuels ne devront donc pas rattacher définitivement une arme, une compétence ou un passif à une classe précise.
+
 Des statistiques secondaires seront calculées et modifiées à partir de plusieurs sources clairement identifiables : statistiques principales, compétences passives, objets équipés, sorts ou autres buffs temporaires, potions, effets de statut et éventuels effets de zone. Elles pourront notamment représenter les dégâts, la vie, l’énergie, l’armure, les résistances, les vitesses, les chances de coup critique ou toute autre valeur dérivée utile.
 
 Chaque modificateur devra conserver l’identité de sa source. Déséquiper un objet, perdre un buff ou laisser expirer l’effet d’une potion retirera donc uniquement les valeurs accordées par cette source, sans modifier les autres bonus actifs. Les formules, limites, cumuls et rendements décroissants seront définis pendant l’équilibrage plutôt que figés dès le prototype.
+
+Un dossier de personnage regroupera les statistiques principales et secondaires, les points disponibles, l’inventaire équipable et les emplacements portés. Il devra être utilisable à la souris, au clavier et à la manette avec des commandes reconfigurables. Le panneau actuellement présent dans le laboratoire permet déjà de répartir les points et d’équiper ou retirer un objet ; son apparence demeure une présentation de prototype destinée à être remplacée par l’interface finale thématisée.
 
 ---
 
@@ -543,13 +549,15 @@ Chaque arme devra normalement posséder :
 
 Si un bouclier est équipé, il remplace l’accès à la capacité secondaire de l’arme par une véritable action défensive. Le bouclier devra protéger concrètement le personnage, avec des règles de blocage, d’angle de protection, de réduction des dégâts et éventuellement de garde ou de parade qui seront équilibrées par les tests.
 
-Le combat avec deux armes à une main sera autorisé. Pour deux armes à distance compatibles, la règle de contrôle provisoire à tester sera la suivante :
+Le combat avec deux armes à une main sera autorisé. Chaque main disposera de sa propre action de base afin que le contrôle reste naturel à la souris comme à la manette :
 
-- le clic gauche déclenche l’attaque de base de l’arme principale ;
-- le clic droit déclenche simultanément les attaques de base des deux armes ;
-- les capacités secondaires propres aux armes ne sont pas accessibles tant que les deux armes sont équipées ensemble.
+- le clic gauche et la gâchette droite commandent par défaut la main droite ;
+- le clic droit et la gâchette gauche commandent par défaut la main gauche ;
+- actionner les deux commandes permet aux deux armes à distance d’attaquer ensemble lorsque leur état le permet ;
+- si la main gauche porte un bouclier, sa commande déclenche la protection au lieu d’une attaque ;
+- le comportement précis des capacités secondaires et des armes à deux mains sera validé avec le futur système d’équipement des mains.
 
-Le clic droit désigne ici la commande par défaut à la souris : cette action devra rester entièrement reconfigurable au clavier, à la souris et à la manette.
+Ces associations désignent seulement les commandes proposées par défaut : les actions des deux mains devront rester entièrement reconfigurables au clavier, à la souris et à la manette.
 
 Chaque arme devra conserver ses propres munitions, cadence, précision, recul et conditions d’utilisation. Le comportement exact lorsque les deux armes n’ont pas la même cadence, lorsque l’une recharge ou lorsqu’elle ne peut pas tirer devra être décidé après des essais en combat réel.
 
@@ -879,6 +887,8 @@ La narration environnementale doit permettre d’enrichir l’univers sans devoi
 
 Le jeu comportera des **quêtes relativement courtes et simples**.
 
+La quête principale pourra suivre le jeu du début à la fin sous la forme d’une chaîne de chapitres ou d’étapes. Une quête pourra dépendre de la validation de toutes ses quêtes prérequises ou d’au moins l’une d’elles afin de permettre aussi bien une progression linéaire que de futures convergences. Lorsqu’un prérequis est terminé et rendu, la quête suivante devient disponible auprès de son donneur ou de son point de départ, mais elle n’est ni acceptée ni démarrée automatiquement par le joueur.
+
 Il pourra exister :
 
 - des quêtes principales ;
@@ -935,7 +945,7 @@ Les quêtes secondaires pourront notamment servir à :
 - affronter des ennemis optionnels ;
 - affronter des boss optionnels.
 
-Les quêtes secondaires doivent rester relativement courtes.
+Les quêtes secondaires seront facultatives et devront rester relativement courtes. Certaines pourront être conçues comme des interventions très rapides, réalisables sans détour important au cours de l’exploration ou du combat.
 
 Le but n’est pas de créer des centaines de quêtes complexes comportant de multiples branches narratives.
 
@@ -975,6 +985,14 @@ Ces choix pourront renforcer les possibilités de build.
 
 ---
 
+# Journal de quêtes
+
+Le joueur disposera d’un **journal de quêtes ouvrable à tout moment au moyen d’une commande reconfigurable**, au clavier comme à la manette. Il permettra de consulter séparément les quêtes principales et secondaires acceptées, leur état, leur texte de présentation, leurs objectifs, leur progression, leur lieu lorsque cette information est connue et leurs récompenses prévues. Puisque les quêtes seront écrites à l’avance, leur contexte narratif restera visible au-dessus des objectifs et utilisera la même source que le texte présenté lors de leur acceptation. Les quêtes terminées resteront consultables afin de conserver un historique clair de l’aventure.
+
+Plusieurs quêtes pourront être actives simultanément. Le journal devra permettre de choisir explicitement la quête suivie par le HUD sans modifier la progression des autres. Comme les autres menus, son ouverture ne mettra jamais le monde en pause et masquera les indications contextuelles qui ne doivent pas se superposer à l’interface.
+
+---
+
 # PNJ et dialogues
 
 Le jeu pourra comporter des PNJ permettant notamment :
@@ -998,6 +1016,12 @@ Les informations essentielles doivent être faciles à identifier :
 
 Les personnages importants pourront proposer davantage de dialogues facultatifs pour les joueurs souhaitant approfondir le lore.
 
+Les quêtes pourront être racontées et proposées aussi bien par des PNJ que par des terminaux. Le support sera choisi au cas par cas pendant le level design, selon la quête et son contexte, sans imposer qu’une catégorie domine l’autre. La forme visuelle exacte de ces conversations reste volontairement ouverte : les mêmes données de dialogue devront pouvoir être présentées sous forme de bulles proches du personnage, de portraits ou d’un panneau plus classique, ainsi que par des communications radio ou des terminaux.
+
+Le texte narratif essentiel, les objectifs, leur progression et la récompense prévue devront être consultables ensemble sans obliger le joueur à naviguer entre plusieurs pages pour comprendre la mission. L’action d’interaction utilisée pour engager la conversation devra également permettre d’accepter ou de valider la quête, avec une action distincte pour fermer ou refuser.
+
+Le premier prototype utilisera un panneau de transmission très simple partagé entre un terminal de quête principale et un PNJ provisoire proposant une quête secondaire courte et facultative. Il permet ainsi de tester les deux types de donneurs sans figer l’interface finale. L’ouverture d’une conversation ne mettra pas le monde en pause : seules les commandes de gameplay du joueur local seront temporairement neutralisées.
+
 ---
 
 # Lore facultatif
@@ -1016,6 +1040,8 @@ Le lore pourra être découvert via :
 - dialogues secondaires ;
 - environnements ;
 - zones secrètes.
+
+Ces éléments de lore resteront indépendants des quêtes lorsqu’ils n’ont qu’une fonction narrative : consulter une archive ou examiner un objet ne devra ni créer artificiellement une mission, ni ralentir les joueurs qui souhaitent poursuivre directement le gameplay. Leur contenu sera défini séparément de leur présentation afin de pouvoir employer les mêmes données dans un terminal, une note, un enregistrement ou une autre interface adaptée au contexte.
 
 La narration pourra ainsi fonctionner sur deux niveaux :
 
@@ -1066,6 +1092,8 @@ Un fusil peut :
 - augmenter temporairement sa cadence après une élimination.
 
 Un autre équipement peut créer une synergie avec ces effets.
+
+Le premier prototype de cette logique utilise une charge de rupture temporaire appliquée par les tirs du fusil, cumulable jusqu’à trois fois. L’Onde de rupture peut consumer ces charges pour amplifier ses dégâts et affiche alors une confirmation dédiée. Cette combinaison arme-compétence sert à valider une synergie data-driven ; son nom, ses valeurs et sa présentation pourront évoluer pendant l’équilibrage et la direction artistique.
 
 Le joueur doit progressivement pouvoir construire un véritable **build**.
 
@@ -1246,11 +1274,13 @@ Le système doit être **data-driven et modulaire**.
 
 Un objet équipable conservera une définition distincte de sa représentation au sol. Cette définition précisera notamment son emplacement, ses modificateurs et, plus tard, ses prérequis et effets spéciaux. Équiper un objet le retirera de l’inventaire ; le remplacer ou le retirer rendra l’ancien objet à l’inventaire, sous réserve des futures règles de capacité. Le premier prototype utilise un emplacement d’implant et un bonus simple de dégâts uniquement afin de valider cette circulation et l’application réelle d’une statistique, sans figer l’équilibrage final.
 
+L’équipement porté devra également modifier la représentation du personnage. Une couche de présentation distincte associera les identifiants et emplacements d’équipement à des éléments visuels remplaçables, sans placer de règle d’inventaire ou de statistique dans le modèle. Elle devra respecter l’approche hybride inspirée de *Boltgun* et permettre des variantes en sprites billboard comme en géométrie 3D low-poly selon le besoin. Le premier prototype affichera ainsi un simple module géométrique provisoire sur le torse lorsque l’implant corrompu est équipé, puis le masquera lorsqu’il est retiré ; ce mannequin et ce module ne constituent pas la direction artistique finale.
+
 Chaque famille ou variante d’ennemi pourra référencer un profil de butin définissant les objets susceptibles d’être générés, leur probabilité et leur quantité minimale et maximale. La mort de l’ennemi devra lire ces données sans contenir directement la liste de ses récompenses dans son code de comportement. Ces profils pourront ensuite varier selon la zone, le niveau, la difficulté, les affixes de rencontre ou les règles d’un boss.
 
 Le ramassage suivra une approche hybride adaptée au rythme FPS / ARPG :
 
-- les équipements et objets importants seront ramassés manuellement avec une action reconfigurable ;
+- les équipements et objets importants seront ramassés manuellement avec une pression simple sur une action reconfigurable, sans devoir maintenir la touche ou le bouton ;
 - les munitions, monnaies et petites ressources seront ramassées automatiquement au contact ;
 - les munitions feront partie de l’inventaire du personnage et non de l’arme elle-même ;
 - chaque type de munition ou ressource pourra posséder une capacité maximale transportable, modifiable plus tard par les statistiques, compétences ou équipements ;
@@ -1700,11 +1730,13 @@ Les noms de touches affichés dans l’interface devront correspondre autant que
 
 Lorsque cela est possible, les indications de boutons devront également correspondre au type de manette détecté.
 
-L’interface devra pouvoir afficher automatiquement les indications correspondant au dernier périphérique utilisé, sans empêcher le joueur d’alterner librement entre clavier/souris et manette.
+Lorsque la manette est activée, l’interface devra pouvoir afficher automatiquement les indications correspondant au dernier périphérique utilisé, sans empêcher le joueur d’alterner librement entre clavier/souris et manette. Le joueur devra aussi pouvoir désactiver complètement la manette : ses entrées seront alors ignorées et les indications resteront verrouillées sur le clavier et la souris, même si une manette connectée bouge ou envoie un signal parasite.
 
 Les commandes ne devront pas être écrites directement en dur dans les scripts de gameplay.
 
 Les préférences de contrôle constituent des réglages locaux du joueur et ne doivent pas dépendre d’un personnage solo ou multijoueur.
+
+Le premier menu de contrôle fonctionnel sépare déjà les profils clavier/souris et manette. Par défaut, il détecte et applique automatiquement la disposition réelle du clavier — AZERTY ou QWERTY. Le joueur peut néanmoins imposer manuellement l’autre disposition ; restaurer les paramètres par défaut réactive la détection automatique. Le menu permet également de désactiver entièrement la manette, de régler la sensibilité de la souris ou la vitesse de caméra à la manette, d’inverser séparément leur axe vertical et de réattribuer les commandes par catégorie. Les changements peuvent être appliqués, annulés ou restaurés par défaut, puis sont sauvegardés localement. La détection des conflits, l’affichage adapté au modèle exact de manette et le suivi automatique du dernier périphérique utilisé lorsque la manette est active restent des améliorations ultérieures.
 
 ---
 
@@ -1717,7 +1749,10 @@ Il devra notamment être compatible avec :
 - 1920×1080 ;
 - 2560×1440 ;
 - 3840×2160 / 4K ;
+- 3840×1080 et 5120×1440 / 32:9 ;
 - et les principales résolutions et ratios d’écran actuels.
+
+Sur les écrans ultra-larges et super ultra-larges, l’image du monde pourra employer l’espace horizontal supplémentaire, mais l’interface ne devra jamais être étirée. Les menus centraux conserveront leurs proportions et les informations indispensables du HUD resteront dans une zone de lecture confortable ; seuls les éléments réellement périphériques pourront s’ancrer aux bords de l’écran.
 
 Le joueur devra pouvoir choisir son mode d’affichage :
 
@@ -1726,6 +1761,10 @@ Le joueur devra pouvoir choisir son mode d’affichage :
 - **mode fenêtré**.
 
 Le menu graphique devra permettre de sélectionner la résolution disponible.
+
+Le premier prototype de ce menu propose les résolutions et fréquences annoncées par l’écran actif, y compris le 3840×2160 et les formats 32:9 lorsque le matériel les prend en charge. Il permet déjà de choisir entre plein écran exclusif, plein écran fenêtré et fenêtré, ainsi que d’activer ou désactiver la VSync. Les changements restent en attente jusqu’à leur validation, peuvent être annulés, puis sont sauvegardés localement. Le menu s’ouvre avec une action reconfigurable et ne met jamais la simulation en pause.
+
+Ce même écran permet également de régler le champ de vision entre 60° et 120°, ainsi que la taille, la couleur et la forme du réticule. Les premières formes comprennent la croix droite `+`, le point, la croix diagonale en X, le cercle et le chevron `^`. Ces choix utilisent des paliers et des palettes lisibles à la souris, au clavier comme à la manette ; ils pourront être enrichis sans modifier le fonctionnement du combat.
 
 Il devra également être possible d’ajouter progressivement des réglages tels que :
 
@@ -1785,7 +1824,19 @@ Le HUD de combat devra pouvoir communiquer notamment :
 - réticule et confirmations de touche ;
 - alertes critiques sans masquer inutilement l’action.
 
-L’information devra être hiérarchisée. Les éléments secondaires ne devront apparaître que lorsqu’ils sont utiles afin d’éviter de surcharger constamment l’écran.
+L’information devra être hiérarchisée. Les éléments secondaires ne devront apparaître que lorsqu’ils sont utiles afin d’éviter de surcharger constamment l’écran. Lorsqu’un menu est ouvert, les indications contextuelles du monde, comme le nom et l’action d’un objet ciblé au sol, devront être masquées et ne jamais se superposer à ce menu.
+
+L’ouverture d’un inventaire, du dossier de personnage ou de tout autre menu ne mettra jamais la simulation en pause : les ennemis, projectiles, événements et autres joueurs continueront d’évoluer normalement. Seules les commandes de gameplay du joueur local seront suspendues au profit des commandes d’interface, ce qui maintiendra un comportement cohérent entre le solo et le multijoueur.
+
+À terme, l’action `Échap` ou son équivalent reconfigurable à la manette ouvrira un **menu système principal** plutôt qu’un sous-menu particulier. Celui-ci proposera au minimum :
+
+- reprendre la partie ;
+- sauvegarder et quitter ;
+- vidéo ;
+- son ;
+- contrôle, permettant de consulter et modifier les raccourcis clavier, souris et manette.
+
+« Sauvegarder et quitter » déclenchera la sauvegarde automatique appropriée puis quittera proprement la session. En multijoueur, cette action devra également respecter l’autorité du serveur et terminer correctement la connexion ; l’ouverture du menu système ne suspendra pas le monde partagé. Chaque sous-menu permettra de revenir au menu système avec une navigation cohérente à la souris, au clavier et à la manette.
 
 Une bible d’interface devra progressivement définir :
 
@@ -1814,6 +1865,16 @@ Le joueur devra progressivement pouvoir configurer :
 Les premières interfaces du prototype pourront rester fonctionnelles et utiliser des éléments temporaires. Elles devront néanmoins respecter très tôt une première grammaire visuelle commune afin que la version finale ne soit pas construite sur une accumulation d’écrans incohérents.
 
 La réalisation de l’interface définitive devra passer par des maquettes, des tests en situation réelle et plusieurs itérations visuelles. Sa beauté ne devra jamais se faire au détriment de sa rapidité, de sa lisibilité ou de son confort d’utilisation.
+
+---
+
+# Mini-carte et grande carte
+
+Une **mini-carte sera affichée dans l’angle supérieur droit de l’écran** pendant le gameplay. Elle devra représenter clairement la position et l’orientation du joueur au moyen d’un marqueur prioritaire et fortement contrasté, ainsi que la forme utile des murs et obstacles, les portes et passages, les monstres, les PNJ, les objectifs ou donneurs de quête, les hubs et points d’intérêt pertinents. Les cibles encore nécessaires à la quête suivie devront être distinguables sans masquer leur nature réelle. Les objets présents au sol disposeront également d’un marqueur et d’une couleur dédiée afin de rester repérables dans l’environnement rapide et chargé du jeu. Sur la grande carte, leur nom restera masqué et n’apparaîtra qu’au passage de la souris sur leur marqueur afin d’éviter les chevauchements lorsque plusieurs objets sont proches.
+
+Une **grande carte ouvrable au moyen d’une commande reconfigurable**, au clavier comme à la manette, permettra d’examiner plus confortablement la zone et les parties déjà découvertes. Elle utilisera les mêmes catégories de données que la mini-carte afin que les symboles et couleurs restent cohérents entre les deux présentations.
+
+La lisibilité devra reposer sur des formes autant que sur des couleurs. Une légende, des options d’affichage et des réglages d’accessibilité permettront ultérieurement de masquer certaines catégories ou d’adapter leur apparence. La carte ouverte ne mettra jamais la simulation en pause.
 
 ---
 
@@ -1914,6 +1975,8 @@ Le système de localisation devra couvrir notamment :
 Il faut tenir compte du fait que la longueur d’un texte peut fortement varier entre le français, l’anglais et de futures langues.
 
 Les interfaces devront donc éviter autant que possible les dimensions conçues uniquement pour une chaîne française précise.
+
+La traduction complète des contenus est volontairement différée tant que les textes, les quêtes et l’interface changent encore fréquemment. Le français reste la langue de production actuelle ; les systèmes de données et les futures interfaces doivent néanmoins continuer à séparer le contenu du code et à prévoir les variations de longueur afin que l’anglais puisse être ajouté proprement lorsque le contenu sera suffisamment stable.
 
 ---
 
@@ -2090,7 +2153,7 @@ Le multijoueur complexe, le crafting avancé, de nombreuses classes, des centain
 
 La priorité est de construire progressivement un **vertical slice jouable** permettant de tester :
 
-1. déplacement FPS, sprint et glissade ;
+1. déplacement FPS, double saut, sprint et glissade ;
 2. caméra ;
 3. corps du personnage visible en première personne, notamment les jambes et leur posture pendant la glissade ;
 4. sensations de tir ;
@@ -2119,8 +2182,8 @@ La priorité est de construire progressivement un **vertical slice jouable** per
 27. validation des objectifs ;
 28. récompenses de quête ;
 29. narration environnementale simple ;
-30. localisation français / anglais ;
-31. options vidéo et résolutions ;
+30. préparation de l’architecture de localisation, puis traduction français / anglais lorsque les textes seront suffisamment stables ;
+31. options vidéo et résolutions, avec prise en charge de la 4K et du format 32:9 sur les écrans compatibles ;
 32. première passe visuelle thématique et cohérente du HUD et des menus ;
 33. première ambiance sonore complète et musique dynamique ;
 34. petit niveau rétro-futuriste sombre complet ;
@@ -2152,7 +2215,7 @@ La direction artistique est :
 
 Le projet devra respecter les principes suivants :
 
-- gameplay FPS rapide avec sprint et glissade animée ;
+- gameplay FPS rapide avec double saut, sprint et glissade animée ;
 - armes à distance et armes de corps à corps dédiées ;
 - deux mains fonctionnelles avec armes à une main, armes à deux mains, combat à deux armes et boucliers protecteurs ;
 - builds de mêlée complets compatibles avec le loot, les statistiques et les affixes ;

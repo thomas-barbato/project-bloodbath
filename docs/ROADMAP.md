@@ -13,23 +13,24 @@ Cette feuille de route traduit la présentation du projet en petits jalons jouab
 ## 1. Sensations FPS
 
 - Arène grise de test.
-- Déplacement, saut, sprint, glissade et caméra.
+- Déplacement, saut, double saut, sprint, glissade et caméra.
+- Double saut configurable : le personnage dispose de deux impulsions au total, la seconde pouvant être utilisée en l’air. Le compteur se réinitialise seulement après un retour au sol afin de permettre un level design plus vertical sans autoriser des impulsions aériennes illimitées.
 - Première glissade fondée sur l'élan avec posture abaissée, volume physique adapté, transition adoucie et courte mémoire d’entrée permettant de l’enchaîner naturellement après un saut.
 - Jambes et posture visibles pendant la glissade en vue subjective, avec une représentation cohérente pour les autres joueurs.
 - Action de glissade dédiée et reconfigurable, distincte du sprint placé sur `Shift`. Aucun accroupissement permanent n’est prévu tant qu’une mécanique ou le level design ne le justifie.
-- Sensibilité de la souris réglable par le joueur et sauvegardée localement.
+- Sensibilité de la souris et vitesse de caméra à la manette réglables et sauvegardées localement, avec inversion verticale séparée.
 - Corps provisoire visible en première personne et représentation complète dans le monde.
 - Mannequin provisoire replacé et reproportionné sous la caméra afin que le corps et les pieds entrent naturellement dans le champ, sans apparition commandée par un seuil ; pose dédiée conservée pendant la glissade.
-- Détection de la disposition clavier, profils AZERTY/QWERTY et reconfiguration des commandes.
-- Profils clavier/souris et manette séparés, persistants et adaptés au dernier périphérique utilisé.
+- Détection automatique de la disposition clavier avec profil AZERTY ou QWERTY correspondant, choix manuel possible et reconfiguration interactive des commandes par catégories. Le menu sépare visuellement les options générales des raccourcis.
+- Profils clavier/souris et manette séparés et persistants. La manette peut être entièrement désactivée afin d’ignorer ses entrées et de verrouiller les futures indications sur le clavier et la souris. La détection des conflits, les pictogrammes propres à chaque modèle de manette et l’adaptation au dernier périphérique utilisé lorsque la manette est active restent à compléter.
 - Validation manette/clavier-souris et premières mesures de performance.
 
 ## 2. Combat fondamental
 
 - Première arme hitscan, munitions, cadence, recul et impacts.
 - Première arme de mêlée avec portée, arc d’attaque, impact et réaction propres.
-- Modèle main principale / main secondaire avec arme à une main, arme à deux mains et premier bouclier fonctionnel.
-- Premier essai du tir à deux armes : attaque principale simple et attaque simultanée des deux armes via l’action secondaire reconfigurable.
+- Modèle main droite / main gauche avec arme à une main, arme à deux mains et premier bouclier fonctionnel. Les actions d’entrée sont déjà séparées : clic gauche ou gâchette droite pour la main droite, clic droit ou gâchette gauche pour la main gauche.
+- Premier essai du tir à deux armes : actionner les deux commandes permet aux deux armes de tirer ensemble lorsque leur état le permet ; la commande gauche deviendra une protection lorsqu’un bouclier y est équipé.
 - Cible d'entraînement puis premier ennemi mobile.
 - Premier profil de comportement ennemi configurable : détection, poursuite, territoire et retour au point d’origine.
 - Deuxième archétype prototype maintenant sa distance et utilisant un projectile esquivable.
@@ -54,9 +55,9 @@ Cette feuille de route traduit la présentation du projet en petits jalons jouab
 
 - Première progression de personnage : niveau et expérience visibles dans le HUD de prototype, courbe et plafond configurables, excédent conservé entre plusieurs montées de niveau et récompenses distinctes par profil d’ennemi.
 - Animation future de montée de niveau englobant le personnage et message dédié ; sa production visuelle est différée, mais son déclenchement restera branché sur l’événement de progression.
-- Premières statistiques : Force, Agilité, Intelligence, Esprit et Constitution, initialisées à 10 dans le prototype, avec 5 points configurables gagnés par niveau et prérequis d’équipement fonctionnels. L’interface de répartition reste à produire.
+- Premières statistiques : Force, Agilité, Intelligence, Esprit et Constitution, initialisées à 10 dans le prototype, avec 5 points configurables gagnés par niveau, prérequis d’équipement fonctionnels et répartition accessible depuis le dossier de personnage.
 - Fondation des statistiques secondaires : valeurs et limites configurables, modificateurs plats ou proportionnels regroupés par source et retrait exact d’un équipement, passif, buff, potion ou effet expiré. « Dégâts infligés » est la première valeur branchée via l’implant corrompu ; les formules dérivées restent à équilibrer.
-- Première classe et effets dérivés des statistiques.
+- Première classe et effets dérivés des statistiques, uniquement après validation des fondations de combat et de build ; les rôles de classes ainsi que leurs arbres respectifs de compétences actives et passives restent volontairement à définir plus tard.
 - Première compétence active réactive : une onde de rupture prototype en cône, consommant la ressource de compétence et possédant son propre temps de recharge.
 - Première compétence passive : « Moisson sanglante » restitue de l’énergie lors d’une élimination attribuée au joueur et transforme ainsi la compétence active en boucle de combat renouvelable.
 - Première barre de compétences fonctionnelle, sans figer encore son UX finale.
@@ -64,24 +65,32 @@ Cette feuille de route traduit la présentation du projet en petits jalons jouab
 - Premier ramassage hybride : ressources automatiques, objets importants manuels, surplus laissé au sol lorsque la capacité d’inventaire est atteinte, identification au réticule et notification du nom en haut de l’écran.
 - Premiers profils de butin ennemi : munitions pour le poursuivant et objet manuel pour le tireur, avec probabilités et quantités configurables indépendamment de leur IA.
 - Approvisionnement régulier en munitions par les zones, les ennemis appropriés puis les futurs magasins, sans rareté artificielle des consommables ordinaires.
-- Première fondation d’équipement : l’implant corrompu peut circuler entre l’inventaire et l’emplacement `Implant` et applique un bonus de dégâts de prototype vérifiable. L’écran d’inventaire et l’action joueur permettant de l’équiper seront construits lors de la passe UX dédiée.
-- Premier effet d'arme transformant le gameplay et première synergie.
-- Équipement visible sur le corps du personnage.
+- Première fondation d’équipement : l’implant corrompu peut circuler entre l’inventaire et l’emplacement `Implant`, applique un bonus de dégâts de prototype vérifiable et peut être équipé ou retiré depuis le dossier de personnage. La passe UX finale remplacera cette présentation de test sans déplacer les règles d’équipement dans l’interface.
+- Premier effet d'arme transformant le gameplay et première synergie : le fusil accumule jusqu’à trois charges de rupture temporaires sur une cible et l’Onde de rupture les consume pour amplifier sa détonation. Les valeurs et l’identité de l’effet restent configurées par données.
+- Première présentation d’équipement visible sur le corps : l’implant corrompu active un module provisoire fixé au torse lorsqu’il est équipé et le retire visuellement lorsqu’il quitte l’emplacement. Les associations entre identifiants d’objets, emplacements et futurs modèles restent indépendantes des règles d’inventaire.
 
 ## 5. Boucle narrative et quêtes
 
-- Première quête principale courte et une quête secondaire.
-- Objectifs data-driven alimentés par les événements de gameplay.
-- Récompenses, suivi, validation et enchaînement de quêtes.
-- PNJ ou terminal concis, lore facultatif et narration environnementale.
+- Première quête principale courte : « Nettoyage préventif » se reçoit et se rend auprès d’un terminal de hub, demande d’éliminer les deux hostiles du laboratoire et accorde une récompense d’expérience unique.
+- Première quête secondaire courte et facultative : « Prélèvement à risque » peut être acceptée en parallèle dès le début auprès d’une technicienne de quarantaine provisoire, demande de récupérer un échantillon contaminé précis puis de le lui rendre contre une récompense d’expérience provisoire.
+- Objectifs data-driven alimentés par un flux générique d’événements de gameplay. Les ponts actuels transforment les morts attribuées au personnage local et les objets réellement ajoutés à son inventaire en événements identifiés, sans faire connaître le journal de quêtes aux ennemis, au combat ou au loot.
+- Journal sérialisable, états `NotStarted`, `Active`, `ReadyToTurnIn` et `Completed`, suivi HUD, validation auprès du donneur et protection contre une récompense obtenue plusieurs fois.
+- Journal de quêtes ouvrable avec `J` ou Select dans le prototype : liste simultanée des missions acceptées et terminées, catégorie, état, texte de présentation permanent, progression détaillée des objectifs et récompense. Le joueur peut choisir avec Entrée ou A laquelle est suivie sur le HUD. Le texte est lu depuis la même définition statique que le dialogue afin d’éviter les divergences. Le journal partage la gestion des écrans avec l’inventaire, la carte et les dialogues, sans interrompre la simulation.
+- Chaînage data-driven par prérequis : une quête peut exiger que toutes ou au moins une des quêtes indiquées soient terminées. La validation d’un chapitre rend ainsi la suite disponible, mais ne l’accepte et ne la démarre jamais automatiquement.
+- Première interaction générique de donneur de quête, déclinée à la fois sur le terminal de la quête principale et sur le PNJ provisoire de la quête secondaire. Une seule page rassemble le contexte narratif, les objectifs, leur progression et la récompense ; la même action d’interaction permet d’ouvrir puis d’accepter ou valider la quête. Le choix entre PNJ et terminal appartiendra au level design de chaque quête. Bulles, portraits, panneaux ou communications radio pourront ensuite remplacer ce rendu sans modifier la définition ni la progression de la quête.
+- Première narration environnementale indépendante des quêtes : un terminal du laboratoire permet de consulter avec `E` ou X un rapport de quarantaine court et entièrement provisoire. Son contenu est porté par une définition de données réutilisable pour de futurs terminaux, notes, enregistrements ou objets examinables. La lecture neutralise seulement les commandes du joueur local et peut être refermée avec la même action.
+- L’ouverture du dialogue neutralise uniquement les commandes locales et ne modifie jamais `Time.timeScale`.
 - Progression de quête indépendante des futures implémentations de persistance solo et multijoueur.
+- Première cartographie fonctionnelle : mini-carte dans l’angle supérieur droit et grande carte ouvrable avec `M` ou la croix directionnelle haute. Le laboratoire représente déjà le joueur par un marqueur directionnel jaune fortement contrasté, ainsi que les murs principaux, les ennemis vivants, le terminal de quête, le premier PNJ et les objets au sol avec des couleurs distinctes. Les cibles encore nécessaires à la quête suivie reçoivent un contour orange sur les deux cartes. Le nom d’un objet au sol reste masqué sur la grande carte jusqu’au survol de son marqueur afin de préserver la lisibilité. Les catégories portes, hubs et points d’intérêt restent préparées pour les prochains contenus.
 - Carte ou transitions permettant de revisiter librement les zones déjà débloquées.
 
 ## 6. Vertical slice
 
 - Petit niveau rétrofuturiste sombre avec un début, une montée en tension et une fin.
 - Premier démon, mini-boss ou boss.
-- Français source, anglais, options vidéo et interface de 1080p à 4K.
+- Français source et architecture préparée pour l’anglais ; la traduction complète est différée jusqu’à la stabilisation des textes afin d’éviter de maintenir prématurément du contenu encore provisoire.
+- Premier menu d’affichage fonctionnel ouvrable avec `Échap` ou la croix directionnelle basse : plein écran exclusif, plein écran fenêtré, fenêtré, résolutions et fréquences disponibles — dont le 3840×2160 et les formats 32:9 sur un écran compatible —, VSync, FOV de 60° à 120°, taille, couleur et forme du réticule. Les formes initiales sont la croix droite `+`, le point, la croix en X, le cercle et le chevron `^`. Les modifications sont explicitement appliquées ou annulées, sauvegardées localement après validation et ne mettent jamais le monde en pause. La mise à l’échelle du menu est prévue de 1080p à 4K ainsi qu’en 3840×1080 et 5120×1440 sans étirement horizontal.
+- `Échap` ouvre désormais un menu système parent avec Reprendre, Sauvegarder et quitter, Vidéo, Son et Contrôle. Vidéo et Contrôle ouvrent leurs sous-menus fonctionnels ; Son reste préparé pour la future passe audio. Les sous-menus partagent la même coordination d’interface et le monde n’est pas mis en pause, y compris en solo, afin de conserver les règles du multijoueur.
 - Première passe d’interface particulièrement soignée et visuellement intégrée à l’univers.
 - Ambiance sonore cohérente et première musique dynamique entre exploration, tension et combat.
 - Boucle complète : combat, loot, équipement, quête, récompense et nouveau combat.

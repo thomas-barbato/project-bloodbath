@@ -25,6 +25,9 @@ namespace ProjectBloodbath.Combat
         [SerializeField, Min(0f)] private float impactForce = 18f;
         [SerializeField] private DamageType damageType = DamageType.Ballistic;
 
+        [Header("Effet spécial")]
+        [SerializeField] private WeaponMarkEffectSettings appliedMarkEffect;
+
         [Header("Recul")]
         [SerializeField, Min(0f)] private float pitchRecoil = 0.85f;
         [SerializeField, Min(0f)] private float yawRecoil = 0.3f;
@@ -42,6 +45,7 @@ namespace ProjectBloodbath.Combat
         public float ReloadDuration => reloadDuration;
         public float ImpactForce => impactForce;
         public DamageType DamageType => damageType;
+        public WeaponMarkEffectSettings AppliedMarkEffect => appliedMarkEffect;
         public float PitchRecoil => pitchRecoil;
         public float YawRecoil => yawRecoil;
         public float VisualKick => visualKick;
@@ -51,6 +55,11 @@ namespace ProjectBloodbath.Combat
             InventoryResourceDefinition resourceDefinition)
         {
             ammunitionType = resourceDefinition;
+        }
+
+        public void SetAppliedMarkEffect(WeaponMarkEffectSettings effect)
+        {
+            appliedMarkEffect = effect;
         }
 
         private void OnValidate()

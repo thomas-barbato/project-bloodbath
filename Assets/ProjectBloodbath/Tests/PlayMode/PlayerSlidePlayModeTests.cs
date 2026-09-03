@@ -15,6 +15,7 @@ namespace ProjectBloodbath.Tests.PlayMode
             "Assets/Scenes/Prototype/MovementLab.unity";
 
         private Keyboard keyboard;
+        private bool ownsKeyboard;
         private FpsPlayerController playerController;
         private CharacterController characterController;
         private FirstPersonBodyPresentation bodyPresentation;
@@ -55,6 +56,7 @@ namespace ProjectBloodbath.Tests.PlayMode
             standingHeight = characterController.height;
             standingCameraHeight = cameraPivot.localPosition.y;
             keyboard = InputSystem.AddDevice<Keyboard>();
+            ownsKeyboard = true;
 
             for (int frame = 0; frame < 5; frame++)
             {
@@ -113,6 +115,11 @@ namespace ProjectBloodbath.Tests.PlayMode
         public IEnumerator TearDown()
         {
             if (keyboard != null && keyboard.added)
+            {
+                SetKeys();
+            }
+
+            if (ownsKeyboard && keyboard != null && keyboard.added)
             {
                 InputSystem.RemoveDevice(keyboard);
             }
@@ -235,7 +242,6 @@ namespace ProjectBloodbath.Tests.PlayMode
         private void SetKeys(params Key[] keys)
         {
             InputSystem.QueueStateEvent(keyboard, new KeyboardState(keys));
-            InputSystem.Update();
         }
     }
 }

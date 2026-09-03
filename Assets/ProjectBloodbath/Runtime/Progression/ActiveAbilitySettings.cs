@@ -23,6 +23,9 @@ namespace ProjectBloodbath.Progression
         [SerializeField, Min(1)] private int maximumTargets = 8;
         [SerializeField] private DamageType damageType = DamageType.Extradimensional;
 
+        [Header("Synergie")]
+        [SerializeField] private WeaponMarkEffectSettings consumedMarkEffect;
+
         public string DisplayName => displayName;
         public float ResourceCost => resourceCost;
         public float CooldownDuration => cooldownDuration;
@@ -32,6 +35,12 @@ namespace ProjectBloodbath.Progression
         public float ImpactForce => impactForce;
         public int MaximumTargets => maximumTargets;
         public DamageType DamageType => damageType;
+        public WeaponMarkEffectSettings ConsumedMarkEffect => consumedMarkEffect;
+
+        public void SetConsumedMarkEffect(WeaponMarkEffectSettings effect)
+        {
+            consumedMarkEffect = effect;
+        }
 
         private void OnValidate()
         {

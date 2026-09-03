@@ -162,8 +162,21 @@ namespace ProjectBloodbath.Combat
                     settings.ImpactForce,
                     gameObject);
 
-                IDamageable damageable = hit.collider.GetComponentInParent<IDamageable>();
+                IDamageable damageable =
+                    hit.collider.GetComponentInParent<IDamageable>();
+                Health targetHealth = hit.collider.GetComponentInParent<Health>();
+                float previousHealth = targetHealth?.Current ?? 0f;
                 damageable?.ApplyDamage(damage);
+
+                if (
+                    targetHealth != null &&
+                    targetHealth.IsAlive &&
+                    targetHealth.Current < previousHealth &&
+                    settings.AppliedMarkEffect != null)
+                {
+                    WeaponMarkState.GetOrAdd(targetHealth).ApplyMark(
+                        settings.AppliedMarkEffect);
+                }
 
                 if (hit.rigidbody != null && !hit.rigidbody.isKinematic)
                 {

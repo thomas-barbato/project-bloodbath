@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: addb007b452845742aee57d36a78a0c5, type: 3}
+  m_Name: MovementLabPurge
+  m_EditorClassIdentifier: ProjectBloodbath.Runtime::ProjectBloodbath.Quests.QuestDefinition
+  identifier: movement_lab_purge
+  displayName: "Nettoyage pr\xE9ventif"
+  category: 0
+  openingDialogue: "Les capteurs ont rep\xE9r\xE9 deux signatures hostiles dans le
+    laboratoire. \xC9liminez-les avant qu'elles n'atteignent le hub."
+  activeDialogue: Deux signatures. Pas davantage. Revenez lorsque le secteur sera
+    silencieux.
+  readyDialogue: "Le secteur est silencieux. Les relev\xE9s confirment leur \xE9limination."
+  completedDialogue: "Transmission archiv\xE9e. Le passage reste sous surveillance."
+  objectives:
+  - eventIdentifier: enemy_killed
+    targetIdentifier: movement_lab_hostile
+    description: "\xC9liminer les hostiles du laboratoire"
+    requiredAmount: 2
+  experienceReward: 60

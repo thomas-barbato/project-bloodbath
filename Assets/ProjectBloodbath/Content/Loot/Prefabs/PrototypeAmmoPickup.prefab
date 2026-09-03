@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 8938486197599779295}
   - component: {fileID: 1377974005539275877}
   - component: {fileID: 450998087484072200}
+  - component: {fileID: 4137670404418429132}
   m_Layer: 0
   m_Name: PrototypeAmmoPickup
   m_TagString: Untagged
@@ -155,3 +156,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: ProjectBloodbath.Runtime::ProjectBloodbath.Progression.WorldPickup
   definition: {fileID: 11400000, guid: ac48428cbb7ead946973aac5f580c7d8, type: 2}
   remainingQuantity: 12
+--- !u!114 &4137670404418429132
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8329827401357337590}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5631e5f117891474184a4ba451be2ab9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: ProjectBloodbath.Runtime::ProjectBloodbath.World.WorldMapMarker
+  markerType: 5
+  displayName: Munitions balistiques
+  showOnMiniMap: 1
+  showOnWorldMap: 1
+  color: {r: 0.1, g: 0.82, b: 0.78, a: 1}
