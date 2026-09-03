@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2476cb3478fd21b4f97c655dc73811a9, type: 3}
-  m_Name: ContaminatedSamplePickup
+  m_Name: PrototypeMeleeItem
   m_EditorClassIdentifier: ProjectBloodbath.Runtime::ProjectBloodbath.Progression.WorldPickupDefinition
-  identifier: contaminated_sample
-  displayName: "\xC9chantillon contamin\xE9"
+  identifier: prototype_melee_item
+  displayName: Lame prototype
   kind: 1
   pickupMode: 1
   resource: {fileID: 0}
-  equipment: {fileID: 0}
-  inventoryCategory: 4
-  prototypeColor: {r: 0.18, g: 0.78, b: 0.42, a: 1}
+  equipment: {fileID: 11400000, guid: 139968282eda10a439fdc872ab37ef7c, type: 2}
+  inventoryCategory: 1
+  prototypeColor: {r: 0.72, g: 0.18, b: 0.05, a: 1}

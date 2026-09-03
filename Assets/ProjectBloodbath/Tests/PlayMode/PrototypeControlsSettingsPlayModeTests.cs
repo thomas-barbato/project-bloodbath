@@ -183,6 +183,36 @@ namespace ProjectBloodbath.Tests.PlayMode
         }
 
         [Test]
+        public void HandSetSwapUsesARebindableDedicatedAction()
+        {
+            InputAction swap = settings.InputActions.FindAction(
+                "Player/SwapHandSet",
+                true);
+
+            Assert.That(
+                swap.bindings.Any(binding =>
+                    binding.path == "<Keyboard>/z" &&
+                    binding.groups.Contains("Keyboard&Mouse")),
+                Is.True,
+                "La touche physique Z correspond à W sur un clavier AZERTY.");
+            Assert.That(
+                swap.bindings.Any(binding =>
+                    binding.path == "<Gamepad>/rightShoulder" &&
+                    binding.groups.Contains("Gamepad")),
+                Is.True);
+            Assert.That(
+                settings.InputActions.FindAction(
+                    "Player/SelectRanged",
+                    false),
+                Is.Null);
+            Assert.That(
+                settings.InputActions.FindAction(
+                    "Player/SelectMelee",
+                    false),
+                Is.Null);
+        }
+
+        [Test]
         public void GamepadCanBeDisabledWithoutDisablingKeyboardAndMouse()
         {
             settings.BeginEditing();

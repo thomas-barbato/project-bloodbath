@@ -18,4 +18,5 @@ MonoBehaviour:
   pickupMode: 1
   resource: {fileID: 0}
   equipment: {fileID: 11400000, guid: 8f01cbfabe17bf9479a5aeb7b165e379, type: 2}
+  inventoryCategory: 3
   prototypeColor: {r: 0.5, g: 0.12, b: 0.68, a: 1}

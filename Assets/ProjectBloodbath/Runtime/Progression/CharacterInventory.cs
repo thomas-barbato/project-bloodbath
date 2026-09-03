@@ -4,9 +4,19 @@ using UnityEngine;
 
 namespace ProjectBloodbath.Progression
 {
+    public enum InventorySortMode
+    {
+        Name,
+        Type
+    }
+
     [DisallowMultipleComponent]
     public sealed class CharacterInventory : MonoBehaviour
     {
+        public const int PageCount = 4;
+        public const int SlotsPerPage = 30;
+        public const int MaximumItemCapacity = PageCount * SlotsPerPage;
+
         private readonly Dictionary<InventoryResourceDefinition, int>
             resourceQuantities = new();
         private readonly List<WorldPickupDefinition> items = new();
@@ -97,7 +107,10 @@ namespace ProjectBloodbath.Progression
 
         public bool AddItem(WorldPickupDefinition item)
         {
-            if (item == null || item.Kind != WorldPickupKind.Item)
+            if (
+                item == null ||
+                item.Kind != WorldPickupKind.Item ||
+                items.Count >= MaximumItemCapacity)
             {
                 return false;
             }
@@ -114,6 +127,41 @@ namespace ProjectBloodbath.Progression
         public bool ContainsItem(WorldPickupDefinition item)
         {
             return item != null && items.Contains(item);
+        }
+
+        public void SortItems(InventorySortMode sortMode)
+        {
+            items.Sort((left, right) =>
+            {
+                if (ReferenceEquals(left, right))
+                {
+                    return 0;
+                }
+
+                if (left == null)
+                {
+                    return 1;
+                }
+
+                if (right == null)
+                {
+                    return -1;
+                }
+
+                int comparison = sortMode == InventorySortMode.Type
+                    ? left.InventoryCategory.CompareTo(
+                        right.InventoryCategory)
+                    : string.Compare(
+                        left.DisplayName,
+                        right.DisplayName,
+                        StringComparison.CurrentCultureIgnoreCase);
+                return comparison != 0
+                    ? comparison
+                    : string.Compare(
+                        left.DisplayName,
+                        right.DisplayName,
+                        StringComparison.CurrentCultureIgnoreCase);
+            });
         }
 
         public void NotifyPickupCollected(

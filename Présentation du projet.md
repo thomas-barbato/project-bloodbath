@@ -497,7 +497,9 @@ Des statistiques secondaires seront calculées et modifiées à partir de plusie
 
 Chaque modificateur devra conserver l’identité de sa source. Déséquiper un objet, perdre un buff ou laisser expirer l’effet d’une potion retirera donc uniquement les valeurs accordées par cette source, sans modifier les autres bonus actifs. Les formules, limites, cumuls et rendements décroissants seront définis pendant l’équilibrage plutôt que figés dès le prototype.
 
-Un dossier de personnage regroupera les statistiques principales et secondaires, les points disponibles, l’inventaire équipable et les emplacements portés. Il devra être utilisable à la souris, au clavier et à la manette avec des commandes reconfigurables. Le panneau actuellement présent dans le laboratoire permet déjà de répartir les points et d’équiper ou retirer un objet ; son apparence demeure une présentation de prototype destinée à être remplacée par l’interface finale thématisée.
+Un dossier de personnage regroupera les statistiques principales et secondaires, les points disponibles, l’inventaire équipable et les emplacements portés. Il devra être utilisable à la souris, au clavier et à la manette avec des commandes reconfigurables. Son titre reprendra le nom choisi lors de la création du personnage. Sa composition de référence emploiera trois colonnes : le niveau, la classe et toutes les statistiques à gauche ; une silhouette humaine asexuée montrant muscles et tendons avec des emplacements d’équipement entièrement bordés au centre ; et un inventaire élargi à droite. Aucun aperçu séparé du modèle réel du personnage ne sera affiché. Les statistiques devront réagir immédiatement aux changements d’équipement et signaler brièvement les valeurs modifiées. Les boutons d’ajout d’attribut ne seront visibles que lorsque des points restent disponibles. Toute nouvelle répartition restera provisoire, avec ses valeurs affichées en bleu, jusqu’à l’utilisation du bouton **Sauvegarder** ; le bouton **Annuler** supprimera uniquement cette répartition en attente et rendra les points concernés. Ces deux boutons de décision disparaîtront dès qu’aucune répartition ne reste en attente. Tant que les classes ne sont pas définies, une identité et une classe de prototype servent uniquement à valider cette présentation.
+
+L’inventaire comportera quatre pages de trente cellules. Des boutons fermés permettront de filtrer tous les objets, les armes, les armures, les implants ou les objets de quête, puis de ranger l’ensemble par nom ou par type. Une recherche par nom s’activera à partir de trois caractères consécutifs, sans tenir compte des majuscules ni des accents, et se combinera avec le filtre actif. Avec moins de trois caractères, elle ne masquera aucun objet. Le détail d’un objet sera présenté directement par son infobulle au survol ou au focus ; aucun panneau de « sélection d’objet » séparé ne réduira la grille.
 
 ---
 
@@ -541,6 +543,10 @@ Les objets équipables dans les mains devront indiquer clairement s’ils sont :
 - réservés à la main secondaire, comme certains boucliers.
 
 Une arme à deux mains occupera les deux emplacements. Une arme à une main pourra, selon les compatibilités définies par ses données, être associée à une seconde arme à une main ou à un bouclier.
+
+Les armes ne seront jamais équipées directement au moyen de touches numérotées ou d’un raccourci choisissant un type d’arme. Elles seront placées dans les mains depuis l’inventaire et resteront équipées jusqu’à ce que le joueur modifie lui-même son équipement.
+
+Le personnage pourra préparer deux **ensembles de mains** distincts dans son inventaire, chacun possédant ses propres emplacements droit et gauche. La silhouette centrale n’affichera que l’ensemble actuellement actif, avec les deux armes placées sous les mains correspondantes. Un petit bouton permettra de permuter réellement les ensembles et produira exactement le même résultat que le raccourci dédié. Une commande reconfigurable permettra également cette permutation, à la manière de *Diablo II*. Sa valeur proposée sera `W` sur clavier AZERTY et une touche libre équivalente sur QWERTY afin de ne pas entrer en conflit avec le déplacement ; elle pourra également être attribuée à la manette. Cette permutation ne créera, ne déplacera et n’équipera aucun objet qui n’aurait pas déjà été placé dans l’ensemble concerné.
 
 Chaque arme devra normalement posséder :
 
@@ -1272,7 +1278,7 @@ Certains objets pourront provenir :
 
 Le système doit être **data-driven et modulaire**.
 
-Un objet équipable conservera une définition distincte de sa représentation au sol. Cette définition précisera notamment son emplacement, ses modificateurs et, plus tard, ses prérequis et effets spéciaux. Équiper un objet le retirera de l’inventaire ; le remplacer ou le retirer rendra l’ancien objet à l’inventaire, sous réserve des futures règles de capacité. Le premier prototype utilise un emplacement d’implant et un bonus simple de dégâts uniquement afin de valider cette circulation et l’application réelle d’une statistique, sans figer l’équilibrage final.
+Un objet équipable conservera une définition distincte de sa représentation au sol. Cette définition précisera notamment son emplacement, ses modificateurs et, plus tard, ses prérequis et effets spéciaux. Équiper un objet le retirera de l’inventaire ; le remplacer ou le retirer rendra l’ancien objet à l’inventaire, sous réserve des futures règles de capacité. Les accessoires médiévaux classiques comme les bagues et amulettes sont remplacés par trois emplacements d’implant interchangeables, répartis autour de la silhouette. Le premier prototype utilise un implant corrompu et un bonus simple de dégâts uniquement afin de valider cette circulation et l’application réelle d’une statistique, sans figer l’équilibrage final.
 
 L’équipement porté devra également modifier la représentation du personnage. Une couche de présentation distincte associera les identifiants et emplacements d’équipement à des éléments visuels remplaçables, sans placer de règle d’inventaire ou de statistique dans le modèle. Elle devra respecter l’approche hybride inspirée de *Boltgun* et permettre des variantes en sprites billboard comme en géométrie 3D low-poly selon le besoin. Le premier prototype affichera ainsi un simple module géométrique provisoire sur le torse lorsque l’implant corrompu est équipé, puis le masquera lorsqu’il est retiré ; ce mannequin et ce module ne constituent pas la direction artistique finale.
 
@@ -1807,6 +1813,10 @@ Sa direction graphique devra traduire les éléments fondamentaux du jeu :
 - influences biologiques, démoniaques et extradimensionnelles ;
 - rendu rétro maîtrisé sans sacrifier la lisibilité moderne.
 
+La palette générale de l’interface ne devra pas être construite autour du rouge, même si le titre de travail et certains thèmes du jeu peuvent naturellement y faire penser. Une dominante rouge permanente serait fatigante et rendrait moins efficaces les véritables signaux de danger. Le rouge devra donc rester une couleur ponctuelle réservée notamment aux blessures, alertes critiques, erreurs ou menaces immédiates.
+
+La direction privilégiée s’inspirera plutôt de vieux écrans médicaux, militaires ou industriels : tons pastel pâles et désaturés, ivoire vieilli, vert d’eau, sauge, cyan délavé et bleu-gris sur des surfaces sombres et neutres. Un tramage léger, des contours pixellisés, une phosphorescence discrète ou des lignes de balayage pourront évoquer un affichage ancien sans nuire au confort. Ces effets ne devront jamais imposer un fond coloré aux illustrations : les silhouettes, icônes et schémas destinés aux fenêtres devront pouvoir conserver une transparence réelle afin de rester compatibles avec leurs futurs habillages.
+
 L’interface devra adopter une approche **hybride entre FPS et ARPG** :
 
 - suffisamment discrète pour préserver l’immersion et la visibilité pendant les combats ;
@@ -1825,6 +1835,8 @@ Le HUD de combat devra pouvoir communiquer notamment :
 - alertes critiques sans masquer inutilement l’action.
 
 L’information devra être hiérarchisée. Les éléments secondaires ne devront apparaître que lorsqu’ils sont utiles afin d’éviter de surcharger constamment l’écran. Lorsqu’un menu est ouvert, les indications contextuelles du monde, comme le nom et l’action d’un objet ciblé au sol, devront être masquées et ne jamais se superposer à ce menu.
+
+Les statistiques, les objets et chaque emplacement porté disposeront d’une infobulle informative. À la souris, elle apparaîtra au survol ; au clavier ou à la manette, elle suivra l’élément possédant explicitement le focus. Les titres et textes ordinaires ne devront pas recevoir d’état de survol inutile. Une infobulle devra rester dans les limites de l’écran, décrire la fonction de l’élément, ses compatibilités ou ses effets, et expliquer précisément une impossibilité d’équipement lorsque celle-ci existe. Dans toutes les fenêtres, une action visible prendra la forme d’un véritable bouton fermé et cliquable. Le pointeur adoptera une apparence spécifique uniquement lorsqu’il survole une action réellement disponible ; une information non cliquable conservera le pointeur normal et aucun faux effet de survol. Les mêmes actions resteront accessibles par leurs liaisons clavier ou manette reconfigurables, sans écrire ces raccourcis sur les boutons.
 
 L’ouverture d’un inventaire, du dossier de personnage ou de tout autre menu ne mettra jamais la simulation en pause : les ennemis, projectiles, événements et autres joueurs continueront d’évoluer normalement. Seules les commandes de gameplay du joueur local seront suspendues au profit des commandes d’interface, ce qui maintiendra un comportement cohérent entre le solo et le multijoueur.
 
@@ -1863,6 +1875,8 @@ Le joueur devra progressivement pouvoir configurer :
 - l’intensité de certains effets visuels susceptibles de gêner la lecture.
 
 Les premières interfaces du prototype pourront rester fonctionnelles et utiliser des éléments temporaires. Elles devront néanmoins respecter très tôt une première grammaire visuelle commune afin que la version finale ne soit pas construite sur une accumulation d’écrans incohérents.
+
+Tous les menus et éléments d’UX créés pendant cette phase doivent être considérés comme des présentations fonctionnelles provisoires. Leur apparence, leurs animations, leur navigation et leur mise en scène feront l’objet d’une passe complète afin de correspondre à l’ambiance grimdark rétro-futuriste et aux références visuelles issues notamment de *Blood* et *Boltgun*.
 
 La réalisation de l’interface définitive devra passer par des maquettes, des tests en situation réelle et plusieurs itérations visuelles. Sa beauté ne devra jamais se faire au détriment de sa rapidité, de sa lisibilité ou de son confort d’utilisation.
 

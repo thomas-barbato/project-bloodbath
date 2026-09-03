@@ -35,12 +35,21 @@ namespace ProjectBloodbath.Progression
         [SerializeField] private List<CharacterStatValue> statistics = new();
 
         private CharacterProgression boundProgression;
+        private readonly Dictionary<CharacterStatDefinition, int>
+            pendingAttributeIncreases = new();
+        private int pendingAttributePointCount;
 
         public event Action<int> AttributePointsChanged;
         public event Action<CharacterStatDefinition, int> StatChanged;
+        public event Action PendingAttributeChangesChanged;
 
         public IReadOnlyList<CharacterStatValue> Statistics => statistics;
-        public int UnspentAttributePoints => unspentAttributePoints;
+        public int UnspentAttributePoints => Mathf.Max(
+            0,
+            unspentAttributePoints - pendingAttributePointCount);
+        public int PendingAttributePointCount => pendingAttributePointCount;
+        public bool HasPendingAttributeChanges =>
+            pendingAttributePointCount > 0;
 
         public void Configure(
             CharacterProgression characterProgression,
@@ -50,6 +59,8 @@ namespace ProjectBloodbath.Progression
         {
             progression = characterProgression;
             unspentAttributePoints = Mathf.Max(0, availablePoints);
+            pendingAttributeIncreases.Clear();
+            pendingAttributePointCount = 0;
             statistics.Clear();
             if (definitions != null)
             {
@@ -73,7 +84,20 @@ namespace ProjectBloodbath.Progression
         public int GetValue(CharacterStatDefinition definition)
         {
             CharacterStatValue value = FindValue(definition);
-            return value?.BaseValue ?? 0;
+            return value == null
+                ? 0
+                : value.BaseValue + GetPendingIncrease(definition);
+        }
+
+        public int GetPendingIncrease(CharacterStatDefinition definition)
+        {
+            return
+                definition != null &&
+                pendingAttributeIncreases.TryGetValue(
+                    definition,
+                    out int increase)
+                    ? increase
+                    : 0;
         }
 
         public bool TrySpendAttributePoints(
@@ -84,15 +108,70 @@ namespace ProjectBloodbath.Progression
             if (
                 value == null ||
                 amount <= 0 ||
-                unspentAttributePoints < amount)
+                UnspentAttributePoints < amount)
             {
                 return false;
             }
 
-            unspentAttributePoints -= amount;
-            value.Increase(amount);
-            StatChanged?.Invoke(definition, value.BaseValue);
-            AttributePointsChanged?.Invoke(unspentAttributePoints);
+            pendingAttributeIncreases.TryGetValue(
+                definition,
+                out int currentIncrease);
+            pendingAttributeIncreases[definition] =
+                currentIncrease + amount;
+            pendingAttributePointCount += amount;
+            StatChanged?.Invoke(definition, GetValue(definition));
+            AttributePointsChanged?.Invoke(UnspentAttributePoints);
+            PendingAttributeChangesChanged?.Invoke();
+            return true;
+        }
+
+        public bool CommitPendingAttributePoints()
+        {
+            if (!HasPendingAttributeChanges)
+            {
+                return false;
+            }
+
+            foreach (KeyValuePair<CharacterStatDefinition, int> pending in
+                pendingAttributeIncreases)
+            {
+                CharacterStatValue value = FindValue(pending.Key);
+                if (value == null)
+                {
+                    continue;
+                }
+
+                value.Increase(pending.Value);
+            }
+
+            unspentAttributePoints = Mathf.Max(
+                0,
+                unspentAttributePoints - pendingAttributePointCount);
+            pendingAttributeIncreases.Clear();
+            pendingAttributePointCount = 0;
+            AttributePointsChanged?.Invoke(UnspentAttributePoints);
+            PendingAttributeChangesChanged?.Invoke();
+            return true;
+        }
+
+        public bool CancelPendingAttributePoints()
+        {
+            if (!HasPendingAttributeChanges)
+            {
+                return false;
+            }
+
+            List<CharacterStatDefinition> changedDefinitions = new(
+                pendingAttributeIncreases.Keys);
+            pendingAttributeIncreases.Clear();
+            pendingAttributePointCount = 0;
+            foreach (CharacterStatDefinition definition in changedDefinitions)
+            {
+                StatChanged?.Invoke(definition, GetValue(definition));
+            }
+
+            AttributePointsChanged?.Invoke(UnspentAttributePoints);
+            PendingAttributeChangesChanged?.Invoke();
             return true;
         }
 
@@ -147,7 +226,7 @@ namespace ProjectBloodbath.Progression
 
             unspentAttributePoints +=
                 progression.Settings.AttributePointsPerLevel;
-            AttributePointsChanged?.Invoke(unspentAttributePoints);
+            AttributePointsChanged?.Invoke(UnspentAttributePoints);
         }
 
         private CharacterStatValue FindValue(

@@ -106,6 +106,7 @@ namespace ProjectBloodbath.Prototype
                 inputReader?.SetGameplaySuppressed(false);
                 Cursor.lockState = CursorLockMode.Locked;
                 Cursor.visible = false;
+                PrototypeInterfaceCursor.Reset();
             }
 
             UpdateScreenColor();
@@ -177,6 +178,10 @@ namespace ProjectBloodbath.Prototype
                 return;
             }
 
+            if (EntryOpen)
+            {
+                PrototypeInterfaceCursor.BeginFrame();
+            }
             EnsureStyles();
             Matrix4x4 previousMatrix = GUI.matrix;
             Color previousColor = GUI.color;
@@ -201,6 +206,7 @@ namespace ProjectBloodbath.Prototype
             if (EntryOpen)
             {
                 DrawEntry(width, height);
+                PrototypeInterfaceCursor.EndFrame();
             }
 
             GUI.color = previousColor;
@@ -260,12 +266,19 @@ namespace ProjectBloodbath.Prototype
                 bodyStyle);
             GUI.EndScrollView();
 
-            GUI.Label(
-                new Rect(panel.x + 32f, panel.yMax - 68f,
-                    panel.width - 64f, 32f),
-                $"{ControlSettingsManager.FormatShortcut("E", "X")}  •  FERMER     " +
-                $"{ControlSettingsManager.FormatShortcut("ÉCHAP", "B")}  •  FERMER",
-                actionStyle);
+            Rect closeRect = new(
+                panel.center.x - 130f,
+                panel.yMax - 68f,
+                260f,
+                38f);
+            PrototypeInterfaceCursor.RegisterInteractive(closeRect);
+            if (GUI.Button(
+                closeRect,
+                "FERMER",
+                actionStyle))
+            {
+                CloseEntry();
+            }
         }
 
         private string BuildMetadataLabel()
@@ -362,9 +375,11 @@ namespace ProjectBloodbath.Prototype
                 richText = false,
                 normal = { textColor = new Color(0.91f, 0.84f, 0.73f, 1f) }
             };
-            actionStyle ??= new GUIStyle(metadataStyle)
+            actionStyle ??= new GUIStyle(GUI.skin.button)
             {
+                alignment = TextAnchor.MiddleCenter,
                 fontSize = 16,
+                fontStyle = FontStyle.Bold,
                 normal = { textColor = new Color(0.94f, 0.64f, 0.33f, 1f) }
             };
 
@@ -372,7 +387,6 @@ namespace ProjectBloodbath.Prototype
             RemoveHoverFeedback(titleStyle);
             RemoveHoverFeedback(metadataStyle);
             RemoveHoverFeedback(bodyStyle);
-            RemoveHoverFeedback(actionStyle);
         }
 
         private static void RemoveHoverFeedback(GUIStyle style)

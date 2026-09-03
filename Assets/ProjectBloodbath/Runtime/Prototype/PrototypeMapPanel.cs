@@ -179,7 +179,9 @@ namespace ProjectBloodbath.Prototype
 
             if (IsOpen)
             {
+                PrototypeInterfaceCursor.BeginFrame();
                 DrawLargeMap(width, height);
+                PrototypeInterfaceCursor.EndFrame();
             }
             else
             {
@@ -233,10 +235,19 @@ namespace ProjectBloodbath.Prototype
                 new Rect(panel.x + 30f, panel.y + 20f, 760f, 42f),
                 areaName,
                 titleStyle);
-            GUI.Label(
-                new Rect(panel.x + 840f, panel.y + 24f, 430f, 30f),
-                $"{ControlSettingsManager.FormatShortcut("M", "CROIX HAUT")}  •  FERMER",
-                labelStyle);
+            Rect closeRect = new(
+                panel.xMax - 70f,
+                panel.y + 18f,
+                40f,
+                40f);
+            PrototypeInterfaceCursor.RegisterInteractive(closeRect);
+            if (GUI.Button(
+                closeRect,
+                "×",
+                GUI.skin.button))
+            {
+                SetOpen(false);
+            }
 
             Rect content = new(
                 panel.x + 34f,
@@ -744,6 +755,10 @@ namespace ProjectBloodbath.Prototype
                 ? CursorLockMode.None
                 : CursorLockMode.Locked;
             Cursor.visible = open;
+            if (!open)
+            {
+                PrototypeInterfaceCursor.Reset();
+            }
         }
 
         private void EnsureStyles()

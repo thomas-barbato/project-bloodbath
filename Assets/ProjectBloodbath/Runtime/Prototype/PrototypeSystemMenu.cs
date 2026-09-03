@@ -225,6 +225,7 @@ namespace ProjectBloodbath.Prototype
                 return;
             }
 
+            PrototypeInterfaceCursor.BeginFrame();
             EnsureStyles();
             Matrix4x4 previousMatrix = GUI.matrix;
             Color previousColor = GUI.color;
@@ -260,6 +261,7 @@ namespace ProjectBloodbath.Prototype
                     panel.y + 145f + index * 88f,
                     panel.width - 140f,
                     66f);
+                PrototypeInterfaceCursor.RegisterInteractive(buttonRect);
                 if (GUI.Button(
                     buttonRect,
                     EntryLabels[index],
@@ -280,13 +282,7 @@ namespace ProjectBloodbath.Prototype
                     statusMessage,
                     subtitleStyle);
             }
-            GUI.Label(
-                new Rect(panel.x + 32f, panel.yMax - 62f,
-                    panel.width - 64f, 30f),
-                $"{ControlSettingsManager.FormatShortcut("ENTRÉE", "A")}  •  VALIDER     " +
-                $"{ControlSettingsManager.FormatShortcut("ÉCHAP", "B")}  •  REPRENDRE",
-                footerStyle);
-
+            PrototypeInterfaceCursor.EndFrame();
             GUI.color = previousColor;
             GUI.matrix = previousMatrix;
         }
@@ -308,6 +304,10 @@ namespace ProjectBloodbath.Prototype
                 ? CursorLockMode.None
                 : CursorLockMode.Locked;
             Cursor.visible = open;
+            if (!open)
+            {
+                PrototypeInterfaceCursor.Reset();
+            }
         }
 
         private void DrawPanel(Rect rect)

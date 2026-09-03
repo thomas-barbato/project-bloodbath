@@ -5,14 +5,26 @@ namespace ProjectBloodbath.Progression
 {
     public enum EquipmentSlot
     {
-        Head,
-        Torso,
-        Hands,
-        Legs,
-        Feet,
-        Implant,
-        Amulet,
-        Ring
+        Head = 0,
+        Torso = 1,
+        Hands = 2,
+        Legs = 3,
+        Feet = 4,
+        Implant = 5,
+        ImplantSecondary = 6,
+        ImplantTertiary = 7,
+        PrimaryRightHand = 8,
+        PrimaryLeftHand = 9,
+        SecondaryRightHand = 10,
+        SecondaryLeftHand = 11
+    }
+
+    public enum HandEquipmentType
+    {
+        None,
+        RangedWeapon,
+        MeleeWeapon,
+        Shield
     }
 
     [CreateAssetMenu(
@@ -23,6 +35,7 @@ namespace ProjectBloodbath.Progression
         [SerializeField] private string identifier = "equipment";
         [SerializeField] private string displayName = "Équipement";
         [SerializeField] private EquipmentSlot slot;
+        [SerializeField] private HandEquipmentType handEquipmentType;
         [SerializeField, Min(0f)] private float damageMultiplierBonus;
         [SerializeField] private List<EquipmentStatRequirement> requirements =
             new();
@@ -32,6 +45,10 @@ namespace ProjectBloodbath.Progression
         public string Identifier => identifier;
         public string DisplayName => displayName;
         public EquipmentSlot Slot => slot;
+        public HandEquipmentType HandEquipmentType => handEquipmentType;
+        public bool IsHandEquipment =>
+            handEquipmentType != HandEquipmentType.None;
+        public bool IsImplantEquipment => IsImplantSlot(slot);
         public float DamageMultiplierBonus => damageMultiplierBonus;
         public IReadOnlyList<EquipmentStatRequirement> Requirements =>
             requirements;
@@ -44,7 +61,8 @@ namespace ProjectBloodbath.Progression
             EquipmentSlot equipmentSlot,
             float outgoingDamageBonus,
             IReadOnlyList<EquipmentStatRequirement> statRequirements = null,
-            IReadOnlyList<SecondaryStatModifier> statModifiers = null)
+            IReadOnlyList<SecondaryStatModifier> statModifiers = null,
+            HandEquipmentType equipmentHandType = HandEquipmentType.None)
         {
             identifier = string.IsNullOrWhiteSpace(equipmentIdentifier)
                 ? "equipment"
@@ -53,6 +71,7 @@ namespace ProjectBloodbath.Progression
                 ? "Équipement"
                 : equipmentDisplayName.Trim();
             slot = equipmentSlot;
+            handEquipmentType = equipmentHandType;
             damageMultiplierBonus = Mathf.Max(0f, outgoingDamageBonus);
             requirements ??= new List<EquipmentStatRequirement>();
             requirements.Clear();
@@ -80,6 +99,48 @@ namespace ProjectBloodbath.Progression
                     }
                 }
             }
+        }
+
+        public bool CanEquipIn(EquipmentSlot targetSlot)
+        {
+            if (!IsHandEquipment)
+            {
+                if (IsImplantEquipment)
+                {
+                    return IsImplantSlot(targetSlot);
+                }
+
+                return targetSlot == slot;
+            }
+
+            if (!IsHandSlot(targetSlot))
+            {
+                return false;
+            }
+
+            return handEquipmentType != HandEquipmentType.Shield ||
+                IsLeftHandSlot(targetSlot);
+        }
+
+        public static bool IsHandSlot(EquipmentSlot targetSlot)
+        {
+            return targetSlot == EquipmentSlot.PrimaryRightHand ||
+                targetSlot == EquipmentSlot.PrimaryLeftHand ||
+                targetSlot == EquipmentSlot.SecondaryRightHand ||
+                targetSlot == EquipmentSlot.SecondaryLeftHand;
+        }
+
+        public static bool IsImplantSlot(EquipmentSlot targetSlot)
+        {
+            return targetSlot == EquipmentSlot.Implant ||
+                targetSlot == EquipmentSlot.ImplantSecondary ||
+                targetSlot == EquipmentSlot.ImplantTertiary;
+        }
+
+        public static bool IsLeftHandSlot(EquipmentSlot targetSlot)
+        {
+            return targetSlot == EquipmentSlot.PrimaryLeftHand ||
+                targetSlot == EquipmentSlot.SecondaryLeftHand;
         }
 
         public bool MeetsRequirements(

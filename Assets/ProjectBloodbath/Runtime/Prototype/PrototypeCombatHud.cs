@@ -16,6 +16,7 @@ namespace ProjectBloodbath.Prototype
         [SerializeField] private AbilityResource abilityResource;
         [SerializeField] private PrototypeWeaponLoadout weaponLoadout;
         [SerializeField] private HitscanWeapon rangedWeapon;
+        [SerializeField] private HitscanWeapon leftRangedWeapon;
         [SerializeField] private PrototypePlayerLife playerLife;
         [SerializeField] private PrototypeShockwaveAbility activeAbility;
         [SerializeField] private PrototypeBloodHarvestPassive passiveAbility;
@@ -36,6 +37,15 @@ namespace ProjectBloodbath.Prototype
         private GUIStyle valueStyle;
         private GUIStyle centeredStatusStyle;
 
+        private HitscanWeapon DisplayedRightRangedWeapon =>
+            weaponLoadout != null
+                ? weaponLoadout.ActiveRightRangedWeapon
+                : rangedWeapon;
+        private HitscanWeapon DisplayedLeftRangedWeapon =>
+            weaponLoadout != null
+                ? weaponLoadout.ActiveLeftRangedWeapon
+                : leftRangedWeapon;
+
         public float HealthRatio => health == null || health.Maximum <= 0f
             ? 0f
             : Mathf.Clamp01(health.Current / health.Maximum);
@@ -52,21 +62,48 @@ namespace ProjectBloodbath.Prototype
               $"{Mathf.CeilToInt(abilityResource.Maximum)}";
         public string WeaponLabel => weaponLoadout == null
             ? "AUCUNE ARME"
-            : weaponLoadout.CurrentSlot == PrototypeWeaponSlot.Ranged
-                ? "FUSIL PROTOTYPE"
-                : "ARME DE MÊLÉE";
-        public string AmmunitionLabel =>
-            weaponLoadout != null &&
-            weaponLoadout.CurrentSlot == PrototypeWeaponSlot.Ranged &&
-            rangedWeapon != null
-                ? $"{rangedWeapon.CurrentMagazine:00}  /  " +
-                  $"{rangedWeapon.ReserveAmmo:000}"
-                : "—";
+            : weaponLoadout.ActiveRightWeapon == null &&
+              weaponLoadout.ActiveLeftWeapon == null
+                ? "MAINS VIDES"
+                : weaponLoadout.HasTwoActiveRangedWeapons
+                    ? "FUSILS PROTOTYPES"
+                    : weaponLoadout.ActiveRightMeleeWeapon != null &&
+                      weaponLoadout.ActiveLeftWeapon == null
+                        ? "ARME DE MÊLÉE"
+                        : "ENSEMBLE DE MAINS";
+        public string AmmunitionLabel
+        {
+            get
+            {
+                HitscanWeapon rightWeapon = DisplayedRightRangedWeapon;
+                HitscanWeapon leftWeapon = DisplayedLeftRangedWeapon;
+                if (!ShowsAmmunition)
+                {
+                    return "—";
+                }
+
+                if (rightWeapon == null)
+                {
+                    return $"G {FormatAmmunition(leftWeapon)}";
+                }
+
+                if (leftWeapon == null)
+                {
+                    return $"D {FormatAmmunition(rightWeapon)}";
+                }
+
+                return $"D {FormatAmmunition(rightWeapon)}   " +
+                    $"G {FormatAmmunition(leftWeapon)}";
+            }
+        }
         public bool ShowsAmmunition =>
-            weaponLoadout != null &&
-            weaponLoadout.CurrentSlot == PrototypeWeaponSlot.Ranged;
+            DisplayedRightRangedWeapon != null ||
+            DisplayedLeftRangedWeapon != null;
         public bool ShowsReload => ShowsAmmunition &&
-            rangedWeapon != null && rangedWeapon.IsReloading;
+            ((DisplayedRightRangedWeapon != null &&
+              DisplayedRightRangedWeapon.IsReloading) ||
+             (DisplayedLeftRangedWeapon != null &&
+              DisplayedLeftRangedWeapon.IsReloading));
         public bool ShowsSoulRecovery =>
             playerLife != null && playerLife.IsSoul;
         public bool ShowsResurrectionPenalty =>
@@ -134,6 +171,7 @@ namespace ProjectBloodbath.Prototype
             playerLife = life;
             activeAbility = ability;
             passiveAbility = passive;
+            leftRangedWeapon = loadout?.ActiveLeftRangedWeapon;
         }
 
         private void Awake()
@@ -180,7 +218,13 @@ namespace ProjectBloodbath.Prototype
 
             if (rangedWeapon == null)
             {
-                rangedWeapon = GetComponentInChildren<HitscanWeapon>(true);
+                rangedWeapon = weaponLoadout?.ActiveRightRangedWeapon ??
+                    GetComponentInChildren<HitscanWeapon>(true);
+            }
+
+            if (leftRangedWeapon == null)
+            {
+                leftRangedWeapon = weaponLoadout?.ActiveLeftRangedWeapon;
             }
 
             if (interfaceCoordinator == null)
@@ -259,11 +303,11 @@ namespace ProjectBloodbath.Prototype
 
         private void DrawWeaponPanel(float width, float height)
         {
-            Rect panel = new(width - 364f, height - 112f, 330f, 72f);
+            Rect panel = new(width - 464f, height - 112f, 430f, 72f);
             DrawPanel(panel);
             GUI.Label(new Rect(panel.x + 16f, panel.y + 10f, 190f, 22f),
                 WeaponLabel, smallLabelStyle);
-            GUI.Label(new Rect(panel.x + 128f, panel.y + 29f, 184f, 32f),
+            GUI.Label(new Rect(panel.x + 116f, panel.y + 29f, 296f, 32f),
                 AmmunitionLabel, valueStyle);
 
             if (!ShowsReload)
@@ -271,7 +315,9 @@ namespace ProjectBloodbath.Prototype
                 return;
             }
 
-            float progress = rangedWeapon.ReloadProgress;
+            float progress = Mathf.Max(
+                DisplayedRightRangedWeapon?.ReloadProgress ?? 0f,
+                DisplayedLeftRangedWeapon?.ReloadProgress ?? 0f);
             Rect reloadBar = new(panel.x + 16f, panel.y + 51f,
                 panel.width - 32f, 6f);
             DrawRect(reloadBar, new Color(0.08f, 0.035f, 0.025f, 1f));
@@ -445,6 +491,11 @@ namespace ProjectBloodbath.Prototype
                 fontStyle = FontStyle.Bold,
                 alignment = TextAnchor.MiddleCenter
             };
+        }
+
+        private static string FormatAmmunition(HitscanWeapon weapon)
+        {
+            return $"{weapon.CurrentMagazine:00}/{weapon.ReserveAmmo:000}";
         }
 
         private static void DrawRect(Rect rect, Color color)

@@ -107,6 +107,40 @@ namespace ProjectBloodbath.Tests.PlayMode
             yield break;
         }
 
+        [UnityTest]
+        public IEnumerator PendingAttributePointsCanBeCancelledOrCommitted()
+        {
+            CharacterStatDefinition strength = FindStat("strength");
+            Assert.That(strength, Is.Not.Null);
+            progression.AddExperience(
+                progression.ExperienceRequiredForNextLevel);
+
+            Assert.That(
+                statistics.TrySpendAttributePoints(strength, 2),
+                Is.True);
+            Assert.That(statistics.GetPendingIncrease(strength), Is.EqualTo(2));
+            Assert.That(statistics.PendingAttributePointCount, Is.EqualTo(2));
+            Assert.That(statistics.HasPendingAttributeChanges, Is.True);
+            Assert.That(statistics.GetValue(strength), Is.EqualTo(12));
+            Assert.That(statistics.UnspentAttributePoints, Is.EqualTo(3));
+
+            Assert.That(statistics.CancelPendingAttributePoints(), Is.True);
+            Assert.That(statistics.GetPendingIncrease(strength), Is.Zero);
+            Assert.That(statistics.HasPendingAttributeChanges, Is.False);
+            Assert.That(statistics.GetValue(strength), Is.EqualTo(10));
+            Assert.That(statistics.UnspentAttributePoints, Is.EqualTo(5));
+
+            Assert.That(
+                statistics.TrySpendAttributePoints(strength, 2),
+                Is.True);
+            Assert.That(statistics.CommitPendingAttributePoints(), Is.True);
+            Assert.That(statistics.GetPendingIncrease(strength), Is.Zero);
+            Assert.That(statistics.HasPendingAttributeChanges, Is.False);
+            Assert.That(statistics.GetValue(strength), Is.EqualTo(12));
+            Assert.That(statistics.UnspentAttributePoints, Is.EqualTo(3));
+            yield break;
+        }
+
         private CharacterStatDefinition FindStat(string identifier)
         {
             foreach (CharacterStatValue value in statistics.Statistics)

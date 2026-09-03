@@ -1,5 +1,4 @@
 using System;
-using ProjectBloodbath.Input;
 using ProjectBloodbath.Player;
 using ProjectBloodbath.Progression;
 using UnityEngine;
@@ -11,7 +10,6 @@ namespace ProjectBloodbath.Combat
     {
         private const int HitBufferSize = 64;
 
-        [SerializeField] private PlayerInputReader inputReader;
         [SerializeField] private FpsPlayerController playerController;
         [SerializeField] private Camera aimCamera;
         [SerializeField] private HitscanWeaponSettings settings;
@@ -50,7 +48,6 @@ namespace ProjectBloodbath.Combat
                 Time.time);
 
         public void Configure(
-            PlayerInputReader reader,
             FpsPlayerController controller,
             Camera cameraComponent,
             HitscanWeaponSettings weaponSettings,
@@ -59,7 +56,6 @@ namespace ProjectBloodbath.Combat
             Light flash,
             LineRenderer tracerRenderer)
         {
-            inputReader = reader;
             playerController = controller;
             aimCamera = cameraComponent;
             settings = weaponSettings;
@@ -99,27 +95,9 @@ namespace ProjectBloodbath.Combat
 
             if (
                 settings == null ||
-                inputReader == null ||
-                aimCamera == null ||
-                Cursor.lockState != CursorLockMode.Locked)
+                aimCamera == null)
             {
                 return;
-            }
-
-            if (inputReader.ConsumeReloadPressed())
-            {
-                TryStartReload();
-            }
-
-            bool wantsToFire = settings.Automatic
-                ? inputReader.AttackHeld
-                : inputReader.AttackPressedThisFrame;
-            if (wantsToFire && Time.time >= nextShotTime)
-            {
-                if (!TryFire() && CurrentMagazine <= 0)
-                {
-                    TryStartReload();
-                }
             }
         }
 

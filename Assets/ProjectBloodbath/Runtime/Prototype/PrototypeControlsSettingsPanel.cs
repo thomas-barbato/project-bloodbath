@@ -50,8 +50,7 @@ namespace ProjectBloodbath.Prototype
             new("MAIN GAUCHE", "UseLeftHand"),
             new("RECHARGER", "Reload"),
             new("COMPÉTENCE 1", "Ability1"),
-            new("ARME À DISTANCE", "SelectRanged"),
-            new("ARME DE MÊLÉE", "SelectMelee")
+            new("PERMUTER LES ENSEMBLES", "SwapHandSet")
         };
 
         private static readonly BindingDescriptor[] KeyboardMovementBindings =
@@ -404,6 +403,7 @@ namespace ProjectBloodbath.Prototype
                 return;
             }
 
+            PrototypeInterfaceCursor.BeginFrame();
             EnsureStyles();
             Matrix4x4 previousMatrix = GUI.matrix;
             Color previousColor = GUI.color;
@@ -545,6 +545,7 @@ namespace ProjectBloodbath.Prototype
                     : "ENTRÉE  •  MODIFIER     ÉCHAP  •  RETOUR",
                 footerStyle);
 
+            PrototypeInterfaceCursor.EndFrame();
             GUI.color = previousColor;
             GUI.matrix = previousMatrix;
         }
@@ -562,8 +563,17 @@ namespace ProjectBloodbath.Prototype
                 new Rect(row.x + 14f, row.y + 2f, 320f, 40f),
                 label,
                 rowLabelStyle);
+            Rect previousRect = new(
+                row.x + 350f,
+                row.y + 3f,
+                42f,
+                38f);
+            if (adjustable)
+            {
+                PrototypeInterfaceCursor.RegisterInteractive(previousRect);
+            }
             if (adjustable && GUI.Button(
-                    new Rect(row.x + 350f, row.y + 3f, 42f, 38f),
+                    previousRect,
                     "‹",
                     arrowStyle))
             {
@@ -574,8 +584,17 @@ namespace ProjectBloodbath.Prototype
                 new Rect(row.x + 400f, row.y + 2f, 350f, 40f),
                 value,
                 valueStyle);
+            Rect nextRect = new(
+                row.xMax - 56f,
+                row.y + 3f,
+                42f,
+                38f);
+            if (adjustable)
+            {
+                PrototypeInterfaceCursor.RegisterInteractive(nextRect);
+            }
             if (adjustable && GUI.Button(
-                    new Rect(row.xMax - 56f, row.y + 3f, 42f, 38f),
+                    nextRect,
                     "›",
                     arrowStyle))
             {
@@ -596,8 +615,14 @@ namespace ProjectBloodbath.Prototype
                 new Rect(row.x + 14f, row.y + 2f, 350f, 40f),
                 binding.Label,
                 rowLabelStyle);
+            Rect bindingRect = new(
+                row.x + 400f,
+                row.y + 3f,
+                400f,
+                38f);
+            PrototypeInterfaceCursor.RegisterInteractive(bindingRect);
             if (GUI.Button(
-                new Rect(row.x + 400f, row.y + 3f, 400f, 38f),
+                bindingRect,
                 value,
                 valueStyle))
             {
@@ -608,6 +633,7 @@ namespace ProjectBloodbath.Prototype
 
         private void DrawActionButton(Rect rect, string label, int index)
         {
+            PrototypeInterfaceCursor.RegisterInteractive(rect);
             if (GUI.Button(
                 rect,
                 label,
@@ -692,6 +718,10 @@ namespace ProjectBloodbath.Prototype
                 ? CursorLockMode.None
                 : CursorLockMode.Locked;
             Cursor.visible = open;
+            if (!open)
+            {
+                PrototypeInterfaceCursor.Reset();
+            }
         }
 
         private void DrawPanel(Rect rect)

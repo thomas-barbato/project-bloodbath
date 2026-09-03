@@ -69,6 +69,10 @@ namespace ProjectBloodbath.Prototype
                 ? CursorLockMode.None
                 : CursorLockMode.Locked;
             Cursor.visible = menuOpen;
+            if (!menuOpen)
+            {
+                PrototypeInterfaceCursor.Reset();
+            }
         }
     }
 }

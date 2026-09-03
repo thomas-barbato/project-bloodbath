@@ -4,12 +4,26 @@ using UnityEngine;
 
 namespace ProjectBloodbath.Progression
 {
+    [Serializable]
+    public sealed class StartingEquipmentEntry
+    {
+        [SerializeField] private EquipmentSlot slot;
+        [SerializeField] private WorldPickupDefinition item;
+
+        public EquipmentSlot Slot => slot;
+        public WorldPickupDefinition Item => item;
+    }
+
+    [DefaultExecutionOrder(-500)]
     [DisallowMultipleComponent]
     [RequireComponent(typeof(CharacterInventory))]
     public sealed class CharacterEquipment : MonoBehaviour
     {
         private readonly Dictionary<EquipmentSlot, WorldPickupDefinition>
             equippedItems = new();
+
+        [SerializeField] private List<StartingEquipmentEntry>
+            startingEquipment = new();
 
         private CharacterInventory inventory;
         private CharacterStatistics statistics;
@@ -47,6 +61,14 @@ namespace ProjectBloodbath.Progression
 
         public bool TryEquip(WorldPickupDefinition item)
         {
+            return item?.Equipment != null &&
+                TryEquip(item, item.Equipment.Slot);
+        }
+
+        public bool TryEquip(
+            WorldPickupDefinition item,
+            EquipmentSlot targetSlot)
+        {
             if (inventory == null)
             {
                 inventory = GetComponent<CharacterInventory>();
@@ -58,7 +80,10 @@ namespace ProjectBloodbath.Progression
             }
 
             LastFailedRequirement = null;
-            if (item?.Equipment == null || inventory == null)
+            if (
+                item?.Equipment == null ||
+                inventory == null ||
+                !item.Equipment.CanEquipIn(targetSlot))
             {
                 return false;
             }
@@ -76,7 +101,7 @@ namespace ProjectBloodbath.Progression
                 return false;
             }
 
-            EquipmentSlot slot = item.Equipment.Slot;
+            EquipmentSlot slot = targetSlot;
             if (equippedItems.TryGetValue(
                 slot,
                 out WorldPickupDefinition previousItem))
@@ -125,6 +150,28 @@ namespace ProjectBloodbath.Progression
             inventory = GetComponent<CharacterInventory>();
             statistics = GetComponent<CharacterStatistics>();
             secondaryStatistics = GetComponent<CharacterSecondaryStatistics>();
+            ApplyStartingEquipment();
+        }
+
+        private void ApplyStartingEquipment()
+        {
+            if (inventory == null || startingEquipment == null)
+            {
+                return;
+            }
+
+            foreach (StartingEquipmentEntry entry in startingEquipment)
+            {
+                if (
+                    entry?.Item == null ||
+                    equippedItems.ContainsKey(entry.Slot))
+                {
+                    continue;
+                }
+
+                inventory.AddItem(entry.Item);
+                TryEquip(entry.Item, entry.Slot);
+            }
         }
 
         private void ApplyEquipmentModifiers(

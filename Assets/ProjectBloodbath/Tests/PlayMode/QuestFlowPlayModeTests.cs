@@ -152,6 +152,7 @@ namespace ProjectBloodbath.Tests.PlayMode
             Assert.That(terminal.DialogueOpen, Is.True);
             Assert.That(inputReader.GameplaySuppressed, Is.True);
             Assert.That(Time.timeScale, Is.EqualTo(timeScaleBeforeDialogue));
+            Assert.That(terminal.HasPrimaryAction, Is.True);
 
             Assert.That(terminal.SubmitDialogue(), Is.True);
             Assert.That(terminal.DialogueOpen, Is.False);
@@ -160,6 +161,11 @@ namespace ProjectBloodbath.Tests.PlayMode
                 questJournal.GetStatus(quest),
                 Is.EqualTo(QuestStatus.Active));
             Assert.That(terminal.CurrentDialogue, Is.EqualTo(quest.ActiveDialogue));
+
+            terminal.OpenDialogue();
+            Assert.That(terminal.DialogueOpen, Is.True);
+            Assert.That(terminal.HasPrimaryAction, Is.False);
+            terminal.CloseDialogue();
             yield break;
         }
 

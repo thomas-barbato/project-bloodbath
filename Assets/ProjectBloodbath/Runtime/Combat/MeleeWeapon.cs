@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using ProjectBloodbath.Input;
 using ProjectBloodbath.Player;
 using UnityEngine;
 
@@ -11,7 +10,6 @@ namespace ProjectBloodbath.Combat
     {
         private const int HitBufferSize = 32;
 
-        [SerializeField] private PlayerInputReader inputReader;
         [SerializeField] private FpsPlayerController playerController;
         [SerializeField] private Camera aimCamera;
         [SerializeField] private MeleeWeaponSettings settings;
@@ -32,13 +30,11 @@ namespace ProjectBloodbath.Combat
         public int LastAttackHitCount { get; private set; }
 
         public void Configure(
-            PlayerInputReader reader,
             FpsPlayerController controller,
             Camera cameraComponent,
             MeleeWeaponSettings weaponSettings,
             Transform visual)
         {
-            inputReader = reader;
             playerController = controller;
             aimCamera = cameraComponent;
             settings = weaponSettings;
@@ -86,14 +82,6 @@ namespace ProjectBloodbath.Combat
         private void Update()
         {
             UpdateAttackAnimation();
-
-            if (
-                inputReader != null &&
-                inputReader.AttackPressedThisFrame &&
-                Cursor.lockState == CursorLockMode.Locked)
-            {
-                TryAttack();
-            }
         }
 
         private void UpdateAttackAnimation()

@@ -22,8 +22,7 @@ namespace ProjectBloodbath.Input
         private InputAction jumpAction;
         private InputAction sprintAction;
         private InputAction slideAction;
-        private InputAction selectRangedAction;
-        private InputAction selectMeleeAction;
+        private InputAction swapHandSetAction;
         private InputAction inventoryAction;
         private InputAction questJournalAction;
         private InputAction worldMapAction;
@@ -63,12 +62,9 @@ namespace ProjectBloodbath.Input
             (useLeftHandAction?.WasPressedThisFrame() ?? false);
         public bool SprintHeld => !GameplaySuppressed &&
             (sprintAction?.IsPressed() ?? false);
-        public bool SelectRangedPressedThisFrame =>
+        public bool SwapHandSetPressedThisFrame =>
             !GameplaySuppressed &&
-            (selectRangedAction?.WasPressedThisFrame() ?? false);
-        public bool SelectMeleePressedThisFrame =>
-            !GameplaySuppressed &&
-            (selectMeleeAction?.WasPressedThisFrame() ?? false);
+            (swapHandSetAction?.WasPressedThisFrame() ?? false);
         public bool LookUsesPointerDelta => lookAction?.activeControl?.device is Pointer;
         public InputActionAsset InputActions => inputActions;
 
@@ -118,6 +114,11 @@ namespace ProjectBloodbath.Input
             bool value = interactPressed;
             interactPressed = false;
             return value;
+        }
+
+        public bool ConsumeInterfaceSwapHandSetPressed()
+        {
+            return swapHandSetAction?.WasPressedThisFrame() ?? false;
         }
 
         public bool ConsumeInventoryPressed()
@@ -308,8 +309,7 @@ namespace ProjectBloodbath.Input
             jumpAction = playerMap.FindAction("Jump", true);
             sprintAction = playerMap.FindAction("Sprint", true);
             slideAction = playerMap.FindAction("Slide", true);
-            selectRangedAction = playerMap.FindAction("SelectRanged", true);
-            selectMeleeAction = playerMap.FindAction("SelectMelee", true);
+            swapHandSetAction = playerMap.FindAction("SwapHandSet", true);
             inventoryAction = playerMap.FindAction("Inventory", true);
             questJournalAction = playerMap.FindAction("QuestJournal", true);
             worldMapAction = playerMap.FindAction("WorldMap", true);

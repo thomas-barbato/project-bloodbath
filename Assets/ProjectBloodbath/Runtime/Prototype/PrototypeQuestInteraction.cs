@@ -61,6 +61,9 @@ namespace ProjectBloodbath.Prototype
             questJournal != null &&
             (CurrentStatus != QuestStatus.NotStarted ||
              questJournal.CanStartQuest(quest));
+        public bool HasPrimaryAction =>
+            CurrentStatus == QuestStatus.NotStarted ||
+            CurrentStatus == QuestStatus.ReadyToTurnIn;
         public string CurrentDialogue => CurrentStatus switch
         {
             QuestStatus.NotStarted => quest?.OpeningDialogue ?? string.Empty,
@@ -164,6 +167,7 @@ namespace ProjectBloodbath.Prototype
                 inputReader?.SetGameplaySuppressed(false);
                 Cursor.lockState = CursorLockMode.Locked;
                 Cursor.visible = false;
+                PrototypeInterfaceCursor.Reset();
             }
 
             UpdateTerminalColor();
@@ -243,6 +247,10 @@ namespace ProjectBloodbath.Prototype
                 return;
             }
 
+            if (DialogueOpen)
+            {
+                PrototypeInterfaceCursor.BeginFrame();
+            }
             EnsureStyles();
             Matrix4x4 previousMatrix = GUI.matrix;
             Color previousColor = GUI.color;
@@ -315,11 +323,46 @@ namespace ProjectBloodbath.Prototype
                         ? $"RÉCOMPENSE  •  {quest.ExperienceReward} EXPÉRIENCE"
                         : "RÉCOMPENSE  •  AUCUNE RÉCOMPENSE DÉFINIE",
                     sectionStyle);
-                GUI.Label(
-                    new Rect(panel.x + 32f, panel.yMax - 72f,
-                        panel.width - 64f, 34f),
-                    GetActionLabel(),
-                    actionStyle);
+                Rect primaryAction = new(
+                    panel.x + 32f,
+                    panel.yMax - 76f,
+                    500f,
+                    42f);
+                if (HasPrimaryAction)
+                {
+                    PrototypeInterfaceCursor.RegisterInteractive(
+                        primaryAction);
+                    if (GUI.Button(
+                        primaryAction,
+                        GetActionLabel(),
+                        actionStyle))
+                    {
+                        if (!SubmitDialogue())
+                        {
+                            CloseDialogue();
+                        }
+                    }
+                }
+                Rect closeRect = HasPrimaryAction
+                    ? new Rect(
+                        panel.xMax - 284f,
+                        panel.yMax - 76f,
+                        252f,
+                        42f)
+                    : new Rect(
+                        panel.x + 32f,
+                        panel.yMax - 76f,
+                        panel.width - 64f,
+                        42f);
+                PrototypeInterfaceCursor.RegisterInteractive(closeRect);
+                if (GUI.Button(
+                    closeRect,
+                    "FERMER",
+                    actionStyle))
+                {
+                    CloseDialogue();
+                }
+                PrototypeInterfaceCursor.EndFrame();
             }
 
             GUI.color = previousColor;
@@ -359,8 +402,7 @@ namespace ProjectBloodbath.Prototype
 
         private static string BuildActionLabel(string action)
         {
-            return $"{ControlSettingsManager.FormatShortcut("E", "X")}  •  {action}     " +
-                $"{ControlSettingsManager.FormatShortcut("ÉCHAP", "B")}  •  FERMER";
+            return action;
         }
 
         private string BuildObjectiveSummary()
@@ -507,10 +549,12 @@ namespace ProjectBloodbath.Prototype
                 fontSize = 18,
                 normal = { textColor = new Color(0.94f, 0.84f, 0.65f, 1f) }
             };
-            actionStyle ??= new GUIStyle(promptStyle)
+            actionStyle ??= new GUIStyle(GUI.skin.button)
             {
-                alignment = TextAnchor.MiddleLeft,
-                fontSize = 17
+                alignment = TextAnchor.MiddleCenter,
+                fontSize = 17,
+                fontStyle = FontStyle.Bold,
+                normal = { textColor = new Color(0.94f, 0.76f, 0.55f, 1f) }
             };
 
             RemoveHoverFeedback(titleStyle);
@@ -518,7 +562,6 @@ namespace ProjectBloodbath.Prototype
             RemoveHoverFeedback(sectionStyle);
             RemoveHoverFeedback(bodyStyle);
             RemoveHoverFeedback(objectiveStyle);
-            RemoveHoverFeedback(actionStyle);
         }
 
         private static void RemoveHoverFeedback(GUIStyle style)

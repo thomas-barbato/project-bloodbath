@@ -39,7 +39,7 @@ namespace ProjectBloodbath.Tests.PlayMode
             abilityResource = player.GetComponent<AbilityResource>();
             loadout = player.GetComponent<PrototypeWeaponLoadout>();
             hud = player.GetComponent<PrototypeCombatHud>();
-            rifle = player.GetComponentInChildren<HitscanWeapon>(true);
+            rifle = loadout?.ActiveRightRangedWeapon;
             ability = player.GetComponent<PrototypeShockwaveAbility>();
 
             Assert.That(health, Is.Not.Null);
@@ -57,8 +57,10 @@ namespace ProjectBloodbath.Tests.PlayMode
             Assert.That(hud.HealthLabel, Is.EqualTo("100 / 100"));
             Assert.That(hud.AbilityResourceRatio, Is.EqualTo(1f));
             Assert.That(hud.AbilityResourceLabel, Is.EqualTo("100 / 100"));
-            Assert.That(hud.WeaponLabel, Is.EqualTo("FUSIL PROTOTYPE"));
-            Assert.That(hud.AmmunitionLabel, Is.EqualTo("12  /  048"));
+            Assert.That(hud.WeaponLabel, Is.EqualTo("FUSILS PROTOTYPES"));
+            Assert.That(
+                hud.AmmunitionLabel,
+                Is.EqualTo("D 12/048   G 12/048"));
             Assert.That(hud.ShowsAmmunition, Is.True);
             Assert.That(hud.AbilityLabel, Is.EqualTo("ONDE DE RUPTURE"));
             Assert.That(hud.AbilityStatusLabel, Does.StartWith("PRÊTE"));
@@ -86,7 +88,7 @@ namespace ProjectBloodbath.Tests.PlayMode
             Assert.That(rifle.TryStartReload(), Is.True);
             Assert.That(hud.ShowsReload, Is.True);
 
-            loadout.Select(PrototypeWeaponSlot.Melee);
+            loadout.SelectHandSet(PrototypeHandSetSlot.Secondary);
             Assert.That(hud.WeaponLabel, Is.EqualTo("ARME DE MÊLÉE"));
             Assert.That(hud.ShowsAmmunition, Is.False);
             Assert.That(hud.AmmunitionLabel, Is.EqualTo("—"));

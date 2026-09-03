@@ -25,6 +25,7 @@ namespace ProjectBloodbath.Tests.PlayMode
         private CharacterController characterController;
         private PrototypeWeaponLoadout weaponLoadout;
         private GameObject rangedWeapon;
+        private GameObject leftRangedWeapon;
         private GameObject meleeWeapon;
         private Transform cameraPivot;
         private Vector3 spawnPosition;
@@ -43,10 +44,12 @@ namespace ProjectBloodbath.Tests.PlayMode
 
             player = GameObject.Find("Player");
             rangedWeapon = GameObject.Find("PrototypeWeapon");
+            leftRangedWeapon = GameObject.Find("PrototypeLeftWeapon");
             meleeWeapon = FindInactiveObject("PrototypeMeleeWeapon");
             cameraPivot = player?.transform.Find("CameraPivot");
             Assert.That(player, Is.Not.Null);
             Assert.That(rangedWeapon, Is.Not.Null);
+            Assert.That(leftRangedWeapon, Is.Not.Null);
             Assert.That(meleeWeapon, Is.Not.Null);
             Assert.That(cameraPivot, Is.Not.Null);
 
@@ -102,6 +105,7 @@ namespace ProjectBloodbath.Tests.PlayMode
             Assert.That(characterController.enabled, Is.False);
             Assert.That(weaponLoadout.CombatEnabled, Is.False);
             Assert.That(rangedWeapon.activeInHierarchy, Is.False);
+            Assert.That(leftRangedWeapon.activeInHierarchy, Is.False);
             Assert.That(meleeWeapon.activeInHierarchy, Is.False);
 
             yield return new WaitForSeconds(playerLife.RespawnDelay + 0.1f);
@@ -116,6 +120,7 @@ namespace ProjectBloodbath.Tests.PlayMode
             Assert.That(characterController.enabled, Is.True);
             Assert.That(weaponLoadout.CombatEnabled, Is.False);
             Assert.That(rangedWeapon.activeInHierarchy, Is.False);
+            Assert.That(leftRangedWeapon.activeInHierarchy, Is.False);
             Assert.That(meleeWeapon.activeInHierarchy, Is.False);
             Assert.That(
                 Vector3.Distance(player.transform.position, spawnPosition),
@@ -153,6 +158,7 @@ namespace ProjectBloodbath.Tests.PlayMode
                 Is.EqualTo(abilityResource.Maximum));
             Assert.That(weaponLoadout.CombatEnabled, Is.True);
             Assert.That(rangedWeapon.activeInHierarchy, Is.True);
+            Assert.That(leftRangedWeapon.activeInHierarchy, Is.True);
             Assert.That(
                 playerLife.OutgoingDamageMultiplier,
                 Is.EqualTo(0.5f).Within(0.001f));

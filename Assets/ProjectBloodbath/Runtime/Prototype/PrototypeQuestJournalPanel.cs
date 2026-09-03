@@ -153,6 +153,7 @@ namespace ProjectBloodbath.Prototype
                 return;
             }
 
+            PrototypeInterfaceCursor.BeginFrame();
             EnsureStyles();
             Matrix4x4 previousMatrix = GUI.matrix;
             Color previousColor = GUI.color;
@@ -177,10 +178,19 @@ namespace ProjectBloodbath.Prototype
                 new Rect(panel.x + 30f, panel.y + 20f, 650f, 44f),
                 "JOURNAL DE QUÊTES",
                 titleStyle);
-            GUI.Label(
-                new Rect(panel.x + 790f, panel.y + 24f, 380f, 30f),
-                "J / SELECT  •  FERMER",
-                statusStyle);
+            Rect closeRect = new(
+                panel.xMax - 70f,
+                panel.y + 18f,
+                40f,
+                40f);
+            PrototypeInterfaceCursor.RegisterInteractive(closeRect);
+            if (GUI.Button(
+                closeRect,
+                "×",
+                GUI.skin.button))
+            {
+                SetOpen(false);
+            }
 
             Rect listArea = new(
                 panel.x + 28f,
@@ -197,6 +207,7 @@ namespace ProjectBloodbath.Prototype
             DrawQuestList(listArea);
             DrawQuestDetails(detailsArea);
 
+            PrototypeInterfaceCursor.EndFrame();
             GUI.color = previousColor;
             GUI.matrix = previousMatrix;
         }
@@ -238,6 +249,7 @@ namespace ProjectBloodbath.Prototype
                     selected
                         ? new Color(0.26f, 0.055f, 0.02f, 0.95f)
                         : new Color(0.055f, 0.028f, 0.018f, 0.92f));
+                PrototypeInterfaceCursor.RegisterInteractive(row);
                 if (GUI.Button(
                     row,
                     $"{GetCategoryLabel(state.Definition.Category)}\n" +
@@ -361,15 +373,26 @@ namespace ProjectBloodbath.Prototype
             bool trackable =
                 state.Status == QuestStatus.Active ||
                 state.Status == QuestStatus.ReadyToTurnIn;
-            GUI.Label(
-                new Rect(area.x + 24f, area.yMax - 48f,
-                    area.width - 48f, 28f),
-                questJournal.IsQuestTracked(definition)
-                    ? "QUÊTE ACTUELLEMENT SUIVIE"
-                    : trackable
-                        ? $"{ControlSettingsManager.FormatShortcut("ENTRÉE", "A")}  •  SUIVRE CETTE QUÊTE"
-                        : string.Empty,
-                statusStyle);
+            Rect trackRect = new(
+                area.x + 24f,
+                area.yMax - 58f,
+                area.width - 48f,
+                38f);
+            if (questJournal.IsQuestTracked(definition))
+            {
+                GUI.Label(trackRect, "QUÊTE ACTUELLEMENT SUIVIE", statusStyle);
+            }
+            else if (trackable)
+            {
+                PrototypeInterfaceCursor.RegisterInteractive(trackRect);
+                if (GUI.Button(
+                    trackRect,
+                    "SUIVRE CETTE QUÊTE",
+                    questStyle))
+                {
+                    TryTrackSelectedQuest();
+                }
+            }
         }
 
         private QuestRuntimeState GetSelectedQuest()
@@ -429,6 +452,10 @@ namespace ProjectBloodbath.Prototype
                 ? CursorLockMode.None
                 : CursorLockMode.Locked;
             Cursor.visible = open;
+            if (!open)
+            {
+                PrototypeInterfaceCursor.Reset();
+            }
         }
 
         private void EnsureStyles()
