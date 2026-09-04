@@ -1,0 +1,106 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98f4f1f2c63e027488f24ebc28369cbb, type: 3}
+  m_Name: AdrenalineHunter
+  m_EditorClassIdentifier: ProjectBloodbath.Runtime::ProjectBloodbath.Progression.SkillDefinition
+  identifier: marine_adrenaline_hunter
+  characterClass: 1
+  treeIdentifier: marine_doctrine_saturation
+  displayName: "Chasseur sous adr\xE9naline"
+  description: "\xC0 Saturation maximale, une \xE9limination d\xE9clenche Adr\xE9naline
+    : la pression ne retombe plus sous la moiti\xE9 du maximum et les d\xE9placements
+    comme les rechargements acc\xE9l\xE8rent."
+  icon: {fileID: 0}
+  skillType: 1
+  maximumInvestedRank: 20
+  unlockLevel: 30
+  prerequisites: []
+  prerequisiteGroups:
+  - mode: 1
+    requiredCount: 1
+    prerequisites:
+    - skill: {fileID: 11400000, guid: c280378b40980ac4996474d04fb1ad7b, type: 2}
+      requiredInvestedRank: 1
+    - skill: {fileID: 11400000, guid: c6d0b96cdb65df9439c62b076ca7860c, type: 2}
+      requiredInvestedRank: 1
+  targetMode: 0
+  resourceCost: 0
+  tags:
+  - passive
+  - ranged
+  - light_weapon
+  - movement
+  - saturation
+  - riddled
+  - adrenaline
+  rankValues:
+  - identifier: required_saturation_percent
+    valueAtRankOne: 100
+    valueAtNaturalCap: 100
+    valuePerEquipmentRank: 0
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 100
+  - identifier: adrenaline_duration_seconds
+    valueAtRankOne: 3
+    valueAtNaturalCap: 6
+    valuePerEquipmentRank: 0.15
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 1
+    clampMaximum: 0
+    maximumValue: 0
+  - identifier: movement_speed_bonus_percent
+    valueAtRankOne: 8
+    valueAtNaturalCap: 20
+    valuePerEquipmentRank: 0.6
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 0
+    maximumValue: 0
+  - identifier: reload_speed_bonus_percent
+    valueAtRankOne: 10
+    valueAtNaturalCap: 25
+    valuePerEquipmentRank: 0.75
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 0
+    maximumValue: 0
+  - identifier: minimum_retained_saturation_percent
+    valueAtRankOne: 50
+    valueAtNaturalCap: 50
+    valuePerEquipmentRank: 0
+    wholeNumber: 0
+    clampMinimum: 0
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 100
+  - identifier: riddled_kill_combat_reload_recovery_seconds
+    valueAtRankOne: 0.5
+    valueAtNaturalCap: 2
+    valuePerEquipmentRank: 0.075
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 0
+    maximumValue: 0
+  appliedStatusIdentifiers: []
+  consumedStatusIdentifiers: []
+  investedRankSynergies:
+  - sourceSkill: {fileID: 11400000, guid: adfd3ba3d407b404cadeec7c3cd63f87, type: 2}
+    affectedValueIdentifier: adrenaline_duration_percent
+    operation: 1
+    bonusPerInvestedRank: 0.5

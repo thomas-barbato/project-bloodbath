@@ -194,29 +194,29 @@ namespace ProjectBloodbath.Prototype
 
         private void DrawMiniMap(float width)
         {
-            Rect frame = new(width - 330f, 36f, 280f, 280f);
+            Rect frame = new(width - 286f, 36f, 244f, 244f);
             DrawMapBackground(frame, 0.9f);
             GUI.Label(
-                new Rect(frame.x + 12f, frame.y + 9f, 28f, 32f),
+                new Rect(frame.x + 10f, frame.y + 7f, 26f, 30f),
                 "N",
                 titleStyle);
             GUI.Label(
-                new Rect(frame.x + 46f, frame.y + 5f,
-                    frame.width - 58f, 36f),
+                new Rect(frame.x + 40f, frame.y + 4f,
+                    frame.width - 50f, 34f),
                 areaName,
                 miniMapTitleStyle);
 
             Rect content = new(
-                frame.x + 12f,
-                frame.y + 48f,
-                frame.width - 24f,
-                frame.height - 60f);
+                frame.x + 10f,
+                frame.y + 43f,
+                frame.width - 20f,
+                frame.height - 53f);
             DrawGrid(content, 4);
             DrawMiniMapGeometry(content);
             DrawMiniMapMarkers(content);
             DrawPlayerMarker(
                 new Vector2(content.center.x, content.center.y),
-                18f,
+                15f,
                 true);
         }
 
@@ -224,7 +224,7 @@ namespace ProjectBloodbath.Prototype
         {
             DrawRect(
                 new Rect(0f, 0f, width, height),
-                new Color(0.005f, 0.003f, 0.002f, 0.84f));
+                new Color(0.004f, 0.009f, 0.011f, 0.84f));
             Rect panel = new(
                 width * 0.5f - 650f,
                 height * 0.5f - 430f,
@@ -254,7 +254,7 @@ namespace ProjectBloodbath.Prototype
                 panel.y + 78f,
                 panel.width - 68f,
                 panel.height - 132f);
-            DrawRect(content, new Color(0.012f, 0.012f, 0.01f, 1f));
+            DrawRect(content, new Color(0.012f, 0.027f, 0.03f, 1f));
             DrawGrid(content, 8);
             DrawWorldMapGeometry(content);
             DrawWorldMapMarkers(content);
@@ -294,7 +294,7 @@ namespace ProjectBloodbath.Prototype
                     DrawMarker(
                         point,
                         16f,
-                        new Color(0.95f, 0.28f, 0.06f, 1f));
+                        new Color(0.58f, 0.74f, 0.61f, 1f));
                     DrawMarker(point, 8f, marker.Color);
                 }
                 else
@@ -325,7 +325,7 @@ namespace ProjectBloodbath.Prototype
                     DrawMarker(
                         point,
                         22f,
-                        new Color(0.95f, 0.28f, 0.06f, 1f));
+                        new Color(0.58f, 0.74f, 0.61f, 1f));
                     DrawMarker(point, 11f, marker.Color);
                 }
                 else
@@ -404,7 +404,7 @@ namespace ProjectBloodbath.Prototype
                 tooltipHeight);
             DrawRect(
                 tooltipRect,
-                new Color(0.04f, 0.025f, 0.018f, 0.98f));
+                new Color(0.018f, 0.038f, 0.042f, 0.98f));
             DrawRect(
                 new Rect(tooltipRect.x, tooltipRect.y, 3f,
                     tooltipRect.height),
@@ -425,11 +425,11 @@ namespace ProjectBloodbath.Prototype
                 "MONSTRES");
             DrawLegendItem(
                 new Rect(panel.x + 266f, y, 210f, 24f),
-                new Color(0.1f, 0.82f, 0.78f, 1f),
+                new Color(0.28f, 0.72f, 0.72f, 1f),
                 "OBJETS AU SOL");
             DrawLegendItem(
                 new Rect(panel.x + 492f, y, 210f, 24f),
-                new Color(0.95f, 0.28f, 0.06f, 1f),
+                new Color(0.58f, 0.74f, 0.61f, 1f),
                 "QUÊTES");
             DrawLegendItem(
                 new Rect(panel.x + 718f, y, 210f, 24f),
@@ -686,7 +686,7 @@ namespace ProjectBloodbath.Prototype
                     markerRect.height),
                 "▲",
                 playerMarkerStyle);
-            GUI.color = new Color(1f, 0.86f, 0.22f, 1f);
+            GUI.color = new Color(0.88f, 0.86f, 0.72f, 1f);
             GUI.Label(markerRect, "▲", playerMarkerStyle);
             GUI.color = previousColor;
             GUI.matrix = previous;
@@ -708,7 +708,7 @@ namespace ProjectBloodbath.Prototype
 
         private static void DrawGrid(Rect content, int divisions)
         {
-            Color gridColor = new(0.18f, 0.075f, 0.035f, 0.7f);
+            Color gridColor = new(0.18f, 0.29f, 0.29f, 0.5f);
             for (int index = 1; index < divisions; index++)
             {
                 float x = Mathf.Lerp(
@@ -767,21 +767,21 @@ namespace ProjectBloodbath.Prototype
             {
                 fontSize = 26,
                 fontStyle = FontStyle.Bold,
-                normal = { textColor = new Color(0.9f, 0.25f, 0.07f, 1f) }
+                normal = { textColor = new Color(0.82f, 0.84f, 0.7f, 1f) }
             };
             labelStyle ??= new GUIStyle(GUI.skin.label)
             {
                 alignment = TextAnchor.MiddleRight,
                 fontSize = 16,
                 fontStyle = FontStyle.Bold,
-                normal = { textColor = new Color(0.9f, 0.82f, 0.68f, 1f) }
+                normal = { textColor = new Color(0.84f, 0.84f, 0.72f, 1f) }
             };
             smallStyle ??= new GUIStyle(GUI.skin.label)
             {
                 alignment = TextAnchor.MiddleLeft,
                 fontSize = 16,
                 fontStyle = FontStyle.Bold,
-                normal = { textColor = new Color(0.82f, 0.72f, 0.58f, 1f) }
+                normal = { textColor = new Color(0.65f, 0.76f, 0.69f, 1f) }
             };
             miniMapTitleStyle ??= new GUIStyle(smallStyle)
             {
@@ -795,7 +795,7 @@ namespace ProjectBloodbath.Prototype
                 alignment = TextAnchor.MiddleCenter,
                 fontSize = 16,
                 fontStyle = FontStyle.Bold,
-                normal = { textColor = new Color(0.9f, 0.82f, 0.68f, 1f) }
+                normal = { textColor = new Color(0.84f, 0.84f, 0.72f, 1f) }
             };
             playerMarkerStyle ??= new GUIStyle(GUI.skin.label)
             {
@@ -808,11 +808,28 @@ namespace ProjectBloodbath.Prototype
 
         private static void DrawMapBackground(Rect rect, float alpha)
         {
-            DrawRect(rect, new Color(0.52f, 0.105f, 0.045f, alpha));
-            DrawRect(
-                new Rect(rect.x + 3f, rect.y + 3f,
-                    rect.width - 6f, rect.height - 6f),
-                new Color(0.02f, 0.012f, 0.009f, alpha));
+            DrawRect(rect, new Color(0.025f, 0.045f, 0.048f, alpha));
+            PrototypeHudSkin.DrawTiledNotchedTexture(
+                rect,
+                new Color(0.48f, 0.54f, 0.53f, alpha * 0.82f),
+                8f,
+                256f);
+            Rect trim = new(
+                rect.x + 2f,
+                rect.y + 2f,
+                rect.width - 4f,
+                rect.height - 4f);
+            DrawRect(trim, new Color(0.25f, 0.38f, 0.38f, alpha));
+            Rect interior = new(
+                rect.x + 5f,
+                rect.y + 5f,
+                rect.width - 10f,
+                rect.height - 10f);
+            PrototypeHudSkin.DrawDisplayGlass(interior, alpha);
+            PrototypeHudSkin.DrawTiledTexture(
+                interior,
+                new Color(0.68f, 0.72f, 0.7f, alpha * 0.24f),
+                384f);
         }
 
         private static void DrawRect(Rect rect, Color color)

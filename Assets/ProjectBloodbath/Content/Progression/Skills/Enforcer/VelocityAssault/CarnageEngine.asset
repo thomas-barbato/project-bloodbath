@@ -1,0 +1,85 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98f4f1f2c63e027488f24ebc28369cbb, type: 3}
+  m_Name: CarnageEngine
+  m_EditorClassIdentifier: ProjectBloodbath.Runtime::ProjectBloodbath.Progression.SkillDefinition
+  identifier: enforcer_carnage_engine
+  characterClass: 0
+  treeIdentifier: enforcer_velocity_assault
+  displayName: Moteur de carnage
+  description: "Transforme Carnage en r\xE9cup\xE9ration mesur\xE9e et r\xE9compense
+    les \xE9liminations sans produire de boucle gratuite."
+  icon: {fileID: 0}
+  skillType: 1
+  maximumInvestedRank: 20
+  unlockLevel: 12
+  prerequisites:
+  - skill: {fileID: 11400000, guid: 47757b6d7c87f38479bc9f6b6126b560, type: 2}
+    requiredInvestedRank: 1
+  prerequisiteGroups: []
+  targetMode: 0
+  resourceCost: 0
+  tags:
+  - passive
+  - melee
+  - carnage
+  - cooldown
+  - energy
+  rankValues:
+  - identifier: melee_cooldown_recovery_per_carnage_percent
+    valueAtRankOne: 0.2
+    valueAtNaturalCap: 0.75
+    valuePerEquipmentRank: 0.03
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 1
+  - identifier: energy_restored_per_melee_kill
+    valueAtRankOne: 1
+    valueAtNaturalCap: 4
+    valuePerEquipmentRank: 0.15
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 5
+  - identifier: decay_prevention_seconds
+    valueAtRankOne: 2
+    valueAtNaturalCap: 2
+    valuePerEquipmentRank: 0
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 0
+    maximumValue: 0
+  - identifier: maximum_carnage_unlock_rank
+    valueAtRankOne: 10
+    valueAtNaturalCap: 10
+    valuePerEquipmentRank: 0
+    wholeNumber: 1
+    clampMinimum: 1
+    minimumValue: 10
+    clampMaximum: 1
+    maximumValue: 10
+  - identifier: next_melee_energy_cost_reduction_percent
+    valueAtRankOne: 20
+    valueAtNaturalCap: 20
+    valuePerEquipmentRank: 0
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 20
+  appliedStatusIdentifiers: []
+  consumedStatusIdentifiers: []
+  investedRankSynergies: []

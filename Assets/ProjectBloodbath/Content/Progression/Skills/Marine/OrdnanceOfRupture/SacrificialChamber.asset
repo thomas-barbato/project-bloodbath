@@ -1,0 +1,75 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98f4f1f2c63e027488f24ebc28369cbb, type: 3}
+  m_Name: SacrificialChamber
+  m_EditorClassIdentifier: ProjectBloodbath.Runtime::ProjectBloodbath.Progression.SkillDefinition
+  identifier: marine_sacrificial_chamber
+  characterClass: 1
+  treeIdentifier: marine_ordnance_rupture
+  displayName: Chambre sacrificielle
+  description: "La derni\xE8re munition d'un chargeur lourd devient un tir sacrificiel
+    ; une \xE9limination ou une Armure rompue peut chambrer une portion de la r\xE9serve
+    une fois par rechargement."
+  icon: {fileID: 0}
+  skillType: 1
+  maximumInvestedRank: 20
+  unlockLevel: 24
+  prerequisites: []
+  prerequisiteGroups:
+  - mode: 1
+    requiredCount: 1
+    prerequisites:
+    - skill: {fileID: 11400000, guid: 8fcf1a914f921ec488be4047416cdb26, type: 2}
+      requiredInvestedRank: 1
+    - skill: {fileID: 11400000, guid: 4a2118078788de048ac4d11c4f51427a, type: 2}
+      requiredInvestedRank: 1
+  targetMode: 0
+  resourceCost: 0
+  tags:
+  - passive
+  - ranged
+  - two_handed
+  - heavy_weapon
+  - last_round
+  - ammunition
+  - armour_broken
+  rankValues:
+  - identifier: last_round_damage_bonus_percent
+    valueAtRankOne: 10
+    valueAtNaturalCap: 30
+    valuePerEquipmentRank: 1
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 0
+    maximumValue: 0
+  - identifier: magazine_refill_on_trigger_percent
+    valueAtRankOne: 15
+    valueAtNaturalCap: 45
+    valuePerEquipmentRank: 1.5
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 60
+  - identifier: maximum_triggers_per_reload
+    valueAtRankOne: 1
+    valueAtNaturalCap: 1
+    valuePerEquipmentRank: 0
+    wholeNumber: 1
+    clampMinimum: 0
+    minimumValue: 0
+    clampMaximum: 0
+    maximumValue: 0
+  appliedStatusIdentifiers: []
+  consumedStatusIdentifiers: []
+  investedRankSynergies: []

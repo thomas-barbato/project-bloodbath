@@ -265,8 +265,14 @@ namespace ProjectBloodbath.Prototype
 
             if (PromptVisible && !DialogueOpen)
             {
+                Rect promptRect = new(
+                    width * 0.5f - 250f,
+                    height - 258f,
+                    500f,
+                    36f);
+                PrototypeHudSkin.DrawPromptFrame(promptRect);
                 GUI.Label(
-                    new Rect(width * 0.5f - 270f, height - 190f, 540f, 42f),
+                    promptRect,
                     $"{ControlSettingsManager.FormatShortcut("E", "X")}  •  " +
                     interactionPrompt.ToUpperInvariant(),
                     promptStyle);
@@ -513,9 +519,9 @@ namespace ProjectBloodbath.Prototype
             promptStyle ??= new GUIStyle(GUI.skin.label)
             {
                 alignment = TextAnchor.MiddleCenter,
-                fontSize = 20,
+                fontSize = 17,
                 fontStyle = FontStyle.Bold,
-                normal = { textColor = new Color(0.94f, 0.76f, 0.55f, 1f) }
+                normal = { textColor = new Color(0.8f, 0.86f, 0.73f, 1f) }
             };
             titleStyle ??= new GUIStyle(promptStyle)
             {

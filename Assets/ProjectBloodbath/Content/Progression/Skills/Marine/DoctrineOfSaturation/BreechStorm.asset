@@ -1,0 +1,126 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98f4f1f2c63e027488f24ebc28369cbb, type: 3}
+  m_Name: BreechStorm
+  m_EditorClassIdentifier: ProjectBloodbath.Runtime::ProjectBloodbath.Progression.SkillDefinition
+  identifier: marine_breech_storm
+  characterClass: 1
+  treeIdentifier: marine_doctrine_saturation
+  displayName: "Temp\xEAte de culasse"
+  description: "D\xE9clenche une surcadence d'armes l\xE9g\xE8res. Les rechargements
+    restent n\xE9cessaires, deviennent acc\xE9l\xE9r\xE9s et activent normalement
+    toutes les interactions de rechargement."
+  icon: {fileID: 0}
+  skillType: 0
+  maximumInvestedRank: 20
+  unlockLevel: 30
+  prerequisites: []
+  prerequisiteGroups:
+  - mode: 0
+    requiredCount: 1
+    prerequisites:
+    - skill: {fileID: 11400000, guid: adfd3ba3d407b404cadeec7c3cd63f87, type: 2}
+      requiredInvestedRank: 1
+  targetMode: 1
+  resourceCost: 34
+  tags:
+  - active
+  - self_buff
+  - ranged
+  - light_weapon
+  - saturation
+  - reload
+  rankValues:
+  - identifier: cooldown_seconds
+    valueAtRankOne: 30
+    valueAtNaturalCap: 22
+    valuePerEquipmentRank: -0.4
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 10
+    clampMaximum: 0
+    maximumValue: 0
+  - identifier: duration_seconds
+    valueAtRankOne: 5
+    valueAtNaturalCap: 9
+    valuePerEquipmentRank: 0.2
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 1
+    clampMaximum: 0
+    maximumValue: 0
+  - identifier: fire_rate_bonus_percent
+    valueAtRankOne: 10
+    valueAtNaturalCap: 30
+    valuePerEquipmentRank: 1
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 0
+    maximumValue: 0
+  - identifier: reload_speed_bonus_percent
+    valueAtRankOne: 25
+    valueAtNaturalCap: 60
+    valuePerEquipmentRank: 1.5
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 0
+    maximumValue: 0
+  - identifier: movement_speed_bonus_percent
+    valueAtRankOne: 10
+    valueAtNaturalCap: 10
+    valuePerEquipmentRank: 0
+    wholeNumber: 0
+    clampMinimum: 0
+    minimumValue: 0
+    clampMaximum: 0
+    maximumValue: 0
+  - identifier: saturation_retained_on_reload_percent
+    valueAtRankOne: 100
+    valueAtNaturalCap: 100
+    valuePerEquipmentRank: 0
+    wholeNumber: 0
+    clampMinimum: 0
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 100
+  - identifier: duration_per_kill_seconds
+    valueAtRankOne: 0.25
+    valueAtNaturalCap: 0.25
+    valuePerEquipmentRank: 0
+    wholeNumber: 0
+    clampMinimum: 0
+    minimumValue: 0
+    clampMaximum: 0
+    maximumValue: 0
+  - identifier: maximum_added_duration_seconds
+    valueAtRankOne: 3
+    valueAtNaturalCap: 3
+    valuePerEquipmentRank: 0
+    wholeNumber: 0
+    clampMinimum: 0
+    minimumValue: 0
+    clampMaximum: 0
+    maximumValue: 0
+  appliedStatusIdentifiers:
+  - riddled
+  consumedStatusIdentifiers: []
+  investedRankSynergies:
+  - sourceSkill: {fileID: 11400000, guid: b09fab2f0edf7a6478b104f864bbd13e, type: 2}
+    affectedValueIdentifier: duration_percent
+    operation: 1
+    bonusPerInvestedRank: 0.5
+  - sourceSkill: {fileID: 11400000, guid: c6d0b96cdb65df9439c62b076ca7860c, type: 2}
+    affectedValueIdentifier: duration_percent
+    operation: 1
+    bonusPerInvestedRank: 0.5

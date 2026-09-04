@@ -1,0 +1,106 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98f4f1f2c63e027488f24ebc28369cbb, type: 3}
+  m_Name: GravityWell
+  m_EditorClassIdentifier: ProjectBloodbath.Runtime::ProjectBloodbath.Progression.SkillDefinition
+  identifier: engineer_gravity_well
+  characterClass: 3
+  treeIdentifier: engineer_electronic_warfare
+  displayName: "Puits gravim\xE9trique"
+  description: "Cr\xE9e une anomalie compacte qui regroupe les ennemis l\xE9gers,
+    freine les lourds et ne d\xE9place jamais les boss."
+  icon: {fileID: 0}
+  skillType: 0
+  maximumInvestedRank: 20
+  unlockLevel: 18
+  prerequisites: []
+  prerequisiteGroups:
+  - mode: 1
+    requiredCount: 1
+    prerequisites:
+    - skill: {fileID: 11400000, guid: cec58a59e6a30244b85a1197d1156916, type: 2}
+      requiredInvestedRank: 1
+    - skill: {fileID: 11400000, guid: 0d2d3c6e92f67f843a34097a0eec08e7, type: 2}
+      requiredInvestedRank: 1
+  targetMode: 4
+  resourceCost: 28
+  tags:
+  - active
+  - technology
+  - area
+  - gravity
+  - control
+  - debuff
+  rankValues:
+  - identifier: cooldown_seconds
+    valueAtRankOne: 16
+    valueAtNaturalCap: 11
+    valuePerEquipmentRank: -0.25
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 10
+    clampMaximum: 1
+    maximumValue: 16
+  - identifier: duration_seconds
+    valueAtRankOne: 3
+    valueAtNaturalCap: 6
+    valuePerEquipmentRank: 0.15
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 2
+    clampMaximum: 1
+    maximumValue: 7
+  - identifier: radius_metres
+    valueAtRankOne: 5
+    valueAtNaturalCap: 7
+    valuePerEquipmentRank: 0.1
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 3
+    clampMaximum: 1
+    maximumValue: 8
+  - identifier: movement_slow_percent
+    valueAtRankOne: 25
+    valueAtNaturalCap: 50
+    valuePerEquipmentRank: 1.25
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 55
+  - identifier: boss_displacement_metres
+    valueAtRankOne: 0
+    valueAtNaturalCap: 0
+    valuePerEquipmentRank: 0
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 0
+  - identifier: accuracy_bonus_percent
+    valueAtRankOne: 0
+    valueAtNaturalCap: 0
+    valuePerEquipmentRank: 0
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 0
+  appliedStatusIdentifiers:
+  - gravity_slow
+  - gravity_well
+  consumedStatusIdentifiers: []
+  investedRankSynergies:
+  - sourceSkill: {fileID: 11400000, guid: fca1a9d19c2402147ac3783697f636fd, type: 2}
+    affectedValueIdentifier: duration_seconds
+    operation: 1
+    bonusPerInvestedRank: 1.5

@@ -1,0 +1,95 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98f4f1f2c63e027488f24ebc28369cbb, type: 3}
+  m_Name: ScavengerMine
+  m_EditorClassIdentifier: ProjectBloodbath.Runtime::ProjectBloodbath.Progression.SkillDefinition
+  identifier: marine_scavenger_mine
+  characterClass: 1
+  treeIdentifier: marine_controlled_devastation
+  displayName: Mine charognarde
+  description: "Pose une mine robotis\xE9e au point vis\xE9 ; une pression maintenue
+    ordonne la d\xE9tonation des mines existantes sans cr\xE9er une nouvelle mine."
+  icon: {fileID: 0}
+  skillType: 0
+  maximumInvestedRank: 20
+  unlockLevel: 6
+  prerequisites: []
+  prerequisiteGroups: []
+  targetMode: 2
+  resourceCost: 16
+  tags:
+  - active
+  - ranged
+  - explosive
+  - mine
+  - deployable
+  - area
+  - primer
+  rankValues:
+  - identifier: maximum_active_mines
+    valueAtRankOne: 2
+    valueAtNaturalCap: 4
+    valuePerEquipmentRank: 0
+    wholeNumber: 1
+    clampMinimum: 0
+    minimumValue: 0
+    clampMaximum: 0
+    maximumValue: 0
+  - identifier: charge_cooldown_seconds
+    valueAtRankOne: 8
+    valueAtNaturalCap: 8
+    valuePerEquipmentRank: -0.1
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 3
+    clampMaximum: 0
+    maximumValue: 0
+  - identifier: weapon_damage_percent
+    valueAtRankOne: 170
+    valueAtNaturalCap: 380
+    valuePerEquipmentRank: 10.5
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 0
+    maximumValue: 0
+  - identifier: explosion_radius_metres
+    valueAtRankOne: 3.5
+    valueAtNaturalCap: 5
+    valuePerEquipmentRank: 0.08
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 1
+    clampMaximum: 1
+    maximumValue: 6.5
+  - identifier: persistence_seconds
+    valueAtRankOne: 30
+    valueAtNaturalCap: 30
+    valuePerEquipmentRank: 0
+    wholeNumber: 0
+    clampMinimum: 0
+    minimumValue: 0
+    clampMaximum: 0
+    maximumValue: 0
+  appliedStatusIdentifiers:
+  - primer
+  consumedStatusIdentifiers:
+  - unstable_mix
+  investedRankSynergies:
+  - sourceSkill: {fileID: 11400000, guid: 4bfa69b568303b04082603d54fe8ed17, type: 2}
+    affectedValueIdentifier: weapon_damage_percent
+    operation: 1
+    bonusPerInvestedRank: 1.5
+  - sourceSkill: {fileID: 11400000, guid: 696678404b501e94ca451782cb413718, type: 2}
+    affectedValueIdentifier: persistence_percent
+    operation: 1
+    bonusPerInvestedRank: 1

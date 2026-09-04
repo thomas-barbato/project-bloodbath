@@ -29,6 +29,21 @@ namespace ProjectBloodbath.Tests.Editor
             }));
         }
 
+        [MenuItem(
+            "Tools/Project Bloodbath/Tests/Run Skill Asset EditMode Tests")]
+        public static void RunSkillAssetTests()
+        {
+            TestRunnerApi api = ScriptableObject.CreateInstance<TestRunnerApi>();
+            api.Execute(new ExecutionSettings(new Filter
+            {
+                testMode = TestMode.EditMode,
+                assemblyNames = new[]
+                {
+                    "ProjectBloodbath.Tests.Editor"
+                }
+            }));
+        }
+
         private sealed class Reporter : ICallbacks
         {
             public void RunStarted(ITestAdaptor testsToRun)

@@ -1,0 +1,93 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98f4f1f2c63e027488f24ebc28369cbb, type: 3}
+  m_Name: FossilNeuralInterface
+  m_EditorClassIdentifier: ProjectBloodbath.Runtime::ProjectBloodbath.Progression.SkillDefinition
+  identifier: engineer_fossil_neural_interface
+  characterClass: 3
+  treeIdentifier: engineer_main_chassis
+  displayName: Interface neurale fossile
+  description: "Marque les cibles du joueur comme priorit\xE9s sans corriger la pr\xE9cision.
+    Les comp\xE9tences actives ne d\xE9clenchent qu'une attaque contextuelle \xE0
+    la fois."
+  icon: {fileID: 0}
+  skillType: 1
+  maximumInvestedRank: 20
+  unlockLevel: 6
+  prerequisites: []
+  prerequisiteGroups: []
+  targetMode: 0
+  resourceCost: 0
+  tags:
+  - passive
+  - companion
+  - targeting
+  - contextual_attack
+  rankValues:
+  - identifier: neural_priority_duration_seconds
+    valueAtRankOne: 1.5
+    valueAtNaturalCap: 5
+    valuePerEquipmentRank: 0.175
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 1
+    clampMaximum: 1
+    maximumValue: 6
+  - identifier: priority_movement_speed_bonus_percent
+    valueAtRankOne: 5
+    valueAtNaturalCap: 25
+    valuePerEquipmentRank: 1
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 30
+  - identifier: priority_damage_bonus_percent
+    valueAtRankOne: 3
+    valueAtNaturalCap: 15
+    valuePerEquipmentRank: 0.6
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 20
+  - identifier: signature_recovery_bonus_percent
+    valueAtRankOne: 5
+    valueAtNaturalCap: 30
+    valuePerEquipmentRank: 1.25
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 35
+  - identifier: maximum_contextual_attacks_per_trigger
+    valueAtRankOne: 1
+    valueAtNaturalCap: 1
+    valuePerEquipmentRank: 0
+    wholeNumber: 1
+    clampMinimum: 1
+    minimumValue: 1
+    clampMaximum: 1
+    maximumValue: 1
+  - identifier: contextual_attack_internal_cooldown_seconds
+    valueAtRankOne: 8
+    valueAtNaturalCap: 4
+    valuePerEquipmentRank: -0.2
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 3
+    clampMaximum: 1
+    maximumValue: 8
+  appliedStatusIdentifiers:
+  - neural_priority
+  consumedStatusIdentifiers: []
+  investedRankSynergies: []

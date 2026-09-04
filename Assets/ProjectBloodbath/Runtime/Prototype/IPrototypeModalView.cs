@@ -6,4 +6,8 @@ namespace ProjectBloodbath.Prototype
 
         void CloseFromCoordinator();
     }
+
+    public interface IPrototypeActiveSkillBarOverlay
+    {
+    }
 }

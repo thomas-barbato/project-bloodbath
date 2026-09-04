@@ -1,0 +1,151 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98f4f1f2c63e027488f24ebc28369cbb, type: 3}
+  m_Name: ZeroDirective
+  m_EditorClassIdentifier: ProjectBloodbath.Runtime::ProjectBloodbath.Progression.SkillDefinition
+  identifier: engineer_zero_directive
+  characterClass: 3
+  treeIdentifier: engineer_electronic_warfare
+  displayName: "Directive Z\xE9ro"
+  description: "Condamne une cible majeure ou un groupe limit\xE9. Chaque type d'unit\xE9
+    ne stocke qu'une charge d'ex\xE9cution et l'explosion finale poss\xE8de un plafond
+    absolu."
+  icon: {fileID: 0}
+  skillType: 0
+  maximumInvestedRank: 20
+  unlockLevel: 30
+  prerequisites: []
+  prerequisiteGroups:
+  - mode: 1
+    requiredCount: 1
+    prerequisites:
+    - skill: {fileID: 11400000, guid: 0d2d3c6e92f67f843a34097a0eec08e7, type: 2}
+      requiredInvestedRank: 1
+    - skill: {fileID: 11400000, guid: 361c18c0dbf39a64db0a15495ef3c34d, type: 2}
+      requiredInvestedRank: 1
+  targetMode: 3
+  resourceCost: 40
+  tags:
+  - active
+  - technology
+  - designation
+  - execution
+  - ultimate
+  rankValues:
+  - identifier: cooldown_seconds
+    valueAtRankOne: 24
+    valueAtNaturalCap: 18
+    valuePerEquipmentRank: -0.3
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 17
+    clampMaximum: 1
+    maximumValue: 24
+  - identifier: maximum_normal_targets
+    valueAtRankOne: 4
+    valueAtNaturalCap: 8
+    valuePerEquipmentRank: 0
+    wholeNumber: 1
+    clampMinimum: 1
+    minimumValue: 1
+    clampMaximum: 1
+    maximumValue: 8
+  - identifier: normal_target_radius_metres
+    valueAtRankOne: 5
+    valueAtNaturalCap: 5
+    valuePerEquipmentRank: 0
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 5
+    clampMaximum: 1
+    maximumValue: 5
+  - identifier: duration_seconds
+    valueAtRankOne: 6
+    valueAtNaturalCap: 10
+    valuePerEquipmentRank: 0.2
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 4
+    clampMaximum: 1
+    maximumValue: 11
+  - identifier: base_execution_damage_percent
+    valueAtRankOne: 200
+    valueAtNaturalCap: 420
+    valuePerEquipmentRank: 11
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 500
+  - identifier: damage_bonus_per_distinct_unit_type_percent
+    valueAtRankOne: 20
+    valueAtNaturalCap: 20
+    valuePerEquipmentRank: 0
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 20
+    clampMaximum: 1
+    maximumValue: 20
+  - identifier: maximum_counted_unit_types
+    valueAtRankOne: 3
+    valueAtNaturalCap: 4
+    valuePerEquipmentRank: 0
+    wholeNumber: 1
+    clampMinimum: 1
+    minimumValue: 1
+    clampMaximum: 1
+    maximumValue: 4
+  - identifier: maximum_charges_per_unit_type
+    valueAtRankOne: 1
+    valueAtNaturalCap: 1
+    valuePerEquipmentRank: 0
+    wholeNumber: 1
+    clampMinimum: 1
+    minimumValue: 1
+    clampMaximum: 1
+    maximumValue: 1
+  - identifier: maximum_final_damage_percent
+    valueAtRankOne: 350
+    valueAtNaturalCap: 600
+    valuePerEquipmentRank: 12.5
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 600
+  - identifier: maximum_beacon_duration_conversion_seconds
+    valueAtRankOne: 1
+    valueAtNaturalCap: 3
+    valuePerEquipmentRank: 0.1
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 3
+  - identifier: accuracy_bonus_percent
+    valueAtRankOne: 0
+    valueAtNaturalCap: 0
+    valuePerEquipmentRank: 0
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 0
+  appliedStatusIdentifiers:
+  - zero_directive
+  consumedStatusIdentifiers:
+  - exposure_beacon_duration
+  investedRankSynergies:
+  - sourceSkill: {fileID: 11400000, guid: d253ee01b3bbd2a4abc5032712d51ee6, type: 2}
+    affectedValueIdentifier: base_execution_damage_percent
+    operation: 1
+    bonusPerInvestedRank: 1.5

@@ -1,0 +1,119 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98f4f1f2c63e027488f24ebc28369cbb, type: 3}
+  m_Name: CharnelBatteries
+  m_EditorClassIdentifier: ProjectBloodbath.Runtime::ProjectBloodbath.Progression.SkillDefinition
+  identifier: engineer_charnel_batteries
+  characterClass: 3
+  treeIdentifier: engineer_industrial_swarm
+  displayName: Batteries de charnier
+  description: "Les \xE9liminations proches prolongent les drones dans une limite
+    relative. Les batteries laiss\xE9es au sol ne peuvent \xEAtre consomm\xE9es qu'une
+    fois."
+  icon: {fileID: 0}
+  skillType: 1
+  maximumInvestedRank: 20
+  unlockLevel: 12
+  prerequisites: []
+  prerequisiteGroups:
+  - mode: 1
+    requiredCount: 1
+    prerequisites:
+    - skill: {fileID: 11400000, guid: f3232769d0a165f4ebfcaf95471c372f, type: 2}
+      requiredInvestedRank: 1
+    - skill: {fileID: 11400000, guid: b1becfc0115b73d4abe9c849196d4985, type: 2}
+      requiredInvestedRank: 1
+  targetMode: 0
+  resourceCost: 0
+  tags:
+  - passive
+  - drone
+  - battery
+  - duration
+  - repair
+  rankValues:
+  - identifier: kill_trigger_radius_metres
+    valueAtRankOne: 8
+    valueAtNaturalCap: 8
+    valuePerEquipmentRank: 0
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 8
+    clampMaximum: 1
+    maximumValue: 8
+  - identifier: kill_duration_extension_seconds
+    valueAtRankOne: 0.2
+    valueAtNaturalCap: 0.75
+    valuePerEquipmentRank: 0.025
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 1
+  - identifier: maximum_duration_extension_percent_of_initial
+    valueAtRankOne: 15
+    valueAtNaturalCap: 35
+    valuePerEquipmentRank: 1
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 40
+  - identifier: battery_duration_seconds
+    valueAtRankOne: 4
+    valueAtNaturalCap: 4
+    valuePerEquipmentRank: 0
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 4
+    clampMaximum: 1
+    maximumValue: 4
+  - identifier: battery_health_restoration_percent
+    valueAtRankOne: 5
+    valueAtNaturalCap: 20
+    valuePerEquipmentRank: 0.75
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 24
+  - identifier: battery_duration_extension_seconds
+    valueAtRankOne: 0.5
+    valueAtNaturalCap: 2.5
+    valuePerEquipmentRank: 0.1
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 3
+  - identifier: maximum_consumers_per_battery
+    valueAtRankOne: 1
+    valueAtNaturalCap: 1
+    valuePerEquipmentRank: 0
+    wholeNumber: 1
+    clampMinimum: 1
+    minimumValue: 1
+    clampMaximum: 1
+    maximumValue: 1
+  - identifier: replicated_units_can_create_batteries
+    valueAtRankOne: 0
+    valueAtNaturalCap: 0
+    valuePerEquipmentRank: 0
+    wholeNumber: 1
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 0
+  appliedStatusIdentifiers:
+  - charnel_battery
+  consumedStatusIdentifiers: []
+  investedRankSynergies: []

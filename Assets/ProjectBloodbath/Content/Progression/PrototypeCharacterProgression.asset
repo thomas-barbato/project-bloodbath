@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f1362942303904428bf142889fa2577, type: 3}
   m_Name: PrototypeCharacterProgression
   m_EditorClassIdentifier: ProjectBloodbath.Runtime::ProjectBloodbath.Progression.CharacterProgressionSettings
-  maximumLevel: 50
+  maximumLevel: 99
   baseExperienceRequired: 100
-  growthMultiplier: 1.25
+  growthMultiplier: 1.1
   attributePointsPerLevel: 5
+  skillPointsPerLevel: 1

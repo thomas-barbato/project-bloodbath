@@ -313,6 +313,8 @@ Les principales références comprennent notamment :
 
 Ces références doivent servir à identifier des qualités précises, et non à reproduire leurs univers, personnages, armes ou interfaces. **Project Bloodbath devra conserver sa propre identité de science-fiction industrielle, biologique, démoniaque et extradimensionnelle.**
 
+L'arsenal humain ne devra pas paraître uniformément futuriste. Il pourra réunir des armes anciennes encore en service, des armes contemporaines robustes et des modèles plus avancés, parfois modifiés avec des pièces de générations différentes. Leur cohérence viendra surtout de leur caractère fonctionnel, de leur poids, de leur usure et des réparations ou adaptations de terrain, et non d'un langage visuel de science-fiction appliqué à chaque arme.
+
 Les animations finales devront rechercher :
 
 - des poses fortes et immédiatement compréhensibles ;
@@ -433,9 +435,7 @@ Des solutions techniques spécifiques pourront toutefois être utilisées lorsqu
 
 # Classes
 
-Le jeu comportera des **classes de personnage**.
-
-Les classes restent à définir précisément.
+Le jeu comportera quatre **classes de personnage** : **Enforcer**, **Marine**, **Scientist** et **Engineer**. Chacune possède trois arbres de dix compétences, composés de cinq actives et cinq passives. Leur conception détaillée, leurs synergies et leurs valeurs provisoires sont décrites dans `Classes_Project_Bloodbath.md` et `Arbres_de_competences_Project_Bloodbath_v2.md`.
 
 Une classe donnera notamment au personnage :
 
@@ -491,13 +491,13 @@ Ces statistiques pourront influencer :
 
 Le système devra permettre plusieurs types de builds et des spécialisations hybrides.
 
-Les classes, leurs rôles de gameplay et leurs arbres respectifs de compétences actives et passives seront définis ultérieurement, après validation des fondations communes du combat, de la progression et des synergies. Les prototypes actuels ne devront donc pas rattacher définitivement une arme, une compétence ou un passif à une classe précise.
+Les classes orientent les compétences accessibles sans limiter les équipements par classe. Le personnage commence au niveau 1 sans point de compétence et reçoit un point à chaque montée de niveau, jusqu'au niveau 99. Une compétence accepte vingt points investis naturellement ; les bonus d'équipement peuvent dépasser ce rang, mais ne satisfont jamais un prérequis et n'augmentent pas les synergies fondées sur les points investis. Les compétences temporaires du laboratoire restent indépendantes de ces arbres et ne constituent pas des compétences finales de classe.
 
 Des statistiques secondaires seront calculées et modifiées à partir de plusieurs sources clairement identifiables : statistiques principales, compétences passives, objets équipés, sorts ou autres buffs temporaires, potions, effets de statut et éventuels effets de zone. Elles pourront notamment représenter les dégâts, la vie, l’énergie, l’armure, les résistances, les vitesses, les chances de coup critique ou toute autre valeur dérivée utile.
 
 Chaque modificateur devra conserver l’identité de sa source. Déséquiper un objet, perdre un buff ou laisser expirer l’effet d’une potion retirera donc uniquement les valeurs accordées par cette source, sans modifier les autres bonus actifs. Les formules, limites, cumuls et rendements décroissants seront définis pendant l’équilibrage plutôt que figés dès le prototype.
 
-Un dossier de personnage regroupera les statistiques principales et secondaires, les points disponibles, l’inventaire équipable et les emplacements portés. Il devra être utilisable à la souris, au clavier et à la manette avec des commandes reconfigurables. Son titre reprendra le nom choisi lors de la création du personnage. Sa composition de référence emploiera trois colonnes : le niveau, la classe et toutes les statistiques à gauche ; une silhouette humaine asexuée montrant muscles et tendons avec des emplacements d’équipement entièrement bordés au centre ; et un inventaire élargi à droite. Aucun aperçu séparé du modèle réel du personnage ne sera affiché. Les statistiques devront réagir immédiatement aux changements d’équipement et signaler brièvement les valeurs modifiées. Les boutons d’ajout d’attribut ne seront visibles que lorsque des points restent disponibles. Toute nouvelle répartition restera provisoire, avec ses valeurs affichées en bleu, jusqu’à l’utilisation du bouton **Sauvegarder** ; le bouton **Annuler** supprimera uniquement cette répartition en attente et rendra les points concernés. Ces deux boutons de décision disparaîtront dès qu’aucune répartition ne reste en attente. Tant que les classes ne sont pas définies, une identité et une classe de prototype servent uniquement à valider cette présentation.
+Un dossier de personnage regroupera les statistiques principales et secondaires, les points disponibles, l’inventaire équipable et les emplacements portés. Il devra être utilisable à la souris, au clavier et à la manette avec des commandes reconfigurables. Son titre reprendra le nom choisi lors de la création du personnage. Sa composition de référence emploiera trois colonnes : le niveau, la classe et toutes les statistiques à gauche ; une silhouette humaine asexuée montrant muscles et tendons avec des emplacements d’équipement entièrement bordés au centre ; et un inventaire élargi à droite. Aucun aperçu séparé du modèle réel du personnage ne sera affiché. Les statistiques devront réagir immédiatement aux changements d’équipement et signaler brièvement les valeurs modifiées. Les boutons d’ajout d’attribut ne seront visibles que lorsque des points restent disponibles. Toute nouvelle répartition restera provisoire, avec ses valeurs affichées en bleu, jusqu’à l’utilisation du bouton **Sauvegarder** ; le bouton **Annuler** supprimera uniquement cette répartition en attente et rendra les points concernés. Ces deux boutons de décision disparaîtront dès qu’aucune répartition ne reste en attente. L’identité de prototype du laboratoire reste utilisée uniquement tant que la création du personnage et la sélection de classe ne sont pas branchées à cette présentation.
 
 L’inventaire comportera quatre pages de trente cellules. Des boutons fermés permettront de filtrer tous les objets, les armes, les armures, les implants ou les objets de quête, puis de ranger l’ensemble par nom ou par type. Une recherche par nom s’activera à partir de trois caractères consécutifs, sans tenir compte des majuscules ni des accents, et se combinera avec le filtre actif. Avec moins de trois caractères, elle ne masquera aucun objet. Le détail d’un objet sera présenté directement par son infobulle au survol ou au focus ; aucun panneau de « sélection d’objet » séparé ne réduira la grille.
 
@@ -1175,7 +1175,13 @@ Cette barre devra notamment pouvoir afficher :
 
 Ses emplacements devront être utilisables avec des commandes reconfigurables et rester confortables au clavier, à la souris et à la manette.
 
-Le nombre exact d’emplacements, leur disposition et le style final de la barre seront définis plus tard pendant le travail d’interface et les tests UX. Sa présentation devra toutefois respecter la direction graphique sombre, rétro-futuriste et grimdark du jeu.
+La barre comportera **cinq emplacements actifs** disposés de manière compacte au centre bas du HUD. Sa présentation adoptera un habillage original rétro-futuriste grimdark réellement texturé : acier gunmetal et charbon usé, liserés de laiton vieilli et affichages ambre ou cyan fortement contrastés. Le rouge sera réservé aux dégâts et aux alertes critiques plutôt qu’à la structure générale de l’interface. Les dimensions et les commandes manette exactes resteront ajustables pendant les tests UX.
+
+L'arbre de compétences s'ouvre avec `K` dans le prototype. Pendant qu'il est affiché, la barre des cinq compétences actives reste visible au bas de l'écran et montre immédiatement chaque affectation, déplacement ou retrait. Une compétence passive ne peut jamais y être placée. La barre conserve la compétence elle-même plutôt qu'une copie de ses valeurs : si le joueur améliore plus tard une compétence déjà affectée, son rang et ses nouveaux effets sont pris en compte directement sans exiger une nouvelle affectation. Les douze arbres des quatre classes existent désormais comme données Unity, mais `MovementLab` ne présente que les trois arbres du Marine puisque Mara Voss appartient à cette classe.
+
+Chaque compétence active ou passive possédera une icône illustrée propre, conçue comme une petite vignette pixelisée rétro-futuriste grimdark. L'arbre privilégiera l'illustration et la lecture du parcours plutôt qu'une grille administrative : une petite marque `A` ou `P` et la forme du nœud distingueront les types sans les séparer en colonnes. La topologie restera unique et irrégulière, sans réseau permanent de traits ; prérequis, débouchés et synergies seront mis en évidence uniquement au survol ou au focus de la compétence concernée afin de ne pas encombrer l'ensemble. Tant que les illustrations finales manquent, des glyphes géométriques stables et distincts évitent d'afficher la même mire sur tous les nœuds. Une compétence active affectée à la barre y réutilisera exactement la même icône, recadrée proprement pour le format compact du HUD.
+
+Les onglets des arbres emploieront des pictogrammes très simples et immédiatement reconnaissables avant toute décoration abstraite : par exemple une silhouette de pistolet-mitrailleur pour la Doctrine de saturation, une arme lourde pour l'Ordnance de rupture et un explosif ou dispositif de mise à feu pour la Dévastation contrôlée. Ces silhouettes pourront représenter des armes anciennes, contemporaines ou futuristes selon la doctrine ; elles ne devront pas transformer tout l'arsenal en technologie avancée générique.
 
 ## Compétences passives
 

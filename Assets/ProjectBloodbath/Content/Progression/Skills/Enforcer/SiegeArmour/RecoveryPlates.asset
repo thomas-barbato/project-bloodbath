@@ -1,0 +1,65 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98f4f1f2c63e027488f24ebc28369cbb, type: 3}
+  m_Name: RecoveryPlates
+  m_EditorClassIdentifier: ProjectBloodbath.Runtime::ProjectBloodbath.Progression.SkillDefinition
+  identifier: enforcer_recovery_plates
+  characterClass: 0
+  treeIdentifier: enforcer_siege_armour
+  displayName: "Plaques de r\xE9cup\xE9ration"
+  description: "Renforce l'armure, le bouclier et les r\xE9parations re\xE7ues pendant
+    l'Ancrage sans dupliquer la d\xE9fense d'urgence."
+  icon: {fileID: 0}
+  skillType: 1
+  maximumInvestedRank: 20
+  unlockLevel: 1
+  prerequisites: []
+  prerequisiteGroups: []
+  targetMode: 0
+  resourceCost: 0
+  tags:
+  - passive
+  - armour
+  - shield
+  - repair
+  - tank
+  rankValues:
+  - identifier: armour_efficiency_bonus_percent
+    valueAtRankOne: 5
+    valueAtNaturalCap: 20
+    valuePerEquipmentRank: 0.75
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 30
+  - identifier: maximum_shield_bonus_percent
+    valueAtRankOne: 2
+    valueAtNaturalCap: 10
+    valuePerEquipmentRank: 0.4
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 15
+  - identifier: anchored_restoration_received_percent
+    valueAtRankOne: 5
+    valueAtNaturalCap: 20
+    valuePerEquipmentRank: 0.75
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 30
+  appliedStatusIdentifiers: []
+  consumedStatusIdentifiers: []
+  investedRankSynergies: []

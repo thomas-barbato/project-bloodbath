@@ -1,0 +1,93 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98f4f1f2c63e027488f24ebc28369cbb, type: 3}
+  m_Name: PredationProtocols
+  m_EditorClassIdentifier: ProjectBloodbath.Runtime::ProjectBloodbath.Progression.SkillDefinition
+  identifier: engineer_predation_protocols
+  characterClass: 3
+  treeIdentifier: engineer_main_chassis
+  displayName: "Protocoles de pr\xE9dation"
+  description: "Augmente les d\xE9g\xE2ts du compagnon et ordonne une priorit\xE9
+    de cible explicite, sans bonus cach\xE9 de pr\xE9cision."
+  icon: {fileID: 0}
+  skillType: 1
+  maximumInvestedRank: 20
+  unlockLevel: 12
+  prerequisites: []
+  prerequisiteGroups:
+  - mode: 1
+    requiredCount: 1
+    prerequisites:
+    - skill: {fileID: 11400000, guid: c5b6890549f35904a8e744efb25d6d56, type: 2}
+      requiredInvestedRank: 1
+    - skill: {fileID: 11400000, guid: 38fa0e5f38390ce44b4bf796c941aa84, type: 2}
+      requiredInvestedRank: 1
+    - skill: {fileID: 11400000, guid: 103de1988c5f81b4fb94828f5acf0508, type: 2}
+      requiredInvestedRank: 1
+  targetMode: 0
+  resourceCost: 0
+  tags:
+  - passive
+  - companion
+  - damage
+  - targeting
+  - debuff
+  rankValues:
+  - identifier: companion_damage_bonus_percent
+    valueAtRankOne: 1.5
+    valueAtNaturalCap: 30
+    valuePerEquipmentRank: 1.5
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 40
+  - identifier: damage_per_debuff_type_percent
+    valueAtRankOne: 0.5
+    valueAtNaturalCap: 2
+    valuePerEquipmentRank: 0.075
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 2.5
+  - identifier: maximum_counted_debuff_types
+    valueAtRankOne: 3
+    valueAtNaturalCap: 5
+    valuePerEquipmentRank: 0
+    wholeNumber: 1
+    clampMinimum: 1
+    minimumValue: 1
+    clampMaximum: 1
+    maximumValue: 5
+  - identifier: maximum_debuff_damage_bonus_percent
+    valueAtRankOne: 4
+    valueAtNaturalCap: 10
+    valuePerEquipmentRank: 0.3
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 12
+  - identifier: accuracy_bonus_percent
+    valueAtRankOne: 0
+    valueAtNaturalCap: 0
+    valuePerEquipmentRank: 0
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 0
+  appliedStatusIdentifiers:
+  - predation_protocols
+  consumedStatusIdentifiers: []
+  investedRankSynergies: []

@@ -26,6 +26,7 @@ namespace ProjectBloodbath.Input
         private InputAction inventoryAction;
         private InputAction questJournalAction;
         private InputAction worldMapAction;
+        private InputAction skillTreeAction;
         private InputAction optionsAction;
         private InputAction menuNavigateAction;
         private InputAction menuSubmitAction;
@@ -38,6 +39,7 @@ namespace ProjectBloodbath.Input
         private bool inventoryPressed;
         private bool questJournalPressed;
         private bool worldMapPressed;
+        private bool skillTreePressed;
         private bool optionsPressed;
         private bool menuSubmitPressed;
         private bool menuCancelPressed;
@@ -145,6 +147,14 @@ namespace ProjectBloodbath.Input
             return value;
         }
 
+        public bool ConsumeSkillTreePressed()
+        {
+            bool value = skillTreePressed ||
+                (skillTreeAction?.WasPressedThisFrame() ?? false);
+            skillTreePressed = false;
+            return value;
+        }
+
         public bool ConsumeOptionsPressed()
         {
             bool value = !GameplaySuppressed &&
@@ -210,6 +220,7 @@ namespace ProjectBloodbath.Input
             inventoryAction.performed += OnInventoryPerformed;
             questJournalAction.performed += OnQuestJournalPerformed;
             worldMapAction.performed += OnWorldMapPerformed;
+            skillTreeAction.performed += OnSkillTreePerformed;
             optionsAction.performed += OnOptionsPerformed;
             menuNavigateAction.performed += OnMenuNavigatePerformed;
             menuSubmitAction.performed += OnMenuSubmitPerformed;
@@ -253,6 +264,10 @@ namespace ProjectBloodbath.Input
             {
                 worldMapAction.performed -= OnWorldMapPerformed;
             }
+            if (skillTreeAction != null)
+            {
+                skillTreeAction.performed -= OnSkillTreePerformed;
+            }
             if (optionsAction != null)
             {
                 optionsAction.performed -= OnOptionsPerformed;
@@ -280,6 +295,7 @@ namespace ProjectBloodbath.Input
             inventoryPressed = false;
             questJournalPressed = false;
             worldMapPressed = false;
+            skillTreePressed = false;
             optionsPressed = false;
             menuSubmitPressed = false;
             menuCancelPressed = false;
@@ -313,6 +329,7 @@ namespace ProjectBloodbath.Input
             inventoryAction = playerMap.FindAction("Inventory", true);
             questJournalAction = playerMap.FindAction("QuestJournal", true);
             worldMapAction = playerMap.FindAction("WorldMap", true);
+            skillTreeAction = playerMap.FindAction("SkillTree", true);
             optionsAction = playerMap.FindAction("Options", true);
             menuNavigateAction = uiMap.FindAction("Navigate", true);
             menuSubmitAction = uiMap.FindAction("Submit", true);
@@ -358,6 +375,11 @@ namespace ProjectBloodbath.Input
         private void OnWorldMapPerformed(InputAction.CallbackContext context)
         {
             worldMapPressed = true;
+        }
+
+        private void OnSkillTreePerformed(InputAction.CallbackContext context)
+        {
+            skillTreePressed = true;
         }
 
         private void OnOptionsPerformed(InputAction.CallbackContext context)

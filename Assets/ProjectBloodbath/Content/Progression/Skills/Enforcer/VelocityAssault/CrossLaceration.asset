@@ -1,0 +1,112 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98f4f1f2c63e027488f24ebc28369cbb, type: 3}
+  m_Name: CrossLaceration
+  m_EditorClassIdentifier: ProjectBloodbath.Runtime::ProjectBloodbath.Progression.SkillDefinition
+  identifier: enforcer_cross_laceration
+  characterClass: 0
+  treeIdentifier: enforcer_velocity_assault
+  displayName: "Lac\xE9ration crois\xE9e"
+  description: "Encha\xEEne deux frappes et applique Trauma, une pr\xE9paration born\xE9e
+    destin\xE9e au finisher."
+  icon: {fileID: 0}
+  skillType: 0
+  maximumInvestedRank: 20
+  unlockLevel: 6
+  prerequisites:
+  - skill: {fileID: 11400000, guid: e14f60590b3cc244bad990216626987b, type: 2}
+    requiredInvestedRank: 1
+  prerequisiteGroups: []
+  targetMode: 3
+  resourceCost: 16
+  tags:
+  - active
+  - melee
+  - trauma
+  - carnage
+  - dual_wield
+  rankValues:
+  - identifier: cooldown_seconds
+    valueAtRankOne: 6
+    valueAtNaturalCap: 4
+    valuePerEquipmentRank: -0.1
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 2.5
+    clampMaximum: 0
+    maximumValue: 0
+  - identifier: hit_count
+    valueAtRankOne: 2
+    valueAtNaturalCap: 2
+    valuePerEquipmentRank: 0
+    wholeNumber: 1
+    clampMinimum: 1
+    minimumValue: 2
+    clampMaximum: 1
+    maximumValue: 2
+  - identifier: weapon_damage_per_hit_percent
+    valueAtRankOne: 70
+    valueAtNaturalCap: 145
+    valuePerEquipmentRank: 3.75
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 0
+    maximumValue: 0
+  - identifier: single_weapon_second_hit_percent
+    valueAtRankOne: 80
+    valueAtNaturalCap: 80
+    valuePerEquipmentRank: 0
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 80
+  - identifier: maximum_trauma_charges
+    valueAtRankOne: 5
+    valueAtNaturalCap: 5
+    valuePerEquipmentRank: 0
+    wholeNumber: 1
+    clampMinimum: 1
+    minimumValue: 1
+    clampMaximum: 1
+    maximumValue: 5
+  - identifier: trauma_duration_seconds
+    valueAtRankOne: 6
+    valueAtNaturalCap: 6
+    valuePerEquipmentRank: 0
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 2
+    clampMaximum: 1
+    maximumValue: 8
+  - identifier: damage_per_carnage_percent
+    valueAtRankOne: 2
+    valueAtNaturalCap: 2
+    valuePerEquipmentRank: 0
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 2
+  appliedStatusIdentifiers:
+  - trauma
+  consumedStatusIdentifiers: []
+  investedRankSynergies:
+  - sourceSkill: {fileID: 11400000, guid: e14f60590b3cc244bad990216626987b, type: 2}
+    affectedValueIdentifier: activation_speed_percent
+    operation: 1
+    bonusPerInvestedRank: 0.5
+  - sourceSkill: {fileID: 11400000, guid: 9a5c20d3af84e824eaf7c1c770e8616b, type: 2}
+    affectedValueIdentifier: trauma_duration_percent
+    operation: 1
+    bonusPerInvestedRank: 1

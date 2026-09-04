@@ -1,0 +1,86 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98f4f1f2c63e027488f24ebc28369cbb, type: 3}
+  m_Name: CrystallineFragility
+  m_EditorClassIdentifier: ProjectBloodbath.Runtime::ProjectBloodbath.Progression.SkillDefinition
+  identifier: scientist_crystalline_fragility
+  characterClass: 2
+  treeIdentifier: scientist_cryogenic_containment
+  displayName: "Fragilit\xE9 cristalline"
+  description: "Les cibles gel\xE9es deviennent plus vuln\xE9rables aux d\xE9g\xE2ts
+    physiques et explosifs. Leur rupture produit une explosion non r\xE9cursive."
+  icon: {fileID: 0}
+  skillType: 1
+  maximumInvestedRank: 20
+  unlockLevel: 12
+  prerequisites: []
+  prerequisiteGroups:
+  - mode: 1
+    requiredCount: 1
+    prerequisites:
+    - skill: {fileID: 11400000, guid: 1c5efeb96f518f542a61a3231cf77d20, type: 2}
+      requiredInvestedRank: 1
+    - skill: {fileID: 11400000, guid: 0259f141e9bac8f44ac047877a76d131, type: 2}
+      requiredInvestedRank: 1
+  targetMode: 0
+  resourceCost: 0
+  tags:
+  - passive
+  - ice
+  - freeze
+  - vulnerability
+  - shatter
+  rankValues:
+  - identifier: physical_explosive_vulnerability_percent
+    valueAtRankOne: 3
+    valueAtNaturalCap: 12
+    valuePerEquipmentRank: 0.45
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 16
+  - identifier: shatter_explosion_damage_percent
+    valueAtRankOne: 60
+    valueAtNaturalCap: 180
+    valuePerEquipmentRank: 6
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 220
+  - identifier: shatter_explosion_radius_metres
+    valueAtRankOne: 3
+    valueAtNaturalCap: 5
+    valuePerEquipmentRank: 0.1
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 1
+    clampMaximum: 1
+    maximumValue: 5.5
+  - identifier: maximum_secondary_chain_depth
+    valueAtRankOne: 0
+    valueAtNaturalCap: 0
+    valuePerEquipmentRank: 0
+    wholeNumber: 1
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 0
+  appliedStatusIdentifiers:
+  - crystalline_fragility
+  consumedStatusIdentifiers: []
+  investedRankSynergies:
+  - sourceSkill: {fileID: 11400000, guid: 1c5efeb96f518f542a61a3231cf77d20, type: 2}
+    affectedValueIdentifier: shatter_explosion_damage_percent
+    operation: 1
+    bonusPerInvestedRank: 1.5

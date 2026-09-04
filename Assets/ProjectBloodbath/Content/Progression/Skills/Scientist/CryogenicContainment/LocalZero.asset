@@ -1,0 +1,106 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98f4f1f2c63e027488f24ebc28369cbb, type: 3}
+  m_Name: LocalZero
+  m_EditorClassIdentifier: ProjectBloodbath.Runtime::ProjectBloodbath.Progression.SkillDefinition
+  identifier: scientist_local_zero
+  characterClass: 2
+  treeIdentifier: scientist_cryogenic_containment
+  displayName: "Z\xE9ro local"
+  description: "Effondre brutalement la temp\xE9rature dans une zone, inflige des
+    d\xE9g\xE2ts, impose de la Cryostase et accorde une courte protection."
+  icon: {fileID: 0}
+  skillType: 0
+  maximumInvestedRank: 20
+  unlockLevel: 24
+  prerequisites: []
+  prerequisiteGroups:
+  - mode: 1
+    requiredCount: 1
+    prerequisites:
+    - skill: {fileID: 11400000, guid: 1c5efeb96f518f542a61a3231cf77d20, type: 2}
+      requiredInvestedRank: 1
+    - skill: {fileID: 11400000, guid: 51bdcf99cf0aeb949a15a5ff37abc09b, type: 2}
+      requiredInvestedRank: 1
+  targetMode: 1
+  resourceCost: 55
+  tags:
+  - active
+  - ice
+  - area
+  - cryostasis
+  - defensive
+  - ultimate
+  rankValues:
+  - identifier: radius_metres
+    valueAtRankOne: 5
+    valueAtNaturalCap: 8
+    valuePerEquipmentRank: 0.15
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 3
+    clampMaximum: 1
+    maximumValue: 9
+  - identifier: damage_percent
+    valueAtRankOne: 200
+    valueAtNaturalCap: 420
+    valuePerEquipmentRank: 11
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 500
+  - identifier: cryostasis_applied
+    valueAtRankOne: 60
+    valueAtNaturalCap: 100
+    valuePerEquipmentRank: 2
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 100
+  - identifier: armour_bonus_percent
+    valueAtRankOne: 10
+    valueAtNaturalCap: 20
+    valuePerEquipmentRank: 0.5
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 25
+  - identifier: defensive_duration_seconds
+    valueAtRankOne: 3
+    valueAtNaturalCap: 5
+    valuePerEquipmentRank: 0.1
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 2
+    clampMaximum: 1
+    maximumValue: 6
+  - identifier: enemy_projectile_slow_percent
+    valueAtRankOne: 10
+    valueAtNaturalCap: 20
+    valuePerEquipmentRank: 0.5
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 25
+  appliedStatusIdentifiers:
+  - local_zero
+  - cryostasis
+  consumedStatusIdentifiers: []
+  investedRankSynergies:
+  - sourceSkill: {fileID: 11400000, guid: 51bdcf99cf0aeb949a15a5ff37abc09b, type: 2}
+    affectedValueIdentifier: damage_percent
+    operation: 1
+    bonusPerInvestedRank: 1.5

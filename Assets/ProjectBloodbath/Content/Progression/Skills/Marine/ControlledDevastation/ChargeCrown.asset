@@ -1,0 +1,129 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98f4f1f2c63e027488f24ebc28369cbb, type: 3}
+  m_Name: ChargeCrown
+  m_EditorClassIdentifier: ProjectBloodbath.Runtime::ProjectBloodbath.Progression.SkillDefinition
+  identifier: marine_charge_crown
+  characterClass: 1
+  treeIdentifier: marine_controlled_devastation
+  displayName: Couronne de charges
+  description: "Projette autour du Marine un anneau de charges \xE0 centre s\xFBr
+    ; les impacts r\xE9p\xE9t\xE9s sur une m\xEAme cible sont plafonn\xE9s et fortement
+    r\xE9duits."
+  icon: {fileID: 0}
+  skillType: 0
+  maximumInvestedRank: 20
+  unlockLevel: 30
+  prerequisites: []
+  prerequisiteGroups:
+  - mode: 1
+    requiredCount: 1
+    prerequisites:
+    - skill: {fileID: 11400000, guid: b1acd173446ce3847afd3854c4144dd8, type: 2}
+      requiredInvestedRank: 1
+    - skill: {fileID: 11400000, guid: 2a598972385969f48b629cf8cfc39242, type: 2}
+      requiredInvestedRank: 1
+  targetMode: 1
+  resourceCost: 36
+  tags:
+  - active
+  - self
+  - explosive
+  - ring
+  - area
+  - primer
+  rankValues:
+  - identifier: cooldown_seconds
+    valueAtRankOne: 22
+    valueAtNaturalCap: 16
+    valuePerEquipmentRank: -0.3
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 7
+    clampMaximum: 0
+    maximumValue: 0
+  - identifier: projectile_count
+    valueAtRankOne: 5
+    valueAtNaturalCap: 9
+    valuePerEquipmentRank: 0
+    wholeNumber: 1
+    clampMinimum: 0
+    minimumValue: 0
+    clampMaximum: 0
+    maximumValue: 0
+  - identifier: arming_delay_seconds
+    valueAtRankOne: 0.8
+    valueAtNaturalCap: 0.8
+    valuePerEquipmentRank: 0
+    wholeNumber: 0
+    clampMinimum: 0
+    minimumValue: 0
+    clampMaximum: 0
+    maximumValue: 0
+  - identifier: weapon_damage_percent
+    valueAtRankOne: 80
+    valueAtNaturalCap: 170
+    valuePerEquipmentRank: 4.5
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 0
+    maximumValue: 0
+  - identifier: safe_inner_radius_metres
+    valueAtRankOne: 3
+    valueAtNaturalCap: 3
+    valuePerEquipmentRank: 0
+    wholeNumber: 0
+    clampMinimum: 0
+    minimumValue: 0
+    clampMaximum: 0
+    maximumValue: 0
+  - identifier: outer_radius_metres
+    valueAtRankOne: 8
+    valueAtNaturalCap: 8
+    valuePerEquipmentRank: 0
+    wholeNumber: 0
+    clampMinimum: 0
+    minimumValue: 0
+    clampMaximum: 0
+    maximumValue: 0
+  - identifier: additional_hit_damage_percent
+    valueAtRankOne: 25
+    valueAtNaturalCap: 25
+    valuePerEquipmentRank: 0
+    wholeNumber: 0
+    clampMinimum: 0
+    minimumValue: 0
+    clampMaximum: 0
+    maximumValue: 0
+  - identifier: maximum_hits_per_target
+    valueAtRankOne: 3
+    valueAtNaturalCap: 3
+    valuePerEquipmentRank: 0
+    wholeNumber: 1
+    clampMinimum: 0
+    minimumValue: 0
+    clampMaximum: 0
+    maximumValue: 0
+  appliedStatusIdentifiers:
+  - primer
+  consumedStatusIdentifiers:
+  - unstable_mix
+  investedRankSynergies:
+  - sourceSkill: {fileID: 11400000, guid: b1acd173446ce3847afd3854c4144dd8, type: 2}
+    affectedValueIdentifier: weapon_damage_percent
+    operation: 1
+    bonusPerInvestedRank: 1.5
+  - sourceSkill: {fileID: 11400000, guid: a76368adc6bf021468db6bb3c5b5ee7f, type: 2}
+    affectedValueIdentifier: shredded_target_damage_percent
+    operation: 1
+    bonusPerInvestedRank: 1

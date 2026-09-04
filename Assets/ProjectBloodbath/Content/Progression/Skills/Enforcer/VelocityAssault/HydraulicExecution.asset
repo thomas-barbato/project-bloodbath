@@ -1,0 +1,141 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98f4f1f2c63e027488f24ebc28369cbb, type: 3}
+  m_Name: HydraulicExecution
+  m_EditorClassIdentifier: ProjectBloodbath.Runtime::ProjectBloodbath.Progression.SkillDefinition
+  identifier: enforcer_hydraulic_execution
+  characterClass: 0
+  treeIdentifier: enforcer_velocity_assault
+  displayName: "Ex\xE9cution hydraulique"
+  description: "Consume Trauma et Carnage dans un finisher monocible puissant mais
+    plafonn\xE9."
+  icon: {fileID: 0}
+  skillType: 0
+  maximumInvestedRank: 20
+  unlockLevel: 18
+  prerequisites:
+  - skill: {fileID: 11400000, guid: 47757b6d7c87f38479bc9f6b6126b560, type: 2}
+    requiredInvestedRank: 1
+  prerequisiteGroups: []
+  targetMode: 3
+  resourceCost: 24
+  tags:
+  - active
+  - melee
+  - finisher
+  - trauma
+  - carnage
+  - single_target
+  rankValues:
+  - identifier: cooldown_seconds
+    valueAtRankOne: 10
+    valueAtNaturalCap: 10
+    valuePerEquipmentRank: -0.2
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 7
+    clampMaximum: 0
+    maximumValue: 0
+  - identifier: weapon_damage_percent
+    valueAtRankOne: 220
+    valueAtNaturalCap: 460
+    valuePerEquipmentRank: 12
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 0
+    maximumValue: 0
+  - identifier: maximum_consumed_trauma
+    valueAtRankOne: 5
+    valueAtNaturalCap: 5
+    valuePerEquipmentRank: 0
+    wholeNumber: 1
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 5
+  - identifier: damage_per_consumed_trauma_percent
+    valueAtRankOne: 12
+    valueAtNaturalCap: 12
+    valuePerEquipmentRank: 0
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 12
+  - identifier: maximum_consumed_carnage
+    valueAtRankOne: 10
+    valueAtNaturalCap: 10
+    valuePerEquipmentRank: 0
+    wholeNumber: 1
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 10
+  - identifier: damage_per_consumed_carnage_percent
+    valueAtRankOne: 3
+    valueAtNaturalCap: 3
+    valuePerEquipmentRank: 0
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 3
+  - identifier: execute_health_threshold_percent
+    valueAtRankOne: 25
+    valueAtNaturalCap: 25
+    valuePerEquipmentRank: 0
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 50
+  - identifier: execute_damage_bonus_percent
+    valueAtRankOne: 35
+    valueAtNaturalCap: 35
+    valuePerEquipmentRank: 0
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 35
+  - identifier: carnage_refund_on_kill_percent
+    valueAtRankOne: 50
+    valueAtNaturalCap: 50
+    valuePerEquipmentRank: 0
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 50
+  - identifier: cooldown_recovery_on_kill_percent
+    valueAtRankOne: 50
+    valueAtNaturalCap: 50
+    valuePerEquipmentRank: 0
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 60
+  appliedStatusIdentifiers: []
+  consumedStatusIdentifiers:
+  - trauma
+  - carnage
+  investedRankSynergies:
+  - sourceSkill: {fileID: 11400000, guid: 47757b6d7c87f38479bc9f6b6126b560, type: 2}
+    affectedValueIdentifier: weapon_damage_percent
+    operation: 1
+    bonusPerInvestedRank: 1.5
+  - sourceSkill: {fileID: 11400000, guid: e37be88baaffe6d4ca1d56df616ab263, type: 2}
+    affectedValueIdentifier: kill_cooldown_recovery_percent
+    operation: 1
+    bonusPerInvestedRank: 1

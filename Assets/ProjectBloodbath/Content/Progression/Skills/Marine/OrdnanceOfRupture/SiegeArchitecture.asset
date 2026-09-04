@@ -1,0 +1,91 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98f4f1f2c63e027488f24ebc28369cbb, type: 3}
+  m_Name: SiegeArchitecture
+  m_EditorClassIdentifier: ProjectBloodbath.Runtime::ProjectBloodbath.Progression.SkillDefinition
+  identifier: marine_siege_architecture
+  characterClass: 1
+  treeIdentifier: marine_ordnance_rupture
+  displayName: "Architecture de si\xE8ge"
+  description: "Frapper une Armure rompue avec une comp\xE9tence lourde ouvre un
+    Protocole de si\xE8ge : les comp\xE9tences reviennent plus vite et relient Fracture
+    aux explosifs."
+  icon: {fileID: 0}
+  skillType: 1
+  maximumInvestedRank: 20
+  unlockLevel: 30
+  prerequisites: []
+  prerequisiteGroups:
+  - mode: 1
+    requiredCount: 1
+    prerequisites:
+    - skill: {fileID: 11400000, guid: f2c576b4971836f43894ce63394bd3cd, type: 2}
+      requiredInvestedRank: 1
+    - skill: {fileID: 11400000, guid: 3864e21f716172e42b6bca74bd45be5c, type: 2}
+      requiredInvestedRank: 1
+  targetMode: 0
+  resourceCost: 0
+  tags:
+  - passive
+  - ranged
+  - heavy_weapon
+  - explosive
+  - fracture
+  - armour_broken
+  - siege_protocol
+  - primer
+  rankValues:
+  - identifier: siege_protocol_duration_seconds
+    valueAtRankOne: 4
+    valueAtNaturalCap: 8
+    valuePerEquipmentRank: 0.2
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 1
+    clampMaximum: 0
+    maximumValue: 0
+  - identifier: heavy_skill_cooldown_recovery_percent
+    valueAtRankOne: 10
+    valueAtNaturalCap: 25
+    valuePerEquipmentRank: 0.75
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 40
+  - identifier: additional_fracture_from_explosion
+    valueAtRankOne: 1
+    valueAtNaturalCap: 1
+    valuePerEquipmentRank: 0
+    wholeNumber: 1
+    clampMinimum: 0
+    minimumValue: 0
+    clampMaximum: 0
+    maximumValue: 0
+  - identifier: explosion_fracture_internal_cooldown_seconds
+    valueAtRankOne: 1
+    valueAtNaturalCap: 1
+    valuePerEquipmentRank: 0
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0.5
+    clampMaximum: 0
+    maximumValue: 0
+  appliedStatusIdentifiers:
+  - siege_protocol
+  - fracture
+  consumedStatusIdentifiers: []
+  investedRankSynergies:
+  - sourceSkill: {fileID: 11400000, guid: 0b5e77d2eb8e0fd4cbeaeff7372909b1, type: 2}
+    affectedValueIdentifier: siege_protocol_duration_percent
+    operation: 1
+    bonusPerInvestedRank: 0.5

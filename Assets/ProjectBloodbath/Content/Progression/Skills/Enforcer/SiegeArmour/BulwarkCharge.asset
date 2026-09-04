@@ -1,0 +1,105 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98f4f1f2c63e027488f24ebc28369cbb, type: 3}
+  m_Name: BulwarkCharge
+  m_EditorClassIdentifier: ProjectBloodbath.Runtime::ProjectBloodbath.Progression.SkillDefinition
+  identifier: enforcer_bulwark_charge
+  characterClass: 0
+  treeIdentifier: enforcer_siege_armour
+  displayName: Charge de rempart
+  description: "Transforme l'armure en b\xE9lier frontal, \xE9carte les cibles l\xE9g\xE8res
+    et percute lourdement le premier obstacle majeur."
+  icon: {fileID: 0}
+  skillType: 0
+  maximumInvestedRank: 20
+  unlockLevel: 12
+  prerequisites:
+  - skill: {fileID: 11400000, guid: 2d72c6f8f160949409194f322e509e71, type: 2}
+    requiredInvestedRank: 1
+  prerequisiteGroups: []
+  targetMode: 8
+  resourceCost: 20
+  tags:
+  - active
+  - melee
+  - movement
+  - impact
+  - guard
+  - area
+  rankValues:
+  - identifier: cooldown_seconds
+    valueAtRankOne: 11
+    valueAtNaturalCap: 7
+    valuePerEquipmentRank: -0.2
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 4
+    clampMaximum: 0
+    maximumValue: 0
+  - identifier: movement_distance_metres
+    valueAtRankOne: 6
+    valueAtNaturalCap: 10
+    valuePerEquipmentRank: 0.2
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 3
+    clampMaximum: 1
+    maximumValue: 14
+  - identifier: weapon_damage_percent
+    valueAtRankOne: 150
+    valueAtNaturalCap: 360
+    valuePerEquipmentRank: 10.5
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 0
+    maximumValue: 0
+  - identifier: shockwave_radius_metres
+    valueAtRankOne: 2.5
+    valueAtNaturalCap: 4.5
+    valuePerEquipmentRank: 0.1
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 1
+    clampMaximum: 1
+    maximumValue: 6
+  - identifier: shield_guard_duration_seconds
+    valueAtRankOne: 0.8
+    valueAtNaturalCap: 0.8
+    valuePerEquipmentRank: 0
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 1.5
+  - identifier: displaced_target_stagger_bonus_percent
+    valueAtRankOne: 25
+    valueAtNaturalCap: 25
+    valuePerEquipmentRank: 0
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 40
+  appliedStatusIdentifiers:
+  - guard
+  consumedStatusIdentifiers:
+  - armoured_inertia
+  investedRankSynergies:
+  - sourceSkill: {fileID: 11400000, guid: 2d72c6f8f160949409194f322e509e71, type: 2}
+    affectedValueIdentifier: weapon_damage_percent
+    operation: 1
+    bonusPerInvestedRank: 1.5
+  - sourceSkill: {fileID: 11400000, guid: 3a3e8ce9961229e4f98f4f6755994544, type: 2}
+    affectedValueIdentifier: displaced_target_stagger_percent
+    operation: 1
+    bonusPerInvestedRank: 1

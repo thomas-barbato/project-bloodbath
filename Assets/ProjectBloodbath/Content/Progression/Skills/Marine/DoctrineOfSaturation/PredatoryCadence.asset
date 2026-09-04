@@ -1,0 +1,92 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98f4f1f2c63e027488f24ebc28369cbb, type: 3}
+  m_Name: PredatoryCadence
+  m_EditorClassIdentifier: ProjectBloodbath.Runtime::ProjectBloodbath.Progression.SkillDefinition
+  identifier: marine_predatory_cadence
+  characterClass: 1
+  treeIdentifier: marine_doctrine_saturation
+  displayName: "Cadence pr\xE9datrice"
+  description: "Les impacts rapproch\xE9s d'armes l\xE9g\xE8res accumulent la Saturation,
+    acc\xE9l\xE8rent le tir et les rechargements, puis retombent apr\xE8s une interruption."
+  icon: {fileID: 0}
+  skillType: 1
+  maximumInvestedRank: 20
+  unlockLevel: 1
+  prerequisites: []
+  prerequisiteGroups: []
+  targetMode: 0
+  resourceCost: 0
+  tags:
+  - passive
+  - ranged
+  - light_weapon
+  - saturation
+  rankValues:
+  - identifier: successive_hit_window_seconds
+    valueAtRankOne: 1.5
+    valueAtNaturalCap: 1.5
+    valuePerEquipmentRank: 0
+    wholeNumber: 0
+    clampMinimum: 0
+    minimumValue: 0
+    clampMaximum: 0
+    maximumValue: 0
+  - identifier: maximum_saturation_charges
+    valueAtRankOne: 4
+    valueAtNaturalCap: 12
+    valuePerEquipmentRank: 0
+    wholeNumber: 1
+    clampMinimum: 0
+    minimumValue: 0
+    clampMaximum: 0
+    maximumValue: 0
+  - identifier: fire_rate_per_charge_percent
+    valueAtRankOne: 0.5
+    valueAtNaturalCap: 1.2
+    valuePerEquipmentRank: 0.03
+    wholeNumber: 0
+    clampMinimum: 0
+    minimumValue: 0
+    clampMaximum: 0
+    maximumValue: 0
+  - identifier: reload_speed_per_charge_percent
+    valueAtRankOne: 0.5
+    valueAtNaturalCap: 1
+    valuePerEquipmentRank: 0.02
+    wholeNumber: 0
+    clampMinimum: 0
+    minimumValue: 0
+    clampMaximum: 0
+    maximumValue: 0
+  - identifier: decay_delay_seconds
+    valueAtRankOne: 2
+    valueAtNaturalCap: 2
+    valuePerEquipmentRank: 0
+    wholeNumber: 0
+    clampMinimum: 0
+    minimumValue: 0
+    clampMaximum: 0
+    maximumValue: 0
+  - identifier: decay_interval_seconds
+    valueAtRankOne: 1
+    valueAtNaturalCap: 1
+    valuePerEquipmentRank: 0
+    wholeNumber: 0
+    clampMinimum: 0
+    minimumValue: 0
+    clampMaximum: 0
+    maximumValue: 0
+  appliedStatusIdentifiers:
+  - saturation
+  consumedStatusIdentifiers: []
+  investedRankSynergies: []

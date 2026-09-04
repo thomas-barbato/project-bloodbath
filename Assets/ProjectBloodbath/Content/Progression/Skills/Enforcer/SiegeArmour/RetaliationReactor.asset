@@ -1,0 +1,93 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98f4f1f2c63e027488f24ebc28369cbb, type: 3}
+  m_Name: RetaliationReactor
+  m_EditorClassIdentifier: ProjectBloodbath.Runtime::ProjectBloodbath.Progression.SkillDefinition
+  identifier: enforcer_retaliation_reactor
+  characterClass: 0
+  treeIdentifier: enforcer_siege_armour
+  displayName: "R\xE9acteur de repr\xE9sailles"
+  description: "\xC9tend la r\xE9serve de Garde et fixe une seule conversion d\xE9fensive
+    et offensive par charge."
+  icon: {fileID: 0}
+  skillType: 1
+  maximumInvestedRank: 20
+  unlockLevel: 12
+  prerequisites:
+  - skill: {fileID: 11400000, guid: 3a3e8ce9961229e4f98f4f6755994544, type: 2}
+    requiredInvestedRank: 1
+  prerequisiteGroups: []
+  targetMode: 0
+  resourceCost: 0
+  tags:
+  - passive
+  - guard
+  - defensive
+  - retaliation
+  rankValues:
+  - identifier: maximum_guard_charges
+    valueAtRankOne: 6
+    valueAtNaturalCap: 10
+    valuePerEquipmentRank: 0
+    wholeNumber: 1
+    clampMinimum: 1
+    minimumValue: 5
+    clampMaximum: 1
+    maximumValue: 10
+  - identifier: damage_reduction_per_guard_percent
+    valueAtRankOne: 0.25
+    valueAtNaturalCap: 0.5
+    valuePerEquipmentRank: 0.02
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 0.75
+  - identifier: purge_damage_per_guard_percent
+    valueAtRankOne: 5
+    valueAtNaturalCap: 5
+    valuePerEquipmentRank: 0
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 5
+  - identifier: guard_decay_delay_seconds
+    valueAtRankOne: 8
+    valueAtNaturalCap: 16
+    valuePerEquipmentRank: 0.4
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 4
+    clampMaximum: 1
+    maximumValue: 22
+  - identifier: guard_generation_internal_cooldown_seconds
+    valueAtRankOne: 0.8
+    valueAtNaturalCap: 0.8
+    valuePerEquipmentRank: 0
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0.4
+    clampMaximum: 0
+    maximumValue: 0
+  - identifier: maximum_purge_damage_bonus_percent
+    valueAtRankOne: 50
+    valueAtNaturalCap: 50
+    valuePerEquipmentRank: 0
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 50
+  appliedStatusIdentifiers: []
+  consumedStatusIdentifiers: []
+  investedRankSynergies: []

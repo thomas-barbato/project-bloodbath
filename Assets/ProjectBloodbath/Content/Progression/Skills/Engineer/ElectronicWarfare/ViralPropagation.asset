@@ -1,0 +1,113 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98f4f1f2c63e027488f24ebc28369cbb, type: 3}
+  m_Name: ViralPropagation
+  m_EditorClassIdentifier: ProjectBloodbath.Runtime::ProjectBloodbath.Progression.SkillDefinition
+  identifier: engineer_viral_propagation
+  characterClass: 3
+  treeIdentifier: engineer_electronic_warfare
+  displayName: Propagation virale
+  description: "\xC0 la mort d'une cible contamin\xE9e, transmet une s\xE9lection
+    limit\xE9e d'affaiblissements. Les effets transmis ne peuvent pas se propager
+    de nouveau."
+  icon: {fileID: 0}
+  skillType: 1
+  maximumInvestedRank: 20
+  unlockLevel: 12
+  prerequisites: []
+  prerequisiteGroups:
+  - mode: 1
+    requiredCount: 1
+    prerequisites:
+    - skill: {fileID: 11400000, guid: cec58a59e6a30244b85a1197d1156916, type: 2}
+      requiredInvestedRank: 1
+    - skill: {fileID: 11400000, guid: d253ee01b3bbd2a4abc5032712d51ee6, type: 2}
+      requiredInvestedRank: 1
+  targetMode: 0
+  resourceCost: 0
+  tags:
+  - passive
+  - technology
+  - debuff
+  - propagation
+  rankValues:
+  - identifier: maximum_transmitted_debuff_types
+    valueAtRankOne: 1
+    valueAtNaturalCap: 3
+    valuePerEquipmentRank: 0
+    wholeNumber: 1
+    clampMinimum: 1
+    minimumValue: 1
+    clampMaximum: 1
+    maximumValue: 3
+  - identifier: maximum_propagation_targets
+    valueAtRankOne: 1
+    valueAtNaturalCap: 3
+    valuePerEquipmentRank: 0
+    wholeNumber: 1
+    clampMinimum: 1
+    minimumValue: 1
+    clampMaximum: 1
+    maximumValue: 3
+  - identifier: propagation_radius_metres
+    valueAtRankOne: 4
+    valueAtNaturalCap: 7
+    valuePerEquipmentRank: 0.15
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 2
+    clampMaximum: 1
+    maximumValue: 8
+  - identifier: remaining_duration_transferred_percent
+    valueAtRankOne: 30
+    valueAtNaturalCap: 60
+    valuePerEquipmentRank: 1.5
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 70
+  - identifier: maximum_transferred_charges_per_debuff
+    valueAtRankOne: 1
+    valueAtNaturalCap: 2
+    valuePerEquipmentRank: 0
+    wholeNumber: 1
+    clampMinimum: 1
+    minimumValue: 1
+    clampMaximum: 1
+    maximumValue: 2
+  - identifier: maximum_secondary_chain_depth
+    valueAtRankOne: 0
+    valueAtNaturalCap: 0
+    valuePerEquipmentRank: 0
+    wholeNumber: 1
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 0
+  - identifier: zero_directive_can_propagate
+    valueAtRankOne: 0
+    valueAtNaturalCap: 0
+    valuePerEquipmentRank: 0
+    wholeNumber: 1
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 0
+  appliedStatusIdentifiers:
+  - viral_transmission
+  consumedStatusIdentifiers: []
+  investedRankSynergies:
+  - sourceSkill: {fileID: 11400000, guid: cec58a59e6a30244b85a1197d1156916, type: 2}
+    affectedValueIdentifier: damage_percent
+    operation: 1
+    bonusPerInvestedRank: 1.5

@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98f4f1f2c63e027488f24ebc28369cbb, type: 3}
+  m_Name: Conductivity
+  m_EditorClassIdentifier: ProjectBloodbath.Runtime::ProjectBloodbath.Progression.SkillDefinition
+  identifier: scientist_conductivity
+  characterClass: 2
+  treeIdentifier: scientist_electrokinetic_rupture
+  displayName: "Conductivit\xE9"
+  description: "Les impacts \xE9lectriques appliquent jusqu'\xE0 sept charges de
+    Conductivit\xE9, chacune augmentant mod\xE9r\xE9ment les d\xE9g\xE2ts \xE9lectriques
+    re\xE7us."
+  icon: {fileID: 0}
+  skillType: 1
+  maximumInvestedRank: 20
+  unlockLevel: 1
+  prerequisites: []
+  prerequisiteGroups: []
+  targetMode: 0
+  resourceCost: 0
+  tags:
+  - passive
+  - electric
+  - conductivity
+  - vulnerability
+  rankValues:
+  - identifier: maximum_conductivity_charges
+    valueAtRankOne: 3
+    valueAtNaturalCap: 7
+    valuePerEquipmentRank: 0
+    wholeNumber: 1
+    clampMinimum: 1
+    minimumValue: 1
+    clampMaximum: 1
+    maximumValue: 7
+  - identifier: electric_vulnerability_per_charge_percent
+    valueAtRankOne: 1
+    valueAtNaturalCap: 2.5
+    valuePerEquipmentRank: 0.075
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 3
+  - identifier: conductivity_duration_seconds
+    valueAtRankOne: 4
+    valueAtNaturalCap: 8
+    valuePerEquipmentRank: 0.2
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 2
+    clampMaximum: 1
+    maximumValue: 10
+  appliedStatusIdentifiers:
+  - conductivity
+  consumedStatusIdentifiers: []
+  investedRankSynergies: []

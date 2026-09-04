@@ -1,0 +1,103 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98f4f1f2c63e027488f24ebc28369cbb, type: 3}
+  m_Name: ScorchedEarthProtocol
+  m_EditorClassIdentifier: ProjectBloodbath.Runtime::ProjectBloodbath.Progression.SkillDefinition
+  identifier: marine_scorched_earth_protocol
+  characterClass: 1
+  treeIdentifier: marine_controlled_devastation
+  displayName: "Protocole Terre br\xFBl\xE9e"
+  description: "Une s\xE9quence de trois comp\xE9tences explosives distinctes d\xE9clenche
+    une unique fen\xEAtre de Terre br\xFBl\xE9e qui acc\xE9l\xE8re la rotation suivante."
+  icon: {fileID: 0}
+  skillType: 1
+  maximumInvestedRank: 20
+  unlockLevel: 30
+  prerequisites:
+  - skill: {fileID: 11400000, guid: 4bfa69b568303b04082603d54fe8ed17, type: 2}
+    requiredInvestedRank: 1
+  prerequisiteGroups: []
+  targetMode: 0
+  resourceCost: 0
+  tags:
+  - passive
+  - explosive
+  - rotation
+  - scorched_earth_protocol
+  - secondary_reaction
+  rankValues:
+  - identifier: sequence_window_seconds
+    valueAtRankOne: 6
+    valueAtNaturalCap: 6
+    valuePerEquipmentRank: 0
+    wholeNumber: 0
+    clampMinimum: 0
+    minimumValue: 0
+    clampMaximum: 0
+    maximumValue: 0
+  - identifier: required_distinct_explosive_skills
+    valueAtRankOne: 3
+    valueAtNaturalCap: 3
+    valuePerEquipmentRank: 0
+    wholeNumber: 1
+    clampMinimum: 0
+    minimumValue: 0
+    clampMaximum: 0
+    maximumValue: 0
+  - identifier: scorched_earth_duration_seconds
+    valueAtRankOne: 6
+    valueAtNaturalCap: 10
+    valuePerEquipmentRank: 0.2
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 2
+    clampMaximum: 0
+    maximumValue: 0
+  - identifier: explosive_damage_bonus_percent
+    valueAtRankOne: 10
+    valueAtNaturalCap: 25
+    valuePerEquipmentRank: 0.75
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 40
+  - identifier: secondary_reaction_damage_bonus_percent
+    valueAtRankOne: 15
+    valueAtNaturalCap: 35
+    valuePerEquipmentRank: 1
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 55
+  - identifier: first_followup_charge_cooldown_refund_percent
+    valueAtRankOne: 50
+    valueAtNaturalCap: 50
+    valuePerEquipmentRank: 0
+    wholeNumber: 0
+    clampMinimum: 0
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 50
+  appliedStatusIdentifiers:
+  - scorched_earth_protocol
+  consumedStatusIdentifiers: []
+  investedRankSynergies:
+  - sourceSkill: {fileID: 11400000, guid: 4a0b28b0eb3e6e74aa6e42b09824fe04, type: 2}
+    affectedValueIdentifier: scorched_earth_duration_percent
+    operation: 1
+    bonusPerInvestedRank: 0.5
+  - sourceSkill: {fileID: 11400000, guid: 4bfa69b568303b04082603d54fe8ed17, type: 2}
+    affectedValueIdentifier: secondary_reaction_damage_percent
+    operation: 1
+    bonusPerInvestedRank: 1

@@ -1,0 +1,87 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98f4f1f2c63e027488f24ebc28369cbb, type: 3}
+  m_Name: Flashover
+  m_EditorClassIdentifier: ProjectBloodbath.Runtime::ProjectBloodbath.Progression.SkillDefinition
+  identifier: scientist_flashover
+  characterClass: 2
+  treeIdentifier: scientist_forbidden_thermodynamics
+  displayName: Flashover
+  description: "Fait \xE9clater les charges de Combustion dans une zone born\xE9e
+    et convertit une partie des d\xE9g\xE2ts restants sans cr\xE9er de cascade secondaire."
+  icon: {fileID: 0}
+  skillType: 0
+  maximumInvestedRank: 20
+  unlockLevel: 18
+  prerequisites: []
+  prerequisiteGroups:
+  - mode: 1
+    requiredCount: 1
+    prerequisites:
+    - skill: {fileID: 11400000, guid: 4dcd325a3e7815e479cebaa9592ca466, type: 2}
+      requiredInvestedRank: 1
+    - skill: {fileID: 11400000, guid: cd16142595b71aa49b5cbf51588f9d31, type: 2}
+      requiredInvestedRank: 1
+  targetMode: 4
+  resourceCost: 35
+  tags:
+  - active
+  - fire
+  - area
+  - detonation
+  - combustion
+  rankValues:
+  - identifier: radius_metres
+    valueAtRankOne: 5
+    valueAtNaturalCap: 7
+    valuePerEquipmentRank: 0.1
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 2
+    clampMaximum: 1
+    maximumValue: 8
+  - identifier: base_damage_percent
+    valueAtRankOne: 100
+    valueAtNaturalCap: 220
+    valuePerEquipmentRank: 6
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 270
+  - identifier: remaining_burn_damage_conversion_percent
+    valueAtRankOne: 50
+    valueAtNaturalCap: 80
+    valuePerEquipmentRank: 1.5
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 90
+  - identifier: maximum_secondary_chain_depth
+    valueAtRankOne: 0
+    valueAtNaturalCap: 0
+    valuePerEquipmentRank: 0
+    wholeNumber: 1
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 0
+  appliedStatusIdentifiers:
+  - flashover
+  consumedStatusIdentifiers:
+  - combustion
+  investedRankSynergies:
+  - sourceSkill: {fileID: 11400000, guid: 4dcd325a3e7815e479cebaa9592ca466, type: 2}
+    affectedValueIdentifier: base_damage_percent
+    operation: 1
+    bonusPerInvestedRank: 1.5

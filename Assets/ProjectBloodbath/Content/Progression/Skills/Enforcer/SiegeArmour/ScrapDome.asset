@@ -1,0 +1,112 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98f4f1f2c63e027488f24ebc28369cbb, type: 3}
+  m_Name: ScrapDome
+  m_EditorClassIdentifier: ProjectBloodbath.Runtime::ProjectBloodbath.Progression.SkillDefinition
+  identifier: enforcer_scrap_dome
+  characterClass: 0
+  treeIdentifier: enforcer_siege_armour
+  displayName: "D\xF4me de ferraille"
+  description: "D\xE9ploie une aura mobile qui r\xE9duit une seule fois les d\xE9g\xE2ts
+    re\xE7us, avec un suppl\xE9ment d\xE9fini contre projectiles et explosions."
+  icon: {fileID: 0}
+  skillType: 0
+  maximumInvestedRank: 20
+  unlockLevel: 30
+  prerequisites:
+  - skill: {fileID: 11400000, guid: 5f8b57624aea5b642b2f2dd245c0a94b, type: 2}
+    requiredInvestedRank: 1
+  prerequisiteGroups: []
+  targetMode: 7
+  resourceCost: 30
+  tags:
+  - active
+  - defensive
+  - aura
+  - group
+  - projectile
+  rankValues:
+  - identifier: cooldown_seconds
+    valueAtRankOne: 30
+    valueAtNaturalCap: 22
+    valuePerEquipmentRank: -0.4
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 16
+    clampMaximum: 0
+    maximumValue: 0
+  - identifier: duration_seconds
+    valueAtRankOne: 6
+    valueAtNaturalCap: 9
+    valuePerEquipmentRank: 0.15
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 3
+    clampMaximum: 1
+    maximumValue: 12
+  - identifier: radius_metres
+    valueAtRankOne: 5
+    valueAtNaturalCap: 7
+    valuePerEquipmentRank: 0.1
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 3
+    clampMaximum: 1
+    maximumValue: 9
+  - identifier: damage_reduction_percent
+    valueAtRankOne: 8
+    valueAtNaturalCap: 18
+    valuePerEquipmentRank: 0.5
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 23
+  - identifier: projectile_explosion_additional_reduction_percent
+    valueAtRankOne: 8
+    valueAtNaturalCap: 8
+    valuePerEquipmentRank: 0
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 13
+  - identifier: anchored_radius_bonus_percent
+    valueAtRankOne: 25
+    valueAtNaturalCap: 25
+    valuePerEquipmentRank: 0
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 25
+  - identifier: maximum_total_reduction_percent
+    valueAtRankOne: 31
+    valueAtNaturalCap: 31
+    valuePerEquipmentRank: 0
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 31
+  appliedStatusIdentifiers:
+  - scrap_dome
+  consumedStatusIdentifiers: []
+  investedRankSynergies:
+  - sourceSkill: {fileID: 11400000, guid: 9a00dde1377e96f45a06829e6137c414, type: 2}
+    affectedValueIdentifier: damage_reduction_percent
+    operation: 0
+    bonusPerInvestedRank: 0.25
+  - sourceSkill: {fileID: 11400000, guid: 2d72c6f8f160949409194f322e509e71, type: 2}
+    affectedValueIdentifier: projectile_explosion_reduction_percent
+    operation: 0
+    bonusPerInvestedRank: 0.25

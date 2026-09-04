@@ -1,0 +1,92 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98f4f1f2c63e027488f24ebc28369cbb, type: 3}
+  m_Name: BallisticMobility
+  m_EditorClassIdentifier: ProjectBloodbath.Runtime::ProjectBloodbath.Progression.SkillDefinition
+  identifier: marine_ballistic_mobility
+  characterClass: 1
+  treeIdentifier: marine_doctrine_saturation
+  displayName: "Mobilit\xE9 balistique"
+  description: "Un impact port\xE9 en sprint, en glissade ou juste apr\xE8s Rechargement
+    de combat active bri\xE8vement l'\xC9lan balistique : il stabilise la Saturation
+    et all\xE8ge les comp\xE9tences d'armes l\xE9g\xE8res."
+  icon: {fileID: 0}
+  skillType: 1
+  maximumInvestedRank: 20
+  unlockLevel: 6
+  prerequisites: []
+  prerequisiteGroups:
+  - mode: 1
+    requiredCount: 1
+    prerequisites:
+    - skill: {fileID: 11400000, guid: 6a9d8e1d0343b8145aacacb5a3f3b443, type: 2}
+      requiredInvestedRank: 1
+    - skill: {fileID: 11400000, guid: ac9a70a2849d415498da18d62a51eb6e, type: 2}
+      requiredInvestedRank: 1
+  targetMode: 0
+  resourceCost: 0
+  tags:
+  - passive
+  - movement
+  - light_weapon
+  - saturation
+  - ballistic_momentum
+  rankValues:
+  - identifier: ballistic_momentum_duration_seconds
+    valueAtRankOne: 2.5
+    valueAtNaturalCap: 2.5
+    valuePerEquipmentRank: 0
+    wholeNumber: 0
+    clampMinimum: 0
+    minimumValue: 0
+    clampMaximum: 0
+    maximumValue: 0
+  - identifier: saturation_loss_reduction_percent
+    valueAtRankOne: 20
+    valueAtNaturalCap: 60
+    valuePerEquipmentRank: 2
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 75
+  - identifier: energy_cost_reduction_percent
+    valueAtRankOne: 5
+    valueAtNaturalCap: 15
+    valuePerEquipmentRank: 0.5
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 25
+  - identifier: sprint_reload_unlock_rank
+    valueAtRankOne: 10
+    valueAtNaturalCap: 10
+    valuePerEquipmentRank: 0
+    wholeNumber: 1
+    clampMinimum: 0
+    minimumValue: 0
+    clampMaximum: 0
+    maximumValue: 0
+  - identifier: slide_reload_unlock_rank
+    valueAtRankOne: 20
+    valueAtNaturalCap: 20
+    valuePerEquipmentRank: 0
+    wholeNumber: 1
+    clampMinimum: 0
+    minimumValue: 0
+    clampMaximum: 0
+    maximumValue: 0
+  appliedStatusIdentifiers:
+  - ballistic_momentum
+  consumedStatusIdentifiers: []
+  investedRankSynergies: []

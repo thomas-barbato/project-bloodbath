@@ -1,0 +1,109 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98f4f1f2c63e027488f24ebc28369cbb, type: 3}
+  m_Name: GravityWinch
+  m_EditorClassIdentifier: ProjectBloodbath.Runtime::ProjectBloodbath.Progression.SkillDefinition
+  identifier: enforcer_gravity_winch
+  characterClass: 0
+  treeIdentifier: enforcer_siege_armour
+  displayName: Treuil gravifique
+  description: "Projette un c\xE2ble vers le r\xE9ticule, regroupe un nombre born\xE9
+    d'ennemis et pr\xE9pare les attaques de zone."
+  icon: {fileID: 0}
+  skillType: 0
+  maximumInvestedRank: 20
+  unlockLevel: 6
+  prerequisites:
+  - skill: {fileID: 11400000, guid: 70e5d0da1d54adc4abbe13d2a831b23b, type: 2}
+    requiredInvestedRank: 1
+  prerequisiteGroups: []
+  targetMode: 2
+  resourceCost: 14
+  tags:
+  - active
+  - melee
+  - control
+  - pull
+  - guard
+  - area
+  rankValues:
+  - identifier: cooldown_seconds
+    valueAtRankOne: 12
+    valueAtNaturalCap: 7
+    valuePerEquipmentRank: -0.25
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 4
+    clampMaximum: 0
+    maximumValue: 0
+  - identifier: range_metres
+    valueAtRankOne: 10
+    valueAtNaturalCap: 18
+    valuePerEquipmentRank: 0.4
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 4
+    clampMaximum: 1
+    maximumValue: 24
+  - identifier: radius_metres
+    valueAtRankOne: 1
+    valueAtNaturalCap: 3.5
+    valuePerEquipmentRank: 0.12
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 1
+    clampMaximum: 1
+    maximumValue: 5
+  - identifier: weapon_damage_percent
+    valueAtRankOne: 80
+    valueAtNaturalCap: 180
+    valuePerEquipmentRank: 5
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 0
+    maximumValue: 0
+  - identifier: maximum_targets
+    valueAtRankOne: 3
+    valueAtNaturalCap: 7
+    valuePerEquipmentRank: 0
+    wholeNumber: 1
+    clampMinimum: 1
+    minimumValue: 1
+    clampMaximum: 1
+    maximumValue: 10
+  - identifier: maximum_guard_generated_per_cast
+    valueAtRankOne: 3
+    valueAtNaturalCap: 3
+    valuePerEquipmentRank: 0
+    wholeNumber: 1
+    clampMinimum: 1
+    minimumValue: 1
+    clampMaximum: 1
+    maximumValue: 3
+  - identifier: boss_stagger_bonus_percent
+    valueAtRankOne: 50
+    valueAtNaturalCap: 100
+    valuePerEquipmentRank: 2.5
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 0
+    maximumValue: 0
+  appliedStatusIdentifiers:
+  - gravity_winch_displaced
+  consumedStatusIdentifiers: []
+  investedRankSynergies:
+  - sourceSkill: {fileID: 11400000, guid: 9344cac5d81c6d94ca3257492ba48e4c, type: 2}
+    affectedValueIdentifier: weapon_damage_percent
+    operation: 1
+    bonusPerInvestedRank: 1.5

@@ -1,0 +1,110 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98f4f1f2c63e027488f24ebc28369cbb, type: 3}
+  m_Name: CondemnationProtocols
+  m_EditorClassIdentifier: ProjectBloodbath.Runtime::ProjectBloodbath.Progression.SkillDefinition
+  identifier: engineer_condemnation_protocols
+  characterClass: 3
+  treeIdentifier: engineer_electronic_warfare
+  displayName: Protocoles de condamnation
+  description: "Deux types d'affaiblissements rendent une cible Expos\xE9e. Les bonus
+    des machines, des alli\xE9s et l'anti-r\xE9g\xE9n\xE9ration restent s\xE9par\xE9s
+    et plafonn\xE9s."
+  icon: {fileID: 0}
+  skillType: 1
+  maximumInvestedRank: 20
+  unlockLevel: 24
+  prerequisites: []
+  prerequisiteGroups:
+  - mode: 1
+    requiredCount: 1
+    prerequisites:
+    - skill: {fileID: 11400000, guid: fca1a9d19c2402147ac3783697f636fd, type: 2}
+      requiredInvestedRank: 1
+    - skill: {fileID: 11400000, guid: 0d2d3c6e92f67f843a34097a0eec08e7, type: 2}
+      requiredInvestedRank: 1
+  targetMode: 0
+  resourceCost: 0
+  tags:
+  - passive
+  - technology
+  - debuff
+  - exposed
+  - amplification
+  rankValues:
+  - identifier: debuff_types_required_for_exposed
+    valueAtRankOne: 2
+    valueAtNaturalCap: 2
+    valuePerEquipmentRank: 0
+    wholeNumber: 1
+    clampMinimum: 1
+    minimumValue: 2
+    clampMaximum: 1
+    maximumValue: 2
+  - identifier: machine_damage_bonus_against_exposed_percent
+    valueAtRankOne: 5
+    valueAtNaturalCap: 15
+    valuePerEquipmentRank: 0.5
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 18
+  - identifier: allied_player_damage_bonus_against_exposed_percent
+    valueAtRankOne: 2
+    valueAtNaturalCap: 8
+    valuePerEquipmentRank: 0.3
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 10
+  - identifier: debuff_types_required_for_regeneration_reduction
+    valueAtRankOne: 3
+    valueAtNaturalCap: 3
+    valuePerEquipmentRank: 0
+    wholeNumber: 1
+    clampMinimum: 1
+    minimumValue: 3
+    clampMaximum: 1
+    maximumValue: 3
+  - identifier: healing_repair_regeneration_reduction_percent
+    valueAtRankOne: 20
+    valueAtNaturalCap: 40
+    valuePerEquipmentRank: 1
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 45
+  - identifier: debuff_types_required_for_bonus_scrap
+    valueAtRankOne: 4
+    valueAtNaturalCap: 4
+    valuePerEquipmentRank: 0
+    wholeNumber: 1
+    clampMinimum: 1
+    minimumValue: 4
+    clampMaximum: 1
+    maximumValue: 4
+  - identifier: bonus_scrap_on_kill
+    valueAtRankOne: 1
+    valueAtNaturalCap: 1
+    valuePerEquipmentRank: 0
+    wholeNumber: 1
+    clampMinimum: 1
+    minimumValue: 1
+    clampMaximum: 1
+    maximumValue: 1
+  appliedStatusIdentifiers:
+  - exposed
+  consumedStatusIdentifiers: []
+  investedRankSynergies: []

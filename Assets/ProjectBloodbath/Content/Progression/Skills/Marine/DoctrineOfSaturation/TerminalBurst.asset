@@ -1,0 +1,79 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98f4f1f2c63e027488f24ebc28369cbb, type: 3}
+  m_Name: TerminalBurst
+  m_EditorClassIdentifier: ProjectBloodbath.Runtime::ProjectBloodbath.Progression.SkillDefinition
+  identifier: marine_terminal_burst
+  characterClass: 1
+  treeIdentifier: marine_doctrine_saturation
+  displayName: Rafale terminale
+  description: "D\xE9clenche une microrafale comprim\xE9e d'arme l\xE9g\xE8re, ind\xE9pendante
+    de la cadence ordinaire, tout en conservant le d\xE9placement."
+  icon: {fileID: 0}
+  skillType: 0
+  maximumInvestedRank: 20
+  unlockLevel: 1
+  prerequisites: []
+  prerequisiteGroups: []
+  targetMode: 2
+  resourceCost: 10
+  tags:
+  - active
+  - ranged
+  - light_weapon
+  - burst
+  - saturation
+  rankValues:
+  - identifier: cooldown_seconds
+    valueAtRankOne: 8
+    valueAtNaturalCap: 5
+    valuePerEquipmentRank: -0.1
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 1
+    clampMaximum: 0
+    maximumValue: 0
+  - identifier: projectile_count
+    valueAtRankOne: 3
+    valueAtNaturalCap: 7
+    valuePerEquipmentRank: 0
+    wholeNumber: 1
+    clampMinimum: 0
+    minimumValue: 0
+    clampMaximum: 0
+    maximumValue: 0
+  - identifier: weapon_damage_percent
+    valueAtRankOne: 70
+    valueAtNaturalCap: 100
+    valuePerEquipmentRank: 1.5
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 0
+    maximumValue: 0
+  - identifier: burst_duration_seconds
+    valueAtRankOne: 0.28
+    valueAtNaturalCap: 0.2
+    valuePerEquipmentRank: -0.004
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0.12
+    clampMaximum: 0
+    maximumValue: 0
+  appliedStatusIdentifiers:
+  - saturation
+  consumedStatusIdentifiers: []
+  investedRankSynergies:
+  - sourceSkill: {fileID: 11400000, guid: 96261c2e5bf92384594171a1bbc98b45, type: 2}
+    affectedValueIdentifier: weapon_damage_percent
+    operation: 1
+    bonusPerInvestedRank: 1.5

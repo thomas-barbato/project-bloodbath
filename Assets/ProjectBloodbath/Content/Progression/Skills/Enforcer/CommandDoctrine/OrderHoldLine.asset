@@ -1,0 +1,114 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98f4f1f2c63e027488f24ebc28369cbb, type: 3}
+  m_Name: OrderHoldLine
+  m_EditorClassIdentifier: ProjectBloodbath.Runtime::ProjectBloodbath.Progression.SkillDefinition
+  identifier: enforcer_order_hold_line
+  characterClass: 0
+  treeIdentifier: enforcer_command_doctrine
+  displayName: 'Ordre : Tenez la ligne'
+  description: "D\xE9ploie un Ordre exclusif de protection qui am\xE9liore armure,
+    r\xE9cup\xE9ration de bouclier et r\xE9sistance aux projections."
+  icon: {fileID: 0}
+  skillType: 0
+  maximumInvestedRank: 20
+  unlockLevel: 6
+  prerequisites: []
+  prerequisiteGroups: []
+  targetMode: 7
+  resourceCost: 18
+  tags:
+  - active
+  - order
+  - group
+  - defensive
+  - shield
+  rankValues:
+  - identifier: cooldown_seconds
+    valueAtRankOne: 18
+    valueAtNaturalCap: 18
+    valuePerEquipmentRank: -0.2
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 14
+    clampMaximum: 0
+    maximumValue: 0
+  - identifier: duration_seconds
+    valueAtRankOne: 8
+    valueAtNaturalCap: 11
+    valuePerEquipmentRank: 0.15
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 4
+    clampMaximum: 1
+    maximumValue: 14
+  - identifier: radius_metres
+    valueAtRankOne: 12
+    valueAtNaturalCap: 12
+    valuePerEquipmentRank: 0
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 6
+    clampMaximum: 1
+    maximumValue: 15
+  - identifier: armour_efficiency_bonus_percent
+    valueAtRankOne: 10
+    valueAtNaturalCap: 25
+    valuePerEquipmentRank: 0.75
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 32
+  - identifier: shield_recharge_delay_reduction_percent
+    valueAtRankOne: 5
+    valueAtNaturalCap: 30
+    valuePerEquipmentRank: 1.25
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 40
+  - identifier: knockback_resistance_percent
+    valueAtRankOne: 20
+    valueAtNaturalCap: 100
+    valuePerEquipmentRank: 0
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 100
+  - identifier: exit_persistence_seconds
+    valueAtRankOne: 2
+    valueAtNaturalCap: 2
+    valuePerEquipmentRank: 0
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 4
+  appliedStatusIdentifiers:
+  - order_hold_line
+  consumedStatusIdentifiers: []
+  investedRankSynergies:
+  - sourceSkill: {fileID: 11400000, guid: 9a00dde1377e96f45a06829e6137c414, type: 2}
+    affectedValueIdentifier: armour_efficiency_bonus_percent
+    operation: 0
+    bonusPerInvestedRank: 0.4
+  - sourceSkill: {fileID: 11400000, guid: 0205561b413fba14a98321687bd4eff1, type: 2}
+    affectedValueIdentifier: radius_metres
+    operation: 0
+    bonusPerInvestedRank: 0.15
+  - sourceSkill: {fileID: 11400000, guid: af6411b21095a3743a976abf3eaf106a, type: 2}
+    affectedValueIdentifier: order_power_percent
+    operation: 1
+    bonusPerInvestedRank: 0.5

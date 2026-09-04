@@ -1,0 +1,98 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98f4f1f2c63e027488f24ebc28369cbb, type: 3}
+  m_Name: MagneticRecall
+  m_EditorClassIdentifier: ProjectBloodbath.Runtime::ProjectBloodbath.Progression.SkillDefinition
+  identifier: engineer_magnetic_recall
+  characterClass: 3
+  treeIdentifier: engineer_main_chassis
+  displayName: "Rappel magn\xE9tique"
+  description: "Repositionne le compagnon actif sans le soigner ni ressusciter un
+    ch\xE2ssis d\xE9truit. L'effet d'arriv\xE9e d\xE9pend du mod\xE8le rappel\xE9."
+  icon: {fileID: 0}
+  skillType: 0
+  maximumInvestedRank: 20
+  unlockLevel: 12
+  prerequisites:
+  - skill: {fileID: 11400000, guid: c490c38e013595544bec7371e57c67c5, type: 2}
+    requiredInvestedRank: 1
+  prerequisiteGroups: []
+  targetMode: 4
+  resourceCost: 14
+  tags:
+  - active
+  - companion
+  - movement
+  - command
+  rankValues:
+  - identifier: cooldown_seconds
+    valueAtRankOne: 10
+    valueAtNaturalCap: 6
+    valuePerEquipmentRank: -0.2
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 5
+    clampMaximum: 1
+    maximumValue: 10
+  - identifier: maximum_range_metres
+    valueAtRankOne: 12
+    valueAtNaturalCap: 20
+    valuePerEquipmentRank: 0.4
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 8
+    clampMaximum: 1
+    maximumValue: 24
+  - identifier: arrival_power_percent
+    valueAtRankOne: 70
+    valueAtNaturalCap: 160
+    valuePerEquipmentRank: 4.5
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 190
+  - identifier: maximum_arrival_effects
+    valueAtRankOne: 1
+    valueAtNaturalCap: 1
+    valuePerEquipmentRank: 0
+    wholeNumber: 1
+    clampMinimum: 1
+    minimumValue: 1
+    clampMaximum: 1
+    maximumValue: 1
+  - identifier: destroyed_chassis_reconstruction_reduction_percent
+    valueAtRankOne: 10
+    valueAtNaturalCap: 35
+    valuePerEquipmentRank: 1.25
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 45
+  - identifier: can_revive_destroyed_chassis
+    valueAtRankOne: 0
+    valueAtNaturalCap: 0
+    valuePerEquipmentRank: 0
+    wholeNumber: 1
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 0
+  appliedStatusIdentifiers:
+  - magnetic_recall
+  consumedStatusIdentifiers: []
+  investedRankSynergies:
+  - sourceSkill: {fileID: 11400000, guid: c490c38e013595544bec7371e57c67c5, type: 2}
+    affectedValueIdentifier: arrival_power_percent
+    operation: 1
+    bonusPerInvestedRank: 1.5

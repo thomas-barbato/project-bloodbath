@@ -1,0 +1,119 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98f4f1f2c63e027488f24ebc28369cbb, type: 3}
+  m_Name: PredatoryRecycling
+  m_EditorClassIdentifier: ProjectBloodbath.Runtime::ProjectBloodbath.Progression.SkillDefinition
+  identifier: engineer_predatory_recycling
+  characterClass: 3
+  treeIdentifier: engineer_industrial_swarm
+  displayName: "Recyclage pr\xE9dateur"
+  description: "Les drones d\xE9truits ou expir\xE9s laissent une Ferraille chaude.
+    Son absorption r\xE9pare et prolonge une unit\xE9 ; sinon elle pr\xE9pare une
+    remise plafonn\xE9e."
+  icon: {fileID: 0}
+  skillType: 1
+  maximumInvestedRank: 20
+  unlockLevel: 6
+  prerequisites: []
+  prerequisiteGroups:
+  - mode: 1
+    requiredCount: 1
+    prerequisites:
+    - skill: {fileID: 11400000, guid: d344360b7a5bde34aa4c04148a7126e2, type: 2}
+      requiredInvestedRank: 1
+    - skill: {fileID: 11400000, guid: b1becfc0115b73d4abe9c849196d4985, type: 2}
+      requiredInvestedRank: 1
+  targetMode: 0
+  resourceCost: 0
+  tags:
+  - passive
+  - drone
+  - scrap
+  - repair
+  - cooldown
+  rankValues:
+  - identifier: hot_scrap_duration_seconds
+    valueAtRankOne: 5
+    valueAtNaturalCap: 5
+    valuePerEquipmentRank: 0
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 5
+    clampMaximum: 1
+    maximumValue: 5
+  - identifier: absorbing_drone_health_restoration_percent
+    valueAtRankOne: 3
+    valueAtNaturalCap: 12
+    valuePerEquipmentRank: 0.45
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 15
+  - identifier: absorbing_drone_duration_extension_seconds
+    valueAtRankOne: 0.5
+    valueAtNaturalCap: 2
+    valuePerEquipmentRank: 0.075
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 2.5
+  - identifier: next_summon_cost_reduction_per_scrap_percent
+    valueAtRankOne: 2
+    valueAtNaturalCap: 5
+    valuePerEquipmentRank: 0.15
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 5
+  - identifier: next_summon_cooldown_reduction_per_scrap_seconds
+    valueAtRankOne: 0.2
+    valueAtNaturalCap: 0.75
+    valuePerEquipmentRank: 0.025
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 0.75
+  - identifier: maximum_stored_hot_scrap
+    valueAtRankOne: 1
+    valueAtNaturalCap: 3
+    valuePerEquipmentRank: 0
+    wholeNumber: 1
+    clampMinimum: 1
+    minimumValue: 1
+    clampMaximum: 1
+    maximumValue: 3
+  - identifier: maximum_total_cost_reduction_percent
+    valueAtRankOne: 5
+    valueAtNaturalCap: 15
+    valuePerEquipmentRank: 0.5
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 15
+  - identifier: kamikaze_scrap_benefit_percent
+    valueAtRankOne: 50
+    valueAtNaturalCap: 50
+    valuePerEquipmentRank: 0
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 50
+    clampMaximum: 1
+    maximumValue: 50
+  appliedStatusIdentifiers:
+  - hot_scrap
+  consumedStatusIdentifiers: []
+  investedRankSynergies: []

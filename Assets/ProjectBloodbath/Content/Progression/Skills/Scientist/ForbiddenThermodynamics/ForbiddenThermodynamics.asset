@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac783a04e34944e4da9a305fe86289a7, type: 3}
+  m_Name: ForbiddenThermodynamics
+  m_EditorClassIdentifier: ProjectBloodbath.Runtime::ProjectBloodbath.Progression.SkillTreeDefinition
+  identifier: scientist_forbidden_thermodynamics
+  characterClass: 2
+  displayName: Thermodynamique interdite
+  description: "Br\xFBlures contr\xF4l\xE9es, catalyseur binaire et d\xE9tonations
+    thermiques sans propagation r\xE9cursive."
+  skills:
+  - {fileID: 11400000, guid: 4dcd325a3e7815e479cebaa9592ca466, type: 2}
+  - {fileID: 11400000, guid: 668665ccef2c08b4ead2b6d91f884c83, type: 2}
+  - {fileID: 11400000, guid: cd16142595b71aa49b5cbf51588f9d31, type: 2}
+  - {fileID: 11400000, guid: ea785d403a43cf247a4bd8d9b900028e, type: 2}
+  - {fileID: 11400000, guid: fff5433400553de419fc0f8f86417455, type: 2}
+  - {fileID: 11400000, guid: 6bfc0eaaf13543642a5bc9b73ca428a0, type: 2}
+  - {fileID: 11400000, guid: c6fba75f82bde474198fd437eab6a455, type: 2}
+  - {fileID: 11400000, guid: df85dbe42d70a5247adf0c6ead10286b, type: 2}
+  - {fileID: 11400000, guid: cc8aeaf054acb784a869c8d0be919b01, type: 2}
+  - {fileID: 11400000, guid: f0a9cb4934ea7d94e81f3c85560cb05c, type: 2}

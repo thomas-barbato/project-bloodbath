@@ -1,0 +1,104 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98f4f1f2c63e027488f24ebc28369cbb, type: 3}
+  m_Name: CuttingScarabs
+  m_EditorClassIdentifier: ProjectBloodbath.Runtime::ProjectBloodbath.Progression.SkillDefinition
+  identifier: engineer_cutting_scarabs
+  characterClass: 3
+  treeIdentifier: engineer_industrial_swarm
+  displayName: "Scarab\xE9es de d\xE9coupe"
+  description: "Lib\xE8re des microbots terrestres qui attaquent sans t\xE9l\xE9portation
+    et appliquent une Corrosion \xE0 cadence plafonn\xE9e lorsqu'ils convergent."
+  icon: {fileID: 0}
+  skillType: 0
+  maximumInvestedRank: 20
+  unlockLevel: 6
+  prerequisites: []
+  prerequisiteGroups: []
+  targetMode: 4
+  resourceCost: 24
+  tags:
+  - active
+  - drone
+  - temporary
+  - ground
+  - offensive
+  - corrosion
+  rankValues:
+  - identifier: cooldown_seconds
+    valueAtRankOne: 14
+    valueAtNaturalCap: 9
+    valuePerEquipmentRank: -0.25
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 8
+    clampMaximum: 1
+    maximumValue: 14
+  - identifier: drone_count
+    valueAtRankOne: 3
+    valueAtNaturalCap: 6
+    valuePerEquipmentRank: 0
+    wholeNumber: 1
+    clampMinimum: 1
+    minimumValue: 2
+    clampMaximum: 1
+    maximumValue: 6
+  - identifier: duration_seconds
+    valueAtRankOne: 6
+    valueAtNaturalCap: 10
+    valuePerEquipmentRank: 0.2
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 4
+    clampMaximum: 1
+    maximumValue: 12
+  - identifier: damage_per_drone_per_second_percent
+    valueAtRankOne: 30
+    valueAtNaturalCap: 55
+    valuePerEquipmentRank: 1.25
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 68
+  - identifier: scarabs_required_for_corrosion
+    valueAtRankOne: 3
+    valueAtNaturalCap: 3
+    valuePerEquipmentRank: 0
+    wholeNumber: 1
+    clampMinimum: 1
+    minimumValue: 3
+    clampMaximum: 1
+    maximumValue: 3
+  - identifier: corrosion_application_interval_seconds
+    valueAtRankOne: 2
+    valueAtNaturalCap: 2
+    valuePerEquipmentRank: 0
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 2
+    clampMaximum: 1
+    maximumValue: 2
+  - identifier: maximum_corrosion_applications_per_second
+    valueAtRankOne: 1
+    valueAtNaturalCap: 1
+    valuePerEquipmentRank: 0
+    wholeNumber: 1
+    clampMinimum: 1
+    minimumValue: 1
+    clampMaximum: 1
+    maximumValue: 1
+  appliedStatusIdentifiers:
+  - cutting_scarabs
+  - corrosion
+  consumedStatusIdentifiers: []
+  investedRankSynergies: []

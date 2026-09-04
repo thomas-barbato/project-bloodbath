@@ -1,0 +1,86 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98f4f1f2c63e027488f24ebc28369cbb, type: 3}
+  m_Name: PitCompounds
+  m_EditorClassIdentifier: ProjectBloodbath.Runtime::ProjectBloodbath.Progression.SkillDefinition
+  identifier: marine_pit_compounds
+  characterClass: 1
+  treeIdentifier: marine_controlled_devastation
+  displayName: "Compos\xE9s de fosse"
+  description: "Alterner rapidement deux comp\xE9tences explosives diff\xE9rentes
+    pr\xE9pare un unique M\xE9lange instable qui renforce la prochaine famille explosive
+    distincte."
+  icon: {fileID: 0}
+  skillType: 1
+  maximumInvestedRank: 20
+  unlockLevel: 6
+  prerequisites:
+  - skill: {fileID: 11400000, guid: f0caae7e6df32d24f967bef161896994, type: 2}
+    requiredInvestedRank: 1
+  prerequisiteGroups: []
+  targetMode: 0
+  resourceCost: 0
+  tags:
+  - passive
+  - explosive
+  - rotation
+  - unstable_mix
+  rankValues:
+  - identifier: alternation_window_seconds
+    valueAtRankOne: 5
+    valueAtNaturalCap: 5
+    valuePerEquipmentRank: 0
+    wholeNumber: 0
+    clampMinimum: 0
+    minimumValue: 0
+    clampMaximum: 0
+    maximumValue: 0
+  - identifier: unstable_mix_duration_seconds
+    valueAtRankOne: 6
+    valueAtNaturalCap: 6
+    valuePerEquipmentRank: 0
+    wholeNumber: 0
+    clampMinimum: 0
+    minimumValue: 0
+    clampMaximum: 0
+    maximumValue: 0
+  - identifier: mixed_explosive_damage_bonus_percent
+    valueAtRankOne: 8
+    valueAtNaturalCap: 25
+    valuePerEquipmentRank: 0.85
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 0
+    maximumValue: 0
+  - identifier: secondary_effect_damage_bonus_percent
+    valueAtRankOne: 15
+    valueAtNaturalCap: 40
+    valuePerEquipmentRank: 1.25
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 0
+    maximumValue: 0
+  - identifier: maximum_unstable_mix_charges
+    valueAtRankOne: 1
+    valueAtNaturalCap: 1
+    valuePerEquipmentRank: 0
+    wholeNumber: 1
+    clampMinimum: 0
+    minimumValue: 0
+    clampMaximum: 0
+    maximumValue: 0
+  appliedStatusIdentifiers:
+  - unstable_mix
+  consumedStatusIdentifiers: []
+  investedRankSynergies: []

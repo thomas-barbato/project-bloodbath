@@ -1,0 +1,146 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98f4f1f2c63e027488f24ebc28369cbb, type: 3}
+  m_Name: OrderCrushThem
+  m_EditorClassIdentifier: ProjectBloodbath.Runtime::ProjectBloodbath.Progression.SkillDefinition
+  identifier: enforcer_order_crush_them
+  characterClass: 0
+  treeIdentifier: enforcer_command_doctrine
+  displayName: "Ordre : \xC9crasez-les"
+  description: "D\xE9ploie un Ordre exclusif de d\xE9g\xE2ts et de stagger dont l'impulsion
+    de ressource ne se produit qu'une fois."
+  icon: {fileID: 0}
+  skillType: 0
+  maximumInvestedRank: 20
+  unlockLevel: 12
+  prerequisites: []
+  prerequisiteGroups: []
+  targetMode: 7
+  resourceCost: 20
+  tags:
+  - active
+  - order
+  - group
+  - offensive
+  - stagger
+  rankValues:
+  - identifier: cooldown_seconds
+    valueAtRankOne: 18
+    valueAtNaturalCap: 18
+    valuePerEquipmentRank: -0.2
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 14
+    clampMaximum: 0
+    maximumValue: 0
+  - identifier: duration_seconds
+    valueAtRankOne: 8
+    valueAtNaturalCap: 11
+    valuePerEquipmentRank: 0.15
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 4
+    clampMaximum: 1
+    maximumValue: 14
+  - identifier: radius_metres
+    valueAtRankOne: 12
+    valueAtNaturalCap: 12
+    valuePerEquipmentRank: 0
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 6
+    clampMaximum: 1
+    maximumValue: 15
+  - identifier: damage_bonus_percent
+    valueAtRankOne: 6
+    valueAtNaturalCap: 18
+    valuePerEquipmentRank: 0.6
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 24
+  - identifier: stagger_bonus_percent
+    valueAtRankOne: 15
+    valueAtNaturalCap: 45
+    valuePerEquipmentRank: 1.5
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 55
+  - identifier: low_health_damage_bonus_percent
+    valueAtRankOne: 10
+    valueAtNaturalCap: 25
+    valuePerEquipmentRank: 0.75
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 30
+  - identifier: low_health_threshold_percent
+    valueAtRankOne: 30
+    valueAtNaturalCap: 30
+    valuePerEquipmentRank: 0
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 50
+  - identifier: energy_pulse_amount
+    valueAtRankOne: 1
+    valueAtNaturalCap: 3
+    valuePerEquipmentRank: 0
+    wholeNumber: 1
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 3
+  - identifier: guard_and_carnage_pulse_amount
+    valueAtRankOne: 1
+    valueAtNaturalCap: 1
+    valuePerEquipmentRank: 0
+    wholeNumber: 1
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 1
+  - identifier: boss_health_loss_trigger_percent
+    valueAtRankOne: 10
+    valueAtNaturalCap: 10
+    valuePerEquipmentRank: 0
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 5
+    clampMaximum: 1
+    maximumValue: 10
+  - identifier: maximum_resource_pulses_per_order
+    valueAtRankOne: 1
+    valueAtNaturalCap: 1
+    valuePerEquipmentRank: 0
+    wholeNumber: 1
+    clampMinimum: 1
+    minimumValue: 1
+    clampMaximum: 1
+    maximumValue: 1
+  appliedStatusIdentifiers:
+  - order_crush_them
+  consumedStatusIdentifiers: []
+  investedRankSynergies:
+  - sourceSkill: {fileID: 11400000, guid: 0205561b413fba14a98321687bd4eff1, type: 2}
+    affectedValueIdentifier: radius_metres
+    operation: 0
+    bonusPerInvestedRank: 0.15
+  - sourceSkill: {fileID: 11400000, guid: af6411b21095a3743a976abf3eaf106a, type: 2}
+    affectedValueIdentifier: order_power_percent
+    operation: 1
+    bonusPerInvestedRank: 0.5

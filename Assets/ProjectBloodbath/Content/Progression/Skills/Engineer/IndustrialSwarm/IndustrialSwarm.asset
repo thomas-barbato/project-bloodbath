@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac783a04e34944e4da9a305fe86289a7, type: 3}
+  m_Name: IndustrialSwarm
+  m_EditorClassIdentifier: ProjectBloodbath.Runtime::ProjectBloodbath.Progression.SkillTreeDefinition
+  identifier: engineer_industrial_swarm
+  characterClass: 3
+  displayName: Essaim industriel
+  description: "Drones temporaires, bande passante et recyclage born\xE9 sans r\xE9plication
+    r\xE9cursive."
+  skills:
+  - {fileID: 11400000, guid: d344360b7a5bde34aa4c04148a7126e2, type: 2}
+  - {fileID: 11400000, guid: b1becfc0115b73d4abe9c849196d4985, type: 2}
+  - {fileID: 11400000, guid: f3232769d0a165f4ebfcaf95471c372f, type: 2}
+  - {fileID: 11400000, guid: 26061c3a7bbccf845969d608091690c5, type: 2}
+  - {fileID: 11400000, guid: 28e4882f54588e2498272a1a94e22e60, type: 2}
+  - {fileID: 11400000, guid: 9253aecc0a978e24dab4c58232e93085, type: 2}
+  - {fileID: 11400000, guid: e93aa9af8f688fc479d493d5cc4d5877, type: 2}
+  - {fileID: 11400000, guid: 9b16bc8f41cf37e43b260513fb810514, type: 2}
+  - {fileID: 11400000, guid: 106c936a2c837784796acedbd452c535, type: 2}
+  - {fileID: 11400000, guid: 561ba9b302efc8840a0186e333baee31, type: 2}

@@ -1,0 +1,139 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98f4f1f2c63e027488f24ebc28369cbb, type: 3}
+  m_Name: ButcheryRotor
+  m_EditorClassIdentifier: ProjectBloodbath.Runtime::ProjectBloodbath.Progression.SkillDefinition
+  identifier: enforcer_butchery_rotor
+  characterClass: 0
+  treeIdentifier: enforcer_velocity_assault
+  displayName: Rotor de boucherie
+  description: "Produit une s\xE9rie mobile d'impacts ; seuls les tours suppl\xE9mentaires
+    consomment Carnage."
+  icon: {fileID: 0}
+  skillType: 0
+  maximumInvestedRank: 20
+  unlockLevel: 30
+  prerequisites: []
+  prerequisiteGroups:
+  - mode: 1
+    requiredCount: 1
+    prerequisites:
+    - skill: {fileID: 11400000, guid: 85e799e03559169489c76570bc20fdab, type: 2}
+      requiredInvestedRank: 1
+    - skill: {fileID: 11400000, guid: 35093096ba6fcad40b9147c869181a39, type: 2}
+      requiredInvestedRank: 1
+  targetMode: 7
+  resourceCost: 32
+  tags:
+  - active
+  - melee
+  - area
+  - carnage
+  - mobile
+  rankValues:
+  - identifier: cooldown_seconds
+    valueAtRankOne: 12
+    valueAtNaturalCap: 10
+    valuePerEquipmentRank: -0.1
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 7
+    clampMaximum: 0
+    maximumValue: 0
+  - identifier: duration_seconds
+    valueAtRankOne: 1.2
+    valueAtNaturalCap: 1.2
+    valuePerEquipmentRank: 0
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0.5
+    clampMaximum: 0
+    maximumValue: 0
+  - identifier: hit_count
+    valueAtRankOne: 4
+    valueAtNaturalCap: 7
+    valuePerEquipmentRank: 0
+    wholeNumber: 1
+    clampMinimum: 1
+    minimumValue: 4
+    clampMaximum: 1
+    maximumValue: 7
+  - identifier: weapon_damage_per_hit_percent
+    valueAtRankOne: 45
+    valueAtNaturalCap: 70
+    valuePerEquipmentRank: 1.25
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 0
+    maximumValue: 0
+  - identifier: radius_metres
+    valueAtRankOne: 4
+    valueAtNaturalCap: 6
+    valuePerEquipmentRank: 0.1
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 2
+    clampMaximum: 1
+    maximumValue: 7
+  - identifier: free_hit_count
+    valueAtRankOne: 4
+    valueAtNaturalCap: 4
+    valuePerEquipmentRank: 0
+    wholeNumber: 1
+    clampMinimum: 1
+    minimumValue: 4
+    clampMaximum: 1
+    maximumValue: 4
+  - identifier: carnage_cost_per_additional_hit
+    valueAtRankOne: 1
+    valueAtNaturalCap: 1
+    valuePerEquipmentRank: 0
+    wholeNumber: 1
+    clampMinimum: 1
+    minimumValue: 1
+    clampMaximum: 1
+    maximumValue: 1
+  - identifier: prepared_target_damage_bonus_percent
+    valueAtRankOne: 20
+    valueAtNaturalCap: 20
+    valuePerEquipmentRank: 0
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 20
+  - identifier: leap_combo_window_seconds
+    valueAtRankOne: 0.5
+    valueAtNaturalCap: 0.5
+    valuePerEquipmentRank: 0
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 0.5
+  appliedStatusIdentifiers: []
+  consumedStatusIdentifiers:
+  - carnage
+  investedRankSynergies:
+  - sourceSkill: {fileID: 11400000, guid: 35093096ba6fcad40b9147c869181a39, type: 2}
+    affectedValueIdentifier: weapon_damage_percent
+    operation: 1
+    bonusPerInvestedRank: 1.5
+  - sourceSkill: {fileID: 11400000, guid: 47757b6d7c87f38479bc9f6b6126b560, type: 2}
+    affectedValueIdentifier: radius_percent
+    operation: 1
+    bonusPerInvestedRank: 0.5
+  - sourceSkill: {fileID: 11400000, guid: 85e799e03559169489c76570bc20fdab, type: 2}
+    affectedValueIdentifier: first_rotation_damage_percent
+    operation: 1
+    bonusPerInvestedRank: 0.5

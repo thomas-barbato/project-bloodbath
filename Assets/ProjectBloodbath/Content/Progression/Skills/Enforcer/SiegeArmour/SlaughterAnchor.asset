@@ -1,0 +1,106 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98f4f1f2c63e027488f24ebc28369cbb, type: 3}
+  m_Name: SlaughterAnchor
+  m_EditorClassIdentifier: ProjectBloodbath.Runtime::ProjectBloodbath.Progression.SkillDefinition
+  identifier: enforcer_slaughter_anchor
+  characterClass: 0
+  treeIdentifier: enforcer_siege_armour
+  displayName: Ancrage d'abattoir
+  description: "Verrouille les v\xE9rins dans une posture d\xE9fensive qui transforme
+    les impacts frontaux rapproch\xE9s en Garde."
+  icon: {fileID: 0}
+  skillType: 0
+  maximumInvestedRank: 20
+  unlockLevel: 1
+  prerequisites: []
+  prerequisiteGroups: []
+  targetMode: 1
+  resourceCost: 18
+  tags:
+  - active
+  - defensive
+  - stance
+  - guard
+  - tank
+  rankValues:
+  - identifier: cooldown_seconds
+    valueAtRankOne: 18
+    valueAtNaturalCap: 14
+    valuePerEquipmentRank: -0.2
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 8
+    clampMaximum: 0
+    maximumValue: 0
+  - identifier: duration_seconds
+    valueAtRankOne: 5
+    valueAtNaturalCap: 7
+    valuePerEquipmentRank: 0.1
+    wholeNumber: 0
+    clampMinimum: 0
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 10
+  - identifier: damage_reduction_percent
+    valueAtRankOne: 12
+    valueAtNaturalCap: 28
+    valuePerEquipmentRank: 0.8
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 40
+  - identifier: knockback_resistance_percent
+    valueAtRankOne: 40
+    valueAtNaturalCap: 100
+    valuePerEquipmentRank: 0
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 100
+  - identifier: movement_penalty_percent
+    valueAtRankOne: 25
+    valueAtNaturalCap: 8
+    valuePerEquipmentRank: -0.5
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 0
+    maximumValue: 0
+  - identifier: guard_generation_internal_cooldown_seconds
+    valueAtRankOne: 0.6
+    valueAtNaturalCap: 0.6
+    valuePerEquipmentRank: 0
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0.2
+    clampMaximum: 0
+    maximumValue: 0
+  - identifier: shield_block_angle_bonus_degrees
+    valueAtRankOne: 30
+    valueAtNaturalCap: 30
+    valuePerEquipmentRank: 0
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 45
+  appliedStatusIdentifiers:
+  - anchored
+  consumedStatusIdentifiers: []
+  investedRankSynergies:
+  - sourceSkill: {fileID: 11400000, guid: 9a00dde1377e96f45a06829e6137c414, type: 2}
+    affectedValueIdentifier: duration_percent
+    operation: 1
+    bonusPerInvestedRank: 1.5

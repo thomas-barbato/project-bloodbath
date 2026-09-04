@@ -1,0 +1,98 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98f4f1f2c63e027488f24ebc28369cbb, type: 3}
+  m_Name: OverchargedStriker
+  m_EditorClassIdentifier: ProjectBloodbath.Runtime::ProjectBloodbath.Progression.SkillDefinition
+  identifier: marine_overcharged_striker
+  characterClass: 1
+  treeIdentifier: marine_ordnance_rupture
+  displayName: "Percuteur surcharg\xE9"
+  description: "Arme le prochain tir lourd pendant quatre secondes : l'impact est
+    amplifi\xE9, repousse violemment la cible et ajoute une Fracture."
+  icon: {fileID: 0}
+  skillType: 0
+  maximumInvestedRank: 20
+  unlockLevel: 1
+  prerequisites: []
+  prerequisiteGroups: []
+  targetMode: 1
+  resourceCost: 12
+  tags:
+  - active
+  - ranged
+  - two_handed
+  - heavy_weapon
+  - next_shot
+  - fracture
+  rankValues:
+  - identifier: cooldown_seconds
+    valueAtRankOne: 8
+    valueAtNaturalCap: 5
+    valuePerEquipmentRank: -0.1
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 1
+    clampMaximum: 0
+    maximumValue: 0
+  - identifier: arming_window_seconds
+    valueAtRankOne: 4
+    valueAtNaturalCap: 4
+    valuePerEquipmentRank: 0
+    wholeNumber: 0
+    clampMinimum: 0
+    minimumValue: 0
+    clampMaximum: 0
+    maximumValue: 0
+  - identifier: weapon_damage_percent
+    valueAtRankOne: 150
+    valueAtNaturalCap: 340
+    valuePerEquipmentRank: 9.5
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 0
+    maximumValue: 0
+  - identifier: additional_ammunition_cost
+    valueAtRankOne: 1
+    valueAtNaturalCap: 1
+    valuePerEquipmentRank: 0
+    wholeNumber: 1
+    clampMinimum: 0
+    minimumValue: 0
+    clampMaximum: 0
+    maximumValue: 0
+  - identifier: impact_force_percent
+    valueAtRankOne: 40
+    valueAtNaturalCap: 120
+    valuePerEquipmentRank: 4
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 0
+    maximumValue: 0
+  - identifier: fracture_charges
+    valueAtRankOne: 1
+    valueAtNaturalCap: 1
+    valuePerEquipmentRank: 0
+    wholeNumber: 1
+    clampMinimum: 0
+    minimumValue: 0
+    clampMaximum: 0
+    maximumValue: 0
+  appliedStatusIdentifiers:
+  - fracture
+  consumedStatusIdentifiers: []
+  investedRankSynergies:
+  - sourceSkill: {fileID: 11400000, guid: 4a2118078788de048ac4d11c4f51427a, type: 2}
+    affectedValueIdentifier: weapon_damage_percent
+    operation: 1
+    bonusPerInvestedRank: 1.5

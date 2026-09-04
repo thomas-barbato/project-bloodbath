@@ -1,0 +1,122 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98f4f1f2c63e027488f24ebc28369cbb, type: 3}
+  m_Name: ImmovableMass
+  m_EditorClassIdentifier: ProjectBloodbath.Runtime::ProjectBloodbath.Progression.SkillDefinition
+  identifier: enforcer_immovable_mass
+  characterClass: 0
+  treeIdentifier: enforcer_siege_armour
+  displayName: Masse inamovible
+  description: "Stabilise la Garde au contact d'une menace majeure et convertit sa
+    d\xE9pense en restauration born\xE9e."
+  icon: {fileID: 0}
+  skillType: 1
+  maximumInvestedRank: 20
+  unlockLevel: 30
+  prerequisites:
+  - skill: {fileID: 11400000, guid: 9344cac5d81c6d94ca3257492ba48e4c, type: 2}
+    requiredInvestedRank: 1
+  prerequisiteGroups: []
+  targetMode: 0
+  resourceCost: 0
+  tags:
+  - passive
+  - defensive
+  - guard
+  - boss
+  - threat
+  - sustain
+  rankValues:
+  - identifier: activation_radius_metres
+    valueAtRankOne: 8
+    valueAtNaturalCap: 8
+    valuePerEquipmentRank: 0
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 1
+    clampMaximum: 0
+    maximumValue: 0
+  - identifier: minimum_nearby_enemies
+    valueAtRankOne: 3
+    valueAtNaturalCap: 3
+    valuePerEquipmentRank: 0
+    wholeNumber: 1
+    clampMinimum: 1
+    minimumValue: 1
+    clampMaximum: 0
+    maximumValue: 0
+  - identifier: minimum_guard_charges
+    valueAtRankOne: 1
+    valueAtNaturalCap: 1
+    valuePerEquipmentRank: 0
+    wholeNumber: 1
+    clampMinimum: 1
+    minimumValue: 1
+    clampMaximum: 0
+    maximumValue: 0
+  - identifier: damage_reduction_percent
+    valueAtRankOne: 5
+    valueAtNaturalCap: 15
+    valuePerEquipmentRank: 0.5
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 20
+  - identifier: threat_generation_percent
+    valueAtRankOne: 25
+    valueAtNaturalCap: 150
+    valuePerEquipmentRank: 6.25
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 0
+    maximumValue: 0
+  - identifier: guard_restoration_group_size
+    valueAtRankOne: 5
+    valueAtNaturalCap: 5
+    valuePerEquipmentRank: 0
+    wholeNumber: 1
+    clampMinimum: 1
+    minimumValue: 1
+    clampMaximum: 0
+    maximumValue: 0
+  - identifier: shield_restoration_per_group_percent
+    valueAtRankOne: 0.5
+    valueAtNaturalCap: 2.5
+    valuePerEquipmentRank: 0.1
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 3.5
+  - identifier: health_restoration_multiplier_percent
+    valueAtRankOne: 50
+    valueAtNaturalCap: 50
+    valuePerEquipmentRank: 0
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 50
+  appliedStatusIdentifiers:
+  - immovable_mass
+  consumedStatusIdentifiers: []
+  investedRankSynergies:
+  - sourceSkill: {fileID: 11400000, guid: 28f3053f992dde740bd8489301a7dbce, type: 2}
+    affectedValueIdentifier: shield_restoration_percent
+    operation: 1
+    bonusPerInvestedRank: 1.5
+  - sourceSkill: {fileID: 11400000, guid: e31373ac0ae38434aba6e4374f70a80e, type: 2}
+    affectedValueIdentifier: shield_restoration_percent
+    operation: 1
+    bonusPerInvestedRank: 1

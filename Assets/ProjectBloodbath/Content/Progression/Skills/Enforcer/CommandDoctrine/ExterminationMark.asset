@@ -1,0 +1,128 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98f4f1f2c63e027488f24ebc28369cbb, type: 3}
+  m_Name: ExterminationMark
+  m_EditorClassIdentifier: ProjectBloodbath.Runtime::ProjectBloodbath.Progression.SkillDefinition
+  identifier: enforcer_extermination_mark
+  characterClass: 0
+  treeIdentifier: enforcer_command_doctrine
+  displayName: Marquage d'extermination
+  description: "D\xE9signe une cible prioritaire pour le groupe et produit une seule
+    impulsion de victoire ou de seuil de boss."
+  icon: {fileID: 0}
+  skillType: 0
+  maximumInvestedRank: 20
+  unlockLevel: 18
+  prerequisites: []
+  prerequisiteGroups:
+  - mode: 1
+    requiredCount: 1
+    prerequisites:
+    - skill: {fileID: 11400000, guid: 6b657b3a0a199c2438b441297b109c7b, type: 2}
+      requiredInvestedRank: 1
+    - skill: {fileID: 11400000, guid: 0982775d756465b4ba912d2f46e93a44, type: 2}
+      requiredInvestedRank: 1
+    - skill: {fileID: 11400000, guid: 00643af165780ff44a52ad15c69c2687, type: 2}
+      requiredInvestedRank: 1
+  targetMode: 3
+  resourceCost: 22
+  tags:
+  - active
+  - order
+  - group
+  - mark
+  - single_target
+  rankValues:
+  - identifier: cooldown_seconds
+    valueAtRankOne: 16
+    valueAtNaturalCap: 12
+    valuePerEquipmentRank: -0.2
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 8
+    clampMaximum: 0
+    maximumValue: 0
+  - identifier: duration_seconds
+    valueAtRankOne: 6
+    valueAtNaturalCap: 10
+    valuePerEquipmentRank: 0.2
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 3
+    clampMaximum: 1
+    maximumValue: 13
+  - identifier: allied_damage_taken_percent
+    valueAtRankOne: 6
+    valueAtNaturalCap: 15
+    valuePerEquipmentRank: 0.45
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 20
+  - identifier: kill_pulse_duration_seconds
+    valueAtRankOne: 3
+    valueAtNaturalCap: 3
+    valuePerEquipmentRank: 0
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 1
+    clampMaximum: 0
+    maximumValue: 0
+  - identifier: kill_pulse_movement_and_reload_percent
+    valueAtRankOne: 10
+    valueAtNaturalCap: 20
+    valuePerEquipmentRank: 0.5
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 25
+  - identifier: enforcer_guard_and_carnage
+    valueAtRankOne: 2
+    valueAtNaturalCap: 2
+    valuePerEquipmentRank: 0
+    wholeNumber: 1
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 2
+  - identifier: boss_health_loss_trigger_percent
+    valueAtRankOne: 10
+    valueAtNaturalCap: 10
+    valuePerEquipmentRank: 0
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 5
+    clampMaximum: 1
+    maximumValue: 10
+  - identifier: maximum_boss_pulses_per_mark
+    valueAtRankOne: 1
+    valueAtNaturalCap: 1
+    valuePerEquipmentRank: 0
+    wholeNumber: 1
+    clampMinimum: 1
+    minimumValue: 1
+    clampMaximum: 1
+    maximumValue: 1
+  appliedStatusIdentifiers:
+  - extermination_mark
+  consumedStatusIdentifiers: []
+  investedRankSynergies:
+  - sourceSkill: {fileID: 11400000, guid: f6b6dfc53dfb623499a8fbeee1525c43, type: 2}
+    affectedValueIdentifier: duration_percent
+    operation: 1
+    bonusPerInvestedRank: 0.5
+  - sourceSkill: {fileID: 11400000, guid: af6411b21095a3743a976abf3eaf106a, type: 2}
+    affectedValueIdentifier: kill_pulse_duration_percent
+    operation: 1
+    bonusPerInvestedRank: 1

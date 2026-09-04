@@ -1,0 +1,95 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98f4f1f2c63e027488f24ebc28369cbb, type: 3}
+  m_Name: ThermalDeath
+  m_EditorClassIdentifier: ProjectBloodbath.Runtime::ProjectBloodbath.Progression.SkillDefinition
+  identifier: scientist_thermal_death
+  characterClass: 2
+  treeIdentifier: scientist_cryogenic_containment
+  displayName: Mort thermique
+  description: "Apr\xE8s la rupture d'un gel, expose bri\xE8vement la cible survivante
+    et produit un choc thermique born\xE9 qui ne peut pas cascader."
+  icon: {fileID: 0}
+  skillType: 1
+  maximumInvestedRank: 20
+  unlockLevel: 30
+  prerequisites: []
+  prerequisiteGroups:
+  - mode: 1
+    requiredCount: 1
+    prerequisites:
+    - skill: {fileID: 11400000, guid: 8ec88ed7703ed544490a8911db855cfa, type: 2}
+      requiredInvestedRank: 1
+    - skill: {fileID: 11400000, guid: 51bdcf99cf0aeb949a15a5ff37abc09b, type: 2}
+      requiredInvestedRank: 1
+  targetMode: 0
+  resourceCost: 0
+  tags:
+  - passive
+  - ice
+  - freeze
+  - vulnerability
+  - thermal_shock
+  rankValues:
+  - identifier: all_damage_vulnerability_percent
+    valueAtRankOne: 8
+    valueAtNaturalCap: 20
+    valuePerEquipmentRank: 0.6
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 25
+  - identifier: vulnerability_duration_seconds
+    valueAtRankOne: 4
+    valueAtNaturalCap: 8
+    valuePerEquipmentRank: 0.2
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 2
+    clampMaximum: 1
+    maximumValue: 9
+  - identifier: thermal_shock_damage_percent
+    valueAtRankOne: 80
+    valueAtNaturalCap: 220
+    valuePerEquipmentRank: 7
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 270
+  - identifier: thermal_shock_radius_metres
+    valueAtRankOne: 3
+    valueAtNaturalCap: 5
+    valuePerEquipmentRank: 0.1
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 1
+    clampMaximum: 1
+    maximumValue: 5.5
+  - identifier: maximum_secondary_chain_depth
+    valueAtRankOne: 0
+    valueAtNaturalCap: 0
+    valuePerEquipmentRank: 0
+    wholeNumber: 1
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 0
+  appliedStatusIdentifiers:
+  - thermal_death
+  consumedStatusIdentifiers: []
+  investedRankSynergies:
+  - sourceSkill: {fileID: 11400000, guid: 51bdcf99cf0aeb949a15a5ff37abc09b, type: 2}
+    affectedValueIdentifier: thermal_shock_damage_percent
+    operation: 1
+    bonusPerInvestedRank: 1.5

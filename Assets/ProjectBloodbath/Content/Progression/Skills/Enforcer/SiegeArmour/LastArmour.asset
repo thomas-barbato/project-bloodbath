@@ -1,0 +1,109 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98f4f1f2c63e027488f24ebc28369cbb, type: 3}
+  m_Name: LastArmour
+  m_EditorClassIdentifier: ProjectBloodbath.Runtime::ProjectBloodbath.Progression.SkillDefinition
+  identifier: enforcer_last_armour
+  characterClass: 0
+  treeIdentifier: enforcer_siege_armour
+  displayName: Dernier blindage
+  description: "D\xE9clenche une protection d'urgence sous le seuil critique sans
+    remplacer les bonus permanents d'armure."
+  icon: {fileID: 0}
+  skillType: 1
+  maximumInvestedRank: 20
+  unlockLevel: 24
+  prerequisites: []
+  prerequisiteGroups:
+  - mode: 1
+    requiredCount: 1
+    prerequisites:
+    - skill: {fileID: 11400000, guid: 9a00dde1377e96f45a06829e6137c414, type: 2}
+      requiredInvestedRank: 1
+    - skill: {fileID: 11400000, guid: fe4403975ac2f2c49b94141e76689a15, type: 2}
+      requiredInvestedRank: 1
+  targetMode: 0
+  resourceCost: 0
+  tags:
+  - passive
+  - defensive
+  - emergency
+  - guard
+  - threat
+  rankValues:
+  - identifier: trigger_health_percent
+    valueAtRankOne: 30
+    valueAtNaturalCap: 30
+    valuePerEquipmentRank: 0
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 1
+    clampMaximum: 1
+    maximumValue: 50
+  - identifier: duration_seconds
+    valueAtRankOne: 4
+    valueAtNaturalCap: 6
+    valuePerEquipmentRank: 0.1
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 2
+    clampMaximum: 1
+    maximumValue: 8
+  - identifier: damage_reduction_percent
+    valueAtRankOne: 10
+    valueAtNaturalCap: 24
+    valuePerEquipmentRank: 0.7
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 30
+  - identifier: internal_cooldown_seconds
+    valueAtRankOne: 30
+    valueAtNaturalCap: 18
+    valuePerEquipmentRank: -0.5
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 12
+    clampMaximum: 0
+    maximumValue: 0
+  - identifier: guard_generation_bonus_percent
+    valueAtRankOne: 100
+    valueAtNaturalCap: 100
+    valuePerEquipmentRank: 0
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 100
+  - identifier: purge_healing_per_guard_percent
+    valueAtRankOne: 0.1
+    valueAtNaturalCap: 0.4
+    valuePerEquipmentRank: 0.02
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 0.5
+  - identifier: threat_pulse_unlock_rank
+    valueAtRankOne: 10
+    valueAtNaturalCap: 10
+    valuePerEquipmentRank: 0
+    wholeNumber: 1
+    clampMinimum: 1
+    minimumValue: 10
+    clampMaximum: 1
+    maximumValue: 10
+  appliedStatusIdentifiers:
+  - last_armour
+  consumedStatusIdentifiers: []
+  investedRankSynergies: []

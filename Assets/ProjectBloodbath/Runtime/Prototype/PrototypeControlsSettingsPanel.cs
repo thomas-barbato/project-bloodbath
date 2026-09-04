@@ -77,6 +77,7 @@ namespace ProjectBloodbath.Prototype
             new("PERSONNAGE", "Inventory"),
             new("JOURNAL", "QuestJournal"),
             new("CARTE", "WorldMap"),
+            new("COMPÉTENCES", "SkillTree"),
             new("MENU", "Options")
         };
 

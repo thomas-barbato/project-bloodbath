@@ -1,0 +1,95 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98f4f1f2c63e027488f24ebc28369cbb, type: 3}
+  m_Name: RainOfCasings
+  m_EditorClassIdentifier: ProjectBloodbath.Runtime::ProjectBloodbath.Progression.SkillDefinition
+  identifier: marine_rain_of_casings
+  characterClass: 1
+  treeIdentifier: marine_doctrine_saturation
+  displayName: Pluie de douilles
+  description: "\xC0 forte Saturation, une s\xE9rie d'impacts lib\xE8re une gerbe
+    lat\xE9rale identifiable, limit\xE9e par un bref d\xE9lai interne pour rester
+    lisible en coop\xE9ration."
+  icon: {fileID: 0}
+  skillType: 1
+  maximumInvestedRank: 20
+  unlockLevel: 24
+  prerequisites: []
+  prerequisiteGroups:
+  - mode: 1
+    requiredCount: 1
+    prerequisites:
+    - skill: {fileID: 11400000, guid: adfd3ba3d407b404cadeec7c3cd63f87, type: 2}
+      requiredInvestedRank: 1
+    - skill: {fileID: 11400000, guid: f5305eb65f4a5ee4d96fa64cdad50702, type: 2}
+      requiredInvestedRank: 1
+  targetMode: 0
+  resourceCost: 0
+  tags:
+  - passive
+  - ranged
+  - light_weapon
+  - cone
+  - saturation
+  rankValues:
+  - identifier: required_saturation_charges
+    valueAtRankOne: 6
+    valueAtNaturalCap: 6
+    valuePerEquipmentRank: 0
+    wholeNumber: 1
+    clampMinimum: 0
+    minimumValue: 0
+    clampMaximum: 0
+    maximumValue: 0
+  - identifier: impact_trigger_interval
+    valueAtRankOne: 12
+    valueAtNaturalCap: 6
+    valuePerEquipmentRank: 0
+    wholeNumber: 1
+    clampMinimum: 0
+    minimumValue: 0
+    clampMaximum: 0
+    maximumValue: 0
+  - identifier: internal_cooldown_seconds
+    valueAtRankOne: 0.45
+    valueAtNaturalCap: 0.25
+    valuePerEquipmentRank: -0.01
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0.15
+    clampMaximum: 0
+    maximumValue: 0
+  - identifier: weapon_damage_percent
+    valueAtRankOne: 25
+    valueAtNaturalCap: 70
+    valuePerEquipmentRank: 2.25
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 0
+    maximumValue: 0
+  - identifier: ammunition_restored_per_kill
+    valueAtRankOne: 1
+    valueAtNaturalCap: 1
+    valuePerEquipmentRank: 0
+    wholeNumber: 1
+    clampMinimum: 0
+    minimumValue: 0
+    clampMaximum: 0
+    maximumValue: 0
+  appliedStatusIdentifiers: []
+  consumedStatusIdentifiers: []
+  investedRankSynergies:
+  - sourceSkill: {fileID: 11400000, guid: f5305eb65f4a5ee4d96fa64cdad50702, type: 2}
+    affectedValueIdentifier: cone_width_percent
+    operation: 1
+    bonusPerInvestedRank: 1

@@ -132,6 +132,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "SkillTree",
+                    "type": "Button",
+                    "id": "d74bb4f5-8b43-4b8e-871f-8a9b4b3ab0b7",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Options",
                     "type": "Button",
                     "id": "3cbf51ef-1417-4b44-8855-ccb694ca96f0",
@@ -645,6 +654,28 @@
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "WorldMap",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "aa1936ac-d5c9-4213-91df-e421e795f29e",
+                    "path": "<Keyboard>/k",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "SkillTree",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f9a288de-8b77-4ec3-b10b-fb6c2d4a2803",
+                    "path": "<Gamepad>/dpad/left",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "SkillTree",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

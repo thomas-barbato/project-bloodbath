@@ -1,0 +1,118 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98f4f1f2c63e027488f24ebc28369cbb, type: 3}
+  m_Name: BreachCharge
+  m_EditorClassIdentifier: ProjectBloodbath.Runtime::ProjectBloodbath.Progression.SkillDefinition
+  identifier: marine_breach_charge
+  characterClass: 1
+  treeIdentifier: marine_controlled_devastation
+  displayName: "Charge de br\xE8che"
+  description: "Fixe une charge sur une cible ou une surface ; une pression maintenue
+    les fait exploser dans l'ordre de pose avec rendement d\xE9croissant sur une
+    m\xEAme cible."
+  icon: {fileID: 0}
+  skillType: 0
+  maximumInvestedRank: 20
+  unlockLevel: 12
+  prerequisites: []
+  prerequisiteGroups:
+  - mode: 1
+    requiredCount: 1
+    prerequisites:
+    - skill: {fileID: 11400000, guid: 696678404b501e94ca451782cb413718, type: 2}
+      requiredInvestedRank: 1
+    - skill: {fileID: 11400000, guid: 4a0b28b0eb3e6e74aa6e42b09824fe04, type: 2}
+      requiredInvestedRank: 1
+  targetMode: 2
+  resourceCost: 18
+  tags:
+  - active
+  - ranged
+  - explosive
+  - adhesive
+  - area
+  - fracture
+  - primer
+  rankValues:
+  - identifier: maximum_active_charges
+    valueAtRankOne: 1
+    valueAtNaturalCap: 3
+    valuePerEquipmentRank: 0
+    wholeNumber: 1
+    clampMinimum: 0
+    minimumValue: 0
+    clampMaximum: 0
+    maximumValue: 0
+  - identifier: charge_cooldown_seconds
+    valueAtRankOne: 9
+    valueAtNaturalCap: 9
+    valuePerEquipmentRank: -0.1
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 4
+    clampMaximum: 0
+    maximumValue: 0
+  - identifier: weapon_damage_percent
+    valueAtRankOne: 220
+    valueAtNaturalCap: 480
+    valuePerEquipmentRank: 13
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 0
+    maximumValue: 0
+  - identifier: explosion_radius_metres
+    valueAtRankOne: 2.5
+    valueAtNaturalCap: 4
+    valuePerEquipmentRank: 0.08
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 1
+    clampMaximum: 1
+    maximumValue: 5.5
+  - identifier: direct_hit_bonus_percent
+    valueAtRankOne: 65
+    valueAtNaturalCap: 65
+    valuePerEquipmentRank: 0
+    wholeNumber: 0
+    clampMinimum: 0
+    minimumValue: 0
+    clampMaximum: 0
+    maximumValue: 0
+  - identifier: additional_attached_charge_damage_percent
+    valueAtRankOne: 50
+    valueAtNaturalCap: 50
+    valuePerEquipmentRank: 0
+    wholeNumber: 0
+    clampMinimum: 0
+    minimumValue: 0
+    clampMaximum: 0
+    maximumValue: 0
+  - identifier: fracture_charges
+    valueAtRankOne: 1
+    valueAtNaturalCap: 1
+    valuePerEquipmentRank: 0
+    wholeNumber: 1
+    clampMinimum: 0
+    minimumValue: 0
+    clampMaximum: 0
+    maximumValue: 0
+  appliedStatusIdentifiers:
+  - fracture
+  - primer
+  consumedStatusIdentifiers:
+  - unstable_mix
+  investedRankSynergies:
+  - sourceSkill: {fileID: 11400000, guid: 4a0b28b0eb3e6e74aa6e42b09824fe04, type: 2}
+    affectedValueIdentifier: weapon_damage_percent
+    operation: 1
+    bonusPerInvestedRank: 1.5

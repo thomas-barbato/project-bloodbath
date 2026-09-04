@@ -2,6 +2,7 @@
     "name": "ProjectBloodbath.Tests.Editor",
     "rootNamespace": "ProjectBloodbath.Tests.Editor",
     "references": [
+        "ProjectBloodbath.Runtime",
         "UnityEngine.TestRunner",
         "UnityEditor.TestRunner"
     ],

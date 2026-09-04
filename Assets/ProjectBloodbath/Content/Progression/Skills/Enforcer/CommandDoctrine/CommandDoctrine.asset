@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac783a04e34944e4da9a305fe86289a7, type: 3}
+  m_Name: CommandDoctrine
+  m_EditorClassIdentifier: ProjectBloodbath.Runtime::ProjectBloodbath.Progression.SkillTreeDefinition
+  identifier: enforcer_command_doctrine
+  characterClass: 0
+  displayName: Doctrine de commandement
+  description: "Trois Ordres exclusifs, un soutien de groupe born\xE9 et des relais
+    sans propagation r\xE9cursive."
+  skills:
+  - {fileID: 11400000, guid: 6b657b3a0a199c2438b441297b109c7b, type: 2}
+  - {fileID: 11400000, guid: 2b2cac49b87cb974da717b0dae5910f1, type: 2}
+  - {fileID: 11400000, guid: 0982775d756465b4ba912d2f46e93a44, type: 2}
+  - {fileID: 11400000, guid: 0205561b413fba14a98321687bd4eff1, type: 2}
+  - {fileID: 11400000, guid: 00643af165780ff44a52ad15c69c2687, type: 2}
+  - {fileID: 11400000, guid: af6411b21095a3743a976abf3eaf106a, type: 2}
+  - {fileID: 11400000, guid: 8725b69580063bd4c8cb40ec907b9cb2, type: 2}
+  - {fileID: 11400000, guid: f6b6dfc53dfb623499a8fbeee1525c43, type: 2}
+  - {fileID: 11400000, guid: a583ffb0cfb615740aafffdd6069247a, type: 2}
+  - {fileID: 11400000, guid: 904501337c0b94148aa94f4169f6c135, type: 2}

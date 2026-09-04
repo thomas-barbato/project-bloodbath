@@ -1,0 +1,85 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98f4f1f2c63e027488f24ebc28369cbb, type: 3}
+  m_Name: CannibalArmour
+  m_EditorClassIdentifier: ProjectBloodbath.Runtime::ProjectBloodbath.Progression.SkillDefinition
+  identifier: engineer_cannibal_armour
+  characterClass: 3
+  treeIdentifier: engineer_main_chassis
+  displayName: Blindage cannibale
+  description: "Renforce tous les ch\xE2ssis et leur permet de r\xE9cup\xE9rer des
+    pi\xE8ces sur les machines d\xE9truites, avec une r\xE9paration limit\xE9e par
+    un d\xE9lai interne."
+  icon: {fileID: 0}
+  skillType: 1
+  maximumInvestedRank: 20
+  unlockLevel: 1
+  prerequisites: []
+  prerequisiteGroups: []
+  targetMode: 0
+  resourceCost: 0
+  tags:
+  - passive
+  - companion
+  - main_chassis
+  - armour
+  - repair
+  rankValues:
+  - identifier: companion_max_health_bonus_percent
+    valueAtRankOne: 1.5
+    valueAtNaturalCap: 30
+    valuePerEquipmentRank: 1.5
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 40
+  - identifier: companion_armour_efficiency_bonus_percent
+    valueAtRankOne: 1
+    valueAtNaturalCap: 20
+    valuePerEquipmentRank: 1
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 28
+  - identifier: machine_kill_repair_percent
+    valueAtRankOne: 0.5
+    valueAtNaturalCap: 4
+    valuePerEquipmentRank: 0.175
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 5
+  - identifier: repair_trigger_radius_metres
+    valueAtRankOne: 12
+    valueAtNaturalCap: 12
+    valuePerEquipmentRank: 0
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 12
+    clampMaximum: 1
+    maximumValue: 12
+  - identifier: repair_internal_cooldown_seconds
+    valueAtRankOne: 1
+    valueAtNaturalCap: 1
+    valuePerEquipmentRank: 0
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 1
+    clampMaximum: 1
+    maximumValue: 1
+  appliedStatusIdentifiers:
+  - cannibal_armour
+  consumedStatusIdentifiers: []
+  investedRankSynergies: []

@@ -1,0 +1,104 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98f4f1f2c63e027488f24ebc28369cbb, type: 3}
+  m_Name: Overvoltage
+  m_EditorClassIdentifier: ProjectBloodbath.Runtime::ProjectBloodbath.Progression.SkillDefinition
+  identifier: scientist_overvoltage
+  characterClass: 2
+  treeIdentifier: scientist_electrokinetic_rupture
+  displayName: Surtension
+  description: "La mort d'une cible conductrice lib\xE8re quelques arcs et rend un
+    peu d'\xE9nergie, avec d\xE9lai interne et aucune r\xE9cursion."
+  icon: {fileID: 0}
+  skillType: 1
+  maximumInvestedRank: 20
+  unlockLevel: 18
+  prerequisites: []
+  prerequisiteGroups:
+  - mode: 1
+    requiredCount: 1
+    prerequisites:
+    - skill: {fileID: 11400000, guid: d68e9feac695eb64e93059080d5cf97f, type: 2}
+      requiredInvestedRank: 1
+    - skill: {fileID: 11400000, guid: 82ecbd3ed4e0bc849aa0094d3e13f7c0, type: 2}
+      requiredInvestedRank: 1
+  targetMode: 0
+  resourceCost: 0
+  tags:
+  - passive
+  - electric
+  - kill
+  - chain
+  - sustain
+  rankValues:
+  - identifier: secondary_arc_count
+    valueAtRankOne: 1
+    valueAtNaturalCap: 3
+    valuePerEquipmentRank: 0
+    wholeNumber: 1
+    clampMinimum: 1
+    minimumValue: 1
+    clampMaximum: 1
+    maximumValue: 3
+  - identifier: secondary_arc_damage_percent
+    valueAtRankOne: 30
+    valueAtNaturalCap: 80
+    valuePerEquipmentRank: 2.5
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 100
+  - identifier: energy_restored
+    valueAtRankOne: 1
+    valueAtNaturalCap: 3
+    valuePerEquipmentRank: 0.1
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 4
+  - identifier: boss_trigger_health_threshold_percent
+    valueAtRankOne: 10
+    valueAtNaturalCap: 10
+    valuePerEquipmentRank: 0
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 10
+    clampMaximum: 1
+    maximumValue: 10
+  - identifier: internal_cooldown_seconds
+    valueAtRankOne: 2
+    valueAtNaturalCap: 2
+    valuePerEquipmentRank: 0
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 2
+    clampMaximum: 1
+    maximumValue: 2
+  - identifier: maximum_secondary_chain_depth
+    valueAtRankOne: 0
+    valueAtNaturalCap: 0
+    valuePerEquipmentRank: 0
+    wholeNumber: 1
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 0
+  appliedStatusIdentifiers:
+  - overvoltage
+  consumedStatusIdentifiers: []
+  investedRankSynergies:
+  - sourceSkill: {fileID: 11400000, guid: d68e9feac695eb64e93059080d5cf97f, type: 2}
+    affectedValueIdentifier: secondary_arc_damage_percent
+    operation: 1
+    bonusPerInvestedRank: 1.5

@@ -1,0 +1,119 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98f4f1f2c63e027488f24ebc28369cbb, type: 3}
+  m_Name: VoxMedullaryRelay
+  m_EditorClassIdentifier: ProjectBloodbath.Runtime::ProjectBloodbath.Progression.SkillDefinition
+  identifier: enforcer_vox_medullary_relay
+  characterClass: 0
+  treeIdentifier: enforcer_command_doctrine
+  displayName: "Relais vox-m\xE9dullaire"
+  description: "\xC9tend la port\xE9e et la persistance des Ordres sur les alli\xE9s
+    et les machines avec des relais secondaires strictement born\xE9s."
+  icon: {fileID: 0}
+  skillType: 1
+  maximumInvestedRank: 20
+  unlockLevel: 6
+  prerequisites: []
+  prerequisiteGroups:
+  - mode: 1
+    requiredCount: 1
+    prerequisites:
+    - skill: {fileID: 11400000, guid: 6b657b3a0a199c2438b441297b109c7b, type: 2}
+      requiredInvestedRank: 1
+    - skill: {fileID: 11400000, guid: 0982775d756465b4ba912d2f46e93a44, type: 2}
+      requiredInvestedRank: 1
+    - skill: {fileID: 11400000, guid: 00643af165780ff44a52ad15c69c2687, type: 2}
+      requiredInvestedRank: 1
+  targetMode: 0
+  resourceCost: 0
+  tags:
+  - passive
+  - order
+  - group
+  - radius
+  - companion
+  rankValues:
+  - identifier: exit_persistence_seconds
+    valueAtRankOne: 1.5
+    valueAtNaturalCap: 4
+    valuePerEquipmentRank: 0.12
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 5
+  - identifier: order_radius_bonus_metres
+    valueAtRankOne: 0.5
+    valueAtNaturalCap: 3
+    valuePerEquipmentRank: 0.12
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 3.5
+  - identifier: primary_companion_effect_percent
+    valueAtRankOne: 75
+    valueAtNaturalCap: 100
+    valuePerEquipmentRank: 0
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 100
+  - identifier: temporary_drone_effect_percent
+    valueAtRankOne: 45
+    valueAtNaturalCap: 65
+    valuePerEquipmentRank: 1
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 70
+  - identifier: first_secondary_relay_unlock_rank
+    valueAtRankOne: 10
+    valueAtNaturalCap: 10
+    valuePerEquipmentRank: 0
+    wholeNumber: 1
+    clampMinimum: 1
+    minimumValue: 10
+    clampMaximum: 1
+    maximumValue: 10
+  - identifier: second_secondary_relay_unlock_rank
+    valueAtRankOne: 20
+    valueAtNaturalCap: 20
+    valuePerEquipmentRank: 0
+    wholeNumber: 1
+    clampMinimum: 1
+    minimumValue: 20
+    clampMaximum: 1
+    maximumValue: 20
+  - identifier: secondary_relay_radius_metres
+    valueAtRankOne: 4
+    valueAtNaturalCap: 4
+    valuePerEquipmentRank: 0
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 4
+  - identifier: maximum_relay_chain_depth
+    valueAtRankOne: 0
+    valueAtNaturalCap: 0
+    valuePerEquipmentRank: 0
+    wholeNumber: 1
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 0
+  appliedStatusIdentifiers: []
+  consumedStatusIdentifiers: []
+  investedRankSynergies: []

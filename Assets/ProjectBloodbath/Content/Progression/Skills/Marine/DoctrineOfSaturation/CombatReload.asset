@@ -1,0 +1,91 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98f4f1f2c63e027488f24ebc28369cbb, type: 3}
+  m_Name: CombatReload
+  m_EditorClassIdentifier: ProjectBloodbath.Runtime::ProjectBloodbath.Progression.SkillDefinition
+  identifier: marine_combat_reload
+  characterClass: 1
+  treeIdentifier: marine_doctrine_saturation
+  displayName: Rechargement de combat
+  description: "Effectue un pas physique brutal dans la direction de d\xE9placement
+    et recharge imm\xE9diatement une part des chargeurs d'armes l\xE9g\xE8res."
+  icon: {fileID: 0}
+  skillType: 0
+  maximumInvestedRank: 20
+  unlockLevel: 6
+  prerequisites: []
+  prerequisiteGroups: []
+  targetMode: 8
+  resourceCost: 12
+  tags:
+  - active
+  - movement
+  - light_weapon
+  - reload
+  - saturation
+  rankValues:
+  - identifier: cooldown_seconds
+    valueAtRankOne: 9
+    valueAtNaturalCap: 6
+    valuePerEquipmentRank: -0.15
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 1
+    clampMaximum: 0
+    maximumValue: 0
+  - identifier: movement_distance_metres
+    valueAtRankOne: 3
+    valueAtNaturalCap: 6
+    valuePerEquipmentRank: 0.15
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 0
+    maximumValue: 0
+  - identifier: magazine_refill_percent
+    valueAtRankOne: 15
+    valueAtNaturalCap: 60
+    valuePerEquipmentRank: 2.25
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 100
+  - identifier: saturation_retention_seconds
+    valueAtRankOne: 2
+    valueAtNaturalCap: 2
+    valuePerEquipmentRank: 0
+    wholeNumber: 0
+    clampMinimum: 0
+    minimumValue: 0
+    clampMaximum: 0
+    maximumValue: 0
+  - identifier: slide_distance_bonus_percent
+    valueAtRankOne: 30
+    valueAtNaturalCap: 30
+    valuePerEquipmentRank: 0
+    wholeNumber: 0
+    clampMinimum: 0
+    minimumValue: 0
+    clampMaximum: 0
+    maximumValue: 0
+  appliedStatusIdentifiers: []
+  consumedStatusIdentifiers: []
+  investedRankSynergies:
+  - sourceSkill: {fileID: 11400000, guid: c6d0b96cdb65df9439c62b076ca7860c, type: 2}
+    affectedValueIdentifier: movement_distance_percent
+    operation: 1
+    bonusPerInvestedRank: 1
+  - sourceSkill: {fileID: 11400000, guid: f5305eb65f4a5ee4d96fa64cdad50702, type: 2}
+    affectedValueIdentifier: magazine_refill_percent
+    operation: 1
+    bonusPerInvestedRank: 1

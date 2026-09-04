@@ -1,0 +1,146 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98f4f1f2c63e027488f24ebc28369cbb, type: 3}
+  m_Name: BreechSweep
+  m_EditorClassIdentifier: ProjectBloodbath.Runtime::ProjectBloodbath.Progression.SkillDefinition
+  identifier: marine_breech_sweep
+  characterClass: 1
+  treeIdentifier: marine_doctrine_saturation
+  displayName: Balayage de culasse
+  description: "Balaie un c\xF4ne court et ma\xEEtris\xE9 avec les armes l\xE9g\xE8res,
+    consomme la Saturation et propage Cribl\xE9 sans nettoyer tout l'\xE9cran."
+  icon: {fileID: 0}
+  skillType: 0
+  maximumInvestedRank: 20
+  unlockLevel: 12
+  prerequisites: []
+  prerequisiteGroups:
+  - mode: 1
+    requiredCount: 1
+    prerequisites:
+    - skill: {fileID: 11400000, guid: 96261c2e5bf92384594171a1bbc98b45, type: 2}
+      requiredInvestedRank: 1
+    - skill: {fileID: 11400000, guid: c6d0b96cdb65df9439c62b076ca7860c, type: 2}
+      requiredInvestedRank: 1
+  targetMode: 6
+  resourceCost: 16
+  tags:
+  - active
+  - ranged
+  - light_weapon
+  - cone
+  - saturation
+  - riddled
+  rankValues:
+  - identifier: cooldown_seconds
+    valueAtRankOne: 9
+    valueAtNaturalCap: 6
+    valuePerEquipmentRank: -0.15
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 1
+    clampMaximum: 0
+    maximumValue: 0
+  - identifier: cone_angle_degrees
+    valueAtRankOne: 65
+    valueAtNaturalCap: 95
+    valuePerEquipmentRank: 1.5
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 30
+    clampMaximum: 1
+    maximumValue: 110
+  - identifier: range_metres
+    valueAtRankOne: 8
+    valueAtNaturalCap: 8
+    valuePerEquipmentRank: 0.1
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 1
+    clampMaximum: 0
+    maximumValue: 0
+  - identifier: shots_per_weapon
+    valueAtRankOne: 2
+    valueAtNaturalCap: 5
+    valuePerEquipmentRank: 0
+    wholeNumber: 1
+    clampMinimum: 0
+    minimumValue: 0
+    clampMaximum: 0
+    maximumValue: 0
+  - identifier: maximum_hits_per_target
+    valueAtRankOne: 2
+    valueAtNaturalCap: 3
+    valuePerEquipmentRank: 0
+    wholeNumber: 1
+    clampMinimum: 0
+    minimumValue: 0
+    clampMaximum: 0
+    maximumValue: 0
+  - identifier: weapon_damage_percent
+    valueAtRankOne: 100
+    valueAtNaturalCap: 100
+    valuePerEquipmentRank: 2
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 0
+    maximumValue: 0
+  - identifier: maximum_consumed_saturation
+    valueAtRankOne: 6
+    valueAtNaturalCap: 6
+    valuePerEquipmentRank: 0
+    wholeNumber: 1
+    clampMinimum: 0
+    minimumValue: 0
+    clampMaximum: 0
+    maximumValue: 0
+  - identifier: damage_per_consumed_charge_percent
+    valueAtRankOne: 6
+    valueAtNaturalCap: 6
+    valuePerEquipmentRank: 0
+    wholeNumber: 0
+    clampMinimum: 0
+    minimumValue: 0
+    clampMaximum: 0
+    maximumValue: 0
+  - identifier: first_riddled_threshold
+    valueAtRankOne: 3
+    valueAtNaturalCap: 3
+    valuePerEquipmentRank: 0
+    wholeNumber: 1
+    clampMinimum: 0
+    minimumValue: 0
+    clampMaximum: 0
+    maximumValue: 0
+  - identifier: second_riddled_threshold
+    valueAtRankOne: 6
+    valueAtNaturalCap: 6
+    valuePerEquipmentRank: 0
+    wholeNumber: 1
+    clampMinimum: 0
+    minimumValue: 0
+    clampMaximum: 0
+    maximumValue: 0
+  appliedStatusIdentifiers:
+  - riddled
+  consumedStatusIdentifiers:
+  - saturation
+  investedRankSynergies:
+  - sourceSkill: {fileID: 11400000, guid: 96261c2e5bf92384594171a1bbc98b45, type: 2}
+    affectedValueIdentifier: weapon_damage_percent
+    operation: 1
+    bonusPerInvestedRank: 2
+  - sourceSkill: {fileID: 11400000, guid: c6d0b96cdb65df9439c62b076ca7860c, type: 2}
+    affectedValueIdentifier: range_percent
+    operation: 1
+    bonusPerInvestedRank: 0.2

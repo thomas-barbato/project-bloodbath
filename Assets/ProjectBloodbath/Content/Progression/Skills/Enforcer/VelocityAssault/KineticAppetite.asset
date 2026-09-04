@@ -1,0 +1,104 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98f4f1f2c63e027488f24ebc28369cbb, type: 3}
+  m_Name: KineticAppetite
+  m_EditorClassIdentifier: ProjectBloodbath.Runtime::ProjectBloodbath.Progression.SkillDefinition
+  identifier: enforcer_kinetic_appetite
+  characterClass: 0
+  treeIdentifier: enforcer_velocity_assault
+  displayName: "App\xE9tit cin\xE9tique"
+  description: "Un d\xE9placement agressif pr\xE9pare un unique \xC9lan de cur\xE9e
+    consomm\xE9 par le prochain impact de m\xEAl\xE9e."
+  icon: {fileID: 0}
+  skillType: 1
+  maximumInvestedRank: 20
+  unlockLevel: 6
+  prerequisites:
+  - skill: {fileID: 11400000, guid: 35093096ba6fcad40b9147c869181a39, type: 2}
+    requiredInvestedRank: 1
+  prerequisiteGroups: []
+  targetMode: 0
+  resourceCost: 0
+  tags:
+  - passive
+  - melee
+  - movement
+  - carnage
+  - momentum
+  rankValues:
+  - identifier: trigger_distance_metres
+    valueAtRankOne: 8
+    valueAtNaturalCap: 8
+    valuePerEquipmentRank: 0
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 4
+    clampMaximum: 0
+    maximumValue: 0
+  - identifier: trigger_window_seconds
+    valueAtRankOne: 2
+    valueAtNaturalCap: 2
+    valuePerEquipmentRank: 0
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0.5
+    clampMaximum: 0
+    maximumValue: 0
+  - identifier: momentum_duration_seconds
+    valueAtRankOne: 2
+    valueAtNaturalCap: 4
+    valuePerEquipmentRank: 0.1
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 1
+    clampMaximum: 1
+    maximumValue: 6
+  - identifier: carnage_generated
+    valueAtRankOne: 1
+    valueAtNaturalCap: 3
+    valuePerEquipmentRank: 0
+    wholeNumber: 1
+    clampMinimum: 1
+    minimumValue: 1
+    clampMaximum: 1
+    maximumValue: 3
+  - identifier: melee_damage_bonus_percent
+    valueAtRankOne: 5
+    valueAtNaturalCap: 20
+    valuePerEquipmentRank: 0.75
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 25
+  - identifier: internal_cooldown_seconds
+    valueAtRankOne: 1.5
+    valueAtNaturalCap: 1.5
+    valuePerEquipmentRank: 0
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0.5
+    clampMaximum: 0
+    maximumValue: 0
+  - identifier: breakthrough_cooldown_recovery_on_kill_percent
+    valueAtRankOne: 30
+    valueAtNaturalCap: 30
+    valuePerEquipmentRank: 0
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 30
+  appliedStatusIdentifiers:
+  - butchery_momentum
+  consumedStatusIdentifiers: []
+  investedRankSynergies: []

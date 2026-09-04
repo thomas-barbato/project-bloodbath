@@ -1,0 +1,118 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98f4f1f2c63e027488f24ebc28369cbb, type: 3}
+  m_Name: S2Gravediggers
+  m_EditorClassIdentifier: ProjectBloodbath.Runtime::ProjectBloodbath.Progression.SkillDefinition
+  identifier: engineer_s2_gravediggers
+  characterClass: 3
+  treeIdentifier: engineer_industrial_swarm
+  displayName: "Foreuses S-2 \xAB Fossoyeuses \xBB"
+  description: "D\xE9ploie des foreuses r\xE9sistantes qui occupent chacune deux
+    emplacements et \xE9mergent \xE0 intervalles born\xE9s sous les ennemis."
+  icon: {fileID: 0}
+  skillType: 0
+  maximumInvestedRank: 20
+  unlockLevel: 12
+  prerequisites: []
+  prerequisiteGroups:
+  - mode: 1
+    requiredCount: 1
+    prerequisites:
+    - skill: {fileID: 11400000, guid: 26061c3a7bbccf845969d608091690c5, type: 2}
+      requiredInvestedRank: 1
+    - skill: {fileID: 11400000, guid: b1becfc0115b73d4abe9c849196d4985, type: 2}
+      requiredInvestedRank: 1
+  targetMode: 4
+  resourceCost: 24
+  tags:
+  - active
+  - drone
+  - temporary
+  - ground
+  - heavy
+  - area
+  rankValues:
+  - identifier: cooldown_seconds
+    valueAtRankOne: 14
+    valueAtNaturalCap: 9
+    valuePerEquipmentRank: -0.25
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 8
+    clampMaximum: 1
+    maximumValue: 14
+  - identifier: drone_count
+    valueAtRankOne: 1
+    valueAtNaturalCap: 3
+    valuePerEquipmentRank: 0
+    wholeNumber: 1
+    clampMinimum: 1
+    minimumValue: 1
+    clampMaximum: 1
+    maximumValue: 3
+  - identifier: duration_seconds
+    valueAtRankOne: 8
+    valueAtNaturalCap: 14
+    valuePerEquipmentRank: 0.3
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 5
+    clampMaximum: 1
+    maximumValue: 17
+  - identifier: emergence_damage_percent
+    valueAtRankOne: 70
+    valueAtNaturalCap: 150
+    valuePerEquipmentRank: 4
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 185
+  - identifier: emergence_interval_seconds
+    valueAtRankOne: 2.5
+    valueAtNaturalCap: 1.75
+    valuePerEquipmentRank: -0.03
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 1.5
+    clampMaximum: 1
+    maximumValue: 2.5
+  - identifier: bandwidth_slots_per_drone
+    valueAtRankOne: 2
+    valueAtNaturalCap: 2
+    valuePerEquipmentRank: 0
+    wholeNumber: 1
+    clampMinimum: 1
+    minimumValue: 2
+    clampMaximum: 1
+    maximumValue: 2
+  - identifier: final_emergence_on_expiry
+    valueAtRankOne: 1
+    valueAtNaturalCap: 1
+    valuePerEquipmentRank: 0
+    wholeNumber: 1
+    clampMinimum: 1
+    minimumValue: 1
+    clampMaximum: 1
+    maximumValue: 1
+  appliedStatusIdentifiers:
+  - s2_gravediggers
+  consumedStatusIdentifiers: []
+  investedRankSynergies:
+  - sourceSkill: {fileID: 11400000, guid: 26061c3a7bbccf845969d608091690c5, type: 2}
+    affectedValueIdentifier: emergence_damage_percent
+    operation: 1
+    bonusPerInvestedRank: 1.5
+  - sourceSkill: {fileID: 11400000, guid: 26061c3a7bbccf845969d608091690c5, type: 2}
+    affectedValueIdentifier: duration_seconds
+    operation: 1
+    bonusPerInvestedRank: 1.5

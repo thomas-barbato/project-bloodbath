@@ -1,0 +1,92 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98f4f1f2c63e027488f24ebc28369cbb, type: 3}
+  m_Name: BrinePrison
+  m_EditorClassIdentifier: ProjectBloodbath.Runtime::ProjectBloodbath.Progression.SkillDefinition
+  identifier: scientist_brine_prison
+  characterClass: 2
+  treeIdentifier: scientist_cryogenic_containment
+  displayName: Prison de saumure
+  description: "Enferme bri\xE8vement les ennemis l\xE9gers dans une prison de glace.
+    Les lourds peuvent la briser et les boss ne sont jamais emprisonn\xE9s."
+  icon: {fileID: 0}
+  skillType: 0
+  maximumInvestedRank: 20
+  unlockLevel: 12
+  prerequisites: []
+  prerequisiteGroups:
+  - mode: 1
+    requiredCount: 1
+    prerequisites:
+    - skill: {fileID: 11400000, guid: 11221c83969228e4f93625be8efd8144, type: 2}
+      requiredInvestedRank: 1
+    - skill: {fileID: 11400000, guid: 0259f141e9bac8f44ac047877a76d131, type: 2}
+      requiredInvestedRank: 1
+  targetMode: 4
+  resourceCost: 28
+  tags:
+  - active
+  - ice
+  - area
+  - control
+  - prison
+  rankValues:
+  - identifier: radius_metres
+    valueAtRankOne: 3
+    valueAtNaturalCap: 4.5
+    valuePerEquipmentRank: 0.075
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 2
+    clampMaximum: 1
+    maximumValue: 5
+  - identifier: prison_duration_seconds
+    valueAtRankOne: 2.5
+    valueAtNaturalCap: 4.5
+    valuePerEquipmentRank: 0.1
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 1.5
+    clampMaximum: 1
+    maximumValue: 5
+  - identifier: formation_damage_percent
+    valueAtRankOne: 70
+    valueAtNaturalCap: 170
+    valuePerEquipmentRank: 5
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 210
+  - identifier: heavy_escape_damage_threshold_percent
+    valueAtRankOne: 8
+    valueAtNaturalCap: 5
+    valuePerEquipmentRank: -0.15
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 4
+    clampMaximum: 1
+    maximumValue: 10
+  - identifier: boss_immunity
+    valueAtRankOne: 1
+    valueAtNaturalCap: 1
+    valuePerEquipmentRank: 0
+    wholeNumber: 1
+    clampMinimum: 1
+    minimumValue: 1
+    clampMaximum: 1
+    maximumValue: 1
+  appliedStatusIdentifiers:
+  - brine_prison
+  - cryostasis
+  consumedStatusIdentifiers: []
+  investedRankSynergies: []

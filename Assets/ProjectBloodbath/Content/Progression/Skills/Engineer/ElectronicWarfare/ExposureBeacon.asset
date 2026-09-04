@@ -1,0 +1,116 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98f4f1f2c63e027488f24ebc28369cbb, type: 3}
+  m_Name: ExposureBeacon
+  m_EditorClassIdentifier: ProjectBloodbath.Runtime::ProjectBloodbath.Progression.SkillDefinition
+  identifier: engineer_exposure_beacon
+  characterClass: 3
+  treeIdentifier: engineer_electronic_warfare
+  displayName: Balise d'exposition
+  description: "Projette une balise qui d\xE9signe les cibles, conserve partiellement
+    les affaiblissements \xE0 leur sortie et produit une quantit\xE9 plafonn\xE9e
+    de ferraille."
+  icon: {fileID: 0}
+  skillType: 0
+  maximumInvestedRank: 20
+  unlockLevel: 12
+  prerequisites: []
+  prerequisiteGroups:
+  - mode: 1
+    requiredCount: 1
+    prerequisites:
+    - skill: {fileID: 11400000, guid: 2e4918659d4c4f849b0b9d44f5885ea8, type: 2}
+      requiredInvestedRank: 1
+    - skill: {fileID: 11400000, guid: d253ee01b3bbd2a4abc5032712d51ee6, type: 2}
+      requiredInvestedRank: 1
+  targetMode: 4
+  resourceCost: 22
+  tags:
+  - active
+  - technology
+  - area
+  - designation
+  - scrap
+  - debuff
+  rankValues:
+  - identifier: cooldown_seconds
+    valueAtRankOne: 15
+    valueAtNaturalCap: 10
+    valuePerEquipmentRank: -0.25
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 9
+    clampMaximum: 1
+    maximumValue: 15
+  - identifier: radius_metres
+    valueAtRankOne: 5
+    valueAtNaturalCap: 8
+    valuePerEquipmentRank: 0.15
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 3
+    clampMaximum: 1
+    maximumValue: 9
+  - identifier: duration_seconds
+    valueAtRankOne: 6
+    valueAtNaturalCap: 10
+    valuePerEquipmentRank: 0.2
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 4
+    clampMaximum: 1
+    maximumValue: 11
+  - identifier: debuff_duration_retained_on_exit_percent
+    valueAtRankOne: 20
+    valueAtNaturalCap: 60
+    valuePerEquipmentRank: 2
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 70
+  - identifier: scrap_per_designated_kill
+    valueAtRankOne: 1
+    valueAtNaturalCap: 3
+    valuePerEquipmentRank: 0
+    wholeNumber: 1
+    clampMinimum: 1
+    minimumValue: 1
+    clampMaximum: 1
+    maximumValue: 3
+  - identifier: maximum_scrap_per_beacon
+    valueAtRankOne: 3
+    valueAtNaturalCap: 6
+    valuePerEquipmentRank: 0
+    wholeNumber: 1
+    clampMinimum: 1
+    minimumValue: 1
+    clampMaximum: 1
+    maximumValue: 6
+  - identifier: accuracy_bonus_percent
+    valueAtRankOne: 0
+    valueAtNaturalCap: 0
+    valuePerEquipmentRank: 0
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 0
+  appliedStatusIdentifiers:
+  - designation
+  - exposure_beacon
+  consumedStatusIdentifiers: []
+  investedRankSynergies:
+  - sourceSkill: {fileID: 11400000, guid: 2e4918659d4c4f849b0b9d44f5885ea8, type: 2}
+    affectedValueIdentifier: duration_seconds
+    operation: 1
+    bonusPerInvestedRank: 1.5

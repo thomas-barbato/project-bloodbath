@@ -1,0 +1,115 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98f4f1f2c63e027488f24ebc28369cbb, type: 3}
+  m_Name: MaintenanceSwarm
+  m_EditorClassIdentifier: ProjectBloodbath.Runtime::ProjectBloodbath.Progression.SkillDefinition
+  identifier: engineer_maintenance_swarm
+  characterClass: 3
+  treeIdentifier: engineer_industrial_swarm
+  displayName: Essaim de maintenance
+  description: "D\xE9ploie une \xE9quipe de r\xE9paration autour d'une cible. La
+    restauration est calcul\xE9e pour l'essaim entier, pas multipli\xE9e par chaque
+    drone."
+  icon: {fileID: 0}
+  skillType: 0
+  maximumInvestedRank: 20
+  unlockLevel: 18
+  prerequisites: []
+  prerequisiteGroups:
+  - mode: 1
+    requiredCount: 1
+    prerequisites:
+    - skill: {fileID: 11400000, guid: 9253aecc0a978e24dab4c58232e93085, type: 2}
+      requiredInvestedRank: 1
+    - skill: {fileID: 11400000, guid: 28e4882f54588e2498272a1a94e22e60, type: 2}
+      requiredInvestedRank: 1
+  targetMode: 3
+  resourceCost: 28
+  tags:
+  - active
+  - drone
+  - temporary
+  - support
+  - repair
+  - shield
+  rankValues:
+  - identifier: cooldown_seconds
+    valueAtRankOne: 16
+    valueAtNaturalCap: 11
+    valuePerEquipmentRank: -0.25
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 10
+    clampMaximum: 1
+    maximumValue: 16
+  - identifier: drone_count
+    valueAtRankOne: 2
+    valueAtNaturalCap: 5
+    valuePerEquipmentRank: 0
+    wholeNumber: 1
+    clampMinimum: 1
+    minimumValue: 1
+    clampMaximum: 1
+    maximumValue: 5
+  - identifier: duration_seconds
+    valueAtRankOne: 8
+    valueAtNaturalCap: 12
+    valuePerEquipmentRank: 0.2
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 5
+    clampMaximum: 1
+    maximumValue: 14
+  - identifier: total_swarm_shield_restoration_per_second_percent
+    valueAtRankOne: 1
+    valueAtNaturalCap: 3
+    valuePerEquipmentRank: 0.1
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 3.5
+  - identifier: total_swarm_companion_health_restoration_per_second_percent
+    valueAtRankOne: 1.5
+    valueAtNaturalCap: 4.5
+    valuePerEquipmentRank: 0.15
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 5
+  - identifier: unshielded_player_health_efficiency_percent
+    valueAtRankOne: 40
+    valueAtNaturalCap: 40
+    valuePerEquipmentRank: 0
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 40
+    clampMaximum: 1
+    maximumValue: 40
+  - identifier: maximum_total_restoration_per_second_percent
+    valueAtRankOne: 2
+    valueAtNaturalCap: 4.5
+    valuePerEquipmentRank: 0.125
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 5
+  appliedStatusIdentifiers:
+  - maintenance_swarm
+  consumedStatusIdentifiers: []
+  investedRankSynergies:
+  - sourceSkill: {fileID: 11400000, guid: 9253aecc0a978e24dab4c58232e93085, type: 2}
+    affectedValueIdentifier: duration_seconds
+    operation: 1
+    bonusPerInvestedRank: 1.5

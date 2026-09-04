@@ -1,0 +1,75 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98f4f1f2c63e027488f24ebc28369cbb, type: 3}
+  m_Name: CumulativeCryostasis
+  m_EditorClassIdentifier: ProjectBloodbath.Runtime::ProjectBloodbath.Progression.SkillDefinition
+  identifier: scientist_cumulative_cryostasis
+  characterClass: 2
+  treeIdentifier: scientist_cryogenic_containment
+  displayName: Cryostase cumulative
+  description: "\xC9tablit la Cryostase comme jauge unique : \xE0 cent unit\xE9s
+    la cible g\xE8le, puis la jauge est consomm\xE9e."
+  icon: {fileID: 0}
+  skillType: 1
+  maximumInvestedRank: 20
+  unlockLevel: 1
+  prerequisites: []
+  prerequisiteGroups: []
+  targetMode: 0
+  resourceCost: 0
+  tags:
+  - passive
+  - ice
+  - cryostasis
+  - freeze
+  rankValues:
+  - identifier: maximum_cryostasis
+    valueAtRankOne: 100
+    valueAtNaturalCap: 100
+    valuePerEquipmentRank: 0
+    wholeNumber: 1
+    clampMinimum: 1
+    minimumValue: 100
+    clampMaximum: 1
+    maximumValue: 100
+  - identifier: freeze_threshold
+    valueAtRankOne: 100
+    valueAtNaturalCap: 100
+    valuePerEquipmentRank: 0
+    wholeNumber: 1
+    clampMinimum: 1
+    minimumValue: 100
+    clampMaximum: 1
+    maximumValue: 100
+  - identifier: freeze_duration_seconds
+    valueAtRankOne: 1.5
+    valueAtNaturalCap: 3
+    valuePerEquipmentRank: 0.075
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 1
+    clampMaximum: 1
+    maximumValue: 3.5
+  - identifier: cryostasis_decay_delay_seconds
+    valueAtRankOne: 4
+    valueAtNaturalCap: 7
+    valuePerEquipmentRank: 0.15
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 2
+    clampMaximum: 1
+    maximumValue: 8
+  appliedStatusIdentifiers:
+  - freeze
+  consumedStatusIdentifiers:
+  - cryostasis
+  investedRankSynergies: []

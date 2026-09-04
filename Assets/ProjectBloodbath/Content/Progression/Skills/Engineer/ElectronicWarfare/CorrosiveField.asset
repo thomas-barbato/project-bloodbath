@@ -1,0 +1,94 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98f4f1f2c63e027488f24ebc28369cbb, type: 3}
+  m_Name: CorrosiveField
+  m_EditorClassIdentifier: ProjectBloodbath.Runtime::ProjectBloodbath.Progression.SkillDefinition
+  identifier: engineer_corrosive_field
+  characterClass: 3
+  treeIdentifier: engineer_electronic_warfare
+  displayName: Champ corrosif
+  description: "D\xE9ploie une zone de nanites compacte qui inflige des d\xE9g\xE2ts
+    technologiques et applique jusqu'\xE0 cinq charges de Corrosion."
+  icon: {fileID: 0}
+  skillType: 0
+  maximumInvestedRank: 20
+  unlockLevel: 1
+  prerequisites: []
+  prerequisiteGroups: []
+  targetMode: 4
+  resourceCost: 16
+  tags:
+  - active
+  - technology
+  - area
+  - corrosion
+  - debuff
+  rankValues:
+  - identifier: cooldown_seconds
+    valueAtRankOne: 12
+    valueAtNaturalCap: 8
+    valuePerEquipmentRank: -0.2
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 7
+    clampMaximum: 1
+    maximumValue: 12
+  - identifier: duration_seconds
+    valueAtRankOne: 6
+    valueAtNaturalCap: 9
+    valuePerEquipmentRank: 0.15
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 4
+    clampMaximum: 1
+    maximumValue: 10
+  - identifier: radius_metres
+    valueAtRankOne: 5
+    valueAtNaturalCap: 7
+    valuePerEquipmentRank: 0.1
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 3
+    clampMaximum: 1
+    maximumValue: 8
+  - identifier: damage_per_second_percent
+    valueAtRankOne: 20
+    valueAtNaturalCap: 50
+    valuePerEquipmentRank: 1.5
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 65
+  - identifier: maximum_corrosion_charges
+    valueAtRankOne: 3
+    valueAtNaturalCap: 5
+    valuePerEquipmentRank: 0
+    wholeNumber: 1
+    clampMinimum: 1
+    minimumValue: 1
+    clampMaximum: 1
+    maximumValue: 5
+  - identifier: armour_and_resistance_reduction_per_charge_percent
+    valueAtRankOne: 1
+    valueAtNaturalCap: 2.5
+    valuePerEquipmentRank: 0.075
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 3
+  appliedStatusIdentifiers:
+  - corrosion
+  - corrosive_field
+  consumedStatusIdentifiers: []
+  investedRankSynergies: []

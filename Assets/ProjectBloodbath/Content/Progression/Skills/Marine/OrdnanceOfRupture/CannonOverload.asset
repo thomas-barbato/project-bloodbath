@@ -1,0 +1,149 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98f4f1f2c63e027488f24ebc28369cbb, type: 3}
+  m_Name: CannonOverload
+  m_EditorClassIdentifier: ProjectBloodbath.Runtime::ProjectBloodbath.Progression.SkillDefinition
+  identifier: marine_cannon_overload
+  characterClass: 1
+  treeIdentifier: marine_ordnance_rupture
+  displayName: Surcharge de canon
+  description: "Finisher de si\xE8ge : concentre un tir massif sur la cible, consume
+    ses Fractures restantes et propage le choc autour d'elle."
+  icon: {fileID: 0}
+  skillType: 0
+  maximumInvestedRank: 20
+  unlockLevel: 30
+  prerequisites:
+  - skill: {fileID: 11400000, guid: 8fcf1a914f921ec488be4047416cdb26, type: 2}
+    requiredInvestedRank: 1
+  prerequisiteGroups: []
+  targetMode: 2
+  resourceCost: 38
+  tags:
+  - active
+  - ranged
+  - two_handed
+  - heavy_weapon
+  - finisher
+  - shockwave
+  - fracture
+  - armour_broken
+  - primer
+  rankValues:
+  - identifier: cooldown_seconds
+    valueAtRankOne: 20
+    valueAtNaturalCap: 14
+    valuePerEquipmentRank: -0.3
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 6
+    clampMaximum: 0
+    maximumValue: 0
+  - identifier: preparation_seconds
+    valueAtRankOne: 0.65
+    valueAtNaturalCap: 0.65
+    valuePerEquipmentRank: 0
+    wholeNumber: 0
+    clampMinimum: 0
+    minimumValue: 0
+    clampMaximum: 0
+    maximumValue: 0
+  - identifier: weapon_damage_percent
+    valueAtRankOne: 450
+    valueAtNaturalCap: 900
+    valuePerEquipmentRank: 22.5
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 0
+    maximumValue: 0
+  - identifier: ammunition_cost
+    valueAtRankOne: 3
+    valueAtNaturalCap: 3
+    valuePerEquipmentRank: 0
+    wholeNumber: 1
+    clampMinimum: 0
+    minimumValue: 0
+    clampMaximum: 0
+    maximumValue: 0
+  - identifier: shockwave_damage_percent
+    valueAtRankOne: 50
+    valueAtNaturalCap: 50
+    valuePerEquipmentRank: 0
+    wholeNumber: 0
+    clampMinimum: 0
+    minimumValue: 0
+    clampMaximum: 0
+    maximumValue: 0
+  - identifier: shockwave_radius_metres
+    valueAtRankOne: 3
+    valueAtNaturalCap: 5
+    valuePerEquipmentRank: 0.1
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 1
+    clampMaximum: 1
+    maximumValue: 7
+  - identifier: maximum_consumed_fracture_charges
+    valueAtRankOne: 5
+    valueAtNaturalCap: 5
+    valuePerEquipmentRank: 0
+    wholeNumber: 1
+    clampMinimum: 0
+    minimumValue: 0
+    clampMaximum: 0
+    maximumValue: 0
+  - identifier: damage_per_consumed_fracture_percent
+    valueAtRankOne: 8
+    valueAtNaturalCap: 8
+    valuePerEquipmentRank: 0
+    wholeNumber: 0
+    clampMinimum: 0
+    minimumValue: 0
+    clampMaximum: 0
+    maximumValue: 0
+  - identifier: armour_broken_damage_bonus_percent
+    valueAtRankOne: 20
+    valueAtNaturalCap: 20
+    valuePerEquipmentRank: 0
+    wholeNumber: 0
+    clampMinimum: 0
+    minimumValue: 0
+    clampMaximum: 0
+    maximumValue: 0
+  - identifier: nearby_fracture_charges
+    valueAtRankOne: 2
+    valueAtNaturalCap: 2
+    valuePerEquipmentRank: 0
+    wholeNumber: 1
+    clampMinimum: 0
+    minimumValue: 0
+    clampMaximum: 0
+    maximumValue: 0
+  appliedStatusIdentifiers:
+  - fracture
+  consumedStatusIdentifiers:
+  - fracture
+  - primer
+  investedRankSynergies:
+  - sourceSkill: {fileID: 11400000, guid: e2e0d9e9b5979ac40861c0339e06871c, type: 2}
+    affectedValueIdentifier: weapon_damage_percent
+    operation: 1
+    bonusPerInvestedRank: 1.5
+  - sourceSkill: {fileID: 11400000, guid: 3864e21f716172e42b6bca74bd45be5c, type: 2}
+    affectedValueIdentifier: empty_magazine_damage_percent
+    operation: 1
+    bonusPerInvestedRank: 1
+  - sourceSkill: {fileID: 11400000, guid: 689e2ab4bdc2e9b42965b80e01706a21, type: 2}
+    affectedValueIdentifier: anchored_target_damage_percent
+    operation: 1
+    bonusPerInvestedRank: 1

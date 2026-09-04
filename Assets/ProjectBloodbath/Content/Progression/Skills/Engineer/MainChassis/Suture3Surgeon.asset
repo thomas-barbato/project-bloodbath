@@ -1,0 +1,115 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98f4f1f2c63e027488f24ebc28369cbb, type: 3}
+  m_Name: Suture3Surgeon
+  m_EditorClassIdentifier: ProjectBloodbath.Runtime::ProjectBloodbath.Progression.SkillDefinition
+  identifier: engineer_suture3_surgeon
+  characterClass: 3
+  treeIdentifier: engineer_main_chassis
+  displayName: "Suture-3 \xAB Chirurgien \xBB"
+  description: "D\xE9ploie un ch\xE2ssis de soutien ind\xE9pendant dont la commande
+    restaure boucliers ou sant\xE9 selon la cible."
+  icon: {fileID: 0}
+  skillType: 0
+  maximumInvestedRank: 20
+  unlockLevel: 18
+  prerequisites: []
+  prerequisiteGroups: []
+  targetMode: 3
+  resourceCost: 30
+  tags:
+  - active
+  - companion
+  - main_chassis
+  - support
+  - repair
+  rankValues:
+  - identifier: maximum_active_main_chassis
+    valueAtRankOne: 1
+    valueAtNaturalCap: 1
+    valuePerEquipmentRank: 0
+    wholeNumber: 1
+    clampMinimum: 1
+    minimumValue: 1
+    clampMaximum: 1
+    maximumValue: 1
+  - identifier: shared_deployment_cooldown_seconds
+    valueAtRankOne: 8
+    valueAtNaturalCap: 8
+    valuePerEquipmentRank: 0
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 8
+    clampMaximum: 1
+    maximumValue: 8
+  - identifier: repair_cadence_and_resilience_percent
+    valueAtRankOne: 100
+    valueAtNaturalCap: 210
+    valuePerEquipmentRank: 5.5
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 100
+    clampMaximum: 1
+    maximumValue: 245
+  - identifier: signature_shield_restoration_percent
+    valueAtRankOne: 8
+    valueAtNaturalCap: 20
+    valuePerEquipmentRank: 0.6
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 24
+  - identifier: signature_unshielded_health_restoration_percent
+    valueAtRankOne: 4
+    valueAtNaturalCap: 10
+    valuePerEquipmentRank: 0.3
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 12
+  - identifier: signature_cooldown_seconds
+    valueAtRankOne: 12
+    valueAtNaturalCap: 8
+    valuePerEquipmentRank: -0.2
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 7
+    clampMaximum: 1
+    maximumValue: 12
+  - identifier: all_chassis_repair_received_per_invested_rank_percent
+    valueAtRankOne: 0.5
+    valueAtNaturalCap: 0.5
+    valuePerEquipmentRank: 0
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 0.5
+  - identifier: all_chassis_shield_regeneration_per_invested_rank_percent
+    valueAtRankOne: 0.25
+    valueAtNaturalCap: 0.25
+    valuePerEquipmentRank: 0
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 0.25
+  appliedStatusIdentifiers:
+  - main_chassis_suture
+  consumedStatusIdentifiers: []
+  investedRankSynergies:
+  - sourceSkill: {fileID: 11400000, guid: 9e6800e8644252644b2347c43bec8abf, type: 2}
+    affectedValueIdentifier: signature_unshielded_health_restoration_percent
+    operation: 1
+    bonusPerInvestedRank: 1.5

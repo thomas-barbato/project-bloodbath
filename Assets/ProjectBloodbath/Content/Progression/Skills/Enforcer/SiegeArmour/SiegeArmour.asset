@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac783a04e34944e4da9a305fe86289a7, type: 3}
+  m_Name: SiegeArmour
+  m_EditorClassIdentifier: ProjectBloodbath.Runtime::ProjectBloodbath.Progression.SkillTreeDefinition
+  identifier: enforcer_siege_armour
+  characterClass: 0
+  displayName: "Blindage de si\xE8ge"
+  description: "Tanking, contr\xF4le rapproch\xE9 et contre-pression fond\xE9s sur
+    une Garde unique."
+  skills:
+  - {fileID: 11400000, guid: 70e5d0da1d54adc4abbe13d2a831b23b, type: 2}
+  - {fileID: 11400000, guid: 9a00dde1377e96f45a06829e6137c414, type: 2}
+  - {fileID: 11400000, guid: 3a3e8ce9961229e4f98f4f6755994544, type: 2}
+  - {fileID: 11400000, guid: 2d72c6f8f160949409194f322e509e71, type: 2}
+  - {fileID: 11400000, guid: fe4403975ac2f2c49b94141e76689a15, type: 2}
+  - {fileID: 11400000, guid: 28f3053f992dde740bd8489301a7dbce, type: 2}
+  - {fileID: 11400000, guid: 9344cac5d81c6d94ca3257492ba48e4c, type: 2}
+  - {fileID: 11400000, guid: 5f8b57624aea5b642b2f2dd245c0a94b, type: 2}
+  - {fileID: 11400000, guid: e31373ac0ae38434aba6e4374f70a80e, type: 2}
+  - {fileID: 11400000, guid: 7675b3a9d36f1914b8f8f857b6aa6637, type: 2}

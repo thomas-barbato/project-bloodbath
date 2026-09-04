@@ -1,0 +1,93 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98f4f1f2c63e027488f24ebc28369cbb, type: 3}
+  m_Name: AggressiveServos
+  m_EditorClassIdentifier: ProjectBloodbath.Runtime::ProjectBloodbath.Progression.SkillDefinition
+  identifier: enforcer_aggressive_servos
+  characterClass: 0
+  treeIdentifier: enforcer_velocity_assault
+  displayName: Servomoteurs agressifs
+  description: "Les impacts de m\xEAl\xE9e rapproch\xE9s entretiennent Carnage, l'unique
+    ressource empilable de l'arbre."
+  icon: {fileID: 0}
+  skillType: 1
+  maximumInvestedRank: 20
+  unlockLevel: 1
+  prerequisites: []
+  prerequisiteGroups: []
+  targetMode: 0
+  resourceCost: 0
+  tags:
+  - passive
+  - melee
+  - carnage
+  - attack_speed
+  - movement
+  rankValues:
+  - identifier: maximum_carnage_charges
+    valueAtRankOne: 3
+    valueAtNaturalCap: 10
+    valuePerEquipmentRank: 0
+    wholeNumber: 1
+    clampMinimum: 1
+    minimumValue: 3
+    clampMaximum: 1
+    maximumValue: 10
+  - identifier: melee_attack_speed_per_charge_percent
+    valueAtRankOne: 0.5
+    valueAtNaturalCap: 1.25
+    valuePerEquipmentRank: 0.04
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 1.5
+  - identifier: movement_speed_per_charge_percent
+    valueAtRankOne: 0.3
+    valueAtNaturalCap: 0.8
+    valuePerEquipmentRank: 0.02
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 1
+  - identifier: successive_hit_window_seconds
+    valueAtRankOne: 2
+    valueAtNaturalCap: 2
+    valuePerEquipmentRank: 0
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0.5
+    clampMaximum: 0
+    maximumValue: 0
+  - identifier: decay_delay_seconds
+    valueAtRankOne: 3
+    valueAtNaturalCap: 3
+    valuePerEquipmentRank: 0
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 1
+    clampMaximum: 0
+    maximumValue: 0
+  - identifier: decay_interval_seconds
+    valueAtRankOne: 1.5
+    valueAtNaturalCap: 1.5
+    valuePerEquipmentRank: 0
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0.5
+    clampMaximum: 0
+    maximumValue: 0
+  appliedStatusIdentifiers:
+  - carnage
+  consumedStatusIdentifiers: []
+  investedRankSynergies: []

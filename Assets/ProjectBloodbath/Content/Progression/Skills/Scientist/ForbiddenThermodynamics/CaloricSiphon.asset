@@ -1,0 +1,95 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98f4f1f2c63e027488f24ebc28369cbb, type: 3}
+  m_Name: CaloricSiphon
+  m_EditorClassIdentifier: ProjectBloodbath.Runtime::ProjectBloodbath.Progression.SkillDefinition
+  identifier: scientist_caloric_siphon
+  characterClass: 2
+  treeIdentifier: scientist_forbidden_thermodynamics
+  displayName: Siphon calorique
+  description: "Arrache un nombre globalement limit\xE9 de charges de Combustion
+    dans un c\xF4ne et les convertit en d\xE9g\xE2ts, \xE9nergie et bouclier plafonn\xE9s."
+  icon: {fileID: 0}
+  skillType: 0
+  maximumInvestedRank: 20
+  unlockLevel: 12
+  prerequisites: []
+  prerequisiteGroups:
+  - mode: 1
+    requiredCount: 1
+    prerequisites:
+    - skill: {fileID: 11400000, guid: ea785d403a43cf247a4bd8d9b900028e, type: 2}
+      requiredInvestedRank: 1
+    - skill: {fileID: 11400000, guid: 668665ccef2c08b4ead2b6d91f884c83, type: 2}
+      requiredInvestedRank: 1
+  targetMode: 6
+  resourceCost: 15
+  tags:
+  - active
+  - fire
+  - cone
+  - combustion
+  - sustain
+  rankValues:
+  - identifier: direct_damage_percent
+    valueAtRankOne: 75
+    valueAtNaturalCap: 180
+    valuePerEquipmentRank: 5.25
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 220
+  - identifier: maximum_total_burn_charges_consumed
+    valueAtRankOne: 3
+    valueAtNaturalCap: 8
+    valuePerEquipmentRank: 0
+    wholeNumber: 1
+    clampMinimum: 1
+    minimumValue: 1
+    clampMaximum: 1
+    maximumValue: 8
+  - identifier: remaining_burn_damage_conversion_percent
+    valueAtRankOne: 25
+    valueAtNaturalCap: 50
+    valuePerEquipmentRank: 1.25
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 60
+  - identifier: maximum_energy_restored
+    valueAtRankOne: 5
+    valueAtNaturalCap: 15
+    valuePerEquipmentRank: 0.5
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 18
+  - identifier: maximum_shield_restored_percent
+    valueAtRankOne: 4
+    valueAtNaturalCap: 12
+    valuePerEquipmentRank: 0.4
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 15
+  appliedStatusIdentifiers: []
+  consumedStatusIdentifiers:
+  - combustion
+  investedRankSynergies:
+  - sourceSkill: {fileID: 11400000, guid: ea785d403a43cf247a4bd8d9b900028e, type: 2}
+    affectedValueIdentifier: remaining_burn_damage_conversion_percent
+    operation: 1
+    bonusPerInvestedRank: 1.5

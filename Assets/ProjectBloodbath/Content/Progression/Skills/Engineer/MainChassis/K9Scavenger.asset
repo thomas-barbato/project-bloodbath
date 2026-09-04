@@ -1,0 +1,111 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98f4f1f2c63e027488f24ebc28369cbb, type: 3}
+  m_Name: K9Scavenger
+  m_EditorClassIdentifier: ProjectBloodbath.Runtime::ProjectBloodbath.Progression.SkillDefinition
+  identifier: engineer_k9_scavenger
+  characterClass: 3
+  treeIdentifier: engineer_main_chassis
+  displayName: "Molosse K-9 \xAB Charognard \xBB"
+  description: "D\xE9ploie le ch\xE2ssis d'assaut K-9. Un seul compagnon principal
+    peut exister et tout remplacement conserve l'\xE9tat du ch\xE2ssis sortant."
+  icon: {fileID: 0}
+  skillType: 0
+  maximumInvestedRank: 20
+  unlockLevel: 1
+  prerequisites: []
+  prerequisiteGroups: []
+  targetMode: 4
+  resourceCost: 24
+  tags:
+  - active
+  - companion
+  - main_chassis
+  - assault
+  - kinetic
+  rankValues:
+  - identifier: maximum_active_main_chassis
+    valueAtRankOne: 1
+    valueAtNaturalCap: 1
+    valuePerEquipmentRank: 0
+    wholeNumber: 1
+    clampMinimum: 1
+    minimumValue: 1
+    clampMaximum: 1
+    maximumValue: 1
+  - identifier: shared_deployment_cooldown_seconds
+    valueAtRankOne: 8
+    valueAtNaturalCap: 8
+    valuePerEquipmentRank: 0
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 8
+    clampMaximum: 1
+    maximumValue: 8
+  - identifier: companion_damage_percent
+    valueAtRankOne: 100
+    valueAtNaturalCap: 220
+    valuePerEquipmentRank: 6
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 260
+  - identifier: movement_speed_percent
+    valueAtRankOne: 100
+    valueAtNaturalCap: 140
+    valuePerEquipmentRank: 2
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 100
+    clampMaximum: 1
+    maximumValue: 155
+  - identifier: signature_leap_damage_percent
+    valueAtRankOne: 160
+    valueAtNaturalCap: 360
+    valuePerEquipmentRank: 10
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 430
+  - identifier: signature_leap_radius_metres
+    valueAtRankOne: 2.5
+    valueAtNaturalCap: 4.5
+    valuePerEquipmentRank: 0.1
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 1
+    clampMaximum: 1
+    maximumValue: 5
+  - identifier: signature_cooldown_seconds
+    valueAtRankOne: 8
+    valueAtNaturalCap: 5.5
+    valuePerEquipmentRank: -0.1
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 4.5
+    clampMaximum: 1
+    maximumValue: 8
+  - identifier: all_chassis_action_speed_per_invested_rank_percent
+    valueAtRankOne: 0.75
+    valueAtNaturalCap: 0.75
+    valuePerEquipmentRank: 0
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 0.75
+  appliedStatusIdentifiers:
+  - main_chassis_k9
+  consumedStatusIdentifiers: []
+  investedRankSynergies: []

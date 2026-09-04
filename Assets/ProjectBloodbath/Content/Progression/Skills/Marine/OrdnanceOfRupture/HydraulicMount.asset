@@ -1,0 +1,88 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98f4f1f2c63e027488f24ebc28369cbb, type: 3}
+  m_Name: HydraulicMount
+  m_EditorClassIdentifier: ProjectBloodbath.Runtime::ProjectBloodbath.Progression.SkillDefinition
+  identifier: marine_hydraulic_mount
+  characterClass: 1
+  treeIdentifier: marine_ordnance_rupture
+  displayName: "Aff\xFBt hydraulique"
+  description: "Apr\xE8s un bref d\xE9placement terrestre sans sprint ni glissade,
+    le harnais se verrouille en Aff\xFBt et facilite les pr\xE9parations lourdes
+    tant que le Marine reste ma\xEEtris\xE9."
+  icon: {fileID: 0}
+  skillType: 1
+  maximumInvestedRank: 20
+  unlockLevel: 6
+  prerequisites:
+  - skill: {fileID: 11400000, guid: a6c8c9aae2e1491409a36dedd165d05b, type: 2}
+    requiredInvestedRank: 1
+  prerequisiteGroups: []
+  targetMode: 0
+  resourceCost: 0
+  tags:
+  - passive
+  - movement
+  - two_handed
+  - heavy_weapon
+  - braced
+  - stagger
+  rankValues:
+  - identifier: grounded_activation_delay_seconds
+    valueAtRankOne: 0.6
+    valueAtNaturalCap: 0.6
+    valuePerEquipmentRank: 0
+    wholeNumber: 0
+    clampMinimum: 0
+    minimumValue: 0
+    clampMaximum: 0
+    maximumValue: 0
+  - identifier: brace_grace_duration_seconds
+    valueAtRankOne: 1.5
+    valueAtNaturalCap: 1.5
+    valuePerEquipmentRank: 0
+    wholeNumber: 0
+    clampMinimum: 0
+    minimumValue: 0
+    clampMaximum: 0
+    maximumValue: 0
+  - identifier: preparation_time_reduction_percent
+    valueAtRankOne: 5
+    valueAtNaturalCap: 25
+    valuePerEquipmentRank: 1
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 40
+  - identifier: movement_penalty_reduction_percent
+    valueAtRankOne: 10
+    valueAtNaturalCap: 50
+    valuePerEquipmentRank: 2
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 70
+  - identifier: stagger_bonus_percent
+    valueAtRankOne: 5
+    valueAtNaturalCap: 20
+    valuePerEquipmentRank: 0.75
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 35
+  appliedStatusIdentifiers:
+  - braced
+  consumedStatusIdentifiers: []
+  investedRankSynergies: []

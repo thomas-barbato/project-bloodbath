@@ -1,0 +1,105 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98f4f1f2c63e027488f24ebc28369cbb, type: 3}
+  m_Name: FusionCorona
+  m_EditorClassIdentifier: ProjectBloodbath.Runtime::ProjectBloodbath.Progression.SkillDefinition
+  identifier: scientist_fusion_corona
+  characterClass: 2
+  treeIdentifier: scientist_forbidden_thermodynamics
+  displayName: Corona de fusion
+  description: "D\xE9clenche une couronne de fusion de courte dur\xE9e, puissante
+    mais circonscrite, qui applique au plus cinq charges de Combustion."
+  icon: {fileID: 0}
+  skillType: 0
+  maximumInvestedRank: 20
+  unlockLevel: 24
+  prerequisites: []
+  prerequisiteGroups:
+  - mode: 1
+    requiredCount: 1
+    prerequisites:
+    - skill: {fileID: 11400000, guid: cd16142595b71aa49b5cbf51588f9d31, type: 2}
+      requiredInvestedRank: 1
+    - skill: {fileID: 11400000, guid: c6fba75f82bde474198fd437eab6a455, type: 2}
+      requiredInvestedRank: 1
+  targetMode: 1
+  resourceCost: 60
+  tags:
+  - active
+  - fire
+  - area
+  - combustion
+  - ultimate
+  rankValues:
+  - identifier: radius_metres
+    valueAtRankOne: 6
+    valueAtNaturalCap: 8
+    valuePerEquipmentRank: 0.1
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 3
+    clampMaximum: 1
+    maximumValue: 9
+  - identifier: initial_damage_percent
+    valueAtRankOne: 240
+    valueAtNaturalCap: 480
+    valuePerEquipmentRank: 12
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 560
+  - identifier: duration_seconds
+    valueAtRankOne: 3
+    valueAtNaturalCap: 4
+    valuePerEquipmentRank: 0.05
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 2
+    clampMaximum: 1
+    maximumValue: 5
+  - identifier: lingering_damage_per_second_percent
+    valueAtRankOne: 10
+    valueAtNaturalCap: 20
+    valuePerEquipmentRank: 0.5
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 25
+  - identifier: burn_charges_applied
+    valueAtRankOne: 2
+    valueAtNaturalCap: 5
+    valuePerEquipmentRank: 0
+    wholeNumber: 1
+    clampMinimum: 1
+    minimumValue: 1
+    clampMaximum: 1
+    maximumValue: 5
+  - identifier: maximum_secondary_chain_depth
+    valueAtRankOne: 0
+    valueAtNaturalCap: 0
+    valuePerEquipmentRank: 0
+    wholeNumber: 1
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 0
+  appliedStatusIdentifiers:
+  - fusion_corona
+  - combustion
+  consumedStatusIdentifiers: []
+  investedRankSynergies:
+  - sourceSkill: {fileID: 11400000, guid: c6fba75f82bde474198fd437eab6a455, type: 2}
+    affectedValueIdentifier: initial_damage_percent
+    operation: 1
+    bonusPerInvestedRank: 1.5

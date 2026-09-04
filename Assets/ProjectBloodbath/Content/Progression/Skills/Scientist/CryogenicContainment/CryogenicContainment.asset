@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac783a04e34944e4da9a305fe86289a7, type: 3}
+  m_Name: CryogenicContainment
+  m_EditorClassIdentifier: ProjectBloodbath.Runtime::ProjectBloodbath.Progression.SkillTreeDefinition
+  identifier: scientist_cryogenic_containment
+  characterClass: 2
+  displayName: "Cryog\xE9nie de confinement"
+  description: "Contr\xF4le par Cryostase, pression binaire et ruptures glac\xE9es
+    sans cha\xEEnes incontr\xF4l\xE9es."
+  skills:
+  - {fileID: 11400000, guid: 90a563c8c5efdda4da170cb6a3649769, type: 2}
+  - {fileID: 11400000, guid: 0259f141e9bac8f44ac047877a76d131, type: 2}
+  - {fileID: 11400000, guid: 1c5efeb96f518f542a61a3231cf77d20, type: 2}
+  - {fileID: 11400000, guid: 11221c83969228e4f93625be8efd8144, type: 2}
+  - {fileID: 11400000, guid: ce973fd709871a341b6892187f772f0c, type: 2}
+  - {fileID: 11400000, guid: 5ac7bb7521f319746b855e9f5496f63f, type: 2}
+  - {fileID: 11400000, guid: 51bdcf99cf0aeb949a15a5ff37abc09b, type: 2}
+  - {fileID: 11400000, guid: 8ec88ed7703ed544490a8911db855cfa, type: 2}
+  - {fileID: 11400000, guid: eea3a4ad5e38e8f4a9458e3d773f9fc2, type: 2}
+  - {fileID: 11400000, guid: bbb61b72aa7d407469cd30e7dd38ca14, type: 2}

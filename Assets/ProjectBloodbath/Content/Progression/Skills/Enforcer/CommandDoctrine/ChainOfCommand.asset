@@ -1,0 +1,73 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98f4f1f2c63e027488f24ebc28369cbb, type: 3}
+  m_Name: ChainOfCommand
+  m_EditorClassIdentifier: ProjectBloodbath.Runtime::ProjectBloodbath.Progression.SkillDefinition
+  identifier: enforcer_chain_of_command
+  characterClass: 0
+  treeIdentifier: enforcer_command_doctrine
+  displayName: "Cha\xEEne de commandement"
+  description: "Renforce tous les Ordres et r\xE9compense les v\xE9ritables alli\xE9s
+    humains sans dupliquer la persistance du Relais."
+  icon: {fileID: 0}
+  skillType: 1
+  maximumInvestedRank: 20
+  unlockLevel: 12
+  prerequisites: []
+  prerequisiteGroups:
+  - mode: 1
+    requiredCount: 1
+    prerequisites:
+    - skill: {fileID: 11400000, guid: 6b657b3a0a199c2438b441297b109c7b, type: 2}
+      requiredInvestedRank: 1
+    - skill: {fileID: 11400000, guid: 0982775d756465b4ba912d2f46e93a44, type: 2}
+      requiredInvestedRank: 1
+    - skill: {fileID: 11400000, guid: 00643af165780ff44a52ad15c69c2687, type: 2}
+      requiredInvestedRank: 1
+  targetMode: 0
+  resourceCost: 0
+  tags:
+  - passive
+  - order
+  - group
+  - cooperation
+  rankValues:
+  - identifier: personal_order_power_percent
+    valueAtRankOne: 0.5
+    valueAtNaturalCap: 10
+    valuePerEquipmentRank: 0.5
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 15
+  - identifier: human_ally_power_per_ally_percent
+    valueAtRankOne: 1
+    valueAtNaturalCap: 3
+    valuePerEquipmentRank: 0.1
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 4
+  - identifier: maximum_counted_human_allies
+    valueAtRankOne: 4
+    valueAtNaturalCap: 4
+    valuePerEquipmentRank: 0
+    wholeNumber: 1
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 4
+  appliedStatusIdentifiers: []
+  consumedStatusIdentifiers: []
+  investedRankSynergies: []

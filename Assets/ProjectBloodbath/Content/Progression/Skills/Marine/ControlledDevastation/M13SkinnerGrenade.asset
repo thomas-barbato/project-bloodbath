@@ -1,0 +1,92 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98f4f1f2c63e027488f24ebc28369cbb, type: 3}
+  m_Name: M13SkinnerGrenade
+  m_EditorClassIdentifier: ProjectBloodbath.Runtime::ProjectBloodbath.Progression.SkillDefinition
+  identifier: marine_m13_skinner_grenade
+  characterClass: 1
+  treeIdentifier: marine_controlled_devastation
+  displayName: "Grenade M-13 \xAB \xC9corcheuse \xBB"
+  description: "Projette vers le r\xE9ticule une grenade \xE0 impact ou fus\xE9e
+    courte, destin\xE9e \xE0 ouvrir une rotation explosive et \xE0 produire une r\xE9action
+    gore franche."
+  icon: {fileID: 0}
+  skillType: 0
+  maximumInvestedRank: 20
+  unlockLevel: 1
+  prerequisites: []
+  prerequisiteGroups: []
+  targetMode: 2
+  resourceCost: 14
+  tags:
+  - active
+  - ranged
+  - explosive
+  - grenade
+  - area
+  - gore
+  - primer
+  rankValues:
+  - identifier: maximum_charges
+    valueAtRankOne: 2
+    valueAtNaturalCap: 2
+    valuePerEquipmentRank: 0
+    wholeNumber: 1
+    clampMinimum: 0
+    minimumValue: 0
+    clampMaximum: 0
+    maximumValue: 0
+  - identifier: charge_cooldown_seconds
+    valueAtRankOne: 10
+    valueAtNaturalCap: 7
+    valuePerEquipmentRank: -0.15
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 2
+    clampMaximum: 0
+    maximumValue: 0
+  - identifier: weapon_damage_percent
+    valueAtRankOne: 150
+    valueAtNaturalCap: 340
+    valuePerEquipmentRank: 9.5
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 0
+    maximumValue: 0
+  - identifier: explosion_radius_metres
+    valueAtRankOne: 4
+    valueAtNaturalCap: 6.5
+    valuePerEquipmentRank: 0.1
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 1
+    clampMaximum: 1
+    maximumValue: 8
+  - identifier: maximum_fuse_seconds
+    valueAtRankOne: 1.2
+    valueAtNaturalCap: 1.2
+    valuePerEquipmentRank: 0
+    wholeNumber: 0
+    clampMinimum: 0
+    minimumValue: 0
+    clampMaximum: 0
+    maximumValue: 0
+  appliedStatusIdentifiers:
+  - primer
+  consumedStatusIdentifiers:
+  - unstable_mix
+  investedRankSynergies:
+  - sourceSkill: {fileID: 11400000, guid: 696678404b501e94ca451782cb413718, type: 2}
+    affectedValueIdentifier: weapon_damage_percent
+    operation: 1
+    bonusPerInvestedRank: 1.5

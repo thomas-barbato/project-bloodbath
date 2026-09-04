@@ -1,0 +1,91 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98f4f1f2c63e027488f24ebc28369cbb, type: 3}
+  m_Name: ChainReaction
+  m_EditorClassIdentifier: ProjectBloodbath.Runtime::ProjectBloodbath.Progression.SkillDefinition
+  identifier: marine_chain_reaction
+  characterClass: 1
+  treeIdentifier: marine_controlled_devastation
+  displayName: "R\xE9action en cha\xEEne"
+  description: "Les explosions primaires posent des Amorce ; une autre famille explosive
+    ou la mort de la cible les d\xE9tonne sans permettre de boucle secondaire infinie."
+  icon: {fileID: 0}
+  skillType: 1
+  maximumInvestedRank: 20
+  unlockLevel: 24
+  prerequisites: []
+  prerequisiteGroups:
+  - mode: 1
+    requiredCount: 1
+    prerequisites:
+    - skill: {fileID: 11400000, guid: a76368adc6bf021468db6bb3c5b5ee7f, type: 2}
+      requiredInvestedRank: 1
+    - skill: {fileID: 11400000, guid: 4a0b28b0eb3e6e74aa6e42b09824fe04, type: 2}
+      requiredInvestedRank: 1
+  targetMode: 0
+  resourceCost: 0
+  tags:
+  - passive
+  - explosive
+  - primer
+  - secondary_reaction
+  rankValues:
+  - identifier: maximum_primer_charges
+    valueAtRankOne: 3
+    valueAtNaturalCap: 3
+    valuePerEquipmentRank: 0
+    wholeNumber: 1
+    clampMinimum: 0
+    minimumValue: 0
+    clampMaximum: 0
+    maximumValue: 0
+  - identifier: reaction_damage_per_primer_percent
+    valueAtRankOne: 30
+    valueAtNaturalCap: 100
+    valuePerEquipmentRank: 3.5
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 0
+    maximumValue: 0
+  - identifier: secondary_radius_metres
+    valueAtRankOne: 2.5
+    valueAtNaturalCap: 4
+    valuePerEquipmentRank: 0.08
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 1
+    clampMaximum: 1
+    maximumValue: 5
+  - identifier: reaction_internal_cooldown_seconds
+    valueAtRankOne: 0.6
+    valueAtNaturalCap: 0.6
+    valuePerEquipmentRank: 0
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0.4
+    clampMaximum: 0
+    maximumValue: 0
+  - identifier: maximum_secondary_chain_depth
+    valueAtRankOne: 0
+    valueAtNaturalCap: 0
+    valuePerEquipmentRank: 0
+    wholeNumber: 1
+    clampMinimum: 0
+    minimumValue: 0
+    clampMaximum: 0
+    maximumValue: 0
+  appliedStatusIdentifiers:
+  - primer
+  consumedStatusIdentifiers:
+  - primer
+  investedRankSynergies: []

@@ -1,0 +1,85 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98f4f1f2c63e027488f24ebc28369cbb, type: 3}
+  m_Name: BlackFurnaceCore
+  m_EditorClassIdentifier: ProjectBloodbath.Runtime::ProjectBloodbath.Progression.SkillDefinition
+  identifier: scientist_black_furnace_core
+  characterClass: 2
+  treeIdentifier: scientist_forbidden_thermodynamics
+  displayName: "C\u0153ur de four noir"
+  description: "Renforce le Scientifique selon un maximum de six ennemis en combustion,
+    avec une r\xE9g\xE9n\xE9ration et un bonus de feu strictement plafonn\xE9s."
+  icon: {fileID: 0}
+  skillType: 1
+  maximumInvestedRank: 20
+  unlockLevel: 18
+  prerequisites: []
+  prerequisiteGroups:
+  - mode: 1
+    requiredCount: 1
+    prerequisites:
+    - skill: {fileID: 11400000, guid: fff5433400553de419fc0f8f86417455, type: 2}
+      requiredInvestedRank: 1
+    - skill: {fileID: 11400000, guid: 6bfc0eaaf13543642a5bc9b73ca428a0, type: 2}
+      requiredInvestedRank: 1
+  targetMode: 0
+  resourceCost: 0
+  tags:
+  - passive
+  - fire
+  - aura
+  - sustain
+  rankValues:
+  - identifier: maximum_counted_burning_enemies
+    valueAtRankOne: 3
+    valueAtNaturalCap: 6
+    valuePerEquipmentRank: 0
+    wholeNumber: 1
+    clampMinimum: 1
+    minimumValue: 1
+    clampMaximum: 1
+    maximumValue: 6
+  - identifier: fire_damage_per_target_percent
+    valueAtRankOne: 0.5
+    valueAtNaturalCap: 1.5
+    valuePerEquipmentRank: 0.075
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 2
+  - identifier: energy_regeneration_per_target_per_second
+    valueAtRankOne: 0.1
+    valueAtNaturalCap: 0.25
+    valuePerEquipmentRank: 0.01
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 0.35
+  - identifier: self_fire_resistance_percent
+    valueAtRankOne: 20
+    valueAtNaturalCap: 50
+    valuePerEquipmentRank: 1.5
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 60
+  appliedStatusIdentifiers:
+  - black_furnace_core
+  consumedStatusIdentifiers: []
+  investedRankSynergies:
+  - sourceSkill: {fileID: 11400000, guid: fff5433400553de419fc0f8f86417455, type: 2}
+    affectedValueIdentifier: energy_regeneration_per_target_per_second
+    operation: 0
+    bonusPerInvestedRank: 0.005

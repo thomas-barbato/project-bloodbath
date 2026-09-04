@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac783a04e34944e4da9a305fe86289a7, type: 3}
+  m_Name: ElectronicWarfare
+  m_EditorClassIdentifier: ProjectBloodbath.Runtime::ProjectBloodbath.Progression.SkillTreeDefinition
+  identifier: engineer_electronic_warfare
+  characterClass: 3
+  displayName: "Guerre \xE9lectronique et condamnation"
+  description: "Corrosion, Brouillage, D\xE9signation et gravit\xE9 avec propagation
+    non r\xE9cursive et ex\xE9cution plafonn\xE9e."
+  skills:
+  - {fileID: 11400000, guid: 44b0ee21d23df294d8219e6cc6a236ef, type: 2}
+  - {fileID: 11400000, guid: d253ee01b3bbd2a4abc5032712d51ee6, type: 2}
+  - {fileID: 11400000, guid: cec58a59e6a30244b85a1197d1156916, type: 2}
+  - {fileID: 11400000, guid: 2e4918659d4c4f849b0b9d44f5885ea8, type: 2}
+  - {fileID: 11400000, guid: 0d2d3c6e92f67f843a34097a0eec08e7, type: 2}
+  - {fileID: 11400000, guid: fca1a9d19c2402147ac3783697f636fd, type: 2}
+  - {fileID: 11400000, guid: 361c18c0dbf39a64db0a15495ef3c34d, type: 2}
+  - {fileID: 11400000, guid: ca429979741b17a43ab59f626d7bd1d2, type: 2}
+  - {fileID: 11400000, guid: 2d786e2b1d3626246a3b5a40df940982, type: 2}
+  - {fileID: 11400000, guid: 5fa0fcc1bc481404bb0b2adbf008e9a5, type: 2}

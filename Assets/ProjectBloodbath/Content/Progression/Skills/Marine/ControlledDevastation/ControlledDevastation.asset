@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac783a04e34944e4da9a305fe86289a7, type: 3}
+  m_Name: ControlledDevastation
+  m_EditorClassIdentifier: ProjectBloodbath.Runtime::ProjectBloodbath.Progression.SkillTreeDefinition
+  identifier: marine_controlled_devastation
+  characterClass: 1
+  displayName: "D\xE9vastation contr\xF4l\xE9e"
+  description: "Grenades, mines, charges, roquettes et rotations explosives born\xE9es."
+  skills:
+  - {fileID: 11400000, guid: f0caae7e6df32d24f967bef161896994, type: 2}
+  - {fileID: 11400000, guid: 696678404b501e94ca451782cb413718, type: 2}
+  - {fileID: 11400000, guid: b1acd173446ce3847afd3854c4144dd8, type: 2}
+  - {fileID: 11400000, guid: 4a0b28b0eb3e6e74aa6e42b09824fe04, type: 2}
+  - {fileID: 11400000, guid: 2a598972385969f48b629cf8cfc39242, type: 2}
+  - {fileID: 11400000, guid: a76368adc6bf021468db6bb3c5b5ee7f, type: 2}
+  - {fileID: 11400000, guid: 6309a51bda3a11c42888f7228f02d1ea, type: 2}
+  - {fileID: 11400000, guid: 4bfa69b568303b04082603d54fe8ed17, type: 2}
+  - {fileID: 11400000, guid: ebe19beb121743d43bab28d0a072d7e5, type: 2}
+  - {fileID: 11400000, guid: 544b448e2de11a048b6e3f79bff27afb, type: 2}

@@ -1,0 +1,86 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98f4f1f2c63e027488f24ebc28369cbb, type: 3}
+  m_Name: VoltaicLance
+  m_EditorClassIdentifier: ProjectBloodbath.Runtime::ProjectBloodbath.Progression.SkillDefinition
+  identifier: scientist_voltaic_lance
+  characterClass: 2
+  treeIdentifier: scientist_electrokinetic_rupture
+  displayName: "Lance volta\xEFque"
+  description: "Concentre une d\xE9charge sur une cible et consomme jusqu'\xE0 sept
+    charges de Conductivit\xE9 pour augmenter ses d\xE9g\xE2ts, sans \xE9tourdissement
+    empilable."
+  icon: {fileID: 0}
+  skillType: 0
+  maximumInvestedRank: 20
+  unlockLevel: 6
+  prerequisites: []
+  prerequisiteGroups: []
+  targetMode: 5
+  resourceCost: 26
+  tags:
+  - active
+  - electric
+  - line
+  - conductivity
+  - burst
+  rankValues:
+  - identifier: base_damage_percent
+    valueAtRankOne: 180
+    valueAtNaturalCap: 420
+    valuePerEquipmentRank: 12
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 500
+  - identifier: damage_bonus_per_consumed_charge_percent
+    valueAtRankOne: 12
+    valueAtNaturalCap: 22
+    valuePerEquipmentRank: 0.5
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 26
+  - identifier: maximum_conductivity_consumed
+    valueAtRankOne: 3
+    valueAtNaturalCap: 7
+    valuePerEquipmentRank: 0
+    wholeNumber: 1
+    clampMinimum: 1
+    minimumValue: 1
+    clampMaximum: 1
+    maximumValue: 7
+  - identifier: maximum_stagger_triggers
+    valueAtRankOne: 1
+    valueAtNaturalCap: 1
+    valuePerEquipmentRank: 0
+    wholeNumber: 1
+    clampMinimum: 1
+    minimumValue: 1
+    clampMaximum: 1
+    maximumValue: 1
+  - identifier: line_width_metres
+    valueAtRankOne: 0.6
+    valueAtNaturalCap: 1.2
+    valuePerEquipmentRank: 0.03
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0.4
+    clampMaximum: 1
+    maximumValue: 1.5
+  appliedStatusIdentifiers:
+  - voltaic_lance
+  consumedStatusIdentifiers:
+  - conductivity
+  investedRankSynergies: []

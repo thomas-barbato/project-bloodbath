@@ -207,7 +207,7 @@ namespace ProjectBloodbath.Tests.PlayMode
             Assert.That(panel.DisplayedCharacterName, Is.EqualTo("Mara Voss"));
             Assert.That(
                 panel.DisplayedClassName,
-                Is.EqualTo("Classe prototype"));
+                Is.EqualTo("Marine"));
             Assert.That(
                 weaponLoadout.ActiveHandSet,
                 Is.EqualTo(PrototypeHandSetSlot.Primary));

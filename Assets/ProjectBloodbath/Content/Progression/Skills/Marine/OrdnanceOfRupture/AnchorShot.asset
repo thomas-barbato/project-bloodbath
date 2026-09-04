@@ -1,0 +1,124 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98f4f1f2c63e027488f24ebc28369cbb, type: 3}
+  m_Name: AnchorShot
+  m_EditorClassIdentifier: ProjectBloodbath.Runtime::ProjectBloodbath.Progression.SkillDefinition
+  identifier: marine_anchor_shot
+  characterClass: 1
+  treeIdentifier: marine_ordnance_rupture
+  displayName: Tir d'ancrage
+  description: "Charge un noyau magn\xE9tique monocible qui accumule Fracture et
+    cloue les ennemis ordinaires ; les boss re\xE7oivent plut\xF4t un violent stagger."
+  icon: {fileID: 0}
+  skillType: 0
+  maximumInvestedRank: 20
+  unlockLevel: 12
+  prerequisites:
+  - skill: {fileID: 11400000, guid: 06bdfa5b54e159d4c98e03564db50e06, type: 2}
+    requiredInvestedRank: 1
+  prerequisiteGroups: []
+  targetMode: 2
+  resourceCost: 22
+  tags:
+  - active
+  - ranged
+  - two_handed
+  - heavy_weapon
+  - charged
+  - anchor
+  - fracture
+  rankValues:
+  - identifier: cooldown_seconds
+    valueAtRankOne: 12
+    valueAtNaturalCap: 8
+    valuePerEquipmentRank: -0.2
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 2
+    clampMaximum: 0
+    maximumValue: 0
+  - identifier: preparation_seconds
+    valueAtRankOne: 0.45
+    valueAtNaturalCap: 0.45
+    valuePerEquipmentRank: 0
+    wholeNumber: 0
+    clampMinimum: 0
+    minimumValue: 0
+    clampMaximum: 0
+    maximumValue: 0
+  - identifier: weapon_damage_percent
+    valueAtRankOne: 260
+    valueAtNaturalCap: 620
+    valuePerEquipmentRank: 18
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 0
+    maximumValue: 0
+  - identifier: ammunition_cost
+    valueAtRankOne: 2
+    valueAtNaturalCap: 2
+    valuePerEquipmentRank: 0
+    wholeNumber: 1
+    clampMinimum: 0
+    minimumValue: 0
+    clampMaximum: 0
+    maximumValue: 0
+  - identifier: fracture_charges
+    valueAtRankOne: 2
+    valueAtNaturalCap: 5
+    valuePerEquipmentRank: 0
+    wholeNumber: 1
+    clampMinimum: 0
+    minimumValue: 0
+    clampMaximum: 0
+    maximumValue: 0
+  - identifier: anchor_duration_seconds
+    valueAtRankOne: 0.5
+    valueAtNaturalCap: 1.5
+    valuePerEquipmentRank: 0.05
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 2
+  - identifier: boss_stagger_bonus_percent
+    valueAtRankOne: 100
+    valueAtNaturalCap: 100
+    valuePerEquipmentRank: 0
+    wholeNumber: 0
+    clampMinimum: 0
+    minimumValue: 0
+    clampMaximum: 0
+    maximumValue: 0
+  - identifier: boss_armour_broken_extension_seconds
+    valueAtRankOne: 2
+    valueAtNaturalCap: 2
+    valuePerEquipmentRank: 0
+    wholeNumber: 0
+    clampMinimum: 0
+    minimumValue: 0
+    clampMaximum: 0
+    maximumValue: 0
+  appliedStatusIdentifiers:
+  - fracture
+  - anchored
+  consumedStatusIdentifiers: []
+  investedRankSynergies:
+  - sourceSkill: {fileID: 11400000, guid: 06bdfa5b54e159d4c98e03564db50e06, type: 2}
+    affectedValueIdentifier: weapon_damage_percent
+    operation: 1
+    bonusPerInvestedRank: 2
+  - sourceSkill: {fileID: 11400000, guid: f2c576b4971836f43894ce63394bd3cd, type: 2}
+    affectedValueIdentifier: armour_broken_duration_percent
+    operation: 1
+    bonusPerInvestedRank: 0.2

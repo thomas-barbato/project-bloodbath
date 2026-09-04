@@ -1,0 +1,99 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98f4f1f2c63e027488f24ebc28369cbb, type: 3}
+  m_Name: ImpactFrame
+  m_EditorClassIdentifier: ProjectBloodbath.Runtime::ProjectBloodbath.Progression.SkillDefinition
+  identifier: enforcer_impact_frame
+  characterClass: 0
+  treeIdentifier: enforcer_siege_armour
+  displayName: "Ch\xE2ssis anti-impact"
+  description: "Un d\xE9placement agressif pr\xE9pare une unique Inertie blind\xE9e,
+    consomm\xE9e par le prochain impact frontal ou la prochaine Charge."
+  icon: {fileID: 0}
+  skillType: 1
+  maximumInvestedRank: 20
+  unlockLevel: 6
+  prerequisites:
+  - skill: {fileID: 11400000, guid: 9a00dde1377e96f45a06829e6137c414, type: 2}
+    requiredInvestedRank: 1
+  prerequisiteGroups: []
+  targetMode: 0
+  resourceCost: 0
+  tags:
+  - passive
+  - movement
+  - defensive
+  - inertia
+  - guard
+  rankValues:
+  - identifier: movement_preparation_seconds
+    valueAtRankOne: 0.6
+    valueAtNaturalCap: 0.6
+    valuePerEquipmentRank: 0
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0.3
+    clampMaximum: 0
+    maximumValue: 0
+  - identifier: inertia_duration_seconds
+    valueAtRankOne: 3
+    valueAtNaturalCap: 5
+    valuePerEquipmentRank: 0.1
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 1
+    clampMaximum: 1
+    maximumValue: 7
+  - identifier: maximum_inertia_charges
+    valueAtRankOne: 1
+    valueAtNaturalCap: 1
+    valuePerEquipmentRank: 0
+    wholeNumber: 1
+    clampMinimum: 1
+    minimumValue: 1
+    clampMaximum: 1
+    maximumValue: 1
+  - identifier: frontal_damage_reduction_percent
+    valueAtRankOne: 4
+    valueAtNaturalCap: 12
+    valuePerEquipmentRank: 0.4
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 20
+  - identifier: bulwark_charge_stagger_bonus_percent
+    valueAtRankOne: 15
+    valueAtNaturalCap: 50
+    valuePerEquipmentRank: 1.75
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 0
+    maximumValue: 0
+  - identifier: guard_generated_on_consumption
+    valueAtRankOne: 1
+    valueAtNaturalCap: 1
+    valuePerEquipmentRank: 0
+    wholeNumber: 1
+    clampMinimum: 1
+    minimumValue: 1
+    clampMaximum: 1
+    maximumValue: 1
+  appliedStatusIdentifiers:
+  - armoured_inertia
+  consumedStatusIdentifiers: []
+  investedRankSynergies:
+  - sourceSkill: {fileID: 11400000, guid: 9a00dde1377e96f45a06829e6137c414, type: 2}
+    affectedValueIdentifier: inertia_duration_percent
+    operation: 1
+    bonusPerInvestedRank: 1

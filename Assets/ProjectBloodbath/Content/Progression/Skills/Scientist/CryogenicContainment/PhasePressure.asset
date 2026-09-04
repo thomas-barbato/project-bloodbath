@@ -1,0 +1,89 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98f4f1f2c63e027488f24ebc28369cbb, type: 3}
+  m_Name: PhasePressure
+  m_EditorClassIdentifier: ProjectBloodbath.Runtime::ProjectBloodbath.Progression.SkillDefinition
+  identifier: scientist_phase_pressure
+  characterClass: 2
+  treeIdentifier: scientist_cryogenic_containment
+  displayName: Pression de phase
+  description: "Apr\xE8s vingt-cinq unit\xE9s de Cryostase appliqu\xE9es, pr\xE9pare
+    une charge unique qui renforce la prochaine comp\xE9tence de glace."
+  icon: {fileID: 0}
+  skillType: 1
+  maximumInvestedRank: 20
+  unlockLevel: 6
+  prerequisites:
+  - skill: {fileID: 11400000, guid: 90a563c8c5efdda4da170cb6a3649769, type: 2}
+    requiredInvestedRank: 1
+  prerequisiteGroups: []
+  targetMode: 0
+  resourceCost: 0
+  tags:
+  - passive
+  - ice
+  - cryostasis
+  - catalyst
+  rankValues:
+  - identifier: cryostasis_required_to_prime
+    valueAtRankOne: 25
+    valueAtNaturalCap: 25
+    valuePerEquipmentRank: 0
+    wholeNumber: 1
+    clampMinimum: 1
+    minimumValue: 25
+    clampMaximum: 1
+    maximumValue: 25
+  - identifier: maximum_pressure_charges
+    valueAtRankOne: 1
+    valueAtNaturalCap: 1
+    valuePerEquipmentRank: 0
+    wholeNumber: 1
+    clampMinimum: 1
+    minimumValue: 1
+    clampMaximum: 1
+    maximumValue: 1
+  - identifier: pressure_duration_seconds
+    valueAtRankOne: 6
+    valueAtNaturalCap: 10
+    valuePerEquipmentRank: 0.2
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 3
+    clampMaximum: 1
+    maximumValue: 12
+  - identifier: next_ice_direct_damage_bonus_percent
+    valueAtRankOne: 8
+    valueAtNaturalCap: 25
+    valuePerEquipmentRank: 0.85
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 32
+  - identifier: next_ice_cryostasis_bonus_percent
+    valueAtRankOne: 5
+    valueAtNaturalCap: 15
+    valuePerEquipmentRank: 0.5
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 20
+  appliedStatusIdentifiers:
+  - phase_pressure
+  consumedStatusIdentifiers: []
+  investedRankSynergies:
+  - sourceSkill: {fileID: 11400000, guid: 90a563c8c5efdda4da170cb6a3649769, type: 2}
+    affectedValueIdentifier: next_ice_cryostasis_bonus_percent
+    operation: 1
+    bonusPerInvestedRank: 1.5

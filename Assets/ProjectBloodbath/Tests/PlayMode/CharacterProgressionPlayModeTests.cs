@@ -17,6 +17,8 @@ namespace ProjectBloodbath.Tests.PlayMode
         private GameObject player;
         private CharacterProgression progression;
         private CharacterStatistics statistics;
+        private CharacterSkillProgression skills;
+        private ActiveSkillBar skillBar;
         private GameObject enemy;
         private Health enemyHealth;
         private EnemyExperienceReward reward;
@@ -43,11 +45,15 @@ namespace ProjectBloodbath.Tests.PlayMode
 
             progression = player.GetComponent<CharacterProgression>();
             statistics = player.GetComponent<CharacterStatistics>();
+            skills = player.GetComponent<CharacterSkillProgression>();
+            skillBar = player.GetComponent<ActiveSkillBar>();
             enemyHealth = enemy.GetComponent<Health>();
             reward = enemy.GetComponent<EnemyExperienceReward>();
             Assert.That(progression, Is.Not.Null);
             Assert.That(progression.Settings, Is.Not.Null);
             Assert.That(statistics, Is.Not.Null);
+            Assert.That(skills, Is.Not.Null);
+            Assert.That(skillBar, Is.Not.Null);
             Assert.That(enemyHealth, Is.Not.Null);
             Assert.That(reward, Is.Not.Null);
             Assert.That(reward.Profile, Is.Not.Null);
@@ -110,6 +116,49 @@ namespace ProjectBloodbath.Tests.PlayMode
             Assert.That(
                 statistics.UnspentAttributePoints,
                 Is.EqualTo(progression.Settings.AttributePointsPerLevel * 2));
+            yield break;
+        }
+
+        [UnityTest]
+        public IEnumerator ProgressionSupportsLevelNinetyNineAndSkillPoints()
+        {
+            Assert.That(progression.Settings.MaximumLevel, Is.EqualTo(99));
+            Assert.That(progression.Settings.SkillPointsPerLevel, Is.EqualTo(1));
+            Assert.That(
+                progression.Settings.GetExperienceRequiredForLevel(98),
+                Is.GreaterThan(0));
+            Assert.That(
+                progression.Settings.GetExperienceRequiredForLevel(99),
+                Is.Zero);
+            yield break;
+        }
+
+        [UnityTest]
+        public IEnumerator MarineSkillTreesAreWiredAndStructurallyValid()
+        {
+            Assert.That(skills.AvailableTrees, Has.Count.EqualTo(3));
+            Assert.That(
+                skills.AvailableTrees[0].Identifier,
+                Is.EqualTo("marine_doctrine_saturation"));
+            Assert.That(
+                skills.AvailableTrees[1].Identifier,
+                Is.EqualTo("marine_ordnance_rupture"));
+            Assert.That(
+                skills.AvailableTrees[2].Identifier,
+                Is.EqualTo("marine_controlled_devastation"));
+            foreach (SkillTreeDefinition tree in skills.AvailableTrees)
+            {
+                Assert.That(tree, Is.Not.Null);
+                Assert.That(
+                    tree.CharacterClass,
+                    Is.EqualTo(CharacterClassId.Marine));
+                Assert.That(
+                    tree.TryValidateStructure(out string issue),
+                    Is.True,
+                    issue);
+            }
+
+            Assert.That(skillBar.Capacity, Is.EqualTo(5));
             yield break;
         }
 

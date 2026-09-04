@@ -1,0 +1,83 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98f4f1f2c63e027488f24ebc28369cbb, type: 3}
+  m_Name: GalvanicArc
+  m_EditorClassIdentifier: ProjectBloodbath.Runtime::ProjectBloodbath.Progression.SkillDefinition
+  identifier: scientist_galvanic_arc
+  characterClass: 2
+  treeIdentifier: scientist_electrokinetic_rupture
+  displayName: Arc galvanique
+  description: "Lance un arc \xE9lectrique qui rebondit sur un nombre limit\xE9 de
+    cibles avec une perte de puissance d\xE9croissante."
+  icon: {fileID: 0}
+  skillType: 0
+  maximumInvestedRank: 20
+  unlockLevel: 1
+  prerequisites: []
+  prerequisiteGroups: []
+  targetMode: 3
+  resourceCost: 14
+  tags:
+  - active
+  - electric
+  - chain
+  - conductivity
+  rankValues:
+  - identifier: primary_damage_percent
+    valueAtRankOne: 90
+    valueAtNaturalCap: 230
+    valuePerEquipmentRank: 7
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 280
+  - identifier: maximum_additional_targets
+    valueAtRankOne: 2
+    valueAtNaturalCap: 5
+    valuePerEquipmentRank: 0
+    wholeNumber: 1
+    clampMinimum: 1
+    minimumValue: 1
+    clampMaximum: 1
+    maximumValue: 5
+  - identifier: bounce_radius_metres
+    valueAtRankOne: 5
+    valueAtNaturalCap: 8
+    valuePerEquipmentRank: 0.15
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 2
+    clampMaximum: 1
+    maximumValue: 9
+  - identifier: damage_falloff_per_bounce_percent
+    valueAtRankOne: 20
+    valueAtNaturalCap: 8
+    valuePerEquipmentRank: -0.5
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 5
+    clampMaximum: 1
+    maximumValue: 25
+  - identifier: conductivity_charges_applied
+    valueAtRankOne: 1
+    valueAtNaturalCap: 2
+    valuePerEquipmentRank: 0
+    wholeNumber: 1
+    clampMinimum: 1
+    minimumValue: 1
+    clampMaximum: 1
+    maximumValue: 2
+  appliedStatusIdentifiers:
+  - conductivity
+  consumedStatusIdentifiers: []
+  investedRankSynergies: []

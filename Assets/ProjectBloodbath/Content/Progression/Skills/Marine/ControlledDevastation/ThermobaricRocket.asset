@@ -1,0 +1,112 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98f4f1f2c63e027488f24ebc28369cbb, type: 3}
+  m_Name: ThermobaricRocket
+  m_EditorClassIdentifier: ProjectBloodbath.Runtime::ProjectBloodbath.Progression.SkillDefinition
+  identifier: marine_thermobaric_rocket
+  characterClass: 1
+  treeIdentifier: marine_controlled_devastation
+  displayName: Roquette thermobarique
+  description: "Tire une roquette lente et lisible qui ouvre une zone de combustion
+    puissante mais born\xE9e, sans nettoyer seule tout l'\xE9cran."
+  icon: {fileID: 0}
+  skillType: 0
+  maximumInvestedRank: 20
+  unlockLevel: 18
+  prerequisites: []
+  prerequisiteGroups:
+  - mode: 1
+    requiredCount: 1
+    prerequisites:
+    - skill: {fileID: 11400000, guid: f0caae7e6df32d24f967bef161896994, type: 2}
+      requiredInvestedRank: 1
+    - skill: {fileID: 11400000, guid: 2a598972385969f48b629cf8cfc39242, type: 2}
+      requiredInvestedRank: 1
+  targetMode: 2
+  resourceCost: 26
+  tags:
+  - active
+  - ranged
+  - explosive
+  - rocket
+  - area
+  - burning
+  - primer
+  rankValues:
+  - identifier: maximum_charges
+    valueAtRankOne: 2
+    valueAtNaturalCap: 2
+    valuePerEquipmentRank: 0
+    wholeNumber: 1
+    clampMinimum: 0
+    minimumValue: 0
+    clampMaximum: 0
+    maximumValue: 0
+  - identifier: charge_cooldown_seconds
+    valueAtRankOne: 14
+    valueAtNaturalCap: 10
+    valuePerEquipmentRank: -0.2
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 4
+    clampMaximum: 0
+    maximumValue: 0
+  - identifier: weapon_damage_percent
+    valueAtRankOne: 280
+    valueAtNaturalCap: 600
+    valuePerEquipmentRank: 16
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 0
+    maximumValue: 0
+  - identifier: explosion_radius_metres
+    valueAtRankOne: 5
+    valueAtNaturalCap: 7.5
+    valuePerEquipmentRank: 0.1
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 2
+    clampMaximum: 1
+    maximumValue: 9
+  - identifier: burning_zone_duration_seconds
+    valueAtRankOne: 3
+    valueAtNaturalCap: 6
+    valuePerEquipmentRank: 0.15
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 1
+    clampMaximum: 0
+    maximumValue: 0
+  - identifier: lingering_damage_percent
+    valueAtRankOne: 20
+    valueAtNaturalCap: 50
+    valuePerEquipmentRank: 1.5
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 0
+    maximumValue: 0
+  appliedStatusIdentifiers:
+  - burning
+  - primer
+  consumedStatusIdentifiers:
+  - unstable_mix
+  investedRankSynergies:
+  - sourceSkill: {fileID: 11400000, guid: f0caae7e6df32d24f967bef161896994, type: 2}
+    affectedValueIdentifier: weapon_damage_percent
+    operation: 1
+    bonusPerInvestedRank: 1.5
+  - sourceSkill: {fileID: 11400000, guid: 4a0b28b0eb3e6e74aa6e42b09824fe04, type: 2}
+    affectedValueIdentifier: lingering_damage_percent
+    operation: 1
+    bonusPerInvestedRank: 1

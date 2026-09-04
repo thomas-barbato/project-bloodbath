@@ -1,0 +1,121 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98f4f1f2c63e027488f24ebc28369cbb, type: 3}
+  m_Name: UnholyReconstruction
+  m_EditorClassIdentifier: ProjectBloodbath.Runtime::ProjectBloodbath.Progression.SkillDefinition
+  identifier: engineer_unholy_reconstruction
+  characterClass: 3
+  treeIdentifier: engineer_main_chassis
+  displayName: Reconstruction impie
+  description: "Reconstruit automatiquement le compagnon apr\xE8s destruction, avec
+    retour partiel et r\xE9ductions de d\xE9lai limit\xE9es par seconde."
+  icon: {fileID: 0}
+  skillType: 1
+  maximumInvestedRank: 20
+  unlockLevel: 30
+  prerequisites: []
+  prerequisiteGroups:
+  - mode: 1
+    requiredCount: 1
+    prerequisites:
+    - skill: {fileID: 11400000, guid: 9e6800e8644252644b2347c43bec8abf, type: 2}
+      requiredInvestedRank: 1
+    - skill: {fileID: 11400000, guid: 1974cfd69a3cecd42ba610e17cc258c8, type: 2}
+      requiredInvestedRank: 1
+  targetMode: 0
+  resourceCost: 0
+  tags:
+  - passive
+  - companion
+  - reconstruction
+  - sustain
+  rankValues:
+  - identifier: reconstruction_delay_seconds
+    valueAtRankOne: 25
+    valueAtNaturalCap: 10
+    valuePerEquipmentRank: -0.75
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 8
+    clampMaximum: 1
+    maximumValue: 25
+  - identifier: return_health_percent
+    valueAtRankOne: 20
+    valueAtNaturalCap: 65
+    valuePerEquipmentRank: 2.25
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 10
+    clampMaximum: 1
+    maximumValue: 75
+  - identifier: kill_delay_reduction_seconds
+    valueAtRankOne: 0.2
+    valueAtNaturalCap: 0.75
+    valuePerEquipmentRank: 0.025
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 1
+  - identifier: maximum_kill_reductions_per_second
+    valueAtRankOne: 1
+    valueAtNaturalCap: 3
+    valuePerEquipmentRank: 0
+    wholeNumber: 1
+    clampMinimum: 1
+    minimumValue: 1
+    clampMaximum: 1
+    maximumValue: 3
+  - identifier: elite_kill_multiplier
+    valueAtRankOne: 3
+    valueAtNaturalCap: 3
+    valuePerEquipmentRank: 0
+    wholeNumber: 1
+    clampMinimum: 1
+    minimumValue: 3
+    clampMaximum: 1
+    maximumValue: 3
+  - identifier: defensive_microdrone_count
+    valueAtRankOne: 0
+    valueAtNaturalCap: 3
+    valuePerEquipmentRank: 0
+    wholeNumber: 1
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 3
+  - identifier: defensive_microdrone_duration_seconds
+    valueAtRankOne: 0
+    valueAtNaturalCap: 6
+    valuePerEquipmentRank: 0
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 6
+  - identifier: replacement_preserves_health_status_and_cooldowns
+    valueAtRankOne: 1
+    valueAtNaturalCap: 1
+    valuePerEquipmentRank: 0
+    wholeNumber: 1
+    clampMinimum: 1
+    minimumValue: 1
+    clampMaximum: 1
+    maximumValue: 1
+  appliedStatusIdentifiers:
+  - unholy_reconstruction
+  consumedStatusIdentifiers: []
+  investedRankSynergies:
+  - sourceSkill: {fileID: 11400000, guid: 9e6800e8644252644b2347c43bec8abf, type: 2}
+    affectedValueIdentifier: return_health_percent
+    operation: 1
+    bonusPerInvestedRank: 1.5

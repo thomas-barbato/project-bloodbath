@@ -1,0 +1,102 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98f4f1f2c63e027488f24ebc28369cbb, type: 3}
+  m_Name: SeismicImpact
+  m_EditorClassIdentifier: ProjectBloodbath.Runtime::ProjectBloodbath.Progression.SkillDefinition
+  identifier: marine_seismic_impact
+  characterClass: 1
+  treeIdentifier: marine_ordnance_rupture
+  displayName: Impact sismique
+  description: "Un projectile de choc \xE9clate sur la premi\xE8re surface rencontr\xE9e,
+    repousse les cibles mobiles et surcharge le stagger des ennemis inamovibles."
+  icon: {fileID: 0}
+  skillType: 0
+  maximumInvestedRank: 20
+  unlockLevel: 18
+  prerequisites: []
+  prerequisiteGroups:
+  - mode: 1
+    requiredCount: 1
+    prerequisites:
+    - skill: {fileID: 11400000, guid: e2e0d9e9b5979ac40861c0339e06871c, type: 2}
+      requiredInvestedRank: 1
+    - skill: {fileID: 11400000, guid: 689e2ab4bdc2e9b42965b80e01706a21, type: 2}
+      requiredInvestedRank: 1
+  targetMode: 2
+  resourceCost: 24
+  tags:
+  - active
+  - ranged
+  - two_handed
+  - heavy_weapon
+  - shockwave
+  - area
+  - fracture
+  - stagger
+  rankValues:
+  - identifier: cooldown_seconds
+    valueAtRankOne: 14
+    valueAtNaturalCap: 10
+    valuePerEquipmentRank: -0.2
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 2
+    clampMaximum: 0
+    maximumValue: 0
+  - identifier: weapon_damage_percent
+    valueAtRankOne: 180
+    valueAtNaturalCap: 380
+    valuePerEquipmentRank: 10
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 0
+    maximumValue: 0
+  - identifier: shockwave_radius_metres
+    valueAtRankOne: 4
+    valueAtNaturalCap: 6.5
+    valuePerEquipmentRank: 0.1
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 1
+    clampMaximum: 1
+    maximumValue: 8
+  - identifier: fracture_charges
+    valueAtRankOne: 2
+    valueAtNaturalCap: 2
+    valuePerEquipmentRank: 0
+    wholeNumber: 1
+    clampMinimum: 0
+    minimumValue: 0
+    clampMaximum: 0
+    maximumValue: 0
+  - identifier: immovable_stagger_bonus_percent
+    valueAtRankOne: 50
+    valueAtNaturalCap: 50
+    valuePerEquipmentRank: 0
+    wholeNumber: 0
+    clampMinimum: 0
+    minimumValue: 0
+    clampMaximum: 0
+    maximumValue: 0
+  appliedStatusIdentifiers:
+  - fracture
+  consumedStatusIdentifiers: []
+  investedRankSynergies:
+  - sourceSkill: {fileID: 11400000, guid: e2e0d9e9b5979ac40861c0339e06871c, type: 2}
+    affectedValueIdentifier: weapon_damage_percent
+    operation: 1
+    bonusPerInvestedRank: 1.5
+  - sourceSkill: {fileID: 11400000, guid: 06bdfa5b54e159d4c98e03564db50e06, type: 2}
+    affectedValueIdentifier: stagger_bonus_percent
+    operation: 1
+    bonusPerInvestedRank: 1

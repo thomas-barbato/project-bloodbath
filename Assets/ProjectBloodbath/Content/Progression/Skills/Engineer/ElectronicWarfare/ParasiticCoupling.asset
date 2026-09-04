@@ -1,0 +1,109 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98f4f1f2c63e027488f24ebc28369cbb, type: 3}
+  m_Name: ParasiticCoupling
+  m_EditorClassIdentifier: ProjectBloodbath.Runtime::ProjectBloodbath.Progression.SkillDefinition
+  identifier: engineer_parasitic_coupling
+  characterClass: 3
+  treeIdentifier: engineer_electronic_warfare
+  displayName: Couplage parasite
+  description: "Le premier impact de machine sur une cible affaiblie cr\xE9e un lien
+    qui r\xE9pare les unit\xE9s et rend de l'\xE9nergie dans des plafonds globaux."
+  icon: {fileID: 0}
+  skillType: 1
+  maximumInvestedRank: 20
+  unlockLevel: 6
+  prerequisites:
+  - skill: {fileID: 11400000, guid: 44b0ee21d23df294d8219e6cc6a236ef, type: 2}
+    requiredInvestedRank: 1
+  prerequisiteGroups: []
+  targetMode: 0
+  resourceCost: 0
+  tags:
+  - passive
+  - technology
+  - debuff
+  - sustain
+  - companion
+  - drone
+  rankValues:
+  - identifier: link_duration_seconds
+    valueAtRankOne: 3
+    valueAtNaturalCap: 7
+    valuePerEquipmentRank: 0.2
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 2
+    clampMaximum: 1
+    maximumValue: 8
+  - identifier: machine_health_restoration_per_debuff_type_per_second_percent
+    valueAtRankOne: 0.1
+    valueAtNaturalCap: 0.4
+    valuePerEquipmentRank: 0.015
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 0.5
+  - identifier: owner_energy_per_debuff_type_per_second
+    valueAtRankOne: 0.05
+    valueAtNaturalCap: 0.2
+    valuePerEquipmentRank: 0.0075
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 0.25
+  - identifier: maximum_machine_restoration_per_second_percent
+    valueAtRankOne: 1
+    valueAtNaturalCap: 4
+    valuePerEquipmentRank: 0.15
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 4
+  - identifier: maximum_owner_energy_per_second
+    valueAtRankOne: 0.25
+    valueAtNaturalCap: 1
+    valuePerEquipmentRank: 0.04
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 1
+  - identifier: micro_stagger_required_debuff_types
+    valueAtRankOne: 3
+    valueAtNaturalCap: 3
+    valuePerEquipmentRank: 0
+    wholeNumber: 1
+    clampMinimum: 1
+    minimumValue: 3
+    clampMaximum: 1
+    maximumValue: 3
+  - identifier: micro_stagger_internal_cooldown_seconds
+    valueAtRankOne: 2
+    valueAtNaturalCap: 2
+    valuePerEquipmentRank: 0
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 2
+    clampMaximum: 1
+    maximumValue: 2
+  appliedStatusIdentifiers:
+  - parasitic_link
+  consumedStatusIdentifiers: []
+  investedRankSynergies:
+  - sourceSkill: {fileID: 11400000, guid: 44b0ee21d23df294d8219e6cc6a236ef, type: 2}
+    affectedValueIdentifier: link_duration_seconds
+    operation: 1
+    bonusPerInvestedRank: 1.5

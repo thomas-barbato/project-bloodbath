@@ -1,0 +1,113 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98f4f1f2c63e027488f24ebc28369cbb, type: 3}
+  m_Name: FieldReplication
+  m_EditorClassIdentifier: ProjectBloodbath.Runtime::ProjectBloodbath.Progression.SkillDefinition
+  identifier: engineer_field_replication
+  characterClass: 3
+  treeIdentifier: engineer_industrial_swarm
+  displayName: "R\xE9plication de terrain"
+  description: "Transforme la ferraille en une unit\xE9 r\xE9duite. Les unit\xE9s
+    r\xE9pliqu\xE9es ne produisent ni ferraille ni batterie, interdisant toute boucle
+    autonome."
+  icon: {fileID: 0}
+  skillType: 1
+  maximumInvestedRank: 20
+  unlockLevel: 24
+  prerequisites: []
+  prerequisiteGroups:
+  - mode: 1
+    requiredCount: 1
+    prerequisites:
+    - skill: {fileID: 11400000, guid: 26061c3a7bbccf845969d608091690c5, type: 2}
+      requiredInvestedRank: 1
+    - skill: {fileID: 11400000, guid: 9253aecc0a978e24dab4c58232e93085, type: 2}
+      requiredInvestedRank: 1
+  targetMode: 0
+  resourceCost: 0
+  tags:
+  - passive
+  - drone
+  - scrap
+  - replication
+  rankValues:
+  - identifier: scrap_required_per_replication
+    valueAtRankOne: 8
+    valueAtNaturalCap: 4
+    valuePerEquipmentRank: 0
+    wholeNumber: 1
+    clampMinimum: 1
+    minimumValue: 4
+    clampMaximum: 1
+    maximumValue: 8
+  - identifier: replicated_unit_duration_percent
+    valueAtRankOne: 50
+    valueAtNaturalCap: 50
+    valuePerEquipmentRank: 0
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 50
+    clampMaximum: 1
+    maximumValue: 50
+  - identifier: replicated_unit_scrap_output
+    valueAtRankOne: 0
+    valueAtNaturalCap: 0
+    valuePerEquipmentRank: 0
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 0
+  - identifier: replicated_unit_battery_output
+    valueAtRankOne: 0
+    valueAtNaturalCap: 0
+    valuePerEquipmentRank: 0
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 0
+    clampMaximum: 1
+    maximumValue: 0
+  - identifier: maximum_replications_per_second
+    valueAtRankOne: 1
+    valueAtNaturalCap: 1
+    valuePerEquipmentRank: 0
+    wholeNumber: 1
+    clampMinimum: 1
+    minimumValue: 1
+    clampMaximum: 1
+    maximumValue: 1
+  - identifier: companion_kill_scrap_internal_cooldown_seconds
+    valueAtRankOne: 4
+    valueAtNaturalCap: 2
+    valuePerEquipmentRank: -0.1
+    wholeNumber: 0
+    clampMinimum: 1
+    minimumValue: 1.5
+    clampMaximum: 1
+    maximumValue: 4
+  - identifier: destroyed_main_chassis_scrap_units
+    valueAtRankOne: 2
+    valueAtNaturalCap: 6
+    valuePerEquipmentRank: 0
+    wholeNumber: 1
+    clampMinimum: 1
+    minimumValue: 1
+    clampMaximum: 1
+    maximumValue: 6
+  appliedStatusIdentifiers:
+  - field_replication
+  consumedStatusIdentifiers: []
+  investedRankSynergies:
+  - sourceSkill: {fileID: 11400000, guid: 26061c3a7bbccf845969d608091690c5, type: 2}
+    affectedValueIdentifier: destroyed_main_chassis_scrap_units
+    operation: 1
+    bonusPerInvestedRank: 1.5
