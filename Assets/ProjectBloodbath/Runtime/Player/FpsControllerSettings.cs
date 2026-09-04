@@ -18,6 +18,12 @@ namespace ProjectBloodbath.Player
         [SerializeField] private float gravity = -30f;
         [SerializeField] private float groundedVerticalSpeed = -3f;
 
+        [Header("Dash")]
+        [SerializeField, Min(0f)] private float dashSpeed = 20f;
+        [SerializeField, Min(0.05f)] private float dashDuration = 0.16f;
+        [SerializeField, Min(0f)] private float dashCooldown = 0.65f;
+        [SerializeField] private bool allowAirDash = true;
+
         [Header("Glissade")]
         [SerializeField, Min(0f)] private float slideMinimumSpeed = 6.8f;
         [SerializeField, Min(0f)] private float slideInitialSpeed = 12.5f;
@@ -46,6 +52,10 @@ namespace ProjectBloodbath.Player
         public float AirJumpHeightMultiplier => airJumpHeightMultiplier;
         public float Gravity => gravity;
         public float GroundedVerticalSpeed => groundedVerticalSpeed;
+        public float DashSpeed => dashSpeed;
+        public float DashDuration => dashDuration;
+        public float DashCooldown => dashCooldown;
+        public bool AllowAirDash => allowAirDash;
         public float SlideMinimumSpeed => slideMinimumSpeed;
         public float SlideInitialSpeed => slideInitialSpeed;
         public float SlideDuration => slideDuration;
@@ -69,6 +79,9 @@ namespace ProjectBloodbath.Player
             airJumpHeightMultiplier = Mathf.Max(0f, airJumpHeightMultiplier);
             gravity = Mathf.Min(gravity, -0.01f);
             groundedVerticalSpeed = Mathf.Min(groundedVerticalSpeed, -0.01f);
+            dashSpeed = Mathf.Max(0f, dashSpeed);
+            dashDuration = Mathf.Max(0.05f, dashDuration);
+            dashCooldown = Mathf.Max(dashDuration, dashCooldown);
             slideMinimumSpeed = Mathf.Max(0f, slideMinimumSpeed);
             slideInitialSpeed = Mathf.Max(slideMinimumSpeed, slideInitialSpeed);
             slideDuration = Mathf.Max(0.05f, slideDuration);

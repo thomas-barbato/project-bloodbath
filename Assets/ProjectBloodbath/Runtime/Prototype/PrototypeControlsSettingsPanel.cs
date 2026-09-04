@@ -61,14 +61,16 @@ namespace ProjectBloodbath.Prototype
             new("ALLER À DROITE", "Move", "right"),
             new("SAUTER", "Jump"),
             new("SPRINTER", "Sprint"),
-            new("GLISSER", "Slide")
+            new("GLISSER", "Slide"),
+            new("DASH (OU DOUBLE PRESSION)", "Dash")
         };
 
         private static readonly BindingDescriptor[] GamepadMovementBindings =
         {
             new("SAUTER", "Jump"),
             new("SPRINTER", "Sprint"),
-            new("GLISSER", "Slide")
+            new("GLISSER", "Slide"),
+            new("DASH", "Dash")
         };
 
         private static readonly BindingDescriptor[] InterfaceBindings =
@@ -511,17 +513,17 @@ namespace ProjectBloodbath.Prototype
 
             Rect resetRect = new(
                 panel.x + 48f,
-                panel.y + 790f,
+                panel.y + 838f,
                 260f,
                 60f);
             Rect applyRect = new(
                 panel.x + 340f,
-                panel.y + 790f,
+                panel.y + 838f,
                 260f,
                 60f);
             Rect cancelRect = new(
                 panel.x + 632f,
-                panel.y + 790f,
+                panel.y + 838f,
                 260f,
                 60f);
             DrawActionButton(resetRect, "PAR DÉFAUT", ResetRowIndex);
@@ -534,12 +536,12 @@ namespace ProjectBloodbath.Prototype
                     ? "MODIFICATIONS NON APPLIQUÉES"
                     : "PARAMÈTRES ACTUELS";
             GUI.Label(
-                new Rect(panel.x + 34f, panel.y + 866f,
+                new Rect(panel.x + 34f, panel.y + 906f,
                     panel.width - 68f, 32f),
                 stateLabel,
                 subtitleStyle);
             GUI.Label(
-                new Rect(panel.x + 34f, panel.yMax - 54f,
+                new Rect(panel.x + 34f, panel.yMax - 36f,
                     panel.width - 68f, 28f),
                 controlSettings.PendingGamepadEnabled
                     ? "ENTRÉE / A  •  MODIFIER     ÉCHAP / B  •  RETOUR"

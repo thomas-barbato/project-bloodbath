@@ -213,6 +213,35 @@ namespace ProjectBloodbath.Tests.PlayMode
         }
 
         [Test]
+        public void DashHasAccessibleKeyboardAndGamepadBindings()
+        {
+            InputAction dash = settings.InputActions.FindAction(
+                "Player/Dash",
+                true);
+
+            Assert.That(
+                dash.bindings.Any(binding =>
+                    binding.path == "<Keyboard>/leftAlt" &&
+                    binding.groups.Contains("Keyboard&Mouse")),
+                Is.True);
+            Assert.That(
+                dash.bindings.Any(binding =>
+                    binding.path == "<Gamepad>/rightStickPress" &&
+                    binding.groups.Contains("Gamepad")),
+                Is.True);
+            settings.BeginEditing();
+            Assert.That(
+                settings.ApplyBindingOverride(
+                    "Dash",
+                    string.Empty,
+                    ControlDeviceProfile.Gamepad,
+                    "<Gamepad>/buttonWest"),
+                Is.True,
+                "La commande de dash dédiée doit rester reconfigurable.");
+            settings.CancelPending();
+        }
+
+        [Test]
         public void GamepadCanBeDisabledWithoutDisablingKeyboardAndMouse()
         {
             settings.BeginEditing();

@@ -6,6 +6,9 @@ namespace ProjectBloodbath.Input
     [DisallowMultipleComponent]
     public sealed class PlayerInputReader : MonoBehaviour
     {
+        private const float DirectionalDoubleTapWindow = 0.24f;
+        private const float DirectionalTapThreshold = 0.5f;
+
         [SerializeField] private InputActionAsset inputActions;
         [SerializeField] private string actionMapName = "Player";
         [SerializeField] private string uiActionMapName = "UI";
@@ -22,6 +25,7 @@ namespace ProjectBloodbath.Input
         private InputAction jumpAction;
         private InputAction sprintAction;
         private InputAction slideAction;
+        private InputAction dashAction;
         private InputAction swapHandSetAction;
         private InputAction inventoryAction;
         private InputAction questJournalAction;
@@ -33,6 +37,13 @@ namespace ProjectBloodbath.Input
         private InputAction menuCancelAction;
         private bool jumpPressed;
         private bool slidePressed;
+        private bool dashPressed;
+        private Vector2 dashDirection;
+        private Vector2 previousKeyboardMove;
+        private float lastForwardTapTime = float.NegativeInfinity;
+        private float lastBackwardTapTime = float.NegativeInfinity;
+        private float lastLeftTapTime = float.NegativeInfinity;
+        private float lastRightTapTime = float.NegativeInfinity;
         private bool reloadPressed;
         private bool ability1Pressed;
         private bool interactPressed;
@@ -87,6 +98,15 @@ namespace ProjectBloodbath.Input
         {
             bool value = !GameplaySuppressed && slidePressed;
             slidePressed = false;
+            return value;
+        }
+
+        public bool ConsumeDashPressed(out Vector2 direction)
+        {
+            bool value = !GameplaySuppressed && dashPressed;
+            direction = value ? dashDirection : Vector2.zero;
+            dashPressed = false;
+            dashDirection = Vector2.zero;
             return value;
         }
 
@@ -188,6 +208,7 @@ namespace ProjectBloodbath.Input
         public void SetGameplaySuppressed(bool suppressed)
         {
             GameplaySuppressed = suppressed;
+            ResetDirectionalTapState();
             if (!suppressed)
             {
                 uiMap?.Disable();
@@ -197,6 +218,8 @@ namespace ProjectBloodbath.Input
             uiMap?.Enable();
             jumpPressed = false;
             slidePressed = false;
+            dashPressed = false;
+            dashDirection = Vector2.zero;
             reloadPressed = false;
             ability1Pressed = false;
             interactPressed = false;
@@ -214,6 +237,9 @@ namespace ProjectBloodbath.Input
 
             jumpAction.performed += OnJumpPerformed;
             slideAction.performed += OnSlidePerformed;
+            dashAction.performed += OnDashPerformed;
+            moveAction.performed += OnMoveChanged;
+            moveAction.canceled += OnMoveChanged;
             reloadAction.performed += OnReloadPerformed;
             ability1Action.performed += OnAbility1Performed;
             interactAction.performed += OnInteractPerformed;
@@ -239,6 +265,15 @@ namespace ProjectBloodbath.Input
             if (slideAction != null)
             {
                 slideAction.performed -= OnSlidePerformed;
+            }
+            if (dashAction != null)
+            {
+                dashAction.performed -= OnDashPerformed;
+            }
+            if (moveAction != null)
+            {
+                moveAction.performed -= OnMoveChanged;
+                moveAction.canceled -= OnMoveChanged;
             }
             if (reloadAction != null)
             {
@@ -289,6 +324,9 @@ namespace ProjectBloodbath.Input
             uiMap?.Disable();
             jumpPressed = false;
             slidePressed = false;
+            dashPressed = false;
+            dashDirection = Vector2.zero;
+            ResetDirectionalTapState();
             reloadPressed = false;
             ability1Pressed = false;
             interactPressed = false;
@@ -325,6 +363,7 @@ namespace ProjectBloodbath.Input
             jumpAction = playerMap.FindAction("Jump", true);
             sprintAction = playerMap.FindAction("Sprint", true);
             slideAction = playerMap.FindAction("Slide", true);
+            dashAction = playerMap.FindAction("Dash", true);
             swapHandSetAction = playerMap.FindAction("SwapHandSet", true);
             inventoryAction = playerMap.FindAction("Inventory", true);
             questJournalAction = playerMap.FindAction("QuestJournal", true);
@@ -344,6 +383,109 @@ namespace ProjectBloodbath.Input
         private void OnSlidePerformed(InputAction.CallbackContext context)
         {
             slidePressed = true;
+        }
+
+        private void OnDashPerformed(InputAction.CallbackContext context)
+        {
+            QueueDash(moveAction.ReadValue<Vector2>());
+        }
+
+        private void OnMoveChanged(InputAction.CallbackContext context)
+        {
+            if (context.control?.device is not Keyboard)
+            {
+                return;
+            }
+
+            Vector2 currentMove = context.ReadValue<Vector2>();
+            if (GameplaySuppressed)
+            {
+                previousKeyboardMove = currentMove;
+                return;
+            }
+
+            if (CrossedPositiveThreshold(
+                    previousKeyboardMove.y,
+                    currentMove.y))
+            {
+                RegisterDirectionalTap(
+                    ref lastForwardTapTime,
+                    Vector2.up);
+            }
+            if (CrossedNegativeThreshold(
+                    previousKeyboardMove.y,
+                    currentMove.y))
+            {
+                RegisterDirectionalTap(
+                    ref lastBackwardTapTime,
+                    Vector2.down);
+            }
+            if (CrossedNegativeThreshold(
+                    previousKeyboardMove.x,
+                    currentMove.x))
+            {
+                RegisterDirectionalTap(
+                    ref lastLeftTapTime,
+                    Vector2.left);
+            }
+            if (CrossedPositiveThreshold(
+                    previousKeyboardMove.x,
+                    currentMove.x))
+            {
+                RegisterDirectionalTap(
+                    ref lastRightTapTime,
+                    Vector2.right);
+            }
+
+            previousKeyboardMove = currentMove;
+        }
+
+        private void RegisterDirectionalTap(
+            ref float previousTapTime,
+            Vector2 direction)
+        {
+            float currentTime = Time.unscaledTime;
+            if (currentTime - previousTapTime <= DirectionalDoubleTapWindow)
+            {
+                QueueDash(direction);
+                previousTapTime = float.NegativeInfinity;
+                return;
+            }
+
+            previousTapTime = currentTime;
+        }
+
+        private void QueueDash(Vector2 direction)
+        {
+            dashDirection = direction.sqrMagnitude > 0.01f
+                ? Vector2.ClampMagnitude(direction, 1f)
+                : Vector2.up;
+            dashPressed = true;
+        }
+
+        private void ResetDirectionalTapState()
+        {
+            previousKeyboardMove = Vector2.zero;
+            lastForwardTapTime = float.NegativeInfinity;
+            lastBackwardTapTime = float.NegativeInfinity;
+            lastLeftTapTime = float.NegativeInfinity;
+            lastRightTapTime = float.NegativeInfinity;
+        }
+
+        private static bool CrossedPositiveThreshold(
+            float previous,
+            float current)
+        {
+            return previous < DirectionalTapThreshold &&
+                current >= DirectionalTapThreshold;
+        }
+
+        private static bool CrossedNegativeThreshold(
+            float previous,
+            float current)
+        {
+            return previous > -DirectionalTapThreshold &&
+                current <= -DirectionalTapThreshold;
         }
 
         private void OnReloadPerformed(InputAction.CallbackContext context)

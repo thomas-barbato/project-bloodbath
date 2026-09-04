@@ -28,11 +28,15 @@ namespace ProjectBloodbath.Player
         private float nextSlideTime;
         private float slideRequestedUntil;
         private float slidePresentationAmount;
+        private Vector3 dashDirection;
+        private float dashEndsAt;
+        private float nextDashTime;
         private int jumpsPerformed;
         private bool wasGrounded;
 
         public Vector3 Velocity => horizontalVelocity + Vector3.up * verticalVelocity;
         public bool IsSliding { get; private set; }
+        public bool IsDashing { get; private set; }
         public float SlidePresentationAmount => slidePresentationAmount;
         public int JumpsPerformed => jumpsPerformed;
         public int RemainingJumps => settings == null
@@ -91,7 +95,10 @@ namespace ProjectBloodbath.Player
             pitch = 0f;
             inputReader?.ConsumeJumpPressed();
             inputReader?.ConsumeSlidePressed();
+            inputReader?.ConsumeDashPressed(out _);
             slideRequestedUntil = 0f;
+            nextDashTime = 0f;
+            StopDash(true);
             StopSlide(true);
 
             if (cameraPivot != null)
@@ -125,6 +132,7 @@ namespace ProjectBloodbath.Player
 
         private void OnDisable()
         {
+            StopDash(true);
             StopSlide(true);
             SetCursorCaptured(false);
         }
@@ -210,6 +218,16 @@ namespace ProjectBloodbath.Player
             Vector3 desiredDirection =
                 transform.right * moveInput.x + transform.forward * moveInput.y;
 
+            if (inputReader.ConsumeDashPressed(out Vector2 dashInput))
+            {
+                TryStartDash(dashInput, grounded);
+            }
+
+            if (IsDashing && UpdateDashMovement(grounded))
+            {
+                return;
+            }
+
             if (!IsSliding && inputReader.ConsumeSlidePressed())
             {
                 slideRequestedUntil =
@@ -258,6 +276,80 @@ namespace ProjectBloodbath.Player
 
             verticalVelocity += settings.Gravity * Time.deltaTime;
             characterController.Move(Velocity * Time.deltaTime);
+        }
+
+        private bool TryStartDash(Vector2 inputDirection, bool grounded)
+        {
+            if (
+                IsDashing ||
+                Time.time < nextDashTime ||
+                settings.DashSpeed <= 0f ||
+                (!grounded && !settings.AllowAirDash))
+            {
+                return false;
+            }
+
+            Vector3 requestedDirection =
+                transform.right * inputDirection.x +
+                transform.forward * inputDirection.y;
+            dashDirection = requestedDirection.sqrMagnitude > 0.01f
+                ? requestedDirection.normalized
+                : transform.forward;
+
+            if (IsSliding)
+            {
+                StopSlide(false);
+            }
+
+            IsDashing = true;
+            dashEndsAt = Time.time + settings.DashDuration;
+            nextDashTime = Time.time + settings.DashCooldown;
+            horizontalVelocity = dashDirection * settings.DashSpeed;
+            return true;
+        }
+
+        private bool UpdateDashMovement(bool grounded)
+        {
+            if (Time.time >= dashEndsAt)
+            {
+                StopDash(false);
+                return false;
+            }
+
+            if (inputReader.ConsumeJumpPressed())
+            {
+                TryJump(grounded && verticalVelocity <= 0f);
+            }
+
+            verticalVelocity += settings.Gravity * Time.deltaTime;
+            CollisionFlags collisions = characterController.Move(
+                Velocity * Time.deltaTime);
+            if ((collisions & CollisionFlags.Sides) != 0)
+            {
+                StopDash(true);
+            }
+
+            return true;
+        }
+
+        private void StopDash(bool cancelMomentum)
+        {
+            if (!IsDashing && !cancelMomentum)
+            {
+                return;
+            }
+
+            IsDashing = false;
+            dashEndsAt = 0f;
+            if (cancelMomentum)
+            {
+                horizontalVelocity = Vector3.zero;
+                return;
+            }
+
+            horizontalVelocity = dashDirection * Mathf.Min(
+                horizontalVelocity.magnitude,
+                settings != null ? settings.SprintSpeed : 0f);
         }
 
         private void StartSlide(Vector3 desiredDirection)

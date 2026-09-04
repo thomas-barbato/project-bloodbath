@@ -385,9 +385,11 @@ Les éléments démoniaques pourront être :
 
 ---
 
-# Mobilité, double saut et glissade
+# Mobilité, double saut, dash et glissade
 
 Le personnage disposera d’un **double saut** afin de soutenir un level design plus vertical et une mobilité rapide. Le premier saut part du sol et une seconde impulsion peut être déclenchée en l’air ; toute tentative supplémentaire devra attendre le prochain atterrissage. Le nombre total d’impulsions et la puissance du saut aérien resteront configurables pour permettre leur équilibrage après les essais de terrain.
+
+Le déplacement inclura aussi un **dash directionnel bref**, utilisable au sol comme dans les airs dans le premier prototype. Au clavier, une double pression rapide sur une même direction déclenchera le dash correspondant ; les directions restent donc celles du profil AZERTY, QWERTY ou personnalisé. Une action dédiée et reconfigurable restera également disponible, notamment pour la manette : le stick gauche choisit la direction et le clic du stick droit déclenche le dash par défaut. Sans direction maintenue, l’action dédiée projette le personnage vers l’avant. Le dash conserve la vitesse verticale, s’arrête contre un obstacle latéral et impose un court délai avant sa réutilisation.
 
 Le déplacement devra inclure une **glissade volontaire, rapide et lisible**, utilisable lorsque le personnage possède suffisamment d'élan.
 
@@ -2173,7 +2175,7 @@ Le multijoueur complexe, le crafting avancé, de nombreuses classes, des centain
 
 La priorité est de construire progressivement un **vertical slice jouable** permettant de tester :
 
-1. déplacement FPS, double saut, sprint et glissade ;
+1. déplacement FPS, double saut, sprint, dash et glissade ;
 2. caméra ;
 3. corps du personnage visible en première personne, notamment les jambes et leur posture pendant la glissade ;
 4. sensations de tir ;
@@ -2235,7 +2237,7 @@ La direction artistique est :
 
 Le projet devra respecter les principes suivants :
 
-- gameplay FPS rapide avec double saut, sprint et glissade animée ;
+- gameplay FPS rapide avec double saut, sprint, dash et glissade animée ;
 - armes à distance et armes de corps à corps dédiées ;
 - deux mains fonctionnelles avec armes à une main, armes à deux mains, combat à deux armes et boucliers protecteurs ;
 - builds de mêlée complets compatibles avec le loot, les statistiques et les affixes ;

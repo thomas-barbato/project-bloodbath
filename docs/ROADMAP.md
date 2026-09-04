@@ -13,8 +13,9 @@ Cette feuille de route traduit la présentation du projet en petits jalons jouab
 ## 1. Sensations FPS
 
 - Arène grise de test.
-- Déplacement, saut, double saut, sprint, glissade et caméra.
+- Déplacement, saut, double saut, sprint, dash, glissade et caméra.
 - Double saut configurable : le personnage dispose de deux impulsions au total, la seconde pouvant être utilisée en l’air. Le compteur se réinitialise seulement après un retour au sol afin de permettre un level design plus vertical sans autoriser des impulsions aériennes illimitées.
+- Dash directionnel court et configurable, disponible au sol comme en l’air dans le prototype. Il se déclenche par double pression d’une direction au clavier, ou par une action dédiée reconfigurable — `Alt gauche` au clavier et clic du stick droit à la manette par défaut — dont la direction suit le déplacement courant et revient vers l’avant lorsque le stick est neutre.
 - Première glissade fondée sur l'élan avec posture abaissée, volume physique adapté, transition adoucie et courte mémoire d’entrée permettant de l’enchaîner naturellement après un saut.
 - Jambes et posture visibles pendant la glissade en vue subjective, avec une représentation cohérente pour les autres joueurs.
 - Action de glissade dédiée et reconfigurable, distincte du sprint placé sur `Shift`. Aucun accroupissement permanent n’est prévu tant qu’une mécanique ou le level design ne le justifie.
